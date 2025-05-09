@@ -4,8 +4,97 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mariona Guisado | Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #fdfcfb, #e2d1c3);
+      color: #1e293b;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      color: #ec4899;
+    }
+
+    .contact-info {
+      font-size: 0.95rem;
+      color: #334155;
+    }
+
+    a {
+      color: #3b82f6;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #1d4ed8;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: #0f172a;
+      margin-top: 40px;
+      border-bottom: 2px solid #ec4899;
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      color: #be185d;
+    }
+
+    .item {
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li::before {
+      content: "\2022";
+      color: #ec4899;
+      font-weight: bold;
+      display: inline-block; 
+      width: 1em;
+    }
+
+    .section {
+      background-color: #ffffffcc;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      transition: transform 0.3s;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -17,89 +106,85 @@
       </p>
     </header>
 
-    <section>
+    <div class="section">
       <h2>Educació</h2>
       <div class="item">
-        <h3>Universitat Autònoma de Barcelona (UAB)</h3>
-        <p><strong>Bachelor in Data Engineering</strong> (Set. 2023 – Juny 2027)</p>
+        <h3>UAB - Enginyeria de Dades</h3>
+        <p>Setembre 2023 – Juny 2027 (esperat)</p>
         <ul>
           <li>Nota mitjana: 7.1 / 10</li>
           <li>Menció honorífica en Matemàtiques</li>
-          <li>Assignatures clau: Python, SQL, Xarxes, Gestió Empresarial</li>
           <li>Representant de classe</li>
         </ul>
       </div>
       <div class="item">
-        <h3>Escola Ginebró</h3>
-        <p><strong>Batxillerat</strong> (Set. 2011 – Juny 2023)</p>
+        <h3>Escola Ginebró - Batxillerat</h3>
+        <p>Setembre 2011 – Juny 2023</p>
         <ul>
           <li>Nota final: 8.35 / 10</li>
         </ul>
       </div>
-    </section>
+    </div>
 
-    <section>
+    <div class="section">
       <h2>Habilitats Tècniques</h2>
       <ul>
-        <li><strong>Llenguatges:</strong> Python (Avançat), C, Assembly</li>
-        <li><strong>Anàlisi de dades:</strong> pandas, NumPy, matplotlib</li>
-        <li><strong>Bases de dades:</strong> SQL (Bàsic), Disseny i Gestió</li>
+        <li><strong>Llenguatges:</strong> Python, C, Assembly</li>
+        <li><strong>Libreries:</strong> pandas, NumPy, matplotlib</li>
+        <li><strong>Bases de dades:</strong> SQL, disseny relacional</li>
         <li><strong>Control de versions:</strong> Git, GitHub</li>
-        <li><strong>Altres:</strong> Visualització de dades, Optimització d’algoritmes</li>
       </ul>
-    </section>
+    </div>
 
-    <section>
+    <div class="section">
       <h2>Idiomes</h2>
       <ul>
         <li>Català: Nadiu</li>
         <li>Castellà: Nadiu</li>
         <li>Anglès: Avançat</li>
       </ul>
-    </section>
+    </div>
 
-    <section>
+    <div class="section">
       <h2>Experiència</h2>
       <div class="item">
         <h3>Professora de Matemàtiques i Anglès</h3>
         <p>Setembre 2020 – Juny 2023</p>
         <ul>
-          <li>Classes individuals a estudiants de secundària</li>
-          <li>Disseny de lliçons adaptades i seguiment del progrés</li>
+          <li>Classes individuals per reforçar fonaments</li>
+          <li>Adaptació pedagògica personalitzada</li>
         </ul>
       </div>
-    </section>
+    </div>
 
-    <section>
+    <div class="section">
       <h2>Projectes</h2>
       <ul>
-        <li><strong>Reproductor Multimedia:</strong> eina en Python per gestionar i reproduir fitxers locals.</li>
-        <li><strong>Anàlisi de Dades:</strong> visualització amb pandas, NumPy i matplotlib.</li>
-        <li><strong>Recomanador de Pel·lícules:</strong> sistema bàsic amb mètriques de similitud.</li>
-        <li><strong>Optimització d’Algoritmes:</strong> millora del rendiment i ús eficient de recursos.</li>
-        <li><strong>Disseny de BD:</strong> implementació de bases de dades relacionals amb SQL.</li>
+        <li>Reproductor multimedia amb Python (os, uuid, math)</li>
+        <li>Anàlisi i visualització de dades amb pandas i matplotlib</li>
+        <li>Motor de recomanació de pel·lícules bàsic</li>
+        <li>Optimització d'algoritmes i gestió de rendiment</li>
+        <li>Disseny i consultes en bases de dades SQL</li>
       </ul>
-    </section>
+    </div>
 
-    <section>
+    <div class="section">
       <h2>Interessos</h2>
       <ul>
-        <li>Ciència de dades</li>
-        <li>Ciberseguretat i Prevenció del Frau</li>
-        <li>Mercats financers</li>
-        <li>Intel·ligència Artificial Generativa</li>
-        <li>Finances quantitatives</li>
+        <li>Ciència de dades i IA generativa</li>
+        <li>Finances quantitatives i mercats</li>
+        <li>Seguretat digital i prevenció del frau</li>
       </ul>
-    </section>
+    </div>
 
-    <section>
+    <div class="section">
       <h2>Objectius i Fortaleses</h2>
-      <p><strong>Objectius professionals:</strong> Aplicar enginyeria de dades a fintech, enfocant-me en IA per optimitzar anàlisi quantitativa i gestió de riscos.</p>
-      <p><strong>Fortaleses:</strong> Capacitat analítica, comunicació efectiva, treball en equip i actitud proactiva cap a l’aprenentatge.</p>
-    </section>
+      <p><strong>Objectius:</strong> aplicar enginyeria de dades al sector fintech per millorar la presa de decisions i gestió de riscos amb IA.</p>
+      <p><strong>Fortaleses:</strong> anàlisi, comunicació, col·laboració i aprenentatge autònom constant.</p>
+    </div>
 
     <footer>
-      <p>&copy; 2025 Mariona Guisado | Disseny amb HTML + CSS</p>
+      <p>&copy; 2025 Mariona Guisado</p>
     </footer>
   </div>
 </body>
