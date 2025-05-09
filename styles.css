@@ -1,56 +1,38 @@
-/* Cambiar la fuente global */
 body {
-    font-family: 'Roboto', sans-serif; /* Usa Google Fonts */
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0; /* Fondo más claro */
-    color: #333; /* Color de texto oscuro */
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
 }
 
-/* Estilo del header */
 header {
-    background-color: #2c3e50; /* Fondo oscuro */
-    color: white;
-    padding: 40px;
+    background-color: #1e2a38;
+    color: #fff;
+    padding: 40px 20px;
     text-align: center;
 }
 
-h1 {
-    font-size: 2.5em;
-    margin: 0;
+header a {
+    color: #89c4f4;
+    text-decoration: none;
 }
 
-p {
-    font-size: 1.2em;
-}
-
-/* Estilo de las secciones */
-section {
+main {
     padding: 20px;
-    margin: 10px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: auto;
 }
 
-h2 {
-    color: #2c3e50;
-    font-size: 2em;
+section {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo del footer */
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #2c3e50;
-    color: white;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
+h1, h2, h3 {
+    color: #2c3e50
 
-/* Añadir efectos hover a los enlaces */
-a:hover {
-    color: #e74c3c;
-    text-decoration: underline;
-}
