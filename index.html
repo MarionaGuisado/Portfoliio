@@ -3,143 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portafoli professional de Mariona. Enginyera de Dades amb experiència en desenvolupament i anàlisi de dades.">
-    <title>Mariona - Enginyera de Dades</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <title>Portfolio de Mariona Guisado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* Estils generals */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f5f5f5;
             color: #333;
+            line-height: 1.6;
         }
-        h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
-        }
+
+        /* Estils de la capçalera */
         header {
-            background-color: #2d3e50;
+            background-color: #1E88E5;
             color: white;
-            padding: 20px;
+            padding: 40px 20px;
             text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-bottom: 5px solid #0d47a1;
         }
-        nav {
-            position: sticky;
-            top: 0;
-            background-color: #2d3e50;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            font-weight: 500;
-        }
-        nav a:hover {
-            background-color: #1a2636;
-        }
-        .content {
-            padding: 20px;
-        }
-        .skill-bar {
-            width: 100%;
-            height: 20px;
-            margin: 10px 0;
-            background-color: #ddd;
-        }
-        .skill-fill {
-            height: 100%;
-            text-align: center;
-            line-height: 20px;
-            color: white;
+
+        header h1 {
+            margin: 0;
+            font-size: 3.5em;
             font-weight: bold;
         }
-        .testimonial-slider {
-            display: flex;
-            overflow-x: scroll;
-            margin: 20px 0;
+
+        header p {
+            font-size: 1.2em;
         }
-        .testimonial {
-            background-color: #fff;
-            padding: 20px;
-            margin-right: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        footer {
-            background-color: #2d3e50;
-            color: white;
+
+        /* Estils del menú de navegació */
+        nav {
+            background-color: #0d47a1;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             text-align: center;
-            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 15px 25px;
+            margin: 0 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #ffeb3b; /* Groc brillant */
+            transform: scale(1.1);
+        }
+
+        /* Estils per al contingut */
+        main {
+            padding: 20px;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        section {
+            background-color: #fff;
+            margin-bottom: 30px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        section:hover {
+            transform: translateY(-10px);
+        }
+
+        h2 {
+            color: #1E88E5;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #0d47a1;
+            font-size: 1.5em;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 8px 0;
+            font-size: 1.2em;
+        }
+
+        /* Estil per als botons */
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #ffeb3b;
+            color: #1E88E5;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #f57f17;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Efectes de transició per a les seccions de projectes */
+        .project-item {
+            display: inline-block;
+            width: 48%;
+            margin: 1%;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #e3f2fd;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-10px);
+            background-color: #bbdefb;
+        }
+
+        /* Menú de navegació fixa */
+        nav a:active {
+            transform: scale(1);
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Mariona - Enginyera de Dades</h1>
-</header>
+    <!-- Menú de navegació -->
+    <nav>
+        <a href="#education">Educació</a>
+        <a href="#skills">Habilitats Tècniques</a>
+        <a href="#projects">Projectes</a>
+        <a href="#languages">Idiomes</a>
+        <a href="#interests">Interessos</a>
+        <a href="#contact" class="button">Contacta'm</a>
+    </nav>
 
-<nav>
-    <a href="#sobre-mi">Sobre Mi</a>
-    <a href="#habilitats">Habilitats</a>
-    <a href="#projectes">Projectes</a>
-    <a href="#contacte">Contacte</a>
-</nav>
+    <header>
+        <h1>Mariona Guisado Parras</h1>
+        <p>marionagsd@gmail.com | +34 601 497 852 | Nacionalitat: Espanyola | 
+            <a href="https://www.linkedin.com/in/el-teu-usuari" target="_blank">LinkedIn</a>
+        </p>
+    </header>
 
-<div class="content">
-    <section id="sobre-mi">
-        <h2>Sobre Mi</h2>
-        <p>Sóc una enginyera de dades apassionada per l'anàlisi de dades i el desenvolupament de solucions innovadores. Amb una formació sòlida i una gran motivació per resoldre problemes complexos, m'especialitzo en la manipulació i visualització de grans volums de dades.</p>
-    </section>
+    <main>
+        <section id="education">
+            <h2>Educació</h2>
+            <h3>Universitat Autònoma de Barcelona (UAB)</h3>
+            <p><strong>Bachelor in Data Engineering</strong> | Setembre 2023 - Juny 2027 (previst)</p>
+            <ul>
+                <li>Nota mitjana: 7.1 / 10</li>
+                <li>Menció honorífica en Matemàtiques</li>
+                <li>Assignatures destacades: Python, SQL, Xarxes, Gestió Empresarial</li>
+                <li>Representant de classe</li>
+            </ul>
+            <h3>Escola Ginebró</h3>
+            <p><strong>Batxillerat</strong> | Setembre 2011 - Juny 2023</p>
+            <ul>
+                <li>Nota final: 8.35 / 10</li>
+            </ul>
+        </section>
 
-    <section id="habilitats">
-        <h2>Habilitats</h2>
-        <div class="skill-bar">
-            <div class="skill-fill" style="width: 90%; background-color: #4CAF50;">Python - 90%</div>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-fill" style="width: 80%; background-color: #2196F3;">SQL - 80%</div>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-fill" style="width: 70%; background-color: #FF9800;">R - 70%</div>
-        </div>
-    </section>
+        <section id="skills">
+            <h2>Habilitats Tècniques</h2>
+            <ul>
+                <li><strong>Llenguatges:</strong> Python (Avançat), C, Assembly</li>
+                <li><strong>Anàlisi de dades:</strong> pandas, NumPy, matplotlib</li>
+                <li><strong>Bases de dades:</strong> SQL (Bàsic), Disseny de Bases de Dades</li>
+                <li><strong>Control de versions:</strong> Git, GitHub</li>
+                <li><strong>Altres:</strong> Visualització de dades, Optimització d’algoritmes</li>
+            </ul>
+        </section>
 
-    <section id="projectes">
-        <h2>Projectes</h2>
-        <div class="testimonial-slider">
-            <div class="testimonial">
-                <h3>Projecte A</h3>
-                <p>Descripció breu del projecte A amb una imatge o enllaç a la visualització.</p>
+        <section id="projects">
+            <h2>Projectes</h2>
+            <div class="project-item">
+                <h3>Reproductor Multimedia</h3>
+                <p>Desenvolupament d'una eina per localitzar, reproduir i gestionar fitxers a directoris locals utilitzant biblioteques Python (os, uuid, math).</p>
             </div>
-            <div class="testimonial">
-                <h3>Projecte B</h3>
-                <p>Descripció breu del projecte B amb una imatge o enllaç a la visualització.</p>
+            <div class="project-item">
+                <h3>Data Analysis and Visualization</h3>
+                <p>Processat de grans conjunts de dades amb pandas i NumPy, generant visualitzacions amb matplotlib per extreure'n informació útil.</p>
             </div>
-        </div>
-    </section>
+            <div class="project-item">
+                <h3>Movie Recommendation System</h3>
+                <p>Creació d'un sistema bàsic de recomanació de pel·lícules basat en mètriques de similitud.</p>
+            </div>
+            <div class="project-item">
+                <h3>Database Design</h3>
+                <p>Disseny i implementació de bases de dades relacionals per a un emmagatzematge i consulta òptims utilitzant SQL.</p>
+            </div>
+        </section>
 
-    <section id="contacte">
-        <h2>Contacte</h2>
-        <form>
-            <label for="nom">Nom:</label>
-            <input type="text" id="nom" name="nom" required><br><br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
-            <label for="missatge">Missatge:</label><br>
-            <textarea id="missatge" name="missatge" rows="4" required></textarea><br><br>
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
-</div>
+        <section id="languages">
+            <h2>Idiomes</h2>
+            <ul>
+                <li>Català: Nadiu</li>
+                <li>Castellà: Nadiu</li>
+                <li>Anglès: Avançat</li>
+            </ul>
+        </section>
 
-<footer>
-    <p>Seguiu-me a les xarxes socials:</p>
-    <a href="https://linkedin.com" target="_blank">LinkedIn</a> |
-    <a href="https://github.com" target="_blank">GitHub</a>
-</footer>
+        <section id="interests">
+            <h2>Interessos</h2>
+            <p>Data Science, Ciberseguretat, Finances Quantitatives, Intel·ligència Artificial Generativa, Mercats Financers.</p>
+        </section>
+        
+        <section id="contact">
+            <h2>Contacta'm</h2>
+            <p>Per qualsevol consulta o col·laboració, no dubtis en contactar-me a través del correu electrònic o LinkedIn!</p>
+            <a href="mailto:marionagsd@gmail.com" class="button">Enviar correu</a>
+        </section>
+    </main>
 
 </body>
 </html>
