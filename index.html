@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio de Mariona Guisado</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* Estils generals */
@@ -12,73 +11,86 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f4f8;
+            background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
         }
 
         /* Estils de la capçalera */
         header {
-            background-color: #1E88E5; /* Blau vibrant */
+            background-color: #1E88E5;
             color: white;
-            padding: 20px 20px;
+            padding: 40px 20px;
             text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-bottom: 5px solid #0d47a1;
         }
 
         header h1 {
             margin: 0;
-            font-size: 3em;
+            font-size: 3.5em;
+            font-weight: bold;
+        }
+
+        header p {
+            font-size: 1.2em;
         }
 
         /* Estils del menú de navegació */
         nav {
             background-color: #0d47a1;
-            padding: 10px 0;
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
+            text-align: center;
+            transition: background-color 0.3s ease;
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
             font-weight: bold;
-            padding: 10px 15px;
-            margin: 0 10px;
-            transition: background-color 0.3s ease;
+            padding: 15px 25px;
+            margin: 0 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         nav a:hover {
             background-color: #ffeb3b; /* Groc brillant */
+            transform: scale(1.1);
         }
 
         /* Estils per al contingut */
         main {
             padding: 20px;
             max-width: 900px;
-            margin: auto;
+            margin: 40px auto;
         }
 
         section {
             background-color: #fff;
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
         }
 
         section:hover {
-            transform: scale(1.03); /* Efecte de creixement */
+            transform: translateY(-10px);
         }
 
-        h2, h3 {
+        h2 {
             color: #1E88E5;
+            font-size: 2.5em;
+            margin-bottom: 20px;
         }
 
         h3 {
-            font-size: 1.2em;
+            color: #0d47a1;
+            font-size: 1.5em;
         }
 
         ul {
@@ -87,39 +99,40 @@
         }
 
         ul li {
-            padding: 5px 0;
-            font-size: 1.1em;
+            padding: 8px 0;
+            font-size: 1.2em;
         }
 
         /* Estil per als botons */
         .button {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: #ffeb3b; /* Groc brillant */
+            padding: 12px 25px;
+            background-color: #ffeb3b;
             color: #1E88E5;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: 8px;
             text-decoration: none;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .button:hover {
-            background-color: #f57f17; /* Groc fosc */
+            background-color: #f57f17;
             color: white;
+            transform: scale(1.1);
         }
 
-        /* Efectes de transició */
+        /* Efectes de transició per a les seccions de projectes */
         .project-item {
             display: inline-block;
             width: 48%;
             margin: 1%;
             padding: 20px;
             border-radius: 10px;
-            background-color: #f1f1f1;
+            background-color: #e3f2fd;
             text-align: center;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease;
         }
 
         .project-item:hover {
@@ -127,6 +140,10 @@
             background-color: #bbdefb;
         }
 
+        /* Menú de navegació fixa */
+        nav a:active {
+            transform: scale(1);
+        }
     </style>
 </head>
 <body>
@@ -135,7 +152,7 @@
     <nav>
         <a href="#education">Educació</a>
         <a href="#skills">Habilitats Tècniques</a>
-        <a href="#projects">Projectes i Interessos</a>
+        <a href="#projects">Projectes</a>
         <a href="#languages">Idiomes</a>
         <a href="#interests">Interessos</a>
         <a href="#contact" class="button">Contacta'm</a>
@@ -178,7 +195,7 @@
         </section>
 
         <section id="projects">
-            <h2>Projectes i Interessos</h2>
+            <h2>Projectes</h2>
             <div class="project-item">
                 <h3>Reproductor Multimedia</h3>
                 <p>Desenvolupament d'una eina per localitzar, reproduir i gestionar fitxers a directoris locals utilitzant biblioteques Python (os, uuid, math).</p>
