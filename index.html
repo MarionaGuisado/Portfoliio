@@ -17,10 +17,11 @@
             line-height: 1.6;
         }
 
+        /* Estils de la capçalera */
         header {
             background-color: #1E88E5; /* Blau vibrant */
             color: white;
-            padding: 40px 20px;
+            padding: 20px 20px;
             text-align: center;
             border-bottom: 5px solid #0d47a1;
         }
@@ -30,18 +31,29 @@
             font-size: 3em;
         }
 
-        header a {
+        /* Estils del menú de navegació */
+        nav {
+            background-color: #0d47a1;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
             color: #fff;
             text-decoration: none;
             font-weight: bold;
-            margin-left: 15px;
-            transition: color 0.3s ease;
+            padding: 10px 15px;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
         }
 
-        header a:hover {
-            color: #ffeb3b; /* Groc brillant */
+        nav a:hover {
+            background-color: #ffeb3b; /* Groc brillant */
         }
 
+        /* Estils per al contingut */
         main {
             padding: 20px;
             max-width: 900px;
@@ -119,6 +131,16 @@
 </head>
 <body>
 
+    <!-- Menú de navegació -->
+    <nav>
+        <a href="#education">Educació</a>
+        <a href="#skills">Habilitats Tècniques</a>
+        <a href="#projects">Projectes i Interessos</a>
+        <a href="#languages">Idiomes</a>
+        <a href="#interests">Interessos</a>
+        <a href="#contact" class="button">Contacta'm</a>
+    </nav>
+
     <header>
         <h1>Mariona Guisado Parras</h1>
         <p>marionagsd@gmail.com | +34 601 497 852 | Nacionalitat: Espanyola | 
@@ -127,7 +149,7 @@
     </header>
 
     <main>
-        <section>
+        <section id="education">
             <h2>Educació</h2>
             <h3>Universitat Autònoma de Barcelona (UAB)</h3>
             <p><strong>Bachelor in Data Engineering</strong> | Setembre 2023 - Juny 2027 (previst)</p>
@@ -144,7 +166,7 @@
             </ul>
         </section>
 
-        <section>
+        <section id="skills">
             <h2>Habilitats Tècniques</h2>
             <ul>
                 <li><strong>Llenguatges:</strong> Python (Avançat), C, Assembly</li>
@@ -155,7 +177,7 @@
             </ul>
         </section>
 
-        <section>
+        <section id="projects">
             <h2>Projectes i Interessos</h2>
             <div class="project-item">
                 <h3>Reproductor Multimedia</h3>
@@ -175,7 +197,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="languages">
             <h2>Idiomes</h2>
             <ul>
                 <li>Català: Nadiu</li>
@@ -184,12 +206,16 @@
             </ul>
         </section>
 
-        <section>
+        <section id="interests">
             <h2>Interessos</h2>
             <p>Data Science, Ciberseguretat, Finances Quantitatives, Intel·ligència Artificial Generativa, Mercats Financers.</p>
         </section>
         
-        <a href="mailto:marionagsd@gmail.com" class="button">Contacta'm</a>
+        <section id="contact">
+            <h2>Contacta'm</h2>
+            <p>Per qualsevol consulta o col·laboració, no dubtis en contactar-me a través del correu electrònic o LinkedIn!</p>
+            <a href="mailto:marionagsd@gmail.com" class="button">Enviar correu</a>
+        </section>
     </main>
 
 </body>
