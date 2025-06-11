@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Índex</title>
+    <title>El Meu Portfoli</title>
     <style>
         body {
             margin: 0;
-            padding: 0;
+            padding: 20px;
             background-color: white;
             font-family: Arial, sans-serif;
             display: flex;
@@ -17,35 +17,36 @@
             text-align: center;
         }
         .titol {
-            margin-top: 30px;
+            margin: 20px 0 10px 0; /* menys espai al voltant del títol */
             text-decoration: underline;
             font-size: 28px;
         }
         .index {
             color: black;
-            margin: 40px 0;
+            margin: 10px 0; /* espai reduït */
         }
         .index ul {
             list-style-type: none;
             padding: 0;
+            margin: 0; /* eliminem marges per defecte */
         }
         .index li {
-            margin: 15px 0;
-            font-size: 24px;
+            margin: 8px 0; /* espai entre línies reduït (abans era 15px) */
+            font-size: 22px; /* mida de lletra lleugerament reduïda */
             cursor: pointer;
+            line-height: 1.3; /* alçada de línia compacta */
         }
         .index li:hover {
             text-decoration: underline;
         }
         .imatge {
-            margin-top: 20px;
-            max-width: 300px; /* Ajusta el tamany */
-            border-radius: 10px; /* Opcional: cantonades arrodonides */
+            margin-top: 15px; /* menys espai sobre la imatge */
+            max-width: 250px; /* mida lleugerament reduïda */
         }
     </style>
 </head>
 <body>
-    <h1 class="titol">Índex</h1>
+    <h1 class="titol">El Meu Portfoli</h1>
     
     <div class="index">
         <ul>
@@ -57,7 +58,6 @@
         </ul>
     </div>
 
-    <!-- Substitueix "la-teva-imatge.jpg" pel teu fitxer -->
     <img class="imatge" src="la-teva-imatge.jpg" alt="La meva foto">
 </body>
 </html>
