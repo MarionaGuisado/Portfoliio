@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mariona Guisado</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
             overflow: hidden;
-            font-family: 'Georgia', serif;
+            font-family: 'Georgia', serif; /* Lletra Georgia */
         }
 
         /* Contenidor principal */
@@ -131,6 +130,7 @@
             transition: all 0.3s ease;
             width: 200px;
             text-align: center;
+            font-family: 'Georgia', serif; /* Lletra Georgia */
         }
 
         .nav-item:hover {
@@ -184,10 +184,11 @@
             // 1. La pantalla blanca puja
             transition.style.bottom = '100%';
             
-            // 2. Canviar el color del nom a negre (sense fons)
+            // 2. Canviar el color del nom a negre i moure'l cap amunt
             setTimeout(() => {
                 name.style.color = 'black';
                 name.style.textShadow = 'none';
+                name.style.top = '20%'; // Mou el nom cap amunt
             }, 500);
             
             // 3. Mostrar el contingut principal quan la transició acabi
