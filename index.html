@@ -3,15 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio professional de Mariona Guisado">
-    <title>Mariona Guisado | Portfolio</title>
+    <title>Mariona Guisado</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Georgia', serif;
+        }
+
+        /* Contenidor principal */
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Fons inicial */
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('portada.jpg');
+            background-size: cover;
+            z-index: 1;
+        }
+
+        /* Nom - Sense fons negre */
+        .name {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 4.5rem;
+            text-align: center;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            letter-spacing: 1px;
+            font-weight: normal;
+            transition: all 1s ease;
+            background-color: transparent !important;
+            padding: 0;
+        }
+
+        /* Botó d'entrada */
+        .enter-button {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: 2px solid white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            z-index: 3;
+        }
+
+        /* Pantalla blanca de transició */
+        .transition {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 4;
+            transition: all 1s ease;
+        }
+
+        /* Contingut principal després de la transició */
+        .main-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            z-index: 5;
+        }
+
+        /* Nova imatge de fons (petita al mig) */
+        .new-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 60%;
+            background-image: url('imatge-secundaria.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        /* Menú de navegació */
+        .nav-menu {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .nav-item {
+            padding: 12px 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            width: 200px;
+            text-align: center;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <!-- Nova imatge de fons (inicialment invisible) -->
-        <div class="new-background" id="newBackground"></div>
-        
         <!-- Fons inicial -->
         <div class="background" id="background"></div>
         
@@ -23,71 +153,56 @@
         
         <!-- Pantalla de transició -->
         <div class="transition" id="transition"></div>
-
-        <!-- Portfolio Content (hidden initially) -->
-        <div class="portfolio-content" id="portfolioContent">
-            <nav class="portfolio-nav">
-                <a href="#about">Sobre mi</a>
-                <a href="#work">Treball</a>
-                <a href="#contact">Contacte</a>
-            </nav>
+        
+        <!-- Contingut principal (inicialment amagat) -->
+        <div class="main-content" id="mainContent">
+            <!-- Nova imatge de fons (petita al mig) -->
+            <div class="new-background" id="newBackground"></div>
             
-            <section id="about" class="section">
-                <h2>Sobre mi</h2>
-                <p>Text sobre tu i la teva trajectòria professional...</p>
-            </section>
-            
-            <section id="work" class="section">
-                <h2>El meu treball</h2>
-                <div class="projects-grid">
-                    <!-- Project items will go here -->
-                </div>
-            </section>
-            
-            <section id="contact" class="section">
-                <h2>Contacte</h2>
-                <form class="contact-form">
-                    <!-- Form fields will go here -->
-                </form>
-            </section>
+            <!-- Menú de navegació -->
+            <div class="nav-menu" id="navMenu">
+                <a href="#" class="nav-item">Sobre mi</a>
+                <a href="#" class="nav-item">Formació</a>
+                <a href="#" class="nav-item">Habilitats</a>
+                <a href="#" class="nav-item">Projectes</a>
+                <a href="#" class="nav-item">Contacte</a>
+            </div>
         </div>
     </div>
 
-    <script src="scripts.js"></script>
     <script>
-        // Enhanced JavaScript
         document.getElementById('enterButton').addEventListener('click', function(e) {
             e.preventDefault();
             
-            const elements = {
-                transition: document.getElementById('transition'),
-                name: document.getElementById('name'),
-                background: document.getElementById('background'),
-                newBackground: document.getElementById('newBackground'),
-                portfolioContent: document.getElementById('portfolioContent')
-            };
+            const transition = document.getElementById('transition');
+            const name = document.getElementById('name');
+            const background = document.getElementById('background');
+            const mainContent = document.getElementById('mainContent');
+            const newBackground = document.getElementById('newBackground');
+            const navMenu = document.getElementById('navMenu');
             
             // 1. La pantalla blanca puja
-            elements.transition.style.bottom = '100%';
+            transition.style.bottom = '100%';
             
             // 2. Canviar el color del nom a negre (sense fons)
             setTimeout(() => {
-                elements.name.style.color = 'black';
-                elements.name.style.textShadow = 'none';
-                elements.name.style.fontSize = '2.5rem'; // Smaller size for header
-                elements.name.style.position = 'fixed';
-                elements.name.style.top = '20px';
-                elements.name.style.left = '20px';
+                name.style.color = 'black';
+                name.style.textShadow = 'none';
             }, 500);
             
-            // 3. Mostrar nova imatge i amagar l'antiga
+            // 3. Mostrar el contingut principal quan la transició acabi
             setTimeout(() => {
-                elements.newBackground.style.opacity = '1';
-                elements.background.style.opacity = '0';
+                mainContent.style.display = 'block';
                 
-                // Show portfolio content
-                elements.portfolioContent.style.display = 'block';
-            }, 1500);
+                // 4. Mostrar nova imatge i menú
+                setTimeout(() => {
+                    newBackground.style.opacity = '1';
+                    navMenu.style.opacity = '1';
+                }, 100);
+                
+                // Amagar el fons inicial
+                background.style.opacity = '0';
+            }, 1000);
         });
     </script>
 </body>
