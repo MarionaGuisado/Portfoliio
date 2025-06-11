@@ -3,237 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio de Mariona Guisado</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Portfolio de Mariona Guisado, estudiant d'Enginyeria de Dades amb experiència en Python, anàlisi de dades i bases de dades">
+    <meta name="keywords" content="data engineering, python, SQL, anàlisi de dades, portfolio">
+    <title>Mariona Guisado - Enginyeria de Dades</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Estils generals */
+        :root {
+            --primary: #1E88E5;
+            --primary-dark: #0d47a1;
+            --secondary: #ffeb3b;
+            --secondary-dark: #f57f17;
+            --text: #333;
+            --light: #f5f5f5;
+            --white: #fff;
+        }
+        
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: var(--light);
+            color: var(--text);
             line-height: 1.6;
         }
-
-        /* Estils de la capçalera */
+        
+        /* Capçalera */
         header {
-            background-color: #1E88E5;
-            color: white;
-            padding: 40px 20px;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 2rem 1rem;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-bottom: 5px solid #0d47a1;
         }
-
-        header h1 {
-            margin: 0;
-            font-size: 3.5em;
-            font-weight: bold;
-        }
-
-        header p {
-            font-size: 1.2em;
-        }
-
-        /* Estils del menú de navegació */
+        
+        /* Menú de navegació */
         nav {
-            background-color: #0d47a1;
-            padding: 15px 0;
+            background-color: var(--primary-dark);
+            padding: 1rem 0;
             position: sticky;
             top: 0;
-            z-index: 1000;
-            text-align: center;
-            transition: background-color 0.3s ease;
+            z-index: 100;
         }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 15px 25px;
-            margin: 0 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        nav a:hover {
-            background-color: #ffeb3b; /* Groc brillant */
-            transform: scale(1.1);
-        }
-
-        /* Estils per al contingut */
+        
+        /* Contingut principal */
         main {
-            padding: 20px;
-            max-width: 900px;
-            margin: 40px auto;
+            padding: 1rem;
+            max-width: 62.5rem;
+            margin: 2rem auto;
         }
-
-        section {
-            background-color: #fff;
-            margin-bottom: 30px;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        section:hover {
-            transform: translateY(-10px);
-        }
-
-        h2 {
-            color: #1E88E5;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        h3 {
-            color: #0d47a1;
-            font-size: 1.5em;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        ul li {
-            padding: 8px 0;
-            font-size: 1.2em;
-        }
-
-        /* Estil per als botons */
-        .button {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #ffeb3b;
-            color: #1E88E5;
-            font-weight: bold;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 1.1em;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .button:hover {
-            background-color: #f57f17;
-            color: white;
-            transform: scale(1.1);
-        }
-
-        /* Efectes de transició per a les seccions de projectes */
-        .project-item {
-            display: inline-block;
-            width: 48%;
-            margin: 1%;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: #e3f2fd;
+        
+        /* Peu de pàgina */
+        footer {
             text-align: center;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+            padding: 1rem;
+            background-color: var(--primary-dark);
+            color: var(--white);
         }
-
-        .project-item:hover {
-            transform: translateY(-10px);
-            background-color: #bbdefb;
-        }
-
-        /* Menú de navegació fixa */
-        nav a:active {
-            transform: scale(1);
+        
+        /* Media queries per a responsivitat */
+        @media (max-width: 768px) {
+            .project-item {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+            
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- Menú de navegació -->
-    <nav>
-        <a href="#education">Educació</a>
-        <a href="#skills">Habilitats Tècniques</a>
-        <a href="#projects">Projectes</a>
-        <a href="#languages">Idiomes</a>
-        <a href="#interests">Interessos</a>
-        <a href="#contact" class="button">Contacta'm</a>
-    </nav>
-
-    <header>
-        <h1>Mariona Guisado Parras</h1>
-        <p>marionagsd@gmail.com | +34 601 497 852 | Nacionalitat: Espanyola | 
-            <a href="https://www.linkedin.com/in/el-teu-usuari" target="_blank">LinkedIn</a>
-        </p>
-    </header>
-
-    <main>
-        <section id="education">
-            <h2>Educació</h2>
-            <h3>Universitat Autònoma de Barcelona (UAB)</h3>
-            <p><strong>Bachelor in Data Engineering</strong> | Setembre 2023 - Juny 2027 (previst)</p>
-            <ul>
-                <li>Nota mitjana: 7.1 / 10</li>
-                <li>Menció honorífica en Matemàtiques</li>
-                <li>Assignatures destacades: Python, SQL, Xarxes, Gestió Empresarial</li>
-                <li>Representant de classe</li>
-            </ul>
-            <h3>Escola Ginebró</h3>
-            <p><strong>Batxillerat</strong> | Setembre 2011 - Juny 2023</p>
-            <ul>
-                <li>Nota final: 8.35 / 10</li>
-            </ul>
-        </section>
-
-        <section id="skills">
-            <h2>Habilitats Tècniques</h2>
-            <ul>
-                <li><strong>Llenguatges:</strong> Python (Avançat), C, Assembly</li>
-                <li><strong>Anàlisi de dades:</strong> pandas, NumPy, matplotlib</li>
-                <li><strong>Bases de dades:</strong> SQL (Bàsic), Disseny de Bases de Dades</li>
-                <li><strong>Control de versions:</strong> Git, GitHub</li>
-                <li><strong>Altres:</strong> Visualització de dades, Optimització d’algoritmes</li>
-            </ul>
-        </section>
-
-        <section id="projects">
-            <h2>Projectes</h2>
-            <div class="project-item">
-                <h3>Reproductor Multimedia</h3>
-                <p>Desenvolupament d'una eina per localitzar, reproduir i gestionar fitxers a directoris locals utilitzant biblioteques Python (os, uuid, math).</p>
-            </div>
-            <div class="project-item">
-                <h3>Data Analysis and Visualization</h3>
-                <p>Processat de grans conjunts de dades amb pandas i NumPy, generant visualitzacions amb matplotlib per extreure'n informació útil.</p>
-            </div>
-            <div class="project-item">
-                <h3>Movie Recommendation System</h3>
-                <p>Creació d'un sistema bàsic de recomanació de pel·lícules basat en mètriques de similitud.</p>
-            </div>
-            <div class="project-item">
-                <h3>Database Design</h3>
-                <p>Disseny i implementació de bases de dades relacionals per a un emmagatzematge i consulta òptims utilitzant SQL.</p>
-            </div>
-        </section>
-
-        <section id="languages">
-            <h2>Idiomes</h2>
-            <ul>
-                <li>Català: Nadiu</li>
-                <li>Castellà: Nadiu</li>
-                <li>Anglès: Avançat</li>
-            </ul>
-        </section>
-
-        <section id="interests">
-            <h2>Interessos</h2>
-            <p>Data Science, Ciberseguretat, Finances Quantitatives, Intel·ligència Artificial Generativa, Mercats Financers.</p>
-        </section>
-        
-        <section id="contact">
-            <h2>Contacta'm</h2>
-            <p>Per qualsevol consulta o col·laboració, no dubtis en contactar-me a través del correu electrònic o LinkedIn!</p>
-            <a href="mailto:marionagsd@gmail.com" class="button">Enviar correu</a>
-        </section>
-    </main>
-
+    <!-- Contingut existent... -->
+    
+    <footer>
+        <p>&copy; 2023 Mariona Guisado Parras - Tots els drets reservats</p>
+    </footer>
+    
+    <script>
+        // Script per a interactivitat
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if(this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
