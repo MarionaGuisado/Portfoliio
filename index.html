@@ -78,25 +78,58 @@
             transition: all 1s ease;
         }
 
-        /* Nova imatge petita al mig */
-        .new-image-container {
+        /* Contingut final (imatge + índex) */
+        .final-content {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
+            width: 100%;
+            height: 100%;
             z-index: 5;
             opacity: 0;
             transition: opacity 1s ease;
         }
 
-        .new-image {
+        .final-background {
+            position: absolute;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .index-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            min-width: 250px;
+        }
+
+        .index-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .index-list li {
+            margin: 15px 0;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .index-list li:hover {
+            transform: scale(1.05);
+            color: #555;
+        }
+
+        .index-list a {
+            text-decoration: none;
+            color: #333;
         }
     </style>
 </head>
@@ -114,9 +147,18 @@
         <!-- Pantalla de transició -->
         <div class="transition" id="transition"></div>
         
-        <!-- Nova imatge petita -->
-        <div class="new-image-container" id="newImageContainer">
-            <img src="imatge-secundaria.jpg" alt="Nova imatge" class="new-image">
+        <!-- Contingut final -->
+        <div class="final-content" id="finalContent">
+            <img src="imatge-secundaria.jpg" alt="Fons" class="final-background">
+            <div class="index-container">
+                <ul class="index-list">
+                    <li><a href="#">Sobre mi</a></li>
+                    <li><a href="#">Formació</a></li>
+                    <li><a href="#">Habilitats</a></li>
+                    <li><a href="#">Projectes</a></li>
+                    <li><a href="#">Contacte</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -127,7 +169,7 @@
             const transition = document.getElementById('transition');
             const name = document.getElementById('name');
             const background = document.getElementById('background');
-            const newImageContainer = document.getElementById('newImageContainer');
+            const finalContent = document.getElementById('finalContent');
             
             // 1. La pantalla blanca puja
             transition.style.bottom = '100%';
@@ -140,10 +182,10 @@
             
             // 3. Moure el nom cap amunt
             setTimeout(() => {
-                name.style.top = '20%';
+                name.style.top = '15%';
                 
-                // 4. Quan la pantalla blanca està pujada del tot, mostrar nova imatge petita
-                newImageContainer.style.opacity = '1';
+                // 4. Mostrar contingut final
+                finalContent.style.opacity = '1';
                 
                 // 5. Amagar fons inicial
                 background.style.opacity = '0';
