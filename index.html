@@ -1,512 +1,215 @@
 <!DOCTYPE html>
 <html lang="ca">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mariona Guisado | Enginyeria de Dades</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Mariona Guisado Parras - Data Engineering Student, Python Developer, and Tutor">
+    <title>Mariona Guisado Parras - CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #4361ee;
-            --primary-light: #4895ef;
-            --primary-dark: #3a0ca3;
-            --secondary: #f72585;
-            --dark: #2b2d42;
-            --light: #f8f9fa;
-            --white: #ffffff;
-            --gray: #6c757d;
-            --transition: all 0.3s ease;
-        }
-        
-        * {
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        
-        /* Header estilizado */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            color: var(--white);
-            padding: 6rem 2rem 4rem;
+
+        header {
+            background-color: #ffffff;
+            color: #2c3e50;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            padding: 2rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
-            opacity: 0.3;
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            margin: 0;
         }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
+
+        header p {
+            font-size: 16px;
+            margin-top: 0.5rem;
         }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInDown 1s ease;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-links a {
-            color: var(--white);
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-        
-        .social-links a:hover {
-            color: var(--secondary);
-            transform: translateY(-3px);
-        }
-        
-        /* Navegación elegante */
-        nav {
-            background-color: var(--white);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-        }
-        
-        .nav-logo {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary-dark);
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-        
-        .nav-links a {
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--secondary);
-            transition: var(--transition);
-            transform: translateX(-50%);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .nav-links a.active {
-            color: var(--primary);
-        }
-        
-        .nav-links a.contact-btn {
-            background-color: var(--secondary);
-            color: var(--white);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-        }
-        
-        .nav-links a.contact-btn:hover {
-            background-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(247, 37, 133, 0.3);
-        }
-        
-        /* Contenido principal */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-        
+
         section {
-            margin-bottom: 5rem;
-            scroll-margin-top: 100px;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-header h2 {
-            font-size: 2.5rem;
-            color: var(--primary-dark);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 1rem;
-        }
-        
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--secondary);
-            border-radius: 2px;
-        }
-        
-        .section-header p {
-            color: var(--gray);
-            max-width: 700px;
-            margin: 1rem auto 0;
-        }
-        
-        /* Tarjetas de educación */
-        .education-card {
-            background: var(--white);
-            border-radius: 10px;
+            max-width: 1000px;
+            margin: 0 auto;
             padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            border-left: 4px solid var(--primary);
         }
-        
-        .education-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .education-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-dark);
-        }
-        
-        .education-card .date {
-            display: inline-block;
-            background: var(--primary-light);
-            color: var(--white);
-            padding: 0.3rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
             margin-bottom: 1rem;
+            color: #2980b9;
         }
-        
-        .education-card ul {
-            list-style: none;
+
+        h3 {
+            font-size: 20px;
             margin-top: 1rem;
+            color: #2980b9;
         }
-        
-        .education-card ul li {
-            padding: 0.3rem 0;
-            position: relative;
-            padding-left: 1.5rem;
+
+        .contact-info,
+        .education,
+        .skills,
+        .experience,
+        .projects,
+        .languages,
+        .additional-info {
+            margin-bottom: 2rem;
         }
-        
-        .education-card ul li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--secondary);
+
+        .contact-info p,
+        .education p,
+        .skills ul,
+        .experience ul,
+        .projects ul,
+        .languages ul,
+        .additional-info p {
+            font-size: 16px;
+            line-height: 1.6;
         }
-        
-        /* Habilidades con barras de progreso */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+
+        .skills ul {
+            list-style-type: none;
+            padding-left: 0;
         }
-        
-        .skill-category {
-            background: var(--white);
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .skill-category h3 {
-            margin-bottom: 1.5rem;
-            color: var(--primary-dark);
-            display: flex;
-            align-items: center;
-        }
-        
-        .skill-category h3 i {
-            margin-right: 0.8rem;
-            color: var(--secondary);
-        }
-        
-        .skill-item {
-            margin-bottom: 1.5rem;
-        }
-        
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
+
+        .skills li {
             margin-bottom: 0.5rem;
         }
-        
-        .skill-bar {
-            height: 8px;
-            background: #e9ecef;
-            border-radius: 4px;
-            overflow: hidden;
+
+        .projects ul {
+            list-style-type: none;
+            padding-left: 0;
         }
-        
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--secondary), var(--primary));
-            border-radius: 4px;
-            transition: width 1s ease;
-        }
-        
-        /* Proyectos estilo masonry */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-img {
-            height: 200px;
-            background: var(--primary-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 3rem;
-        }
-        
-        .project-content {
-            padding: 1.5rem;
-        }
-        
-        .project-content h3 {
-            margin-bottom: 0.5rem;
-            color: var(--primary-dark);
-        }
-        
-        .project-content p {
-            color: var(--gray);
+
+        .projects li {
             margin-bottom: 1rem;
         }
-        
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .project-tag {
-            background: #e9ecef;
-            color: var(--dark);
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-        }
-        
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .project-link.primary {
-            background: var(--primary);
-            color: var(--white);
-        }
-        
-        .project-link.secondary {
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .project-link i {
-            margin-right: 0.5rem;
-        }
-        
-        /* Idiomas con estilo moderno */
-        .languages-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .language-card {
-            background: var(--white);
-            padding: 1.5rem 2rem;
-            border-radius: 10px;
+
+        .footer {
+            background-color: #2980b9;
+            color: #ffffff;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            width: 180px;
+            padding: 1rem;
         }
-        
-        .language-card:hover {
-            transform: scale(1.05);
+
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
         }
-        
-        .language-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
+
+        .button {
+            background-color: #2980b9;
+            color: #ffffff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
         }
-        
-        .language-card h3 {
-            margin-bottom: 0.5rem;
+
+        .button:hover {
+            background-color: #3498db;
         }
-        
-        .language-level {
-            color: var(--secondary);
-            font-weight: 500;
-        }
-        
-        /* Formulario de contacto */
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .contact-info {
-            background: var(--primary-dark);
-            color: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-        }
-        
-        .contact-info h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-item i {
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            color: var(--secondary);
-        }
-        
-        .contact-form {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            font-family: 'Poppins', sans-serif;
-            transition: var(--transition);
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background:
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Mariona Guisado Parras</h1>
+        <p>marionagsd@gmail.com | +34 601 497 852 | Nationality: Spanish</p>
+        <p><a href="https://www.linkedin.com/in/marionagsd" class="button">LinkedIn</a></p>
+    </header>
+
+    <section class="contact-info">
+        <h2>Contacte</h2>
+        <p>Email: marionagsd@gmail.com</p>
+        <p>Telèfon: +34 601 497 852</p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/marionagsd">linkedin.com/in/marionagsd</a></p>
+    </section>
+
+    <section class="education">
+        <h2>Educació</h2>
+        <h3>Universitat Autònoma de Barcelona (UAB) - Barcelona, Spain</h3>
+        <p><strong>Bachelor of Data Engineering</strong><br>
+            September 2023 - June 2027 (expected)</p>
+        <ul>
+            <li>Current GPA: 7.1 / 10</li>
+            <li>Honors: Mathematics</li>
+            <li>Relevant Coursework: Python Programming, Business Organization and Management, Computer Networks, SQL</li>
+            <li>Leadership: Elected Class Representative</li>
+        </ul>
+
+        <h3>Escola Ginebró - Barcelona, Spain</h3>
+        <p><strong>High School Diploma</strong><br>
+            September 2011 - June 2023</p>
+        <ul>
+            <li>Final Grade: 8.35 / 10</li>
+        </ul>
+    </section>
+
+    <section class="skills">
+        <h2>Habilitats Tècniques</h2>
+        <ul>
+            <li><strong>Programming Languages:</strong> Python (Advanced), C, Assembly</li>
+            <li><strong>Data Analysis Tools:</strong> pandas, NumPy, matplotlib</li>
+            <li><strong>Databases:</strong> SQL (Basic), Database Design and Management</li>
+            <li><strong>Version Control:</strong> Git, GitHub</li>
+            <li><strong>Additional Skills:</strong> Data Visualization, Algorithm Optimization</li>
+        </ul>
+    </section>
+
+    <section class="languages">
+        <h2>Idiomes</h2>
+        <ul>
+            <li>Catalan: Native</li>
+            <li>Spanish: Native</li>
+            <li>English: Advanced</li>
+        </ul>
+    </section>
+
+    <section class="experience">
+        <h2>Experiència Relevants</h2>
+        <h3>Mathematics and English Tutor</h3>
+        <p>September 2020 – June 2023</p>
+        <ul>
+            <li>Provided one-on-one tutoring to high school students, focusing on building foundational skills in mathematics and language.</li>
+            <li>Designed and adapted lessons to meet individual student needs, improving academic performance.</li>
+        </ul>
+    </section>
+
+    <section class="projects">
+        <h2>Projectes Acadèmics i Extracurriculars</h2>
+        <ul>
+            <li><strong>Reproductor Multimedia:</strong> Developed a multimedia tool to locate, play, and manage files within local directories using Python libraries (os, uuid, math). Optimized file handling for efficient playback.</li>
+            <li><strong>Data Analysis and Visualization:</strong> Processed large datasets using pandas and NumPy. Generated insights through graphical outputs with matplotlib.</li>
+            <li><strong>Algorithm Optimization:</strong> Improved runtime efficiency and resource utilization in academic projects, focusing on performance metrics and algorithm refinement.</li>
+            <li><strong>Movie Recommendation System:</strong> Developed a basic movie recommendation engine based on similarity metrics.</li>
+            <li><strong>Database Design:</strong> Designed and implemented relational databases, ensuring optimal storage and querying using SQL.</li>
+            <li><strong>Extracurricular:</strong> Attended financial industry events, including "Insight into Markets" at J.P. Morgan (2024) and Trading Event at UBS Zurich (2024).</li>
+        </ul>
+    </section>
+
+    <section class="additional-info">
+        <h2>Informació Addicional</h2>
+        <p><strong>Interests:</strong> Data Science, Cybersecurity and Fraud Prevention, Financial Markets, Generative AI, Quantitative Finance</p>
+        <p><strong>Career Goals:</strong> Aspire to leverage data engineering expertise in fintech, focusing on AI-driven innovations to optimize risk management, quantitative analysis, and decision-making processes.</p>
+        <p><strong>Strengths:</strong> Strong analytical and problem-solving skills, effective communication, and proactive team player with a passion for continuous learning and self-improvement.</p>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Mariona Guisado Parras | <a href="mailto:marionagsd@gmail.com">Email Me</a></p>
+    </footer>
+</body>
+
+</html>
