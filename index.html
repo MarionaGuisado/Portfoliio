@@ -11,10 +11,16 @@
             background-color: white;
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             text-align: center;
+        }
+        .titol {
+            margin-bottom: 40px;
+            text-decoration: underline;
+            font-size: 28px;
         }
         .index {
             color: black;
@@ -34,6 +40,7 @@
     </style>
 </head>
 <body>
+    <h1 class="titol">El Meu Portfoli</h1> <!-- Títol subratllat nou -->
     <div class="index">
         <ul>
             <li onclick="alert('Has clicat a Sobre mi!')">1. Sobre mi</li>
