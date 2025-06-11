@@ -10,17 +10,15 @@
             padding: 0;
             height: 100vh;
             overflow: hidden;
-            font-family: 'Georgia', serif; /* Lletra Georgia */
+            font-family: 'Georgia', serif;
         }
 
-        /* Contenidor principal */
         .container {
             position: relative;
             width: 100%;
             height: 100%;
         }
 
-        /* Fons inicial */
         .background {
             position: absolute;
             width: 100%;
@@ -30,7 +28,6 @@
             z-index: 1;
         }
 
-        /* Nom - Sense fons negre */
         .name {
             position: absolute;
             top: 50%;
@@ -48,7 +45,6 @@
             padding: 0;
         }
 
-        /* Botó d'entrada */
         .enter-button {
             position: absolute;
             top: 60%;
@@ -66,7 +62,6 @@
             z-index: 3;
         }
 
-        /* Pantalla blanca de transició */
         .transition {
             position: absolute;
             bottom: -100%;
@@ -78,7 +73,6 @@
             transition: all 1s ease;
         }
 
-        /* Contingut principal després de la transició */
         .main-content {
             position: absolute;
             top: 0;
@@ -89,7 +83,6 @@
             z-index: 5;
         }
 
-        /* Nova imatge de fons (petita al mig) */
         .new-background {
             position: absolute;
             top: 50%;
@@ -106,60 +99,58 @@
             transition: opacity 1s ease;
         }
 
-        /* Menú de navegació */
+        /* CANVIS PRINCIPALS AQUÍ - MENÚ NEGRE SOBRE LA IMATGE */
         .nav-menu {
             position: absolute;
-            top: 60%;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
             opacity: 0;
             transition: opacity 1s ease;
+            z-index: 6; /* Per sobre de la imatge */
+            background-color: rgba(0, 0, 0, 0.7); /* Fons negre transparent */
+            padding: 30px;
+            border-radius: 15px;
+            width: 60%;
+            max-width: 500px;
         }
 
         .nav-item {
             padding: 12px 30px;
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #333;
+            color: white; /* Text blanc */
             text-decoration: none;
-            border-radius: 30px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             transition: all 0.3s ease;
-            width: 200px;
+            width: 100%;
             text-align: center;
-            font-family: 'Georgia', serif; /* Lletra Georgia */
+            font-family: 'Georgia', serif;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-item:last-child {
+            border-bottom: none;
         }
 
         .nav-item:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
+            color: #2a9d8f; /* Color verd aqua al passar el ratolí */
             transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Fons inicial -->
         <div class="background" id="background"></div>
-        
-        <!-- Nom - Sense fons -->
         <div class="name" id="name">Mariona Guisado</div>
-        
-        <!-- Botó d'entrada -->
         <a href="#" class="enter-button" id="enterButton">Entrar</a>
-        
-        <!-- Pantalla de transició -->
         <div class="transition" id="transition"></div>
         
-        <!-- Contingut principal (inicialment amagat) -->
         <div class="main-content" id="mainContent">
-            <!-- Nova imatge de fons (petita al mig) -->
             <div class="new-background" id="newBackground"></div>
-            
-            <!-- Menú de navegació -->
             <div class="nav-menu" id="navMenu">
                 <a href="#" class="nav-item">Sobre mi</a>
                 <a href="#" class="nav-item">Formació</a>
@@ -188,7 +179,7 @@
             setTimeout(() => {
                 name.style.color = 'black';
                 name.style.textShadow = 'none';
-                name.style.top = '20%'; // Mou el nom cap amunt
+                name.style.top = '15%';
             }, 500);
             
             // 3. Mostrar el contingut principal quan la transició acabi
