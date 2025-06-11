@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio profesional de Mariona, estudiante de Ingeniería de Datos">
-    <title>Mariona | Ingeniera de Datos</title>
+    <meta name="description" content="Portfolio profesional de Mariona Guisado Parras, estudiante de Ingeniería de Datos">
+    <title>Mariona Guisado | Ingeniera de Datos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
-            <a href="#inicio" class="logo">Mariona</a>
+            <a href="#inicio" class="logo">MG</a>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#educacion">Educación</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
@@ -25,9 +28,15 @@
 
     <header id="inicio" class="hero">
         <div class="container">
-            <h1 class="hero-title">Hola, soy <span>Mariona</span></h1>
+            <h1 class="hero-title">Hola, soy <span>Mariona Guisado</span></h1>
             <p class="hero-subtitle">Estudiante de Ingeniería de Datos</p>
-            <a href="#proyectos" class="btn">Ver mis proyectos</a>
+            <div class="hero-buttons">
+                <a href="#proyectos" class="btn">Ver mis proyectos</a>
+                <a href="#contacto" class="btn btn-outline">Contactar</a>
+            </div>
+            <div class="scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
     </header>
 
@@ -36,18 +45,159 @@
             <h2 class="section-title">Sobre mí</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>¡Hola! Soy Mariona, apasionada por los datos y su potencial para transformar el mundo. Actualmente estoy cursando Ingeniería de Datos y me encanta aprender nuevas tecnologías.</p>
-                    <p>Mis habilidades incluyen:</p>
-                    <ul class="skills-list">
-                        <li><i class="fas fa-check"></i> Análisis de datos</li>
-                        <li><i class="fas fa-check"></i> Machine Learning</li>
-                        <li><i class="fas fa-check"></i> Python</li>
-                        <li><i class="fas fa-check"></i> SQL</li>
-                        <li><i class="fas fa-check"></i> Visualización de datos</li>
-                    </ul>
+                    <p class="intro-text">Apasionada por los datos y su potencial para transformar el mundo financiero. Actualmente cursando Ingeniería de Datos en la UAB con un GPA de 7.8/10 y especial interés en inteligencia artificial aplicada a finanzas.</p>
+                    
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Barcelona, España</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Universitat Autònoma de Barcelona</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Buscando oportunidades en Data Engineering</span>
+                        </div>
+                    </div>
+                    
+                    <div class="interests">
+                        <h3>Intereses profesionales</h3>
+                        <div class="tags">
+                            <span class="tag">Data Science</span>
+                            <span class="tag">Cybersecurity</span>
+                            <span class="tag">Financial Markets</span>
+                            <span class="tag">Generative AI</span>
+                            <span class="tag">Quantitative Finance</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://via.placeholder.com/300" alt="Foto de Mariona" class="profile-img">
+                    <div class="image-wrapper">
+                        <img src="https://via.placeholder.com/400x500" alt="Mariona Guisado" class="profile-img">
+                        <div class="image-border"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="educacion" class="section education">
+        <div class="container">
+            <h2 class="section-title">Educación</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - 2027 (Expected)</div>
+                    <div class="timeline-content">
+                        <h3>Bachelor of Data Engineering</h3>
+                        <h4>Universitat Autònoma de Barcelona (UAB)</h4>
+                        <p class="gpa">GPA: 7.8 / 10</p>
+                        <ul class="timeline-details">
+                            <li>Honors: Mathematics</li>
+                            <li>Relevant Coursework: Python Programming, Business Organization and Management, Computer Networks, SQL</li>
+                            <li>Leadership: Elected Class Representative</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2011 - 2023</div>
+                    <div class="timeline-content">
+                        <h3>High School Diploma</h3>
+                        <h4>Escola Ginebró, Barcelona</h4>
+                        <p class="gpa">Final Grade: 9.3 / 10</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="habilidades" class="section skills">
+        <div class="container">
+            <h2 class="section-title">Habilidades</h2>
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h3><i class="fas fa-code"></i> Lenguajes de Programación</h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Python</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-bar" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>C</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-bar" data-width="70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Assembly</span>
+                                <span>50%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-bar" data-width="50%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3><i class="fas fa-database"></i> Data Science</h3>
+                    <div class="skill-chips">
+                        <span class="skill-chip">pandas</span>
+                        <span class="skill-chip">NumPy</span>
+                        <span class="skill-chip">matplotlib</span>
+                        <span class="skill-chip">SQL</span>
+                        <span class="skill-chip">Database Design</span>
+                        <span class="skill-chip">Data Visualization</span>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3><i class="fas fa-language"></i> Idiomas</h3>
+                    <div class="languages">
+                        <div class="language">
+                            <span>Catalan</span>
+                            <div class="language-level native"></div>
+                            <span>Nativo</span>
+                        </div>
+                        <div class="language">
+                            <span>Spanish</span>
+                            <div class="language-level native"></div>
+                            <span>Nativo</span>
+                        </div>
+                        <div class="language">
+                            <span>English</span>
+                            <div class="language-level" style="width: 80%;"></div>
+                            <span>Avanzado</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3><i class="fas fa-tools"></i> Otras Herramientas</h3>
+                    <div class="tools-grid">
+                        <div class="tool-item">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-code-branch"></i>
+                            <span>Version Control</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -55,79 +205,31 @@
 
     <section id="proyectos" class="section projects">
         <div class="container">
-            <h2 class="section-title">Mis Proyectos</h2>
+            <h2 class="section-title">Proyectos</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/400x250" alt="Proyecto 1">
+                        <img src="https://via.placeholder.com/600x400?text=Reproductor+Multimedia" alt="Reproductor Multimedia">
                     </div>
                     <div class="project-info">
-                        <h3>Análisis de Datos Climáticos</h3>
-                        <p>Proyecto de análisis de patrones climáticos usando Python y Pandas.</p>
+                        <h3>Reproductor Multimedia</h3>
+                        <p>Herramienta para localizar, reproducir y gestionar archivos en directorios locales usando Python (os, uuid, math). Optimizado para manejo eficiente de archivos.</p>
                         <div class="project-tech">
                             <span>Python</span>
-                            <span>Pandas</span>
-                            <span>Matplotlib</span>
+                            <span>OS Module</span>
+                            <span>UUID</span>
                         </div>
-                        <a href="#" class="btn btn-small">Ver más</a>
+                        <div class="project-actions">
+                            <a href="#" class="btn btn-small"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
+                            <a href="#" class="btn btn-small btn-outline"><i class="fab fa-github"></i> Código</a>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://via.placeholder.com/400x250" alt="Proyecto 2">
+                        <img src="https://via.placeholder.com/600x400?text=Movie+Recommendation" alt="Sistema de Recomendación">
                     </div>
                     <div class="project-info">
-                        <h3>Sistema de Recomendación</h3>
-                        <p>Algoritmo de recomendación basado en Machine Learning.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>Scikit-learn</span>
-                            <span>Flask</span>
-                        </div>
-                        <a href="#" class="btn btn-small">Ver más</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contacto" class="section contact">
-        <div class="container">
-            <h2 class="section-title">Contacto</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <p><i class="fas fa-envelope"></i> mariona@ejemplo.com</p>
-                    <p><i class="fas fa-phone"></i> +34 123 456 789</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Mensaje" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Enviar mensaje</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <p>© 2025 Mariona. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
-    <script src="scripts.js"></script>
-</body>
-</html>
-
+                        <h3>Sistema de Recomendación de Películas</h3>
+                        <p>Motor básico de recomendación basado en métricas de similitud implement
