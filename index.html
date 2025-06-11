@@ -1,215 +1,40 @@
 <!DOCTYPE html>
-<html lang="ca">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mariona Guisado Parras - Data Engineering Student, Python Developer, and Tutor">
-    <title>Mariona Guisado Parras - CV</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #ffffff;
-            color: #2c3e50;
-            text-align: center;
-            padding: 2rem 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 36px;
-            margin: 0;
-        }
-
-        header p {
-            font-size: 16px;
-            margin-top: 0.5rem;
-        }
-
-        section {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-        }
-
-        h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 28px;
-            margin-bottom: 1rem;
-            color: #2980b9;
-        }
-
-        h3 {
-            font-size: 20px;
-            margin-top: 1rem;
-            color: #2980b9;
-        }
-
-        .contact-info,
-        .education,
-        .skills,
-        .experience,
-        .projects,
-        .languages,
-        .additional-info {
-            margin-bottom: 2rem;
-        }
-
-        .contact-info p,
-        .education p,
-        .skills ul,
-        .experience ul,
-        .projects ul,
-        .languages ul,
-        .additional-info p {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        .skills ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .skills li {
-            margin-bottom: 0.5rem;
-        }
-
-        .projects ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .projects li {
-            margin-bottom: 1rem;
-        }
-
-        .footer {
-            background-color: #2980b9;
-            color: #ffffff;
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .footer a {
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        .button {
-            background-color: #2980b9;
-            color: #ffffff;
-            padding: 10px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .button:hover {
-            background-color: #3498db;
-        }
-    </style>
+    <title>Mi Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <header>
-        <h1>Mariona Guisado Parras</h1>
-        <p>marionagsd@gmail.com | +34 601 497 852 | Nationality: Spanish</p>
-        <p><a href="https://www.linkedin.com/in/marionagsd" class="button">LinkedIn</a></p>
+    <header id="inicio">
+        <h1>Bienvenido a mi Portfolio</h1>
+        <p>Soy Mariona, estudiante de Ingeniería de Datos</p>
     </header>
 
-    <section class="contact-info">
-        <h2>Contacte</h2>
-        <p>Email: marionagsd@gmail.com</p>
-        <p>Telèfon: +34 601 497 852</p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/marionagsd">linkedin.com/in/marionagsd</a></p>
+    <section id="sobre-mi">
+        <h2>Sobre mí</h2>
+        <p>Una breve descripción de ti...</p>
     </section>
 
-    <section class="education">
-        <h2>Educació</h2>
-        <h3>Universitat Autònoma de Barcelona (UAB) - Barcelona, Spain</h3>
-        <p><strong>Bachelor of Data Engineering</strong><br>
-            September 2023 - June 2027 (expected)</p>
+    <section id="proyectos">
+        <h2>Proyectos</h2>
         <ul>
-            <li>Current GPA: 7.1 / 10</li>
-            <li>Honors: Mathematics</li>
-            <li>Relevant Coursework: Python Programming, Business Organization and Management, Computer Networks, SQL</li>
-            <li>Leadership: Elected Class Representative</li>
-        </ul>
-
-        <h3>Escola Ginebró - Barcelona, Spain</h3>
-        <p><strong>High School Diploma</strong><br>
-            September 2011 - June 2023</p>
-        <ul>
-            <li>Final Grade: 8.35 / 10</li>
+            <li>Proyecto 1: Descripción</li>
+            <li>Proyecto 2: Descripción</li>
         </ul>
     </section>
 
-    <section class="skills">
-        <h2>Habilitats Tècniques</h2>
-        <ul>
-            <li><strong>Programming Languages:</strong> Python (Advanced), C, Assembly</li>
-            <li><strong>Data Analysis Tools:</strong> pandas, NumPy, matplotlib</li>
-            <li><strong>Databases:</strong> SQL (Basic), Database Design and Management</li>
-            <li><strong>Version Control:</strong> Git, GitHub</li>
-            <li><strong>Additional Skills:</strong> Data Visualization, Algorithm Optimization</li>
-        </ul>
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <p>Mi correo: tu_correo@ejemplo.com</p>
     </section>
 
-    <section class="languages">
-        <h2>Idiomes</h2>
-        <ul>
-            <li>Catalan: Native</li>
-            <li>Spanish: Native</li>
-            <li>English: Advanced</li>
-        </ul>
-    </section>
-
-    <section class="experience">
-        <h2>Experiència Relevants</h2>
-        <h3>Mathematics and English Tutor</h3>
-        <p>September 2020 – June 2023</p>
-        <ul>
-            <li>Provided one-on-one tutoring to high school students, focusing on building foundational skills in mathematics and language.</li>
-            <li>Designed and adapted lessons to meet individual student needs, improving academic performance.</li>
-        </ul>
-    </section>
-
-    <section class="projects">
-        <h2>Projectes Acadèmics i Extracurriculars</h2>
-        <ul>
-            <li><strong>Reproductor Multimedia:</strong> Developed a multimedia tool to locate, play, and manage files within local directories using Python libraries (os, uuid, math). Optimized file handling for efficient playback.</li>
-            <li><strong>Data Analysis and Visualization:</strong> Processed large datasets using pandas and NumPy. Generated insights through graphical outputs with matplotlib.</li>
-            <li><strong>Algorithm Optimization:</strong> Improved runtime efficiency and resource utilization in academic projects, focusing on performance metrics and algorithm refinement.</li>
-            <li><strong>Movie Recommendation System:</strong> Developed a basic movie recommendation engine based on similarity metrics.</li>
-            <li><strong>Database Design:</strong> Designed and implemented relational databases, ensuring optimal storage and querying using SQL.</li>
-            <li><strong>Extracurricular:</strong> Attended financial industry events, including "Insight into Markets" at J.P. Morgan (2024) and Trading Event at UBS Zurich (2024).</li>
-        </ul>
-    </section>
-
-    <section class="additional-info">
-        <h2>Informació Addicional</h2>
-        <p><strong>Interests:</strong> Data Science, Cybersecurity and Fraud Prevention, Financial Markets, Generative AI, Quantitative Finance</p>
-        <p><strong>Career Goals:</strong> Aspire to leverage data engineering expertise in fintech, focusing on AI-driven innovations to optimize risk management, quantitative analysis, and decision-making processes.</p>
-        <p><strong>Strengths:</strong> Strong analytical and problem-solving skills, effective communication, and proactive team player with a passion for continuous learning and self-improvement.</p>
-    </section>
-
-    <footer class="footer">
-        <p>&copy; 2025 Mariona Guisado Parras | <a href="mailto:marionagsd@gmail.com">Email Me</a></p>
+    <footer>
+        <p>© 2025 Mariona</p>
     </footer>
-</body>
 
+    <script src="scripts.js"></script>
+</body>
 </html>
+
