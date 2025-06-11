@@ -3,93 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mariona Guisado</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Georgia', serif;
-        }
-
-        /* Contenidor principal */
-        .container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Fons inicial */
-        .background {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: url('portada.jpg');
-            background-size: cover;
-            z-index: 1;
-        }
-
-        /* Nom - Sense fons negre */
-        .name {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 4.5rem;
-            text-align: center;
-            z-index: 2;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            letter-spacing: 1px;
-            font-weight: normal;
-            transition: all 1s ease;
-            background-color: transparent !important; /* Sense fons */
-            padding: 0; /* Sense padding */
-        }
-
-        /* Botó d'entrada */
-        .enter-button {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 15px 40px;
-            font-size: 1.3rem;
-            background-color: rgba(0, 0, 0, 0.3);
-            color: white;
-            border: 2px solid white;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            z-index: 3;
-        }
-
-        /* Pantalla blanca de transició */
-        .transition {
-            position: absolute;
-            bottom: -100%;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            z-index: 4;
-            transition: all 1s ease;
-        }
-
-        /* Nova imatge de fons */
-        .new-background {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: url('imatge-secundaria.jpg');
-            background-size: cover;
-            z-index: 0;
-            opacity: 0;
-            transition: opacity 1s ease 0.5s;
-        }
-    </style>
+    <meta name="description" content="Portfolio professional de Mariona Guisado">
+    <title>Mariona Guisado | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -107,35 +23,70 @@
         
         <!-- Pantalla de transició -->
         <div class="transition" id="transition"></div>
+
+        <!-- Portfolio Content (hidden initially) -->
+        <div class="portfolio-content" id="portfolioContent">
+            <nav class="portfolio-nav">
+                <a href="#about">Sobre mi</a>
+                <a href="#work">Treball</a>
+                <a href="#contact">Contacte</a>
+            </nav>
+            
+            <section id="about" class="section">
+                <h2>Sobre mi</h2>
+                <p>Text sobre tu i la teva trajectòria professional...</p>
+            </section>
+            
+            <section id="work" class="section">
+                <h2>El meu treball</h2>
+                <div class="projects-grid">
+                    <!-- Project items will go here -->
+                </div>
+            </section>
+            
+            <section id="contact" class="section">
+                <h2>Contacte</h2>
+                <form class="contact-form">
+                    <!-- Form fields will go here -->
+                </form>
+            </section>
+        </div>
     </div>
 
+    <script src="scripts.js"></script>
     <script>
+        // Enhanced JavaScript
         document.getElementById('enterButton').addEventListener('click', function(e) {
             e.preventDefault();
             
-            const transition = document.getElementById('transition');
-            const name = document.getElementById('name');
-            const background = document.getElementById('background');
-            const newBackground = document.getElementById('newBackground');
+            const elements = {
+                transition: document.getElementById('transition'),
+                name: document.getElementById('name'),
+                background: document.getElementById('background'),
+                newBackground: document.getElementById('newBackground'),
+                portfolioContent: document.getElementById('portfolioContent')
+            };
             
             // 1. La pantalla blanca puja
-            transition.style.bottom = '100%';
+            elements.transition.style.bottom = '100%';
             
             // 2. Canviar el color del nom a negre (sense fons)
             setTimeout(() => {
-                name.style.color = 'black';
-                name.style.textShadow = 'none';
+                elements.name.style.color = 'black';
+                elements.name.style.textShadow = 'none';
+                elements.name.style.fontSize = '2.5rem'; // Smaller size for header
+                elements.name.style.position = 'fixed';
+                elements.name.style.top = '20px';
+                elements.name.style.left = '20px';
             }, 500);
             
-            // 3. Moure el nom cap amunt
+            // 3. Mostrar nova imatge i amagar l'antiga
             setTimeout(() => {
-                name.style.top = '20%';
-            }, 1000);
-            
-            // 4. Mostrar nova imatge i amagar l'antiga
-            setTimeout(() => {
-                newBackground.style.opacity = '1';
-                background.style.opacity = '0';
+                elements.newBackground.style.opacity = '1';
+                elements.background.style.opacity = '0';
+                
+                // Show portfolio content
+                elements.portfolioContent.style.display = 'block';
             }, 1500);
         });
     </script>
