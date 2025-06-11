@@ -1,4 +1,4 @@
-.imatge:hover {
-    transform: scale(1.03);
-    transition: 0.3s;
+.new-image-container {
+    width: 400px;  /* Nou ample */
+    height: 400px; /* Nou alt */
 }
