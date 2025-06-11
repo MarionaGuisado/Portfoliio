@@ -7,7 +7,7 @@
     <style>
         body {
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background-color: white;
             font-family: Arial, sans-serif;
             display: flex;
@@ -17,36 +17,36 @@
             text-align: center;
         }
         .titol {
-            margin: 20px 0 10px 0; /* menys espai al voltant del títol */
+            margin: 10px 0 5px 0; /* Marge mínim */
             text-decoration: underline;
             font-size: 28px;
         }
         .index {
             color: black;
-            margin: 10px 0; /* espai reduït */
+            margin: 0; /* Sense marges addicionals */
         }
         .index ul {
             list-style-type: none;
             padding: 0;
-            margin: 0; /* eliminem marges per defecte */
+            margin: 5px 0; /* Marge superior/inferior mínim */
         }
         .index li {
-            margin: 1px 0; /* espai entre línies reduït (abans era 15px) */
-            font-size: 22px; /* mida de lletra lleugerament reduïda */
+            margin: 4px 0; /* Espai ultracompacte entre línies */
+            font-size: 24px; /* Mida original */
             cursor: pointer;
-            line-height: 1.3; /* alçada de línia compacta */
+            line-height: 1.1; /* Alçada de línia mínima */
         }
         .index li:hover {
             text-decoration: underline;
         }
         .imatge {
-            margin-top: 1px; /* menys espai sobre la imatge */
-            max-width: 250px; /* mida lleugerament reduïda */
+            margin: 5px 0; /* Imatge quasi pegada a l'índex */
+            max-width: 250px;
         }
     </style>
 </head>
 <body>
-    <h1 class="titol">El Meu Portfoli</h1>
+    <h1 class="titol">Índex</h1> <!-- Títol canviat -->
     
     <div class="index">
         <ul>
