@@ -1,11 +1,7 @@
-.index-container {
-    background-color: rgba(255, 255, 255, 0.9); /* Més opac */
+h1 {
+    animation: fadeIn 2s ease-in;
 }
-.index-list a {
-    color: #000; /* Text més fosc */
-}
-
-.index-list li {
-    font-size: 1.8rem; /* Text més gran */
-    margin: 20px 0; /* Més espai entre línies */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
