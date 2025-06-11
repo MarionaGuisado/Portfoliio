@@ -30,7 +30,7 @@
             z-index: 1;
         }
 
-        /* Nom - Sense fons */
+        /* Nom - Sense fons negre */
         .name {
             position: absolute;
             top: 50%;
@@ -44,8 +44,8 @@
             letter-spacing: 1px;
             font-weight: normal;
             transition: all 1s ease;
-            background-color: transparent;
-            padding: 0;
+            background-color: transparent !important; /* Sense fons */
+            padding: 0; /* Sense padding */
         }
 
         /* Botó d'entrada */
@@ -78,63 +78,24 @@
             transition: all 1s ease;
         }
 
-        /* Contingut final (imatge + índex) */
-        .final-content {
+        /* Nova imatge de fons */
+        .new-background {
             position: absolute;
             width: 100%;
             height: 100%;
-            z-index: 5;
+            background-image: url('imatge-secundaria.jpg');
+            background-size: cover;
+            z-index: 0;
             opacity: 0;
-            transition: opacity 1s ease;
-        }
-
-        .final-background {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
-
-        .index-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            text-align: center;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 30px;
-            border-radius: 15px;
-            min-width: 250px;
-        }
-
-        .index-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .index-list li {
-            margin: 15px 0;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .index-list li:hover {
-            transform: scale(1.05);
-            color: #555;
-        }
-
-        .index-list a {
-            text-decoration: none;
-            color: #333;
+            transition: opacity 1s ease 0.5s;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Nova imatge de fons (inicialment invisible) -->
+        <div class="new-background" id="newBackground"></div>
+        
         <!-- Fons inicial -->
         <div class="background" id="background"></div>
         
@@ -146,20 +107,6 @@
         
         <!-- Pantalla de transició -->
         <div class="transition" id="transition"></div>
-        
-        <!-- Contingut final -->
-        <div class="final-content" id="finalContent">
-            <img src="imatge-secundaria.jpg" alt="Fons" class="final-background">
-            <div class="index-container">
-                <ul class="index-list">
-                    <li><a href="#">Sobre mi</a></li>
-                    <li><a href="#">Formació</a></li>
-                    <li><a href="#">Habilitats</a></li>
-                    <li><a href="#">Projectes</a></li>
-                    <li><a href="#">Contacte</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
 
     <script>
@@ -169,7 +116,7 @@
             const transition = document.getElementById('transition');
             const name = document.getElementById('name');
             const background = document.getElementById('background');
-            const finalContent = document.getElementById('finalContent');
+            const newBackground = document.getElementById('newBackground');
             
             // 1. La pantalla blanca puja
             transition.style.bottom = '100%';
@@ -182,14 +129,14 @@
             
             // 3. Moure el nom cap amunt
             setTimeout(() => {
-                name.style.top = '15%';
-                
-                // 4. Mostrar contingut final
-                finalContent.style.opacity = '1';
-                
-                // 5. Amagar fons inicial
-                background.style.opacity = '0';
+                name.style.top = '20%';
             }, 1000);
+            
+            // 4. Mostrar nova imatge i amagar l'antiga
+            setTimeout(() => {
+                newBackground.style.opacity = '1';
+                background.style.opacity = '0';
+            }, 1500);
         });
     </script>
 </body>
