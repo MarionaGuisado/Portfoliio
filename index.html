@@ -9,32 +9,39 @@
             margin: 0;
             padding: 0;
             height: 100vh;
+            overflow: hidden;
+            font-family: 'Georgia', serif;
+        }
+
+        /* Pantalla inicial */
+        .landing {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image: url('portada.jpg');
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: url('la-teva-imatge.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            font-family: 'Georgia', serif; /* Canvi a Georgia */
+            z-index: 10;
         }
-        
+
         .name-container {
             text-align: center;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Ombra més marcada */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
-        
+
         h1 {
-            font-size: 4.5rem; /* Mida lleugerament més gran */
+            font-size: 4.5rem;
             margin: 0;
             padding: 25px 40px;
-            background-color: rgba(0, 0, 0, 0.4); /* Fons més fosc */
+            background-color: rgba(0, 0, 0, 0.4);
             border-radius: 15px;
-            letter-spacing: 1px; /* Espaiat entre lletres */
-            font-weight: normal; /* Georgia ja és elegant, no cal negreta */
+            letter-spacing: 1px;
+            font-weight: normal;
         }
-        
+
         .enter-button {
             margin-top: 40px;
             padding: 15px 40px;
@@ -46,19 +53,115 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            font-family: 'Georgia', serif;
         }
-        
-        .enter-button:hover {
-            background-color: rgba(0, 0, 0, 0.5);
-            transform: scale(1.05);
+
+        /* Pantalla blanca d'animació */
+        .transition-screen {
+            position: fixed;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 20;
+        }
+
+        /* Contingut principal */
+        .main-content {
+            position: relative;
+            height: 100vh;
+            display: none;
+        }
+
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            transform: translateY(-100px);
+            opacity: 0;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+        }
+
+        /* Animacions */
+        @keyframes slideUp {
+            0% { top: 100%; }
+            100% { top: 0%; }
+        }
+
+        @keyframes slideDown {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInDown {
+            to { transform: translateY(0); opacity: 1; }
         }
     </style>
 </head>
 <body>
-    <div class="name-container">
-        <h1>Mariona Guisado</h1>
-        <a href="index.html" class="enter-button">Entrar</a>
+    <!-- Pantalla d'inici -->
+    <div class="landing" id="landing">
+        <div class="name-container">
+            <h1>Mariona Guisado</h1>
+            <a href="#" class="enter-button" id="enterButton">Entrar</a>
+        </div>
     </div>
+
+    <!-- Pantalla de transició -->
+    <div class="transition-screen" id="transitionScreen"></div>
+
+    <!-- Contingut principal -->
+    <div class="main-content" id="mainContent">
+        <div class="header" id="header">
+            <h1>Mariona Guisado</h1>
+        </div>
+        <img src="imatge-secundaria.jpg" alt="Segona imatge" class="main-image" id="mainImage">
+    </div>
+
+    <script>
+        document.getElementById('enterButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const transitionScreen = document.getElementById('transitionScreen');
+            const landing = document.getElementById('landing');
+            const mainContent = document.getElementById('mainContent');
+            const header = document.getElementById('header');
+            const mainImage = document.getElementById('mainImage');
+            
+            // Activa l'animació de pantalla blanca
+            transitionScreen.style.animation = 'slideUp 1s forwards';
+            
+            setTimeout(() => {
+                // Amaga la pantalla inicial
+                landing.style.display = 'none';
+                
+                // Mostra el contingut principal
+                mainContent.style.display = 'block';
+                
+                // Animació del nom
+                header.style.animation = 'slideInDown 1s forwards 0.3s';
+                
+                // Animació de la imatge
+                mainImage.style.animation = 'fadeIn 1.5s forwards 0.5s';
+                
+                // Fes sortir la pantalla blanca
+                setTimeout(() => {
+                    transitionScreen.style.animation = 'slideDown 1s forwards';
+                }, 800);
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
