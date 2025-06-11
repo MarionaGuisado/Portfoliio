@@ -30,7 +30,7 @@
             z-index: 1;
         }
 
-        /* Nom */
+        /* Nom - Sense fons negre */
         .name {
             position: absolute;
             top: 50%;
@@ -41,12 +41,11 @@
             text-align: center;
             z-index: 2;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            padding: 25px 40px;
-            background-color: rgba(0, 0, 0, 0.4);
-            border-radius: 15px;
             letter-spacing: 1px;
             font-weight: normal;
             transition: all 1s ease;
+            background-color: transparent !important; /* Sense fons */
+            padding: 0; /* Sense padding */
         }
 
         /* Botó d'entrada */
@@ -100,7 +99,7 @@
         <!-- Fons inicial -->
         <div class="background" id="background"></div>
         
-        <!-- Nom -->
+        <!-- Nom - Sense fons -->
         <div class="name" id="name">Mariona Guisado</div>
         
         <!-- Botó d'entrada -->
@@ -122,11 +121,10 @@
             // 1. La pantalla blanca puja
             transition.style.bottom = '100%';
             
-            // 2. Canviar el color del nom a negre
+            // 2. Canviar el color del nom a negre (sense fons)
             setTimeout(() => {
                 name.style.color = 'black';
                 name.style.textShadow = 'none';
-                name.style.backgroundColor = 'transparent';
             }, 500);
             
             // 3. Moure el nom cap amunt
