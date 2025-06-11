@@ -3,415 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mariona Guisado | Enginyeria de Dades</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>El Meu Portfoli</title>
     <style>
-        :root {
-            --primary: #2563eb;
-            --primary-light: #3b82f6;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #94a3b8;
-            --accent: #7c3aed;
-        }
-        
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            background-color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
         }
-        
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--dark);
-            background-color: var(--light);
-            line-height: 1.6;
-            overflow-x: hidden;
+        .index {
+            color: black;
         }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
+        .index ul {
+            list-style-type: none;
+            padding: 0;
         }
-        
-        /* Estils generals que desenvoluparem */
+        .index li {
+            margin: 15px 0;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .index li:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <!-- Navegació -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="#inicio" class="nav-logo">MG</a>
-            <ul class="nav-menu">
-                <li><a href="#inicio">Inici</a></li>
-                <li><a href="#sobre-mi">Sobre mi</a></li>
-                <li><a href="#formacio">Formació</a></li>
-                <li><a href="#habilitats">Habilitats</a></li>
-                <li><a href="#projectes">Projectes</a></li>
-                <li><a href="#contacte">Contacte</a></li>
-            </ul>
-            <div class="nav-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Secció Hero -->
-    <section id="inicio" class="hero">
-        <div class="hero-container">
-            <div class="hero-text">
-                <h4>Hola, sóc</h4>
-                <h1>Mariona Guisado Parras</h1>
-                <div class="typewriter">
-                    <span class="typed-text"></span>
-                    <span class="cursor">&nbsp;</span>
-                </div>
-                <div class="hero-buttons">
-                    <a href="#contacte" class="btn btn-primary">Contacta'm</a>
-                    <a href="#" class="btn btn-outline">Descàrrega CV</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="img/profile.jpg" alt="Mariona Guisado" class="profile-img">
-            </div>
-        </div>
-        <div class="scroll-down">
-            <a href="#sobre-mi"><i class="fas fa-chevron-down"></i></a>
-        </div>
-    </section>
-
-    <!-- Secció Sobre Mi -->
-    <section id="sobre-mi" class="section">
-        <div class="section-container">
-            <h2 class="section-title">Sobre mi</h2>
-            <div class="about-grid">
-                <div class="about-image">
-                    <img src="img/about.jpg" alt="Sobre Mariona">
-                </div>
-                <div class="about-content">
-                    <p class="intro-text">M'agrada entendre el món a través de les dades. Estic construint una carrera en la intersecció entre enginyeria, intel·ligència artificial i finances.</p>
-                    
-                    <div class="about-details">
-                        <div class="detail-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <div>
-                                <h4>Educació</h4>
-                                <p>Grau en Enginyeria de Dades a la UAB</p>
-                            </div>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-code"></i>
-                            <div>
-                                <h4>Especialització</h4>
-                                <p>Anàlisi de dades i IA aplicada a finances</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="about-tabs">
-                        <div class="tab active" data-tab="skills">Habilitats</div>
-                        <div class="tab" data-tab="experience">Experiència</div>
-                        <div class="tab" data-tab="education">Educació</div>
-                    </div>
-                    
-                    <div class="tab-content active" id="skills-tab">
-                        <div class="skills-grid">
-                            <div class="skill-item">
-                                <span>Python</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>SQL</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 75%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Secció Formació -->
-    <section id="formacio" class="section bg-light">
-        <div class="section-container">
-            <h2 class="section-title">Formació Acadèmica</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">2023 - Present</div>
-                    <div class="timeline-content">
-                        <h3>Grau en Enginyeria de Dades</h3>
-                        <h4>Universitat Autònoma de Barcelona</h4>
-                        <p>Especialització en anàlisi de dades i aprenentatge automàtic. Representant de classe durant el primer any.</p>
-                        <ul class="timeline-list">
-                            <li>GPA: 3.8/4.0</li>
-                            <li>Assignatures destacades: Estructures de Dades, Aprenentatge Automàtic, Bases de Dades Avançades</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2021 - 2023</div>
-                    <div class="timeline-content">
-                        <h3>Batxillerat Tecnològic</h3>
-                        <h4>Escola Ginebró</h4>
-                        <p>Notable final amb mencions en Matemàtiques i Física.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Secció Habilitats -->
-    <section id="habilitats" class="section">
-        <div class="section-container">
-            <h2 class="section-title">Habilitats Tècniques</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3><i class="fas fa-laptop-code"></i> Programació</h3>
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <i class="fab fa-python"></i>
-                            </div>
-                            <h4>Python</h4>
-                            <p>Pandas, NumPy, Scikit-learn, Matplotlib</p>
-                        </div>
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <h4>SQL</h4>
-                            <p>Consultes complexes, optimització, disseny de BBDD</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-chart-line"></i> Anàlisi de Dades</h3>
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <i class="fas fa-chart-pie"></i>
-                            </div>
-                            <h4>Visualització</h4>
-                            <p>Matplotlib, Seaborn, Tableau</p>
-                        </div>
-                        <div class="skill-card">
-                            <div class="skill-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <h4>Aprenentatge Automàtic</h4>
-                            <p>Models bàsics, preprocessament de dades</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Secció Projectes -->
-    <section id="projectes" class="section bg-light">
-        <div class="section-container">
-            <h2 class="section-title">Projectes Acadèmics</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/project1.jpg" alt="Sistema de Recomanació">
-                    </div>
-                    <div class="project-content">
-                        <h3>Sistema de Recomanació de Pel·lícules</h3>
-                        <p>Sistema basat en contingut i filtres col·laboratius implementat amb Python.</p>
-                        <div class="project-tags">
-                            <span>Python</span>
-                            <span>Pandas</span>
-                            <span>Scikit-learn</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#"><i class="fab fa-github"></i> Codi</a>
-                            <a href="#" class="demo-link">Demo</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/project2.jpg" alt="Anàlisi Financer">
-                    </div>
-                    <div class="project-content">
-                        <h3>Anàlisi de Dades Borsàries</h3>
-                        <p>Eina per visualitzar i analitzar dades històriques de mercats financers.</p>
-                        <div class="project-tags">
-                            <span>Python</span>
-                            <span>Matplotlib</span>
-                            <span>Pandas</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#"><i class="fab fa-github"></i> Codi</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Secció Contacte -->
-    <section id="contacte" class="section">
-        <div class="section-container">
-            <h2 class="section-title">Contacta'm</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Vols col·laborar o saber més?</h3>
-                    <p>Estic oberta a oportunitats d'aprenentatge, projectes interessants o simplement parlar sobre dades, IA o finances!</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>mariona.guisado@example.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Barcelona, Catalunya</span>
-                        </div>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Nom" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Missatge" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Envia Missatge</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <p>© 2023 Mariona Guisado Parras. Tots els drets reservats.</p>
-            <div class="footer-links">
-                <a href="#">Privacitat</a>
-                <a href="#">Termes</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // JavaScript per a les interaccions
-        document.addEventListener('DOMContentLoaded', function() {
-            // Efecte de mecanografia
-            const typedTextSpan = document.querySelector(".typed-text");
-            const cursorSpan = document.querySelector(".cursor");
-            
-            const textArray = [
-                "Estudiant d'Enginyeria de Dades",
-                "Apasionada per la IA i Finances",
-                "Solucionadora creativa de problemes"
-            ];
-            const typingDelay = 100;
-            const erasingDelay = 50;
-            const newTextDelay = 2000;
-            let textArrayIndex = 0;
-            let charIndex = 0;
-            
-            function type() {
-                if (charIndex < textArray[textArrayIndex].length) {
-                    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-                    charIndex++;
-                    setTimeout(type, typingDelay);
-                } else {
-                    setTimeout(erase, newTextDelay);
-                }
-            }
-            
-            function erase() {
-                if (charIndex > 0) {
-                    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
-                    charIndex--;
-                    setTimeout(erase, erasingDelay);
-                } else {
-                    textArrayIndex++;
-                    if(textArrayIndex>=textArray.length) textArrayIndex=0;
-                    setTimeout(type, typingDelay + 1100);
-                }
-            }
-            
-            // Iniciar l'efecte
-            setTimeout(type, 1000);
-            
-            // Navegació mòbil
-            const navToggle = document.querySelector('.nav-toggle');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            navToggle.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-                navToggle.innerHTML = navMenu.classList.contains('active') ? 
-                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-            });
-            
-            // Tabs a Sobre Mi
-            const tabs = document.querySelectorAll('.tab');
-            const tabContents = document.querySelectorAll('.tab-content');
-            
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const tabId = this.getAttribute('data-tab');
-                    
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tabContents.forEach(c => c.classList.remove('active'));
-                    
-                    this.classList.add('active');
-                    document.getElementById(`${tabId}-tab`).classList.add('active');
-                });
-            });
-            
-            // Scroll suau
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Tancar menú mòbil si està obert
-                    navMenu.classList.remove('active');
-                    navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                });
-            });
-            
-            // Efecte scroll a la navegació
-            window.addEventListener('scroll', function() {
-                const navbar = document.getElementById('navbar');
-                if (window.scrollY > 50) {
-                    navbar.style.backgroundColor = 'white';
-                    navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-                } else {
-                    navbar.style.backgroundColor = 'transparent';
-                    navbar.style.boxShadow = 'none';
-                }
-            });
-        });
-    </script>
+    <div class="index">
+        <ul>
+            <li onclick="alert('Has clicat a Sobre mi!')">1. Sobre mi</li>
+            <li onclick="alert('Has clicat a Formació!')">2. Formació</li>
+            <li onclick="alert('Has clicat a Habilitats!')">3. Habilitats</li>
+            <li onclick="alert('Has clicat a Projectes!')">4. Projectes</li>
+            <li onclick="alert('Has clicat a Contacte!')">5. Contacte</li>
+        </ul>
+    </div>
 </body>
 </html>
