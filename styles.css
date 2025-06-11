@@ -1,2 +1,4 @@
-li { transition: transform 0.3s; }
-li:hover { transform: scale(1.05); }
+.imatge:hover {
+    transform: scale(1.03);
+    transition: 0.3s;
+}
