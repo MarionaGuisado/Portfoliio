@@ -3,35 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portfolio</title>
+    <meta name="description" content="Portfolio profesional de Mariona, estudiante de Ingeniería de Datos">
+    <title>Mariona | Ingeniera de Datos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header id="inicio">
-        <h1>Bienvenido a mi Portfolio</h1>
-        <p>Soy Mariona, estudiante de Ingeniería de Datos</p>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#inicio" class="logo">Mariona</a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <div class="container">
+            <h1 class="hero-title">Hola, soy <span>Mariona</span></h1>
+            <p class="hero-subtitle">Estudiante de Ingeniería de Datos</p>
+            <a href="#proyectos" class="btn">Ver mis proyectos</a>
+        </div>
     </header>
 
-    <section id="sobre-mi">
-        <h2>Sobre mí</h2>
-        <p>Una breve descripción de ti...</p>
+    <section id="sobre-mi" class="section about">
+        <div class="container">
+            <h2 class="section-title">Sobre mí</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>¡Hola! Soy Mariona, apasionada por los datos y su potencial para transformar el mundo. Actualmente estoy cursando Ingeniería de Datos y me encanta aprender nuevas tecnologías.</p>
+                    <p>Mis habilidades incluyen:</p>
+                    <ul class="skills-list">
+                        <li><i class="fas fa-check"></i> Análisis de datos</li>
+                        <li><i class="fas fa-check"></i> Machine Learning</li>
+                        <li><i class="fas fa-check"></i> Python</li>
+                        <li><i class="fas fa-check"></i> SQL</li>
+                        <li><i class="fas fa-check"></i> Visualización de datos</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/300" alt="Foto de Mariona" class="profile-img">
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="proyectos">
-        <h2>Proyectos</h2>
-        <ul>
-            <li>Proyecto 1: Descripción</li>
-            <li>Proyecto 2: Descripción</li>
-        </ul>
+    <section id="proyectos" class="section projects">
+        <div class="container">
+            <h2 class="section-title">Mis Proyectos</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/400x250" alt="Proyecto 1">
+                    </div>
+                    <div class="project-info">
+                        <h3>Análisis de Datos Climáticos</h3>
+                        <p>Proyecto de análisis de patrones climáticos usando Python y Pandas.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>Matplotlib</span>
+                        </div>
+                        <a href="#" class="btn btn-small">Ver más</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/400x250" alt="Proyecto 2">
+                    </div>
+                    <div class="project-info">
+                        <h3>Sistema de Recomendación</h3>
+                        <p>Algoritmo de recomendación basado en Machine Learning.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Scikit-learn</span>
+                            <span>Flask</span>
+                        </div>
+                        <a href="#" class="btn btn-small">Ver más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="contacto">
-        <h2>Contacto</h2>
-        <p>Mi correo: tu_correo@ejemplo.com</p>
+    <section id="contacto" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> mariona@ejemplo.com</p>
+                    <p><i class="fas fa-phone"></i> +34 123 456 789</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Mensaje" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar mensaje</button>
+                </form>
+            </div>
+        </div>
     </section>
 
-    <footer>
-        <p>© 2025 Mariona</p>
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Mariona. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
     <script src="scripts.js"></script>
