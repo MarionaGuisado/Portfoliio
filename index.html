@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mariona Guisado</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             margin: 0;
@@ -199,68 +200,123 @@
             text-align: left;
         }
 
-        /* Timeline styles */
-        .timeline-container {
+        /* Estils del mapa del tresor */
+        .treasure-map {
+            position: relative;
             width: 100%;
             max-width: 1000px;
-            margin: 0 auto;
+            margin: 40px auto;
             padding: 40px 20px;
+            background-image: url('https://img.freepik.com/vector-gratis/fondo-papel-parecido-papel-viejo_1194-6161.jpg');
+            background-size: cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border: 8px solid #8B4513;
         }
 
-        .timeline {
+        .map-path {
             position: relative;
-            height: 300px;
-            margin: 0 auto;
+            height: 100px;
+            margin: 80px 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="20" viewBox="0 0 1000 20"><path d="M0,10 Q250,30 500,10 T1000,10" fill="none" stroke="%238B4513" stroke-width="3" stroke-dasharray="10,5"/></svg>');
+            background-repeat: repeat-x;
+            background-position: center;
         }
 
-        .timeline-line {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: #2a9d8f;
-            transform: translateY(-50%);
-        }
-
-        .timeline-item {
+        .map-marker {
             position: absolute;
             top: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            width: 120px;
+            width: 100px;
+            transition: all 0.3s ease;
         }
 
-        .timeline-dot {
-            width: 20px;
-            height: 20px;
-            background: #2a9d8f;
+        .map-marker:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .marker-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
             border-radius: 50%;
             margin: 0 auto 10px;
-            border: 3px solid white;
-            box-shadow: 0 0 0 2px #2a9d8f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #8B4513;
+            border: 3px solid #8B4513;
+            box-shadow: 0 0 0 3px #fff;
         }
 
-        .timeline-content {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
+        .marker-content {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 5px;
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            position: relative;
         }
 
-        .timeline-content h3 {
+        .marker-content:after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid rgba(255, 255, 255, 0.9);
+        }
+
+        .marker-content h3 {
             margin: 0 0 5px;
-            color: #2a9d8f;
+            color: #8B4513;
+            font-size: 1.1rem;
         }
 
-        .timeline-content p {
+        .marker-content p {
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #555;
         }
 
+        .compass {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 40px;
+            color: #8B4513;
+        }
+
+        .map-title {
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            color: #8B4513;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .map-title:before, .map-title:after {
+            content: '✧';
+            margin: 0 15px;
+            color: #8B4513;
+        }
+
         /* Altres seccions */
-        #formacio { background-color: #e9ecef; }
+        #formacio { 
+            background-color: #e9ecef;
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+        }
         #habilitats { background-color: #dee2e6; }
         #projectes { background-color: #ced4da; }
         #contacte { background-color: #adb5bd; }
@@ -300,25 +356,45 @@
                             url('sobre-mi-bg.jpg') center/cover no-repeat;
             }
 
-            /* Responsive timeline */
-            .timeline {
-                height: 400px;
+            /* Responsive treasure map */
+            .treasure-map {
+                padding: 20px 10px;
+                margin: 20px auto;
             }
             
-            .timeline-item {
-                width: 100px;
+            .map-path {
+                height: 80px;
+                margin: 60px 0;
             }
             
-            .timeline-content {
-                padding: 10px;
+            .map-marker {
+                width: 80px;
             }
             
-            .timeline-content h3 {
-                font-size: 1rem;
+            .marker-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
             }
             
-            .timeline-content p {
-                font-size: 0.8rem;
+            .marker-content {
+                padding: 8px;
+            }
+            
+            .marker-content h3 {
+                font-size: 0.9rem;
+            }
+            
+            .marker-content p {
+                font-size: 0.7rem;
+            }
+            
+            .compass {
+                font-size: 30px;
+            }
+            
+            .map-title {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -355,39 +431,39 @@
             <section id="formacio" class="section">
                 <h2 class="section-title">Formació</h2>
                 <div class="section-content">
-                    <div class="timeline-container">
-                        <div class="timeline">
-                            <div class="timeline-line"></div>
-                            
-                            <div class="timeline-item" style="left: 0%;">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content">
+                    <div class="treasure-map">
+                        <div class="map-title">El meu camí</div>
+                        <div class="compass"><i class="fas fa-compass"></i></div>
+                        <div class="map-path">
+                            <div class="map-marker" style="left: 0%;">
+                                <div class="marker-icon"><i class="fas fa-school"></i></div>
+                                <div class="marker-content">
                                     <h3>2005</h3>
                                     <p>Educació primària</p>
                                 </div>
                             </div>
                             
-                            <div class="timeline-item" style="left: 60%;">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content">
+                            <div class="map-marker" style="left: 60%;">
+                                <div class="marker-icon"><i class="fas fa-graduation-cap"></i></div>
+                                <div class="marker-content">
                                     <h3>2020</h3>
                                     <p>Batxillerat científic</p>
                                 </div>
                             </div>
                             
-                            <div class="timeline-item" style="left: 68%;">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content">
+                            <div class="map-marker" style="left: 68%;">
+                                <div class="marker-icon"><i class="fas fa-university"></i></div>
+                                <div class="marker-content">
                                     <h3>2021</h3>
-                                    <p>Inici dels estudis universitaris en Enginyeria de Dades</p>
+                                    <p>Inici Enginyeria de Dades</p>
                                 </div>
                             </div>
                             
-                            <div class="timeline-item" style="left: 100%;">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content">
+                            <div class="map-marker" style="left: 100%;">
+                                <div class="marker-icon"><i class="fas fa-trophy"></i></div>
+                                <div class="marker-content">
                                     <h3>2025</h3>
-                                    <p>Graduació prevista en Enginyeria de Dades</p>
+                                    <p>Graduació prevista</p>
                                 </div>
                             </div>
                         </div>
