@@ -85,11 +85,11 @@
 
         .new-background {
             position: absolute;
-            top: 50%;
+            top: 40%;  /* Canviat de 50% a 40% per pujar la imatge */
             left: 50%;
             transform: translate(-50%, -50%);
             width: 70%;
-            height: 60%;
+            height: 50%;  /* Reduït de 60% a 50% */
             background-image: url('imatge-secundaria.jpg');
             background-size: cover;
             background-position: center;
@@ -100,7 +100,7 @@
 
         .nav-menu {
             position: absolute;
-            top: 60%;
+            top: 70%;  /* Canviat de 60% a 70% per equilibrar amb la nova posició de la imatge */
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -161,11 +161,11 @@
             // 1. La pantalla blanca puja
             transition.style.bottom = '100%';
             
-            // 2. Canviar el color del nom a negre, moure'l cap amunt (5%) i reduir la mida
+            // 2. Canviar el color del nom a negre, moure'l cap amunt (15% en lloc de 5%) i reduir la mida
             setTimeout(() => {
                 name.style.color = 'black';
                 name.style.textShadow = 'none';
-                name.style.top = '5%';  // Puja fins al 5% superior
+                name.style.top = '15%';  // Canviat de 5% a 15%
                 name.style.fontSize = '3rem';
             }, 500);
             
