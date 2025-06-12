@@ -134,12 +134,12 @@
             transform: scale(1.05);
         }
 
-        /* Seccions afegides (sense modificar l'estil existent) */
+        /* Seccions */
         .section {
             min-height: 100vh;
             padding: 100px 20px;
             position: relative;
-            top: 100vh; /* Posiciona després del contingut inicial */
+            top: 100vh;
             background-color: white;
             display: flex;
             flex-direction: column;
@@ -153,11 +153,50 @@
             color: #333;
         }
 
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .typed-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+            min-height: 120px;
+            border-right: 2px solid #2a9d8f;
+            white-space: pre-wrap;
+            overflow: hidden;
+            display: inline-block;
+        }
+
         #sobre-mi { background-color: #f8f9fa; }
         #formacio { background-color: #e9ecef; }
         #habilitats { background-color: #dee2e6; }
         #projectes { background-color: #ced4da; }
         #contacte { background-color: #adb5bd; }
+
+        @media (max-width: 768px) {
+            .name {
+                font-size: 3rem;
+            }
+            
+            .new-background {
+                width: 90%;
+                height: 50%;
+            }
+            
+            .nav-item {
+                width: 160px;
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+
+            .typed-text {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -177,30 +216,27 @@
                 <a href="#contacte" class="nav-item">Contacte</a>
             </div>
 
-            <!-- Seccions afegides -->
             <section id="sobre-mi" class="section">
                 <h2 class="section-title">Sobre mi</h2>
-                <!-- Contingut aquí -->
+                <div class="about-content">
+                    <p id="typed-text" class="typed-text"></p>
+                </div>
             </section>
 
             <section id="formacio" class="section">
                 <h2 class="section-title">Formació</h2>
-                <!-- Contingut aquí -->
             </section>
 
             <section id="habilitats" class="section">
                 <h2 class="section-title">Habilitats</h2>
-                <!-- Contingut aquí -->
             </section>
 
             <section id="projectes" class="section">
                 <h2 class="section-title">Projectes</h2>
-                <!-- Contingut aquí -->
             </section>
 
             <section id="contacte" class="section">
                 <h2 class="section-title">Contacte</h2>
-                <!-- Contingut aquí -->
             </section>
         </div>
     </div>
@@ -235,6 +271,11 @@
                 setTimeout(() => {
                     newBackground.style.opacity = '1';
                     navMenu.style.opacity = '1';
+                    
+                    // Start typing effect
+                    const aboutText = "As a dedicated Data Engineering student, I am passionate about leveraging big data to drive decision-making and innovation. With hands-on experience in Python and data warehousing, I have developed a strong foundation in data management and analytics. I am eager to contribute to impactful projects and collaborate with industry professionals";
+                    const typedElement = document.getElementById('typed-text');
+                    typeWriter(aboutText, typedElement, 20);
                 }, 100);
                 
                 // Amagar el fons inicial
@@ -252,6 +293,20 @@
                 });
             });
         });
+
+        // Typing effect for About section
+        function typeWriter(text, element, speed) {
+            let i = 0;
+            const interval = setInterval(() => {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    element.style.borderRight = 'none';
+                }
+            }, speed);
+        }
     </script>
 </body>
 </html>
