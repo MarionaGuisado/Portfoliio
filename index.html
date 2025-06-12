@@ -199,6 +199,66 @@
             text-align: left;
         }
 
+        /* Timeline styles */
+        .timeline-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .timeline {
+            position: relative;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #2a9d8f;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 120px;
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: #2a9d8f;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #2a9d8f;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+
+        .timeline-content h3 {
+            margin: 0 0 5px;
+            color: #2a9d8f;
+        }
+
+        .timeline-content p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
         /* Altres seccions */
         #formacio { background-color: #e9ecef; }
         #habilitats { background-color: #dee2e6; }
@@ -239,6 +299,27 @@
                 background: linear-gradient(rgba(248, 249, 250, 0.9), rgba(248, 249, 250, 0.9)),
                             url('sobre-mi-bg.jpg') center/cover no-repeat;
             }
+
+            /* Responsive timeline */
+            .timeline {
+                height: 400px;
+            }
+            
+            .timeline-item {
+                width: 100px;
+            }
+            
+            .timeline-content {
+                padding: 10px;
+            }
+            
+            .timeline-content h3 {
+                font-size: 1rem;
+            }
+            
+            .timeline-content p {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -274,7 +355,43 @@
             <section id="formacio" class="section">
                 <h2 class="section-title">Formació</h2>
                 <div class="section-content">
-                    <!-- Contingut de formació aquí -->
+                    <div class="timeline-container">
+                        <div class="timeline">
+                            <div class="timeline-line"></div>
+                            
+                            <div class="timeline-item" style="left: 0%;">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>2005</h3>
+                                    <p>Educació primària</p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item" style="left: 60%;">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>2020</h3>
+                                    <p>Batxillerat científic</p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item" style="left: 68%;">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>2021</h3>
+                                    <p>Inici dels estudis universitaris en Enginyeria de Dades</p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item" style="left: 100%;">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h3>2025</h3>
+                                    <p>Graduació prevista en Enginyeria de Dades</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
