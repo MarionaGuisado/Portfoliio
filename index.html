@@ -275,6 +275,7 @@
             background-color: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
         }
 
         .skill-category:hover {
@@ -287,6 +288,58 @@
             font-size: 1.8rem;
             margin-bottom: 20px;
             color: white;
+        }
+
+        /* Estils per al desplegament d'habilitats */
+        .skills-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .skill-category.active {
+            width: 60%;
+            z-index: 10;
+            transform: translateY(-10px) scale(1.05);
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .skill-category.active .skills-content {
+            max-height: 500px;
+            opacity: 1;
+            transition: max-height 0.5s ease-in, opacity 0.5s ease 0.2s;
+        }
+
+        .skill-category.inactive {
+            width: 20%;
+            opacity: 0.7;
+            transform: scale(0.9);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category.inactive:hover {
+            opacity: 0.9;
+            transform: scale(0.95);
+        }
+
+        /* Llista d'habilitats */
+        .skill-category ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .skill-category li {
+            padding: 8px 0;
+            font-size: 1.1rem;
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-category li:last-child {
+            border-bottom: none;
         }
 
         /* Estils de la línia del temps */
@@ -406,6 +459,21 @@
 
             .skill-category {
                 width: 80%;
+            }
+
+            .skill-category.active {
+                width: 90%;
+                height: auto;
+            }
+            
+            .skill-category.inactive {
+                width: 5%;
+                opacity: 0;
+            }
+            
+            .skills-container {
+                flex-direction: row;
+                flex-wrap: wrap;
             }
 
             /* Versió mòbil de la línia del temps */
@@ -558,17 +626,44 @@
                 <div class="bg-image" id="habilitatsBg"></div>
                 <h2 class="section-title">Habilitats</h2>
                 <div class="skills-container">
-                    <div class="skill-category">
+                    <div class="skill-category" id="hard-skills">
                         <h3>Hard Skills</h3>
-                        <!-- Aquí pots afegir les teves habilitats tècniques -->
+                        <div class="skills-content">
+                            <ul>
+                                <li>Python</li>
+                                <li>SQL</li>
+                                <li>Data Warehousing</li>
+                                <li>ETL Processes</li>
+                                <li>Big Data Technologies</li>
+                                <li>Data Visualization</li>
+                                <li>Machine Learning Basics</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="skill-category">
+                    <div class="skill-category" id="languages">
                         <h3>Languages</h3>
-                        <!-- Aquí pots afegir els teus idiomes -->
+                        <div class="skills-content">
+                            <ul>
+                                <li>Catalan (Native)</li>
+                                <li>Spanish (Native)</li>
+                                <li>English (C1)</li>
+                                <li>French (B1)</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="skill-category">
+                    <div class="skill-category" id="soft-skills">
                         <h3>Soft Skills</h3>
-                        <!-- Aquí pots afegir les teves habilitats personals -->
+                        <div class="skills-content">
+                            <ul>
+                                <li>Teamwork</li>
+                                <li>Problem Solving</li>
+                                <li>Creativity</li>
+                                <li>Adaptability</li>
+                                <li>Time Management</li>
+                                <li>Communication</li>
+                                <li>Leadership</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -722,6 +817,42 @@
             }, { threshold: 0.1 });
             
             observer.observe(habilitatsSection);
+        });
+
+        // Gestió del desplegament d'habilitats
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillCategories = document.querySelectorAll('.skill-category');
+            
+            skillCategories.forEach(category => {
+                category.addEventListener('click', function(e) {
+                    // Si ja està actiu, tancar-lo
+                    if (this.classList.contains('active')) {
+                        this.classList.remove('active');
+                        skillCategories.forEach(cat => cat.classList.remove('inactive'));
+                        return;
+                    }
+                    
+                    // Marcar tots com inactius i després activar el seleccionat
+                    skillCategories.forEach(cat => {
+                        cat.classList.remove('active');
+                        cat.classList.add('inactive');
+                    });
+                    
+                    this.classList.remove('inactive');
+                    this.classList.add('active');
+                    
+                    // Aturar la propagació per evitar conflictes amb altres event listeners
+                    e.stopPropagation();
+                });
+            });
+            
+            // Tancar el desplegament si es fa clic fora
+            document.addEventListener('click', function() {
+                skillCategories.forEach(cat => {
+                    cat.classList.remove('active');
+                    cat.classList.remove('inactive');
+                });
+            });
         });
     </script>
 </body>
