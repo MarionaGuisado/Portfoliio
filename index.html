@@ -199,155 +199,82 @@
             text-align: left;
         }
 
-        /* Estils del mapa del tresor personalitzat */
-        .treasure-map {
+        /* Estils de la línia del temps simplificada */
+        .timeline-container {
             position: relative;
             width: 100%;
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 40px auto;
-            padding: 60px 20px 100px;
-            background-image: url('https://img.freepik.com/vector-gratis/fondo-papel-parecido-papel-viejo_1194-6161.jpg');
-            background-size: cover;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            border: 12px solid #5c2e0d;
-            overflow: hidden;
+            padding: 40px 0;
         }
 
-        .map-path {
-            position: relative;
-            height: 300px;
-            margin: 0;
-        }
-
-        /* Camí del tresor amb corbes orgàniques */
-        .treasure-line {
+        .timeline-path {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1000 300"><path d="M50,150 C150,50 250,250 350,150 C450,50 550,250 650,150 C750,50 850,250 950,150" fill="none" stroke="%235c2e0d" stroke-width="4" stroke-dasharray="8,6" stroke-linecap="round"/></svg>');
-            background-repeat: no-repeat;
-        }
-
-        /* X marcant el punt final */
-        .treasure-x {
-            position: absolute;
-            right: 5%;
             top: 50%;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #2a9d8f;
             transform: translateY(-50%);
-            color: #d4af37;
-            font-size: 40px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             z-index: 1;
         }
 
-        .map-marker {
-            position: absolute;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            width: 140px;
-            transition: all 0.3s ease;
+        .timeline-marker {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 60px;
             z-index: 2;
         }
 
-        .map-marker:hover {
-            transform: translate(-50%, -50%) scale(1.15);
-            z-index: 10;
-        }
-
-        .marker-image {
-            width: 70px;
-            height: 70px;
-            background-color: #fff9e6;
+        .timeline-image {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            margin: 0 auto 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
-            border: 3px solid #5c2e0d;
-            box-shadow: 0 0 0 3px #fff9e6, 0 2px 5px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
+            border: 3px solid #2a9d8f;
         }
 
-        .marker-image img {
+        .timeline-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .marker-content {
-            background: rgba(255, 249, 230, 0.95);
-            padding: 12px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            position: relative;
-            min-width: 160px;
-            border: 1px solid #d4af37;
-        }
-
-        .marker-content:after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 10px solid rgba(255, 249, 230, 0.95);
-        }
-
-        .marker-content h3 {
-            margin: 0 0 5px;
-            color: #5c2e0d;
-            font-size: 1.1rem;
+        .timeline-year {
+            font-size: 1.2rem;
+            color: #2a9d8f;
             font-weight: bold;
-            font-family: 'Courier New', monospace;
-        }
-
-        .marker-content p {
-            margin: 0;
-            font-size: 0.85rem;
-            color: #5c2e0d;
-            line-height: 1.4;
-            font-family: 'Courier New', monospace;
-        }
-
-        .marker-content .year {
-            display: inline-block;
-            background-color: #5c2e0d;
-            color: #fff9e6;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
             margin-bottom: 5px;
-            font-family: 'Courier New', monospace;
         }
 
-        /* Brúixola */
-        .compass {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            animation: spin 15s linear infinite;
-            opacity: 0.7;
+        .timeline-title {
+            font-size: 1.3rem;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: center;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .timeline-description {
+            font-size: 1rem;
+            color: #555;
+            text-align: center;
+            max-width: 200px;
+        }
+
+        /* Distribució dels marcadors */
+        .timeline-items {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
         }
 
         /* Altres seccions */
-        #formacio { 
-            background-color: #e9ecef;
-            background-image: url('https://www.transparenttextures.com/patterns/old-map.png');
-        }
+        #formacio { background-color: #e9ecef; }
         #habilitats { background-color: #dee2e6; }
         #projectes { background-color: #ced4da; }
         #contacte { background-color: #adb5bd; }
@@ -387,37 +314,37 @@
                             url('sobre-mi-bg.jpg') center/cover no-repeat;
             }
 
-            /* Ajustos per al mapa del tresor a mòbil */
-            .treasure-map {
-                padding: 40px 10px 80px;
+            /* Versió mòbil de la línia del temps */
+            .timeline-container {
+                padding: 20px 0;
             }
             
-            .map-path {
-                height: 400px;
+            .timeline-path {
+                display: none;
             }
             
-            .map-marker {
-                width: 110px;
+            .timeline-items {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .marker-image {
-                width: 50px;
-                height: 50px;
+            .timeline-marker {
+                margin-bottom: 40px;
+                width: 100%;
             }
             
-            .marker-content {
-                min-width: 130px;
-                padding: 10px;
+            .timeline-image {
+                width: 80px;
+                height: 80px;
             }
             
-            .treasure-x {
-                font-size: 30px;
-                right: 3%;
+            .timeline-title {
+                font-size: 1.1rem;
             }
             
-            .compass {
-                width: 40px;
-                height: 40px;
+            .timeline-description {
+                max-width: 100%;
+                padding: 0 20px;
             }
         }
     </style>
@@ -454,107 +381,87 @@
             <section id="formacio" class="section">
                 <h2 class="section-title">Formació</h2>
                 <div class="section-content">
-                    <div class="treasure-map">
-                        <img src="compass.png" alt="Brúixola" class="compass">
-                        <div class="treasure-x">✕</div>
-                        <div class="map-path">
-                            <div class="treasure-line"></div>
-                            
+                    <div class="timeline-container">
+                        <div class="timeline-path"></div>
+                        <div class="timeline-items">
                             <!-- Educació Primària -->
-                            <div class="map-marker" style="left: 10%; top: 50%;">
-                                <div class="marker-image">
+                            <div class="timeline-marker">
+                                <div class="timeline-image">
                                     <img src="primaria.jpg" alt="Educació Primària">
                                 </div>
-                                <div class="marker-content">
-                                    <span class="year">2005-2012</span>
-                                    <h3>Educació Primària</h3>
-                                    <p>El començament del viatge</p>
-                                </div>
+                                <div class="timeline-year">2005-2012</div>
+                                <h3 class="timeline-title">Educació Primària</h3>
+                                <p class="timeline-description">El començament del viatge</p>
                             </div>
                             
                             <!-- ESO -->
-                            <div class="map-marker" style="left: 25%; top: 20%;">
-                                <div class="marker-image">
+                            <div class="timeline-marker">
+                                <div class="timeline-image">
                                     <img src="eso.jpg" alt="Educació Secundària">
                                 </div>
-                                <div class="marker-content">
-                                    <span class="year">2012-2016</span>
-                                    <h3>Educació Secundària</h3>
-                                    <p>ESO</p>
-                                </div>
+                                <div class="timeline-year">2012-2016</div>
+                                <h3 class="timeline-title">Educació Secundària</h3>
+                                <p class="timeline-description">ESO</p>
                             </div>
                             
                             <!-- Batxillerat -->
-                            <div class="map-marker" style="left: 40%; top: 70%;">
-                                <div class="marker-image">
+                            <div class="timeline-marker">
+                                <div class="timeline-image">
                                     <img src="batxillerat.jpg" alt="Batxillerat">
                                 </div>
-                                <div class="marker-content">
-                                    <span class="year">2016-2018</span>
-                                    <h3>Batxillerat</h3>
-                                    <p>Batxillerat científic</p>
-                                </div>
+                                <div class="timeline-year">2016-2018</div>
+                                <h3 class="timeline-title">Batxillerat</h3>
+                                <p class="timeline-description">Batxillerat científic</p>
                             </div>
                             
                             <!-- Jutgessa Cronometradora -->
-                            <div class="map-marker" style="left: 55%; top: 30%;">
-                                <div class="marker-image">
+                            <div class="timeline-marker">
+                                <div class="timeline-image">
                                     <img src="jutgessa.jpg" alt="Jutgessa Cronometradora">
                                 </div>
-                                <div class="marker-content">
-                                    <span class="year">2019</span>
-                                    <h3>Jutgessa Cronometradora</h3>
-                                    <p>Certificació oficial</p>
-                                </div>
+                                <div class="timeline-year">2019</div>
+                                <h3 class="timeline-title">Jutgessa Cronometradora</h3>
+                                <p class="timeline-description">Certificació oficial</p>
                             </div>
                             
                             <!-- British Summer -->
-                            <div class="map-marker" style="left: 65%; top: 75%;">
-                                <div class="marker-image">
+                            <div class="timeline-marker">
+                                <div class="timeline-image">
                                     <img src="british.jpg" alt="British Summer">
                                 </div>
-                                <div class="marker-content">
-                                    <span class="year">2019</span>
-                                    <h3>British Summer</h3>
-                                    <p>Curs al Regne Unit</p>
-                                </div>
+                                <div class="timeline-year">2019</div>
+                                <h3 class="timeline-title">British Summer</h3>
+                                <p class="timeline-description">Curs al Regne Unit</p>
                             </div>
                             
                             <!-- Cambridge B2 -->
-                            <div class="map-marker" style="left: 75%; top: 25%;">
-                                <div class="marker-image">
+                            <div class="timeline-marker">
+                                <div class="timeline-image">
                                     <img src="cambridge-b2.jpg" alt="Cambridge B2">
                                 </div>
-                                <div class="marker-content">
-                                    <span class="year">2020</span>
-                                    <h3>Cambridge First</h3>
-                                    <p>B2 First Certificate</p>
-                                </div>
+                                <div class="timeline-year">2020</div>
+                                <h3 class="timeline-title">Cambridge First</h3>
+                                <p class="timeline-description">B2 First Certificate</p>
                             </div>
                             
                             <!-- Cambridge C1 -->
-                            <div class="map-marker" style="left: 85%; top: 65%;">
-                                <div class="marker-image">
+                            <div class="timeline-marker">
+                                <div class="timeline-image">
                                     <img src="cambridge-c1.jpg" alt="Cambridge C1">
                                 </div>
-                                <div class="marker-content">
-                                    <span class="year">2021</span>
-                                    <h3>Cambridge Advanced</h3>
-                                    <p>C1 Certificate</p>
-                                </div>
+                                <div class="timeline-year">2021</div>
+                                <h3 class="timeline-title">Cambridge Advanced</h3>
+                                <p class="timeline-description">C1 Certificate</p>
                             </div>
                             
                             <!-- Estudis Universitaris -->
-                            <div class="map-marker" style="left: 95%; top: 35%;">
-                                <div class="marker-image">
+                            <div class="timeline-marker">
+                                <div class="timeline-image">
                                     <img src="universitat.jpg" alt="Estudis Universitaris">
                                 </div>
-                                <div class="marker-content">
-                                    <span class="year">2021-2025</span>
-                                    <h3>Graduació Universitària</h3>
-                                    <p>Enginyeria de Dades<br>
-                                    Objectiu final!</p>
-                                </div>
+                                <div class="timeline-year">2021-2025</div>
+                                <h3 class="timeline-title">Graduació Universitària</h3>
+                                <p class="timeline-description">Enginyeria de Dades</p>
                             </div>
                         </div>
                     </div>
