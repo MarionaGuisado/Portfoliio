@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mariona Guisado</title>
+    <link rel="preload" href="sobre-mi-bg.jpg" as="image">
     <style>
         body {
             margin: 0;
@@ -164,13 +165,30 @@
             z-index: 2;
         }
 
-        /* Estils específics per a Sobre mi */
+        /* Estils específics per a Sobre mi - Imatge nítida */
         #sobre-mi {
             background: linear-gradient(rgba(248, 249, 250, 0.8), rgba(248, 249, 250, 0.8)),
                         url('sobre-mi-bg.jpg') center/cover no-repeat;
             position: relative;
             display: flex;
             align-items: center;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+
+        #sobre-mi::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('sobre-mi-bg.jpg') center/cover no-repeat;
+            z-index: -1;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
 
         .about-text-container {
