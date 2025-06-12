@@ -31,7 +31,7 @@
         }
 
         .name {
-            position: absolute;
+            position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -42,9 +42,18 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             letter-spacing: 1px;
             font-weight: normal;
-            transition: all 1s ease;
+            transition: all 0.5s ease;
             background-color: transparent !important;
             padding: 0;
+        }
+
+        .name.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .name.visible {
+            opacity: 1;
         }
 
         .enter-button {
@@ -62,6 +71,10 @@
             transition: all 0.3s ease;
             text-decoration: none;
             z-index: 3;
+        }
+
+        .enter-button.hidden {
+            display: none;
         }
 
         .transition {
@@ -211,6 +224,7 @@
         #habilitats .section-title {
             color: white;
             margin-bottom: 50px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
         }
 
         .skills-container {
@@ -222,17 +236,18 @@
         }
 
         .skill-category {
-            background-color: rgba(42, 157, 143, 0.85);
             padding: 30px;
             border-radius: 10px;
             width: 300px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
+            background-color: transparent;
+            border: 2px solid white;
         }
 
         .skill-category:hover {
             transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .skill-category h3 {
@@ -394,7 +409,7 @@
 <body>
     <div class="container">
         <div class="background" id="background"></div>
-        <div class="name" id="name">Mariona Guisado</div>
+        <div class="name visible" id="name">Mariona Guisado</div>
         <a href="#" class="enter-button" id="enterButton">Entrar</a>
         <div class="transition" id="transition"></div>
         
@@ -541,6 +556,28 @@
     </div>
 
     <script>
+        // Variables globals
+        let lastScrollPosition = 0;
+        const nameElement = document.getElementById('name');
+        const enterButton = document.getElementById('enterButton');
+        
+        // Funció per mostrar/amagar el nom en fer scroll
+        function handleScroll() {
+            const currentScrollPosition = window.pageYOffset;
+            
+            if (currentScrollPosition > lastScrollPosition) {
+                // Scrolling down
+                nameElement.classList.remove('visible');
+                nameElement.classList.add('hidden');
+            } else {
+                // Scrolling up
+                nameElement.classList.remove('hidden');
+                nameElement.classList.add('visible');
+            }
+            
+            lastScrollPosition = currentScrollPosition;
+        }
+
         document.getElementById('enterButton').addEventListener('click', function(e) {
             e.preventDefault();
             
@@ -554,7 +591,10 @@
             // 1. La pantalla blanca puja
             transition.style.bottom = '100%';
             
-            // 2. Canviar el color del nom a negre, moure'l cap amunt i reduir la mida
+            // 2. Amagar el botó d'entrar
+            enterButton.classList.add('hidden');
+            
+            // 3. Canviar el color del nom a negre, moure'l cap amunt i reduir la mida
             setTimeout(() => {
                 name.style.color = 'black';
                 name.style.textShadow = 'none';
@@ -562,11 +602,11 @@
                 name.style.fontSize = '3rem';
             }, 500);
             
-            // 3. Mostrar el contingut principal quan la transició acabi
+            // 4. Mostrar el contingut principal quan la transició acabi
             setTimeout(() => {
                 mainContent.style.display = 'block';
                 
-                // 4. Mostrar nova imatge i menú
+                // 5. Mostrar nova imatge i menú
                 setTimeout(() => {
                     newBackground.style.opacity = '1';
                     navMenu.style.opacity = '1';
@@ -588,6 +628,9 @@
                 
                 // Amagar el fons inicial
                 background.style.opacity = '0';
+                
+                // Afegir event listener per al scroll
+                window.addEventListener('scroll', handleScroll);
             }, 1000);
         });
 
