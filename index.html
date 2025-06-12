@@ -81,51 +81,49 @@
             height: 100%;
             display: none;
             z-index: 5;
+            overflow-y: auto;
+            scroll-behavior: smooth;
         }
 
         .new-background {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70%;
-            height: 60%;
-            background-image: url('im2.jpg');
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: url('IMG_8779.JPEG');
             background-size: cover;
             background-position: center;
             opacity: 0;
             transition: opacity 1s ease;
-            /* Sense vores rodones */
             border-radius: 0;
             box-shadow: none;
         }
 
         .nav-menu {
-            position: absolute;
-            top: 50%;
+            position: fixed;
+            top: 20px;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
             opacity: 0;
             transition: opacity 1s ease;
             z-index: 6;
-            /* Sense fons negre */
             background-color: transparent;
-            padding: 0;
+            padding: 10px 20px;
             width: auto;
         }
 
         .nav-item {
-            padding: 8px 0;
-            color: black; /* Text negre */
+            padding: 8px 15px;
+            color: black;
             text-decoration: none;
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
             font-family: 'Georgia', serif;
-            /* Sense fons */
             background-color: transparent;
             border-bottom: none;
         }
@@ -133,6 +131,34 @@
         .nav-item:hover {
             color: #2a9d8f;
             transform: scale(1.05);
+        }
+
+        /* Seccions */
+        section {
+            min-height: 100vh;
+            padding: 80px 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #sobre-mi { background-color: #f8f9fa; }
+        #formacio { background-color: #e9ecef; }
+        #habilitats { background-color: #dee2e6; }
+        #projectes { background-color: #ced4da; }
+        #contacte { background-color: #adb5bd; }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .active {
+            color: #2a9d8f !important;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -145,13 +171,38 @@
         
         <div class="main-content" id="mainContent">
             <div class="new-background" id="newBackground"></div>
-            <div class="nav-menu" id="navMenu">
-                <a href="#" class="nav-item">Sobre mi</a>
-                <a href="#" class="nav-item">Formació</a>
-                <a href="#" class="nav-item">Habilitats</a>
-                <a href="#" class="nav-item">Projectes</a>
-                <a href="#" class="nav-item">Contacte</a>
-            </div>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#sobre-mi" class="nav-item">Sobre mi</a>
+                <a href="#formacio" class="nav-item">Formació</a>
+                <a href="#habilitats" class="nav-item">Habilitats</a>
+                <a href="#projectes" class="nav-item">Projectes</a>
+                <a href="#contacte" class="nav-item">Contacte</a>
+            </nav>
+
+            <section id="sobre-mi">
+                <h2 class="section-title">Sobre mi</h2>
+                <!-- Contingut de la secció -->
+            </section>
+
+            <section id="formacio">
+                <h2 class="section-title">Formació</h2>
+                <!-- Contingut de la secció -->
+            </section>
+
+            <section id="habilitats">
+                <h2 class="section-title">Habilitats</h2>
+                <!-- Contingut de la secció -->
+            </section>
+
+            <section id="projectes">
+                <h2 class="section-title">Projectes</h2>
+                <!-- Contingut de la secció -->
+            </section>
+
+            <section id="contacte">
+                <h2 class="section-title">Contacte</h2>
+                <!-- Contingut de la secció -->
+            </section>
         </div>
     </div>
 
@@ -190,6 +241,41 @@
                 // Amagar el fons inicial
                 background.style.opacity = '0';
             }, 1000);
+        });
+
+        // Navegació per seccions
+        document.querySelectorAll('.nav-item').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Actualització del menú activa en fer scroll
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
