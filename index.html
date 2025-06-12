@@ -92,7 +92,7 @@
             transform: translate(-50%, -50%);
             width: 70%;
             height: 60%;
-            background-image: url('img2.jpg');
+            background-image: url('IMG_8779.JPEG');
             background-size: cover;
             background-position: center;
             opacity: 0;
@@ -140,17 +140,18 @@
             padding: 20px;
             position: relative;
             top: 100vh;
-            background-color: white;
             display: flex;
             flex-direction: column;
         }
 
         .section-title {
             font-size: 2.5rem;
-            margin: 1rem 0; /* Reduït el marge superior */
+            margin: 1rem 0;
             color: #333;
             text-align: center;
-            padding-top: 20px; /* Reduït el padding superior */
+            padding-top: 20px;
+            position: relative;
+            z-index: 2;
         }
 
         .section-content {
@@ -158,13 +159,24 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Estils específics per a Sobre mi */
+        #sobre-mi {
+            background: linear-gradient(rgba(248, 249, 250, 0.8), rgba(248, 249, 250, 0.8)),
+                        url('sobre-mi-bg.jpg') center/cover no-repeat;
+            position: relative;
         }
 
         .about-content {
             max-width: 800px;
             margin: 0 auto;
-            text-align: center;
-            padding-top: 20px; /* Afegit padding superior */
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .typed-text {
@@ -176,11 +188,10 @@
             white-space: pre-wrap;
             overflow: hidden;
             display: inline-block;
-            text-align: left; /* Alineació esquerra */
-            padding: 20px;
+            text-align: left;
         }
 
-        #sobre-mi { background-color: #f8f9fa; }
+        /* Altres seccions */
         #formacio { background-color: #e9ecef; }
         #habilitats { background-color: #dee2e6; }
         #projectes { background-color: #ced4da; }
@@ -210,7 +221,15 @@
 
             .typed-text {
                 font-size: 1rem;
-                padding: 10px;
+            }
+
+            .about-content {
+                padding: 20px;
+            }
+
+            #sobre-mi {
+                background: linear-gradient(rgba(248, 249, 250, 0.9), rgba(248, 249, 250, 0.9)),
+                            url('sobre-mi-bg.jpg') center/cover no-repeat;
             }
         }
     </style>
@@ -327,8 +346,8 @@
         // Typing effect for About section
         function typeWriter(text, element, speed) {
             let i = 0;
-            element.innerHTML = ''; // Netejar el text abans de començar
-            element.style.borderRight = '2px solid #2a9d8f'; // Mostrar cursor
+            element.innerHTML = '';
+            element.style.borderRight = '2px solid #2a9d8f';
             
             const interval = setInterval(() => {
                 if (i < text.length) {
@@ -337,7 +356,7 @@
                 } else {
                     clearInterval(interval);
                     setTimeout(() => {
-                        element.style.borderRight = 'none'; // Amagar cursor quan acabi
+                        element.style.borderRight = 'none';
                     }, 500);
                 }
             }, speed);
