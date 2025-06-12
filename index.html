@@ -92,7 +92,7 @@
             transform: translate(-50%, -50%);
             width: 70%;
             height: 60%;
-            background-image: url('img2.jpg');
+            background-image: url('IMG_8779.JPEG');
             background-size: cover;
             background-position: center;
             opacity: 0;
@@ -147,27 +147,24 @@
 
         .section-title {
             font-size: 2.5rem;
-            margin: 2rem 0;
+            margin: 1rem 0; /* Reduït el marge superior */
             color: #333;
             text-align: center;
-            padding-top: 40px;
+            padding-top: 20px; /* Reduït el padding superior */
         }
 
         .section-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px 40px;
+            padding: 20px;
         }
 
         .about-content {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
+            padding-top: 20px; /* Afegit padding superior */
         }
 
         .typed-text {
@@ -179,6 +176,8 @@
             white-space: pre-wrap;
             overflow: hidden;
             display: inline-block;
+            text-align: left; /* Alineació esquerra */
+            padding: 20px;
         }
 
         #sobre-mi { background-color: #f8f9fa; }
@@ -205,11 +204,13 @@
 
             .section-title {
                 font-size: 2rem;
-                padding-top: 30px;
+                padding-top: 15px;
+                margin: 0.5rem 0;
             }
 
             .typed-text {
                 font-size: 1rem;
+                padding: 10px;
             }
         }
     </style>
@@ -302,7 +303,7 @@
                     navMenu.style.opacity = '1';
                     
                     // Start typing effect
-                    const aboutText = "As a dedicated Data Engineering student, I am passionate about leveraging big data to drive decision-making and innovation. With hands-on experience in Python and data warehousing, I have developed a strong foundation in data management and analytics. I am eager to contribute to impactful projects and collaborate with industry professionals";
+                    const aboutText = "As a dedicated Data Engineering student, I am passionate about leveraging big data to drive decision-making and innovation. With hands-on experience in Python and data warehousing, I have developed a strong foundation in data management and analytics. I am eager to contribute to impactful projects and collaborate with industry professionals.";
                     const typedElement = document.getElementById('typed-text');
                     typeWriter(aboutText, typedElement, 20);
                 }, 100);
@@ -326,13 +327,18 @@
         // Typing effect for About section
         function typeWriter(text, element, speed) {
             let i = 0;
+            element.innerHTML = ''; // Netejar el text abans de començar
+            element.style.borderRight = '2px solid #2a9d8f'; // Mostrar cursor
+            
             const interval = setInterval(() => {
                 if (i < text.length) {
                     element.innerHTML += text.charAt(i);
                     i++;
                 } else {
                     clearInterval(interval);
-                    element.style.borderRight = 'none';
+                    setTimeout(() => {
+                        element.style.borderRight = 'none'; // Amagar cursor quan acabi
+                    }, 500);
                 }
             }, speed);
         }
