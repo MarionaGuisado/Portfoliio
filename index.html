@@ -164,14 +164,13 @@
         .section-title {
             font-size: 3rem;
             margin: 1rem 0;
-            color: white;
+            color: black;
             text-align: center;
             padding-top: 20px;
             position: relative;
             z-index: 2;
             font-weight: 500;
             letter-spacing: 0.5px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .section-content {
@@ -253,6 +252,21 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+            position: relative;
+        }
+
+        .skill-image::before {
+            content: attr(data-title);
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            z-index: 1;
         }
 
         .skill-column.active .skill-image {
@@ -675,9 +689,8 @@
                 <div class="skills-container">
                     <!-- Hard Skills -->
                     <div class="skill-column" onclick="toggleSkillColumn(this)">
-                        <img src="hard-skills-bg.jpg" alt="Hard Skills" class="skill-image">
+                        <img src="hard-skills-bg.jpg" alt="Hard Skills" class="skill-image" data-title="Hard Skills">
                         <div class="skill-content">
-                            <h3 class="skill-title">Hard Skills</h3>
                             <ul class="skill-list">
                                 <li>Python (Advanced level)</li>
                                 <li>SQL (MySQL, PostgreSQL)</li>
@@ -691,9 +704,8 @@
                     
                     <!-- Languages -->
                     <div class="skill-column" onclick="toggleSkillColumn(this)">
-                        <img src="languages-bg.jpg" alt="Languages" class="skill-image">
+                        <img src="languages-bg.jpg" alt="Languages" class="skill-image" data-title="Languages">
                         <div class="skill-content">
-                            <h3 class="skill-title">Languages</h3>
                             <ul class="skill-list">
                                 <li>Catalan (Native)</li>
                                 <li>Spanish (Native)</li>
@@ -705,9 +717,8 @@
                     
                     <!-- Soft Skills -->
                     <div class="skill-column" onclick="toggleSkillColumn(this)">
-                        <img src="soft-skills-bg.jpg" alt="Soft Skills" class="skill-image">
+                        <img src="soft-skills-bg.jpg" alt="Soft Skills" class="skill-image" data-title="Soft Skills">
                         <div class="skill-content">
-                            <h3 class="skill-title">Soft Skills</h3>
                             <ul class="skill-list">
                                 <li>Teamwork</li>
                                 <li>Problem Solving</li>
