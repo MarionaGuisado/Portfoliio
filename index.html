@@ -42,13 +42,15 @@
             z-index: 2;
             letter-spacing: 1px;
             font-weight: 500;
-            transition: all 0.5s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            will-change: opacity, transform;
             background-color: transparent !important;
             padding: 0;
         }
 
         .name.hidden {
             opacity: 0;
+            transform: translate(-50%, -50%) scale(0.9);
             pointer-events: none;
         }
 
@@ -298,16 +300,6 @@
             background-color: rgba(0, 0, 0, 0.7);
         }
 
-        .skill-title {
-            font-size: 2.5rem;
-            margin: 80px 0 20px 0;
-            font-weight: 500;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            width: 100%;
-            text-align: center;
-        }
-
         .skill-list {
             list-style-type: none;
             padding: 0;
@@ -549,9 +541,8 @@
                 height: 66.66vh;
             }
 
-            .skill-title {
-                font-size: 2rem;
-                margin: 40px 0 15px 0;
+            .skill-image::before {
+                font-size: 1.5rem;
             }
 
             .skill-list li {
@@ -766,26 +757,37 @@
 
     <script>
         // Global variables
-        let lastScrollPosition = 0;
+        let lastScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        let scrollTimeout;
         const nameElement = document.getElementById('name');
         const enterButton = document.getElementById('enterButton');
         
-        // Function to show/hide name when scrolling
+        // Improved scroll handler function
         function handleScroll() {
-            const currentScrollPosition = window.pageYOffset;
+            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
             
-            if (currentScrollPosition > lastScrollPosition) {
-                // Scrolling down
-                nameElement.classList.remove('visible');
-                nameElement.classList.add('hidden');
-            } else {
-                // Scrolling up
-                nameElement.classList.remove('hidden');
-                nameElement.classList.add('visible');
+            // Only trigger if significant scroll (> 5px)
+            if (Math.abs(currentScrollPosition - lastScrollPosition) > 5) {
+                if (currentScrollPosition > lastScrollPosition) {
+                    // Scrolling down - hide name
+                    nameElement.classList.add('hidden');
+                } else {
+                    // Scrolling up - show name
+                    nameElement.classList.remove('hidden');
+                }
             }
             
             lastScrollPosition = currentScrollPosition;
+            
+            // Reset after stopping scrolling
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                nameElement.classList.remove('hidden');
+            }, 1000);
         }
+
+        // Initialize scroll event listener
+        window.addEventListener('scroll', handleScroll);
 
         document.getElementById('enterButton').addEventListener('click', function(e) {
             e.preventDefault();
@@ -837,9 +839,6 @@
                 
                 // Hide initial background
                 background.style.opacity = '0';
-                
-                // Add scroll event listener
-                window.addEventListener('scroll', handleScroll);
             }, 1000);
         });
 
