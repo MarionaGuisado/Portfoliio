@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mariona Guisado</title>
     <link rel="preload" href="sobre-mi-bg.jpg" as="image">
-    <link rel="preload" href="habilitats-bg.jpg" as="image">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         body {
@@ -153,7 +152,7 @@
         /* Seccions */
         .section {
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
             position: relative;
             top: 100vh;
             display: flex;
@@ -199,6 +198,8 @@
             margin: 0 auto;
             padding: 40px;
             color: #333;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
         }
 
         .typed-text, .personal-text {
@@ -215,128 +216,99 @@
             font-weight: 400;
         }
 
-        /* Secció Habilitats */
+        /* Secció Habilitats a pantalla completa */
         #habilitats {
-            background: url('habilitats-bg.jpg') center/cover no-repeat;
             position: relative;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
         }
 
         .skills-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            margin-top: 40px;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            flex-wrap: wrap;
-        }
-
-        .skill-card {
-            position: relative;
-            width: 300px;
-            height: 400px;
-            border-radius: 15px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .skill-card-image {
             width: 100%;
             height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: all 0.5s ease;
+            margin: 0;
+            padding: 0;
         }
 
-        .skill-card-overlay {
+        .skill-column {
+            flex: 1;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .skill-column.active {
+            flex: 3;
+        }
+
+        .skill-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .skill-column.active .skill-image {
+            transform: scale(1.05);
+            filter: brightness(0.7);
+        }
+
+        .skill-content {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             color: white;
-            transition: all 0.3s ease;
-        }
-
-        .skill-card-title {
-            font-size: 2rem;
-            font-weight: 500;
-            margin-bottom: 10px;
             text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .skill-card-content {
+            padding: 20px;
+            box-sizing: border-box;
             opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            padding: 0 20px;
-            transition: all 0.5s ease;
-            text-align: center;
+            transition: opacity 0.5s ease;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .skill-card.active {
-            width: 600px;
-            height: 500px;
-            z-index: 10;
-        }
-
-        .skill-card.active .skill-card-image {
-            filter: blur(3px);
-        }
-
-        .skill-card.active .skill-card-overlay {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-        }
-
-        .skill-card.active .skill-card-title {
-            margin-bottom: 30px;
-            font-size: 2.5rem;
-        }
-
-        .skill-card.active .skill-card-content {
+        .skill-column.active .skill-content {
             opacity: 1;
-            max-height: 300px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .skill-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .skill-list {
             list-style-type: none;
             padding: 0;
-            margin: 20px 0 0;
-            text-align: left;
+            margin: 0;
+            max-width: 80%;
         }
 
         .skill-list li {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
             padding: 8px 0;
-            font-size: 1.1rem;
             position: relative;
-            padding-left: 25px;
-            margin-bottom: 5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .skill-list li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
+            content: "•";
             color: #2a9d8f;
+            margin-right: 10px;
+            font-size: 1.5rem;
         }
 
         /* Línia del temps */
@@ -381,19 +353,12 @@
             border-radius: 50%;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            background-color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
         }
 
         .timeline-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            position: relative;
-            z-index: 1;
         }
 
         .timeline-content {
@@ -402,27 +367,6 @@
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .timeline-content::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            width: 20px;
-            height: 20px;
-            background-color: #e9c46a;
-            border: 3px solid #fff;
-            border-radius: 50%;
-            transform: translateY(-50%);
-        }
-
-        .timeline-marker:nth-child(odd) .timeline-content::before {
-            right: -40px;
-        }
-
-        .timeline-marker:nth-child(even) .timeline-content::before {
-            left: -40px;
         }
 
         .timeline-year {
@@ -485,19 +429,28 @@
                 margin: 20px;
             }
 
-            .skill-card {
-                width: 90%;
-                height: 300px;
-                margin-bottom: 20px;
-            }
-            
-            .skill-card.active {
-                width: 90%;
-                height: 500px;
-            }
-            
+            /* Versió mòbil d'habilitats */
             .skills-container {
                 flex-direction: column;
+                height: auto;
+            }
+
+            .skill-column {
+                height: 33.33vh;
+                min-height: 250px;
+            }
+
+            .skill-column.active {
+                flex: 1;
+                height: 66.66vh;
+            }
+
+            .skill-title {
+                font-size: 2rem;
+            }
+
+            .skill-list li {
+                font-size: 1rem;
             }
 
             /* Versió mòbil de la línia del temps */
@@ -520,16 +473,6 @@
             .timeline-content {
                 width: calc(100% - 100px);
                 margin-left: 60px;
-            }
-            
-            .timeline-content::before {
-                left: -40px;
-                right: auto;
-            }
-            
-            .timeline-marker:nth-child(odd) .timeline-content::before {
-                left: -40px;
-                right: auto;
             }
             
             .timeline-image {
@@ -612,126 +555,56 @@
                                     <p class="timeline-description">Batxillerat científic</p>
                                 </div>
                             </div>
-                            
-                            <!-- Jutgessa Cronometradora -->
-                            <div class="timeline-marker">
-                                <div class="timeline-image">
-                                    <img src="jutgessa.jpg" alt="Jutgessa Cronometradora">
-                                </div>
-                                <div class="timeline-content">
-                                    <div class="timeline-year">2019</div>
-                                    <h3 class="timeline-title">Jutgessa Cronometradora</h3>
-                                    <p class="timeline-description">Certificació oficial</p>
-                                </div>
-                            </div>
-                            
-                            <!-- British Summer -->
-                            <div class="timeline-marker">
-                                <div class="timeline-image">
-                                    <img src="british.jpg" alt="British Summer">
-                                </div>
-                                <div class="timeline-content">
-                                    <div class="timeline-year">2019</div>
-                                    <h3 class="timeline-title">British Summer</h3>
-                                    <p class="timeline-description">Curs al Regne Unit</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Cambridge B2 -->
-                            <div class="timeline-marker">
-                                <div class="timeline-image">
-                                    <img src="cambridge-b2.jpg" alt="Cambridge B2">
-                                </div>
-                                <div class="timeline-content">
-                                    <div class="timeline-year">2020</div>
-                                    <h3 class="timeline-title">Cambridge First</h3>
-                                    <p class="timeline-description">B2 First Certificate</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Cambridge C1 -->
-                            <div class="timeline-marker">
-                                <div class="timeline-image">
-                                    <img src="cambridge-c1.jpg" alt="Cambridge C1">
-                                </div>
-                                <div class="timeline-content">
-                                    <div class="timeline-year">2021</div>
-                                    <h3 class="timeline-title">Cambridge Advanced</h3>
-                                    <p class="timeline-description">C1 Certificate</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Estudis Universitaris -->
-                            <div class="timeline-marker">
-                                <div class="timeline-image">
-                                    <img src="universitat.jpg" alt="Estudis Universitaris">
-                                </div>
-                                <div class="timeline-content">
-                                    <div class="timeline-year">2021-2025</div>
-                                    <h3 class="timeline-title">Graduació Universitària</h3>
-                                    <p class="timeline-description">Enginyeria de Dades</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
             <section id="habilitats" class="section">
-                <h2 class="section-title">Habilitats</h2>
                 <div class="skills-container">
                     <!-- Hard Skills -->
-                    <div class="skill-card" onclick="toggleSkillCard(this)">
-                        <div class="skill-card-image" style="background-image: url('hard-skills-bg.jpg');"></div>
-                        <div class="skill-card-overlay">
-                            <h3 class="skill-card-title">Hard Skills</h3>
-                            <div class="skill-card-content">
-                                <ul class="skill-list">
-                                    <li>Python (Nivell avançat)</li>
-                                    <li>SQL (MySQL, PostgreSQL)</li>
-                                    <li>Data Warehousing</li>
-                                    <li>Processos ETL</li>
-                                    <li>Tecnologies Big Data</li>
-                                    <li>Visualització de dades</li>
-                                    <li>Bases de Machine Learning</li>
-                                </ul>
-                            </div>
+                    <div class="skill-column" onclick="toggleSkillColumn(this)">
+                        <img src="hard-skills-bg.jpg" alt="Hard Skills" class="skill-image">
+                        <div class="skill-content">
+                            <h3 class="skill-title">Hard Skills</h3>
+                            <ul class="skill-list">
+                                <li>Python (Nivell avançat)</li>
+                                <li>SQL (MySQL, PostgreSQL)</li>
+                                <li>Data Warehousing</li>
+                                <li>Processos ETL</li>
+                                <li>Tecnologies Big Data</li>
+                                <li>Visualització de dades</li>
+                            </ul>
                         </div>
                     </div>
                     
                     <!-- Languages -->
-                    <div class="skill-card" onclick="toggleSkillCard(this)">
-                        <div class="skill-card-image" style="background-image: url('languages-bg.jpg');"></div>
-                        <div class="skill-card-overlay">
-                            <h3 class="skill-card-title">Idiomes</h3>
-                            <div class="skill-card-content">
-                                <ul class="skill-list">
-                                    <li>Català (Natiu)</li>
-                                    <li>Castellà (Natiu)</li>
-                                    <li>Anglès (C1 Advanced)</li>
-                                    <li>Francès (B1 Intermedi)</li>
-                                    <li>Alemany (A2 Bàsic)</li>
-                                </ul>
-                            </div>
+                    <div class="skill-column" onclick="toggleSkillColumn(this)">
+                        <img src="languages-bg.jpg" alt="Idiomes" class="skill-image">
+                        <div class="skill-content">
+                            <h3 class="skill-title">Idiomes</h3>
+                            <ul class="skill-list">
+                                <li>Català (Natiu)</li>
+                                <li>Castellà (Natiu)</li>
+                                <li>Anglès (C1 Advanced)</li>
+                                <li>Francès (B1 Intermedi)</li>
+                            </ul>
                         </div>
                     </div>
                     
                     <!-- Soft Skills -->
-                    <div class="skill-card" onclick="toggleSkillCard(this)">
-                        <div class="skill-card-image" style="background-image: url('soft-skills-bg.jpg');"></div>
-                        <div class="skill-card-overlay">
-                            <h3 class="skill-card-title">Soft Skills</h3>
-                            <div class="skill-card-content">
-                                <ul class="skill-list">
-                                    <li>Treball en equip</li>
-                                    <li>Resolució de problemes</li>
-                                    <li>Pensament crític</li>
-                                    <li>Adaptabilitat</li>
-                                    <li>Gestio del temps</li>
-                                    <li>Comunicació efectiva</li>
-                                    <li>Lideratge</li>
-                                </ul>
-                            </div>
+                    <div class="skill-column" onclick="toggleSkillColumn(this)">
+                        <img src="soft-skills-bg.jpg" alt="Soft Skills" class="skill-image">
+                        <div class="skill-content">
+                            <h3 class="skill-title">Soft Skills</h3>
+                            <ul class="skill-list">
+                                <li>Treball en equip</li>
+                                <li>Resolució de problemes</li>
+                                <li>Pensament crític</li>
+                                <li>Adaptabilitat</li>
+                                <li>Comunicació efectiva</li>
+                                <li>Lideratge</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -863,37 +736,31 @@
             }, speed);
         }
 
-        // Funció per expandir/contraure les targetes d'habilitats
-        function toggleSkillCard(card) {
-            const currentlyActive = document.querySelector('.skill-card.active');
+        // Funció per expandir/contraure les columnes d'habilitats
+        function toggleSkillColumn(column) {
+            const currentlyActive = document.querySelector('.skill-column.active');
             
-            // Si la targeta clicada ja està activa, la tanquem
-            if (card.classList.contains('active')) {
-                card.classList.remove('active');
+            // Si la columna clicada ja està activa, la tanquem
+            if (column.classList.contains('active')) {
+                column.classList.remove('active');
                 return;
             }
             
-            // Si hi ha una altra targeta activa, la tanquem primer
+            // Si hi ha una altra columna activa, la tanquem primer
             if (currentlyActive) {
                 currentlyActive.classList.remove('active');
             }
             
-            // Obrim la nova targeta
-            card.classList.add('active');
-            
-            // Scroll suau per assegurar que la targeta sigui visible
-            card.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
-            });
+            // Obrim la nova columna
+            column.classList.add('active');
         }
 
-        // Tancar targeta al fer clic fora
+        // Tancar columna al fer clic fora
         document.addEventListener('click', function(e) {
-            if (!e.target.closest('.skill-card') && !e.target.classList.contains('skill-card')) {
-                const activeCard = document.querySelector('.skill-card.active');
-                if (activeCard) {
-                    activeCard.classList.remove('active');
+            if (!e.target.closest('.skill-column') && !e.target.classList.contains('skill-column')) {
+                const activeColumn = document.querySelector('.skill-column.active');
+                if (activeColumn) {
+                    activeColumn.classList.remove('active');
                 }
             }
         });
@@ -901,15 +768,13 @@
         // Carregar imatge de fons d'habilitats quan la secció és visible
         document.addEventListener('DOMContentLoaded', function() {
             const habilitatsSection = document.getElementById('habilitats');
-            const habilitatsTitle = habilitatsSection.querySelector('.section-title');
             const skillsContainer = habilitatsSection.querySelector('.skills-container');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Mostrar títol i contingut
+                        // Mostrar contingut
                         setTimeout(() => {
-                            habilitatsTitle.classList.add('visible');
                             skillsContainer.classList.add('visible');
                         }, 500);
                     }
