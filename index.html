@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -150,7 +150,7 @@
             transform: scale(1.05);
         }
 
-        /* Seccions */
+        /* Sections */
         .section {
             min-height: 100vh;
             padding: 0;
@@ -164,13 +164,14 @@
         .section-title {
             font-size: 3rem;
             margin: 1rem 0;
-            color: #333;
+            color: white;
             text-align: center;
             padding-top: 20px;
             position: relative;
             z-index: 2;
             font-weight: 500;
             letter-spacing: 0.5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .section-content {
@@ -182,7 +183,7 @@
             z-index: 2;
         }
 
-        /* Secció Sobre mi */
+        /* About Me Section */
         #sobre-mi {
             background: url('sobre-mi-bg.jpg') center/cover no-repeat;
             position: relative;
@@ -217,7 +218,7 @@
             font-weight: 400;
         }
 
-        /* Secció Habilitats */
+        /* Skills Section */
         #habilitats {
             position: relative;
             display: flex;
@@ -267,7 +268,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             color: white;
             text-align: center;
@@ -285,9 +286,12 @@
 
         .skill-title {
             font-size: 2.5rem;
-            margin-bottom: 20px;
+            margin: 80px 0 20px 0;
             font-weight: 500;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            width: 100%;
+            text-align: center;
         }
 
         .skill-list {
@@ -312,7 +316,7 @@
             font-size: 1.5rem;
         }
 
-        /* Secció Contacte */
+        /* Contact Section */
         #contacte {
             background: url('contacte-bg.jpg') center/cover no-repeat;
             position: relative;
@@ -406,7 +410,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Línia del temps */
+        /* Timeline */
         .timeline-container {
             position: relative;
             width: 100%;
@@ -484,7 +488,7 @@
             font-weight: 400;
         }
 
-        /* Altres seccions */
+        /* Other sections */
         #formacio { 
             background-color: #f8f9fa;
             background-image: url('map-texture.jpg');
@@ -523,7 +527,7 @@
                 margin: 20px;
             }
 
-            /* Versió mòbil d'habilitats */
+            /* Mobile version of skills */
             .skills-container {
                 flex-direction: column;
                 height: auto;
@@ -541,13 +545,14 @@
 
             .skill-title {
                 font-size: 2rem;
+                margin: 40px 0 15px 0;
             }
 
             .skill-list li {
                 font-size: 1rem;
             }
 
-            /* Versió mòbil de contacte */
+            /* Mobile version of contact */
             .contacte-container {
                 padding: 25px;
                 margin: 15px;
@@ -571,7 +576,7 @@
                 font-size: 1rem;
             }
 
-            /* Versió mòbil de la línia del temps */
+            /* Mobile version of timeline */
             .timeline-path {
                 left: 30px;
                 transform: none;
@@ -611,21 +616,21 @@
     <div class="container">
         <div class="background" id="background"></div>
         <div class="name visible" id="name">Mariona Guisado</div>
-        <a href="#" class="enter-button" id="enterButton">Entrar</a>
+        <a href="#" class="enter-button" id="enterButton">Enter</a>
         <div class="transition" id="transition"></div>
         
         <div class="main-content" id="mainContent">
             <div class="new-background" id="newBackground"></div>
             <div class="nav-menu" id="navMenu">
-                <a href="#sobre-mi" class="nav-item">Sobre mi</a>
-                <a href="#formacio" class="nav-item">Formació</a>
-                <a href="#habilitats" class="nav-item">Habilitats</a>
-                <a href="#projectes" class="nav-item">Projectes</a>
-                <a href="#contacte" class="nav-item">Contacte</a>
+                <a href="#sobre-mi" class="nav-item">About Me</a>
+                <a href="#formacio" class="nav-item">Education</a>
+                <a href="#habilitats" class="nav-item">Skills</a>
+                <a href="#projectes" class="nav-item">Projects</a>
+                <a href="#contacte" class="nav-item">Contact</a>
             </div>
 
             <section id="sobre-mi" class="section">
-                <h2 class="section-title">Sobre mi</h2>
+                <h2 class="section-title">About Me</h2>
                 <div class="about-text-container">
                     <p id="typed-text" class="typed-text"></p>
                     <p id="personal-text" class="personal-text"></p>
@@ -633,44 +638,44 @@
             </section>
 
             <section id="formacio" class="section">
-                <h2 class="section-title">Formació</h2>
+                <h2 class="section-title">Education</h2>
                 <div class="section-content">
                     <div class="timeline-container">
                         <div class="timeline-path"></div>
                         <div class="timeline-items">
-                            <!-- Educació Primària -->
+                            <!-- Primary Education -->
                             <div class="timeline-marker">
                                 <div class="timeline-image">
-                                    <img src="primaria.jpg" alt="Educació Primària">
+                                    <img src="primaria.jpg" alt="Primary Education">
                                 </div>
                                 <div class="timeline-content">
                                     <div class="timeline-year">2005-2012</div>
-                                    <h3 class="timeline-title">Educació Primària</h3>
-                                    <p class="timeline-description">El començament del viatge</p>
+                                    <h3 class="timeline-title">Primary Education</h3>
+                                    <p class="timeline-description">The beginning of the journey</p>
                                 </div>
                             </div>
                             
-                            <!-- ESO -->
+                            <!-- Secondary Education -->
                             <div class="timeline-marker">
                                 <div class="timeline-image">
-                                    <img src="eso.jpg" alt="Educació Secundària">
+                                    <img src="eso.jpg" alt="Secondary Education">
                                 </div>
                                 <div class="timeline-content">
                                     <div class="timeline-year">2012-2016</div>
-                                    <h3 class="timeline-title">Educació Secundària</h3>
+                                    <h3 class="timeline-title">Secondary Education</h3>
                                     <p class="timeline-description">ESO</p>
                                 </div>
                             </div>
                             
-                            <!-- Batxillerat -->
+                            <!-- High School -->
                             <div class="timeline-marker">
                                 <div class="timeline-image">
-                                    <img src="batxillerat.jpg" alt="Batxillerat">
+                                    <img src="batxillerat.jpg" alt="High School">
                                 </div>
                                 <div class="timeline-content">
                                     <div class="timeline-year">2016-2018</div>
-                                    <h3 class="timeline-title">Batxillerat</h3>
-                                    <p class="timeline-description">Batxillerat científic</p>
+                                    <h3 class="timeline-title">High School</h3>
+                                    <p class="timeline-description">Science track</p>
                                 </div>
                             </div>
                         </div>
@@ -679,6 +684,7 @@
             </section>
 
             <section id="habilitats" class="section">
+                <h2 class="section-title">Skills</h2>
                 <div class="skills-container">
                     <!-- Hard Skills -->
                     <div class="skill-column" onclick="toggleSkillColumn(this)">
@@ -686,26 +692,26 @@
                         <div class="skill-content">
                             <h3 class="skill-title">Hard Skills</h3>
                             <ul class="skill-list">
-                                <li>Python (Nivell avançat)</li>
+                                <li>Python (Advanced level)</li>
                                 <li>SQL (MySQL, PostgreSQL)</li>
                                 <li>Data Warehousing</li>
-                                <li>Processos ETL</li>
-                                <li>Tecnologies Big Data</li>
-                                <li>Visualització de dades</li>
+                                <li>ETL Processes</li>
+                                <li>Big Data Technologies</li>
+                                <li>Data Visualization</li>
                             </ul>
                         </div>
                     </div>
                     
                     <!-- Languages -->
                     <div class="skill-column" onclick="toggleSkillColumn(this)">
-                        <img src="languages-bg.jpg" alt="Idiomes" class="skill-image">
+                        <img src="languages-bg.jpg" alt="Languages" class="skill-image">
                         <div class="skill-content">
-                            <h3 class="skill-title">Idiomes</h3>
+                            <h3 class="skill-title">Languages</h3>
                             <ul class="skill-list">
-                                <li>Català (Natiu)</li>
-                                <li>Castellà (Natiu)</li>
-                                <li>Anglès (C1 Advanced)</li>
-                                <li>Francès (B1 Intermedi)</li>
+                                <li>Catalan (Native)</li>
+                                <li>Spanish (Native)</li>
+                                <li>English (C1 Advanced)</li>
+                                <li>French (B1 Intermediate)</li>
                             </ul>
                         </div>
                     </div>
@@ -716,12 +722,12 @@
                         <div class="skill-content">
                             <h3 class="skill-title">Soft Skills</h3>
                             <ul class="skill-list">
-                                <li>Treball en equip</li>
-                                <li>Resolució de problemes</li>
-                                <li>Pensament crític</li>
-                                <li>Adaptabilitat</li>
-                                <li>Comunicació efectiva</li>
-                                <li>Lideratge</li>
+                                <li>Teamwork</li>
+                                <li>Problem Solving</li>
+                                <li>Critical Thinking</li>
+                                <li>Adaptability</li>
+                                <li>Effective Communication</li>
+                                <li>Leadership</li>
                             </ul>
                         </div>
                     </div>
@@ -729,32 +735,32 @@
             </section>
 
             <section id="projectes" class="section">
-                <h2 class="section-title">Projectes</h2>
+                <h2 class="section-title">Projects</h2>
                 <div class="section-content">
-                    <!-- Contingut de projectes aquí -->
+                    <!-- Projects content here -->
                 </div>
             </section>
 
             <section id="contacte" class="section">
                 <div class="contacte-container">
-                    <h2 class="contacte-title">Contacta'm</h2>
+                    <h2 class="contacte-title">Contact Me</h2>
                     <form class="contacte-form" id="contactForm">
                         <div class="form-group">
-                            <label for="contact-name">Nom</label>
+                            <label for="contact-name">Name</label>
                             <input type="text" id="contact-name" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="contact-email">Correu electrònic</label>
+                            <label for="contact-email">Email</label>
                             <input type="email" id="contact-email" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="contact-message">Missatge</label>
+                            <label for="contact-message">Message</label>
                             <textarea id="contact-message" class="form-control" required></textarea>
                         </div>
                         
-                        <button type="submit" class="submit-btn">Enviar missatge</button>
+                        <button type="submit" class="submit-btn">Send Message</button>
                     </form>
                 </div>
             </section>
@@ -762,12 +768,12 @@
     </div>
 
     <script>
-        // Variables globals
+        // Global variables
         let lastScrollPosition = 0;
         const nameElement = document.getElementById('name');
         const enterButton = document.getElementById('enterButton');
         
-        // Funció per mostrar/amagar el nom en fer scroll
+        // Function to show/hide name when scrolling
         function handleScroll() {
             const currentScrollPosition = window.pageYOffset;
             
@@ -794,13 +800,13 @@
             const newBackground = document.getElementById('newBackground');
             const navMenu = document.getElementById('navMenu');
             
-            // 1. La pantalla blanca puja
+            // 1. White screen rises
             transition.style.bottom = '100%';
             
-            // 2. Amagar el botó d'entrar
+            // 2. Hide enter button
             enterButton.classList.add('hidden');
             
-            // 3. Canviar el color del nom a negre, moure'l cap amunt i reduir la mida
+            // 3. Change name color to black, move it up and reduce size
             setTimeout(() => {
                 name.style.color = 'black';
                 name.style.textShadow = 'none';
@@ -808,39 +814,39 @@
                 name.style.fontSize = '3rem';
             }, 500);
             
-            // 4. Mostrar el contingut principal quan la transició acabi
+            // 4. Show main content when transition ends
             setTimeout(() => {
                 mainContent.style.display = 'block';
                 
-                // 5. Mostrar nova imatge i menú
+                // 5. Show new image and menu
                 setTimeout(() => {
                     newBackground.style.opacity = '1';
                     navMenu.style.opacity = '1';
                     
-                    // Efecte d'escriptura per als dos paràgrafs
+                    // Typing effect for both paragraphs
                     const aboutText = "As a dedicated Data Engineering student, I am passionate about leveraging big data to drive decision-making and innovation. With hands-on experience in Python and data warehousing, I have developed a strong foundation in data management and analytics. I am eager to contribute to impactful projects and collaborate with industry professionals.";
                     const personalText = "I'm passionate about exploring new places and capturing moments through photography. I love fashion, sharing my style on Instagram, and expressing my creativity through writing and painting.";
                     
                     const typedElement = document.getElementById('typed-text');
                     const personalElement = document.getElementById('personal-text');
                     
-                    // Primer paràgraf
+                    // First paragraph
                     typeWriter(aboutText, typedElement, 20, function() {
-                        // Segon paràgraf (s'inicia quan acaba el primer)
+                        // Second paragraph (starts when first ends)
                         personalElement.style.borderRight = '2px solid #2a9d8f';
                         typeWriter(personalText, personalElement, 20);
                     });
                 }, 100);
                 
-                // Amagar el fons inicial
+                // Hide initial background
                 background.style.opacity = '0';
                 
-                // Afegir event listener per al scroll
+                // Add scroll event listener
                 window.addEventListener('scroll', handleScroll);
             }, 1000);
         });
 
-        // Navegació suau a les seccions
+        // Smooth navigation to sections
         document.querySelectorAll('.nav-item').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -851,7 +857,7 @@
             });
         });
 
-        // Typing effect for About section (amb callback)
+        // Typing effect for About section (with callback)
         function typeWriter(text, element, speed, callback) {
             let i = 0;
             element.innerHTML = '';
@@ -871,26 +877,26 @@
             }, speed);
         }
 
-        // Funció per expandir/contraure les columnes d'habilitats
+        // Function to expand/collapse skills columns
         function toggleSkillColumn(column) {
             const currentlyActive = document.querySelector('.skill-column.active');
             
-            // Si la columna clicada ja està activa, la tanquem
+            // If clicked column is already active, close it
             if (column.classList.contains('active')) {
                 column.classList.remove('active');
                 return;
             }
             
-            // Si hi ha una altra columna activa, la tanquem primer
+            // If another column is active, close it first
             if (currentlyActive) {
                 currentlyActive.classList.remove('active');
             }
             
-            // Obrim la nova columna
+            // Open new column
             column.classList.add('active');
         }
 
-        // Tancar columna al fer clic fora
+        // Close column when clicking outside
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.skill-column') && !e.target.classList.contains('skill-column')) {
                 const activeColumn = document.querySelector('.skill-column.active');
@@ -900,7 +906,7 @@
             }
         });
 
-        // Funció per gestionar el formulari de contacte
+        // Function to handle contact form
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -908,16 +914,16 @@
             const email = document.getElementById('contact-email').value;
             const message = document.getElementById('contact-message').value;
             
-            console.log('Formulari enviat:', { name, email, message });
+            console.log('Form submitted:', { name, email, message });
             
-            // Mostrar missatge d'èxit
-            alert('Missatge enviat amb èxit! Gràcies per contactar.');
+            // Show success message
+            alert('Message sent successfully! Thank you for contacting me.');
             
-            // Netejar el formulari
+            // Clear form
             this.reset();
         });
 
-        // Carregar imatge de fons d'habilitats quan la secció és visible
+        // Load skills background image when section is visible
         document.addEventListener('DOMContentLoaded', function() {
             const habilitatsSection = document.getElementById('habilitats');
             const skillsContainer = habilitatsSection.querySelector('.skills-container');
@@ -925,7 +931,7 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Mostrar contingut
+                        // Show content
                         setTimeout(() => {
                             skillsContainer.classList.add('visible');
                         }, 500);
