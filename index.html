@@ -13,7 +13,7 @@
             padding: 0;
             height: 100vh;
             overflow: hidden;
-            font-family: 'Playfair+Display', serif;
+            font-family: 'Playfair Display', serif;
         }
 
         .container {
@@ -73,7 +73,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
             z-index: 3;
-            font-family: 'Playfair+Display', serif;
+            font-family: 'Playfair Display', serif;
         }
 
         .enter-button.hidden {
@@ -404,8 +404,9 @@
             backface-visibility: hidden;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
-            padding-bottom: 200px;
+            padding-bottom: 300px;
             padding-left: 100px;
+            min-height: 100vh;
         }
 
         .contacte-container {
@@ -413,19 +414,23 @@
             max-width: 800px;
             background-color: rgba(255, 255, 255, 0.85);
             border-radius: 15px;
-            padding: 40px;
-            margin: 0 0 50px 50px;
+            padding: 60px 40px 40px;
+            margin: 0 0 150px 50px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            top: 200px;
         }
 
         .contacte-form {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 40px;
+            margin-top: 40px;
         }
 
         .form-group {
             position: relative;
+            margin-bottom: 15px;
         }
 
         .form-group label {
@@ -445,7 +450,7 @@
             border: 2px solid #2a9d8f;
             border-radius: 8px;
             font-size: 1rem;
-            font-family: 'Playfair+Display', serif;
+            font-family: 'Playfair Display', serif;
             background-color: rgba(255, 255, 255, 0.8);
             transition: all 0.3s ease;
         }
@@ -457,7 +462,7 @@
         }
 
         textarea.form-control {
-            min-height: 150px;
+            min-height: 200px;
             resize: vertical;
         }
 
@@ -470,9 +475,9 @@
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Playfair+Display', serif;
+            font-family: 'Playfair Display', serif;
             font-weight: 500;
-            margin-top: 10px;
+            margin-top: 30px;
         }
 
         .submit-btn:hover {
@@ -557,6 +562,7 @@
             font-size: 1rem;
             color: #555;
             font-weight: 400;
+            line-height: 1.6;
         }
 
         /* Other sections */
@@ -566,7 +572,7 @@
             background-size: cover;
         }
 
-        /* Estils responsius */
+        /* Responsive styles */
         @media (max-width: 768px) {
             .name {
                 font-size: 3rem;
@@ -598,7 +604,7 @@
                 margin: 20px;
             }
 
-            /* Mobile version of skills */
+            /* Mobile skills */
             .skills-container {
                 flex-direction: column;
                 height: auto;
@@ -627,26 +633,42 @@
                 font-size: 1rem;
             }
 
-            /* Mobile version of contact */
+            /* Mobile contact */
             #contacte {
                 padding-left: 20px;
-                padding-bottom: 100px;
+                padding-bottom: 200px;
                 justify-content: center;
             }
             
             .contacte-container {
-                padding: 25px;
+                padding: 40px 25px;
                 margin: 15px;
                 width: 90%;
+                top: 100px;
+            }
+            
+            .contacte-form {
+                gap: 30px;
+                margin-top: 30px;
+            }
+            
+            .form-control {
+                padding: 12px 15px;
+            }
+            
+            .submit-btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+                margin-top: 20px;
             }
 
-            /* Mobile version of projects */
+            /* Mobile projects */
             .project-title {
                 font-size: 1.5rem;
                 padding: 10px;
             }
 
-            /* Mobile version of timeline */
+            /* Mobile timeline */
             .timeline-path {
                 left: 30px;
                 transform: none;
@@ -834,7 +856,7 @@
             <section id="projectes" class="section">
                 <video autoplay muted loop class="video-background">
                     <source src="texto.mp4" type="video/mp4">
-                    El teu navegador no suporta videos HTML5.
+                    Your browser does not support HTML5 video.
                 </video>
                 <h2 class="project-title top-left">Project 1</h2>
                 <h2 class="project-title top-right">Project 2</h2>
@@ -844,6 +866,7 @@
 
             <section id="contacte" class="section">
                 <div class="contacte-container">
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 40px;">Contact Me</h2>
                     <form class="contacte-form" id="contactForm">
                         <div class="form-group">
                             <label for="contact-name">Name</label>
@@ -857,7 +880,7 @@
                         
                         <div class="form-group">
                             <label for="contact-message">Message</label>
-                            <textarea id="contact-message" class="form-control" required></textarea>
+                            <textarea id="contact-message" class="form-control" required style="min-height: 200px;"></textarea>
                         </div>
                         
                         <button type="submit" class="submit-btn">Send Message</button>
