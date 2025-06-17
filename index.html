@@ -13,7 +13,7 @@
             padding: 0;
             height: 100vh;
             overflow: hidden;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair+Display', serif;
         }
 
         .container {
@@ -73,7 +73,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
             z-index: 3;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair+Display', serif;
         }
 
         .enter-button.hidden {
@@ -393,7 +393,7 @@
             text-align: right;
         }
 
-        /* Contact Section */
+        /* Contact Section - MODIFIED */
         #contacte {
             background: url('contacte-bg.jpg') center/cover no-repeat;
             position: relative;
@@ -404,17 +404,18 @@
             backface-visibility: hidden;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
-            padding-bottom: 150px;
-            padding-left: 50px;
+            padding-bottom: 200px;
+            padding-left: 100px;
         }
 
         .contacte-container {
             width: 100%;
             max-width: 800px;
-            background-color: transparent;
+            background-color: rgba(255, 255, 255, 0.85);
             border-radius: 15px;
             padding: 40px;
-            margin: 20px 20px 20px 50px;
+            margin: 0 0 50px 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .contacte-form {
@@ -444,7 +445,7 @@
             border: 2px solid #2a9d8f;
             border-radius: 8px;
             font-size: 1rem;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair+Display', serif;
             background-color: rgba(255, 255, 255, 0.8);
             transition: all 0.3s ease;
         }
@@ -469,7 +470,7 @@
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair+Display', serif;
             font-weight: 500;
             margin-top: 10px;
         }
@@ -636,19 +637,7 @@
             .contacte-container {
                 padding: 25px;
                 margin: 15px;
-            }
-            
-            .contacte-form {
-                gap: 20px;
-            }
-            
-            .form-control {
-                padding: 12px 15px;
-            }
-            
-            .submit-btn {
-                padding: 12px 25px;
-                font-size: 1rem;
+                width: 90%;
             }
 
             /* Mobile version of projects */
@@ -754,9 +743,30 @@
                                     <img src="batxillerat.jpg" alt="High School">
                                 </div>
                                 <div class="timeline-content">
-                                    <div class="timeline-year">2016-2018</div>
-                                    <h3 class="timeline-title">High School</h3>
-                                    <p class="timeline-description">Science track</p>
+                                    <div class="timeline-year">2011-2023</div>
+                                    <h3 class="timeline-title">Escola Ginebró - High School Diploma</h3>
+                                    <p class="timeline-description">
+                                        Barcelona, Spain<br>
+                                        Final Grade: 9.3 / 10
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- University -->
+                            <div class="timeline-marker">
+                                <div class="timeline-image">
+                                    <img src="uab.jpg" alt="Universitat Autònoma de Barcelona">
+                                </div>
+                                <div class="timeline-content">
+                                    <div class="timeline-year">2023-2027 (expected)</div>
+                                    <h3 class="timeline-title">Universitat Autònoma de Barcelona</h3>
+                                    <p class="timeline-description">
+                                        Bachelor of Data Engineering<br>
+                                        Current GPA: 7.8 / 10<br>
+                                        Honors: Mathematics<br>
+                                        Relevant Coursework: Python Programming, Business Organization and Management, Computer Networks, SQL<br>
+                                        Leadership: Elected Class Representative
+                                    </p>
                                 </div>
                             </div>
                         </div>
