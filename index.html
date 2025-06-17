@@ -219,7 +219,7 @@
             font-weight: 400;
         }
 
-        /* Skills Section - MODIFICADO PARA TÍTULOS VISIBLES */
+        /* Skills Section */
         #habilitats {
             position: relative;
             display: flex;
@@ -249,6 +249,33 @@
             flex: 3;
         }
 
+        .skill-title-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            width: 100%;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .skill-title {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+            padding: 10px 0;
+            background-color: rgba(42, 157, 143, 0.3);
+            backdrop-filter: blur(2px);
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .skill-column.active .skill-title {
+            background-color: rgba(42, 157, 143, 0.5);
+        }
+
         .skill-image {
             width: 100%;
             height: 100%;
@@ -257,32 +284,9 @@
             position: relative;
         }
 
-        .skill-image::before {
-            content: attr(data-title);
-            position: absolute;
-            top: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: white;
-            font-size: 2.5rem;
-            font-weight: 600;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
-            z-index: 3;
-            opacity: 1 !important;
-            display: block !important;
-            padding: 10px 0;
-            background-color: rgba(42, 157, 143, 0.3);
-            backdrop-filter: blur(2px);
-        }
-
         .skill-column.active .skill-image {
             transform: scale(1.05);
             filter: brightness(0.7);
-        }
-
-        .skill-column.active .skill-image::before {
-            background-color: rgba(42, 157, 143, 0.5);
         }
 
         .skill-content {
@@ -329,6 +333,64 @@
             color: #2a9d8f;
             margin-right: 10px;
             font-size: 1.5rem;
+        }
+
+        /* Projects Section */
+        #projectes {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .project-title {
+            position: absolute;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            z-index: 2;
+            padding: 20px;
+            background-color: rgba(42, 157, 143, 0.5);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .project-title:hover {
+            background-color: rgba(42, 157, 143, 0.7);
+            transform: scale(1.05);
+        }
+
+        .top-left {
+            top: 20px;
+            left: 20px;
+        }
+
+        .top-right {
+            top: 20px;
+            right: 20px;
+            text-align: right;
+        }
+
+        .bottom-left {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .bottom-right {
+            bottom: 20px;
+            right: 20px;
+            text-align: right;
         }
 
         /* Contact Section */
@@ -418,58 +480,6 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Projects Section */
-        #projectes {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
-
-        .project-title {
-            position: absolute;
-            color: white;
-            font-size: 2.5rem;
-            font-weight: 500;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            z-index: 2;
-            padding: 20px;
-            background-color: rgba(42, 157, 143, 0.5);
-            border-radius: 5px;
-        }
-
-        .top-left {
-            top: 20px;
-            left: 20px;
-        }
-
-        .top-right {
-            top: 20px;
-            right: 20px;
-            text-align: right;
-        }
-
-        .bottom-left {
-            bottom: 20px;
-            left: 20px;
-        }
-
-        .bottom-right {
-            bottom: 20px;
-            right: 20px;
-            text-align: right;
-        }
-
         /* Timeline */
         .timeline-container {
             position: relative;
@@ -555,6 +565,7 @@
             background-size: cover;
         }
 
+        /* Estils responsius */
         @media (max-width: 768px) {
             .name {
                 font-size: 3rem;
@@ -602,7 +613,7 @@
                 height: 66.66vh;
             }
 
-            .skill-image::before {
+            .skill-title {
                 font-size: 1.8rem;
                 padding: 5px 0;
             }
@@ -758,7 +769,10 @@
                 <div class="skills-container">
                     <!-- Hard Skills -->
                     <div class="skill-column" onclick="toggleSkillColumn(this)">
-                        <img src="hard-skills-bg.jpg" alt="Hard Skills" class="skill-image" data-title="HARD SKILLS">
+                        <div class="skill-title-container">
+                            <h3 class="skill-title">HARD SKILLS</h3>
+                        </div>
+                        <img src="hard-skills-bg.jpg" alt="Hard Skills" class="skill-image">
                         <div class="skill-content">
                             <ul class="skill-list">
                                 <li>Python (Advanced level)</li>
@@ -773,7 +787,10 @@
                     
                     <!-- Languages -->
                     <div class="skill-column" onclick="toggleSkillColumn(this)">
-                        <img src="languages-bg.jpg" alt="Languages" class="skill-image" data-title="LANGUAGES">
+                        <div class="skill-title-container">
+                            <h3 class="skill-title">LANGUAGES</h3>
+                        </div>
+                        <img src="languages-bg.jpg" alt="Languages" class="skill-image">
                         <div class="skill-content">
                             <ul class="skill-list">
                                 <li>Catalan (Native)</li>
@@ -786,7 +803,10 @@
                     
                     <!-- Soft Skills -->
                     <div class="skill-column" onclick="toggleSkillColumn(this)">
-                        <img src="soft-skills-bg.jpg" alt="Soft Skills" class="skill-image" data-title="SOFT SKILLS">
+                        <div class="skill-title-container">
+                            <h3 class="skill-title">SOFT SKILLS</h3>
+                        </div>
+                        <img src="soft-skills-bg.jpg" alt="Soft Skills" class="skill-image">
                         <div class="skill-content">
                             <ul class="skill-list">
                                 <li>Teamwork</li>
@@ -803,8 +823,8 @@
 
             <section id="projectes" class="section">
                 <video autoplay muted loop class="video-background">
-                    <source src="project-video.mp4" type="video/mp4">
-                    Tu navegador no soporta videos HTML5.
+                    <source src="texto.mp4" type="video/mp4">
+                    El teu navegador no suporta videos HTML5.
                 </video>
                 <h2 class="project-title top-left">Project 1</h2>
                 <h2 class="project-title top-right">Project 2</h2>
