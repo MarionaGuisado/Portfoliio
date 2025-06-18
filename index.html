@@ -110,7 +110,7 @@
             transform: translate(-50%, -50%);
             width: 85%;
             height: 75%;
-            background-image: url('i2.jpg');
+            background-image: url('img2.jpg');
             background-size: cover;
             background-position: center;
             opacity: 0;
@@ -153,7 +153,6 @@
             transform: scale(1.05);
         }
 
-        /* Sections */
         .section {
             min-height: 100vh;
             padding: 0;
@@ -185,7 +184,6 @@
             z-index: 2;
         }
 
-        /* About Me Section */
         #sobre-mi {
             background: url('sobre-mi-bg.jpg') center/cover no-repeat;
             position: relative;
@@ -220,52 +218,54 @@
             font-weight: 400;
         }
 
-        /* Education Section */
-        #formacio { 
+        /* Nueva sección Educación simplificada */
+        #formacio {
             background-color: #f8f9fa;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 40px 20px;
         }
 
-        .education-image-container {
-            position: relative;
-            width: 80%;
+        .education-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             max-width: 800px;
-            margin: 0 auto;
+            width: 100%;
         }
 
         .education-image {
             width: 100%;
+            max-width: 600px;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
         }
 
-        .education-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(42, 157, 143, 0.8);
-            color: white;
-            padding: 20px;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
+        .education-info {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .education-overlay h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.8rem;
+        .education-info h3 {
+            color: #2a9d8f;
+            font-size: 2rem;
+            margin-bottom: 15px;
         }
 
-        .education-overlay p {
-            margin: 5px 0;
+        .education-info p {
             font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            color: #333;
         }
 
-        /* Skills Section */
         #habilitats {
             position: relative;
             display: flex;
@@ -381,7 +381,6 @@
             font-size: 1.5rem;
         }
 
-        /* Projects Section */
         #projectes {
             position: relative;
             height: 100vh;
@@ -439,7 +438,6 @@
             text-align: right;
         }
 
-        /* Contact Section */
         #contacte {
             background: url('contacte-bg.jpg') center/cover no-repeat;
             position: relative;
@@ -526,7 +524,6 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Responsive styles */
         @media (max-width: 768px) {
             .name {
                 font-size: 3rem;
@@ -558,20 +555,20 @@
                 margin: 20px;
             }
 
-            /* Education Section Mobile */
-            .education-image-container {
-                width: 90%;
+            /* Educación responsive */
+            .education-info {
+                padding: 20px;
             }
             
-            .education-overlay h3 {
-                font-size: 1.4rem;
+            .education-info h3 {
+                font-size: 1.5rem;
             }
             
-            .education-overlay p {
+            .education-info p {
                 font-size: 1rem;
             }
 
-            /* Mobile version of skills */
+            /* Skills responsive */
             .skills-container {
                 flex-direction: column;
                 height: auto;
@@ -587,15 +584,7 @@
                 height: 66.66vh;
             }
 
-            .skill-image::before {
-                font-size: 1.5rem;
-            }
-
-            .skill-list li {
-                font-size: 1rem;
-            }
-
-            /* Mobile version of contact */
+            /* Contacto responsive */
             #contacte {
                 padding-left: 20px;
                 padding-bottom: 100px;
@@ -649,12 +638,15 @@
 
             <section id="formacio" class="section">
                 <h2 class="section-title">Education</h2>
-                <div class="education-image-container">
+                <div class="education-container">
                     <img src="uab.jpg" alt="Universitat Autònoma de Barcelona" class="education-image">
-                    <div class="education-overlay">
+                    <div class="education-info">
                         <h3>Universitat Autònoma de Barcelona</h3>
-                        <p>Bachelor of Data Engineering (2023-2027)</p>
+                        <p><strong>Bachelor of Data Engineering</strong> (2023-2027)</p>
                         <p>Current GPA: 7.8 / 10</p>
+                        <p>Honors: Mathematics</p>
+                        <p>Relevant Coursework: Python Programming, Business Organization, Computer Networks, SQL</p>
+                        <p>Leadership: Elected Class Representative</p>
                     </div>
                 </div>
             </section>
@@ -662,7 +654,6 @@
             <section id="habilitats" class="section">
                 <h2 class="section-title">Skills</h2>
                 <div class="skills-container">
-                    <!-- Hard Skills -->
                     <div class="skill-column" onclick="toggleSkillColumn(this)">
                         <div class="skill-title-container">
                             <h3 class="skill-title">HARD SKILLS</h3>
@@ -680,7 +671,6 @@
                         </div>
                     </div>
                     
-                    <!-- Languages -->
                     <div class="skill-column" onclick="toggleSkillColumn(this)">
                         <div class="skill-title-container">
                             <h3 class="skill-title">LANGUAGES</h3>
@@ -696,7 +686,6 @@
                         </div>
                     </div>
                     
-                    <!-- Soft Skills -->
                     <div class="skill-column" onclick="toggleSkillColumn(this)">
                         <div class="skill-title-container">
                             <h3 class="skill-title">SOFT SKILLS</h3>
