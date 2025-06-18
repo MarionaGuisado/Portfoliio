@@ -108,8 +108,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 70%;
-            height: 60%;
+            width: 85%;  /* Aumentado de 70% a 85% */
+            height: 75%; /* Aumentado de 60% a 75% */
             background-image: url('img2.jpg');
             background-size: cover;
             background-position: center;
@@ -117,6 +117,7 @@
             transition: opacity 1s ease;
             border-radius: 0;
             box-shadow: none;
+            z-index: 5;
         }
 
         .nav-menu {
@@ -393,41 +394,34 @@
             text-align: right;
         }
 
-        /* Improved Contact Section */
+        /* Contact Section */
         #contacte {
             background: url('contacte-bg.jpg') center/cover no-repeat;
             position: relative;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 150px 20px 100px;
-            box-sizing: border-box;
+            align-items: flex-end;
+            justify-content: flex-start;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            padding-bottom: 150px;
+            padding-left: 50px;
         }
 
         .contacte-container {
             width: 100%;
-            max-width: 700px;
-            background-color: rgba(255, 255, 255, 0.92);
-            border-radius: 12px;
-            padding: 50px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-            position: relative;
-            z-index: 2;
-        }
-
-        .contact-title {
-            font-size: 2.5rem;
-            color: #2a9d8f;
-            margin-bottom: 30px;
-            text-align: center;
-            font-weight: 500;
+            max-width: 800px;
+            background-color: transparent;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 20px 20px 20px 50px;
         }
 
         .contacte-form {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 25px;
         }
 
         .form-group {
@@ -436,37 +430,34 @@
 
         .form-group label {
             position: absolute;
-            top: -12px;
+            top: -10px;
             left: 20px;
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 0 10px;
             color: #2a9d8f;
             font-size: 1rem;
             font-weight: 500;
-            z-index: 2;
         }
 
         .form-control {
             width: 100%;
-            padding: 18px 20px;
-            border: 2px solid #e0e0e0;
+            padding: 15px 20px;
+            border: 2px solid #2a9d8f;
             border-radius: 8px;
             font-size: 1rem;
             font-family: 'Playfair Display', serif;
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.8);
             transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: #2a9d8f;
-            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
+            border-color: #e76f51;
+            box-shadow: 0 0 0 3px rgba(231, 111, 81, 0.2);
         }
 
         textarea.form-control {
-            min-height: 180px;
+            min-height: 150px;
             resize: vertical;
         }
 
@@ -474,7 +465,7 @@
             background-color: #2a9d8f;
             color: white;
             border: none;
-            padding: 16px 30px;
+            padding: 15px 30px;
             font-size: 1.1rem;
             border-radius: 8px;
             cursor: pointer;
@@ -482,7 +473,6 @@
             font-family: 'Playfair Display', serif;
             font-weight: 500;
             margin-top: 10px;
-            width: 100%;
         }
 
         .submit-btn:hover {
@@ -567,7 +557,6 @@
             font-size: 1rem;
             color: #555;
             font-weight: 400;
-            line-height: 1.6;
         }
 
         /* Other sections */
@@ -577,6 +566,10 @@
             background-size: cover;
         }
 
+        #projectes { 
+            background-color: #e9ecef;
+        }
+
         /* Responsive styles */
         @media (max-width: 768px) {
             .name {
@@ -584,8 +577,8 @@
             }
             
             .new-background {
-                width: 90%;
-                height: 50%;
+                width: 95%;  /* Aumentado para móviles */
+                height: 65%; /* Aumentado para móviles */
             }
             
             .nav-item {
@@ -609,7 +602,7 @@
                 margin: 20px;
             }
 
-            /* Mobile skills */
+            /* Mobile version of skills */
             .skills-container {
                 flex-direction: column;
                 height: auto;
@@ -625,53 +618,40 @@
                 height: 66.66vh;
             }
 
-            .skill-title {
-                font-size: 1.8rem;
-                padding: 5px 0;
-            }
-
-            .skill-list {
-                margin: 70px 0 0;
+            .skill-image::before {
+                font-size: 1.5rem;
             }
 
             .skill-list li {
                 font-size: 1rem;
             }
 
-            /* Mobile contact */
+            /* Mobile version of contact */
             #contacte {
-                padding: 100px 15px 80px;
+                padding-left: 20px;
+                padding-bottom: 100px;
+                justify-content: center;
             }
             
             .contacte-container {
-                padding: 30px;
-            }
-            
-            .contact-title {
-                font-size: 2rem;
-                margin-bottom: 25px;
+                padding: 25px;
+                margin: 15px;
             }
             
             .contacte-form {
-                gap: 25px;
+                gap: 20px;
             }
             
             .form-control {
-                padding: 15px;
+                padding: 12px 15px;
             }
             
             .submit-btn {
-                padding: 14px 25px;
+                padding: 12px 25px;
                 font-size: 1rem;
             }
 
-            /* Mobile projects */
-            .project-title {
-                font-size: 1.5rem;
-                padding: 10px;
-            }
-
-            /* Mobile timeline */
+            /* Mobile version of timeline */
             .timeline-path {
                 left: 30px;
                 transform: none;
@@ -869,7 +849,6 @@
 
             <section id="contacte" class="section">
                 <div class="contacte-container">
-                    <h2 class="contact-title">Contact Me</h2>
                     <form class="contacte-form" id="contactForm">
                         <div class="form-group">
                             <label for="contact-name">Name</label>
@@ -955,7 +934,7 @@
             setTimeout(() => {
                 mainContent.style.display = 'block';
                 
-                // 5. Show new image and menu
+                // 5. Show new image (now larger) and menu
                 setTimeout(() => {
                     newBackground.style.opacity = '1';
                     navMenu.style.opacity = '1';
