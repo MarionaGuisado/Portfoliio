@@ -393,76 +393,80 @@
             text-align: right;
         }
 
-        /* Contact Section - MODIFIED */
+        /* Improved Contact Section */
         #contacte {
             background: url('contacte-bg.jpg') center/cover no-repeat;
             position: relative;
             display: flex;
-            align-items: flex-end;
-            justify-content: flex-start;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
-            padding-bottom: 300px;
-            padding-left: 100px;
+            align-items: center;
+            justify-content: center;
             min-height: 100vh;
+            padding: 150px 20px 100px;
+            box-sizing: border-box;
         }
 
         .contacte-container {
             width: 100%;
-            max-width: 800px;
-            background-color: rgba(255, 255, 255, 0.85);
-            border-radius: 15px;
-            padding: 60px 40px 40px;
-            margin: 0 0 150px 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 700px;
+            background-color: rgba(255, 255, 255, 0.92);
+            border-radius: 12px;
+            padding: 50px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
             position: relative;
-            top: 200px;
+            z-index: 2;
+        }
+
+        .contact-title {
+            font-size: 2.5rem;
+            color: #2a9d8f;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 500;
         }
 
         .contacte-form {
             display: flex;
             flex-direction: column;
-            gap: 40px;
-            margin-top: 40px;
+            gap: 30px;
         }
 
         .form-group {
             position: relative;
-            margin-bottom: 15px;
         }
 
         .form-group label {
             position: absolute;
-            top: -10px;
+            top: -12px;
             left: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: white;
             padding: 0 10px;
             color: #2a9d8f;
             font-size: 1rem;
             font-weight: 500;
+            z-index: 2;
         }
 
         .form-control {
             width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #2a9d8f;
+            padding: 18px 20px;
+            border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 1rem;
             font-family: 'Playfair Display', serif;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: white;
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: #e76f51;
-            box-shadow: 0 0 0 3px rgba(231, 111, 81, 0.2);
+            border-color: #2a9d8f;
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
         }
 
         textarea.form-control {
-            min-height: 200px;
+            min-height: 180px;
             resize: vertical;
         }
 
@@ -470,14 +474,15 @@
             background-color: #2a9d8f;
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 16px 30px;
             font-size: 1.1rem;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Playfair Display', serif;
             font-weight: 500;
-            margin-top: 30px;
+            margin-top: 10px;
+            width: 100%;
         }
 
         .submit-btn:hover {
@@ -635,31 +640,29 @@
 
             /* Mobile contact */
             #contacte {
-                padding-left: 20px;
-                padding-bottom: 200px;
-                justify-content: center;
+                padding: 100px 15px 80px;
             }
             
             .contacte-container {
-                padding: 40px 25px;
-                margin: 15px;
-                width: 90%;
-                top: 100px;
+                padding: 30px;
+            }
+            
+            .contact-title {
+                font-size: 2rem;
+                margin-bottom: 25px;
             }
             
             .contacte-form {
-                gap: 30px;
-                margin-top: 30px;
+                gap: 25px;
             }
             
             .form-control {
-                padding: 12px 15px;
+                padding: 15px;
             }
             
             .submit-btn {
-                padding: 12px 25px;
+                padding: 14px 25px;
                 font-size: 1rem;
-                margin-top: 20px;
             }
 
             /* Mobile projects */
@@ -866,7 +869,7 @@
 
             <section id="contacte" class="section">
                 <div class="contacte-container">
-                    <h2 class="section-title" style="text-align: left; margin-bottom: 40px;">Contact Me</h2>
+                    <h2 class="contact-title">Contact Me</h2>
                     <form class="contacte-form" id="contactForm">
                         <div class="form-group">
                             <label for="contact-name">Name</label>
@@ -880,7 +883,7 @@
                         
                         <div class="form-group">
                             <label for="contact-message">Message</label>
-                            <textarea id="contact-message" class="form-control" required style="min-height: 200px;"></textarea>
+                            <textarea id="contact-message" class="form-control" required></textarea>
                         </div>
                         
                         <button type="submit" class="submit-btn">Send Message</button>
