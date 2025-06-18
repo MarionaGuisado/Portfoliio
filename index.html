@@ -160,7 +160,7 @@
             top: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .section-title {
@@ -222,8 +222,10 @@
             background: url('education-bg.jpg') center/cover no-repeat;
             position: relative;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
+            padding-top: 80px;
         }
 
         #formacio::before {
@@ -244,6 +246,7 @@
             text-align: center;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
             font-size: 3.5rem;
+            margin-top: 80px;
         }
 
         #habilitats {
@@ -533,6 +536,7 @@
 
             .education-title {
                 font-size: 2.5rem;
+                margin-top: 60px;
             }
 
             .typed-text, .personal-text {
