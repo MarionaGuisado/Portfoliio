@@ -3,913 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mariona Guisado</title>
-    <link rel="preload" href="sobre-mi-bg.jpg" as="image">
-    <link rel="preload" href="contacte-bg.jpg" as="image">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Mi Portfolio Profesional</title>
     <style>
-        body {
+        /* Reset y estilos base */
+        * {
             margin: 0;
             padding: 0;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Playfair Display', serif;
+            box-sizing: border-box;
         }
-
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        /* Estructura principal */
         .container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .background {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: url('portada.jpg');
-            background-size: cover;
-            z-index: 1;
-        }
-
-        .name {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 4.5rem;
-            text-align: center;
-            z-index: 2;
-            letter-spacing: 1px;
-            font-weight: 500;
-            transition: opacity 0.3s ease, transform 0.3s ease, top 0.5s ease, color 0.5s ease, font-size 0.5s ease;
-            will-change: opacity, transform, top, color, font-size;
-            background-color: transparent !important;
-            padding: 0;
-        }
-
-        .name.hidden {
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(0.9);
-            pointer-events: none;
-        }
-
-        .name.visible {
-            opacity: 1;
-        }
-
-        .enter-button {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 15px 40px;
-            font-size: 1.3rem;
-            background-color: rgba(0, 0, 0, 0.3);
-            color: white;
-            border: 2px solid white;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            z-index: 3;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .enter-button.hidden {
-            display: none;
-        }
-
-        .transition {
-            position: absolute;
-            bottom: -100%;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            z-index: 4;
-            transition: all 1s ease;
-        }
-
-        .main-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: none;
-            z-index: 5;
-            overflow-y: auto;
-            scroll-behavior: smooth;
-        }
-
-        .new-background {
-            position: absolute;
-            top: 55%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 85%;
-            height: 75%;
-            background-image: url('img2.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 1s ease;
-            border-radius: 0;
-            box-shadow: none;
-            z-index: 5;
-        }
-
-        .education-background {
-            position: absolute;
-            top: 55%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 85%;
-            height: 75%;
-            background-image: url('education-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 1;
-            z-index: 1;
-            border-radius: 0;
-            box-shadow: none;
-        }
-
-        .nav-menu {
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            opacity: 0;
-            transition: opacity 1s ease;
-            z-index: 6;
-            background-color: transparent;
-            padding: 0;
-            width: auto;
-        }
-
-        .nav-item {
-            padding: 8px 0;
-            color: black;
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            background-color: transparent;
-            border-bottom: none;
-            font-weight: 500;
-        }
-
-        .nav-item:hover {
-            color: #2a9d8f;
-            transform: scale(1.05);
-        }
-
-        .section {
-            min-height: 100vh;
-            padding: 0;
-            position: relative;
-            top: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            margin: 1rem 0;
-            color: black;
-            text-align: center;
-            padding-top: 20px;
-            position: relative;
-            z-index: 2;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        .section-content {
-            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 2;
         }
-
-        #sobre-mi {
-            background: url('sobre-mi-bg.jpg') center/cover no-repeat;
-            position: relative;
+        
+        /* Secciones */
+        section {
+            min-height: 100vh;
+            padding: 40px 20px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
-
-        .about-text-container {
+        
+        /* Sección Educación */
+        #formacion {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            text-align: center;
+        }
+        
+        /* Título Educación - Posicionado más arriba */
+        .education-header {
+            width: 100%;
+            position: relative;
+            z-index: 10;
+            margin-top: 20px; /* Ajustado para estar más arriba */
+            margin-bottom: 30px;
+        }
+        
+        .education-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+        }
+        
+        .education-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
-            padding: 40px;
-            color: #333;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
         }
-
-        .typed-text, .personal-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #333;
-            min-height: 120px;
-            border-right: 2px solid #2a9d8f;
-            white-space: pre-wrap;
-            overflow: hidden;
-            display: inline-block;
-            text-align: left;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
-        #formacio {
+        
+        /* Contenido Educación */
+        .education-content {
             position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding-top: 80px;
-        }
-
-        #formacio::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.3);
-            z-index: 2;
-        }
-
-        .education-title {
-            position: relative;
-            z-index: 3;
-            color: white;
-            text-align: center;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-            font-size: 3.5rem;
-            margin-top: 80px;
-        }
-
-        #habilitats {
-            position: relative;
-            display: flex;
-            height: 100vh;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .skills-container {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        .skill-column {
-            flex: 1;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.5s ease;
-            cursor: pointer;
-        }
-
-        .skill-column.active {
-            flex: 3;
-        }
-
-        .skill-title-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 3;
-            width: 100%;
-            text-align: center;
-            pointer-events: none;
-        }
-
-        .skill-title {
-            color: white;
-            font-size: 2.5rem;
-            font-weight: 600;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
-            padding: 10px 0;
-            background-color: rgba(42, 157, 143, 0.3);
-            backdrop-filter: blur(2px);
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-
-        .skill-column.active .skill-title {
-            background-color: rgba(42, 157, 143, 0.5);
-        }
-
-        .skill-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-            position: relative;
-        }
-
-        .skill-column.active .skill-image {
-            transform: scale(1.05);
-            filter: brightness(0.7);
-        }
-
-        .skill-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .skill-column.active .skill-content {
-            opacity: 1;
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-
-        .skill-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 100px 0 0;
-            max-width: 80%;
-        }
-
-        .skill-list li {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            padding: 8px 0;
-            position: relative;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .skill-list li:before {
-            content: "•";
-            color: #2a9d8f;
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-
-        #projectes {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
-
-        .project-title {
-            position: absolute;
-            color: white;
-            font-size: 2.5rem;
-            font-weight: 500;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            z-index: 2;
-            padding: 20px;
-            background-color: rgba(42, 157, 143, 0.5);
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .project-title:hover {
-            background-color: rgba(42, 157, 143, 0.7);
-            transform: scale(1.05);
-        }
-
-        .top-left {
-            top: 20px;
-            left: 20px;
-        }
-
-        .top-right {
-            top: 20px;
-            right: 20px;
-            text-align: right;
-        }
-
-        .bottom-left {
-            bottom: 20px;
-            left: 20px;
-        }
-
-        .bottom-right {
-            bottom: 20px;
-            right: 20px;
-            text-align: right;
-        }
-
-        #contacte {
-            background: url('contacte-bg.jpg') center/cover no-repeat;
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
-            padding-bottom: 50px;
-        }
-
-        .contacte-container {
-            width: 100%;
+            z-index: 5;
+            width: 90%;
             max-width: 800px;
-            background-color: transparent;
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
             border-radius: 15px;
-            padding: 40px;
-            margin: 20px;
-            margin-bottom: 100px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
         }
-
-        .contacte-form {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
+        
+        .education-item {
+            margin-bottom: 25px;
+            text-align: left;
         }
-
-        .form-group {
-            position: relative;
+        
+        .education-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: #fff;
         }
-
-        .form-group label {
+        
+        .education-item p {
+            margin-bottom: 5px;
+            opacity: 0.9;
+        }
+        
+        .education-date {
+            font-style: italic;
+            color: #e0e0e0;
+        }
+        
+        /* Efecto de partículas (opcional) */
+        .particles {
             position: absolute;
-            top: -10px;
-            left: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 0 10px;
-            color: #2a9d8f;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .form-control {
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #2a9d8f;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: 'Playfair Display', serif;
-            background-color: rgba(255, 255, 255, 0.8);
-            transition: all 0.3s ease;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.3;
         }
-
-        .form-control:focus {
-            outline: none;
-            border-color: #e76f51;
-            box-shadow: 0 0 0 3px rgba(231, 111, 81, 0.2);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background-color: #2a9d8f;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Playfair Display', serif;
-            font-weight: 500;
-            margin-top: 10px;
-        }
-
-        .submit-btn:hover {
-            background-color: #21867a;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .name {
-                font-size: 3rem;
-            }
-            
-            .new-background {
-                width: 95%;
-                height: 65%;
-                top: 50%;
-            }
-            
-            .education-background {
-                width: 95%;
-                height: 65%;
-                top: 50%;
-            }
-            
-            .nav-menu {
-                top: 50%;
-            }
-            
-            .nav-item {
-                width: 160px;
-                padding: 10px 20px;
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-                padding-top: 15px;
-                margin: 0.5rem 0;
-            }
-
             .education-title {
                 font-size: 2.5rem;
-                margin-top: 60px;
             }
-
-            .typed-text, .personal-text {
-                font-size: 1rem;
-            }
-
-            .about-text-container {
+            
+            .education-content {
                 padding: 20px;
-                margin: 20px;
-            }
-
-            .skills-container {
-                flex-direction: column;
-                height: auto;
-            }
-
-            .skill-column {
-                height: 33.33vh;
-                min-height: 250px;
-            }
-
-            .skill-column.active {
-                flex: 1;
-                height: 66.66vh;
-            }
-
-            #contacte {
-                padding-bottom: 30px;
             }
             
-            .contacte-container {
-                padding: 25px;
-                margin: 15px;
-                margin-bottom: 50px;
-            }
-            
-            .contacte-form {
-                gap: 20px;
-            }
-            
-            .form-control {
-                padding: 12px 15px;
-            }
-            
-            .submit-btn {
-                padding: 12px 25px;
-                font-size: 1rem;
+            .education-header {
+                margin-top: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="background" id="background"></div>
-        <div class="name visible" id="name">Mariona Guisado</div>
-        <a href="#" class="enter-button" id="enterButton">Enter</a>
-        <div class="transition" id="transition"></div>
+    <!-- Sección de Educación -->
+    <section id="formacion">
+        <!-- Efecto de partículas (opcional) -->
+        <div class="particles"></div>
         
-        <div class="main-content" id="mainContent">
-            <div class="new-background" id="newBackground"></div>
-            <div class="nav-menu" id="navMenu">
-                <a href="#sobre-mi" class="nav-item">About Me</a>
-                <a href="#formacio" class="nav-item">Education</a>
-                <a href="#habilitats" class="nav-item">Skills</a>
-                <a href="#projectes" class="nav-item">Projects</a>
-                <a href="#contacte" class="nav-item">Contact</a>
-            </div>
-
-            <section id="sobre-mi" class="section">
-                <h2 class="section-title">About Me</h2>
-                <div class="about-text-container">
-                    <p id="typed-text" class="typed-text"></p>
-                    <p id="personal-text" class="personal-text"></p>
-                </div>
-            </section>
-
-            <section id="formacio" class="section">
-                <div class="education-background"></div>
-                <h2 class="section-title education-title">Education</h2>
-            </section>
-
-            <section id="habilitats" class="section">
-                <h2 class="section-title">Skills</h2>
-                <div class="skills-container">
-                    <div class="skill-column" onclick="toggleSkillColumn(this)">
-                        <div class="skill-title-container">
-                            <h3 class="skill-title">HARD SKILLS</h3>
-                        </div>
-                        <img src="hard-skills-bg.jpg" alt="Hard Skills" class="skill-image">
-                        <div class="skill-content">
-                            <ul class="skill-list">
-                                <li>Python (Advanced level)</li>
-                                <li>SQL (MySQL, PostgreSQL)</li>
-                                <li>Data Warehousing</li>
-                                <li>ETL Processes</li>
-                                <li>Big Data Technologies</li>
-                                <li>Data Visualization</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-column" onclick="toggleSkillColumn(this)">
-                        <div class="skill-title-container">
-                            <h3 class="skill-title">LANGUAGES</h3>
-                        </div>
-                        <img src="languages-bg.jpg" alt="Languages" class="skill-image">
-                        <div class="skill-content">
-                            <ul class="skill-list">
-                                <li>Catalan (Native)</li>
-                                <li>Spanish (Native)</li>
-                                <li>English (C1 Advanced)</li>
-                                <li>French (B1 Intermediate)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-column" onclick="toggleSkillColumn(this)">
-                        <div class="skill-title-container">
-                            <h3 class="skill-title">SOFT SKILLS</h3>
-                        </div>
-                        <img src="soft-skills-bg.jpg" alt="Soft Skills" class="skill-image">
-                        <div class="skill-content">
-                            <ul class="skill-list">
-                                <li>Teamwork</li>
-                                <li>Problem Solving</li>
-                                <li>Critical Thinking</li>
-                                <li>Adaptability</li>
-                                <li>Effective Communication</li>
-                                <li>Leadership</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="projectes" class="section">
-                <video autoplay muted loop class="video-background">
-                    <source src="texto.mp4" type="video/mp4">
-                    Your browser does not support HTML5 video.
-                </video>
-                <h2 class="project-title top-left">Project 1</h2>
-                <h2 class="project-title top-right">Project 2</h2>
-                <h2 class="project-title bottom-left">Project 3</h2>
-                <h2 class="project-title bottom-right">Project 4</h2>
-            </section>
-
-            <section id="contacte" class="section">
-                <div class="contacte-container">
-                    <form class="contacte-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="contact-name">Name</label>
-                            <input type="text" id="contact-name" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contact-email">Email</label>
-                            <input type="email" id="contact-email" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contact-message">Message</label>
-                            <textarea id="contact-message" class="form-control" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
-            </section>
+        <!-- Cabecera con título -->
+        <div class="education-header">
+            <h1 class="education-title">Formación Académica</h1>
+            <p class="education-subtitle">Mi trayectoria educativa y certificaciones profesionales</p>
         </div>
-    </div>
+        
+        <!-- Contenido de educación -->
+        <div class="education-content">
+            <div class="education-item">
+                <h3>Grado en Ingeniería Informática</h3>
+                <p>Universidad Tecnológica de Barcelona</p>
+                <p class="education-date">2018 - 2022</p>
+                <p>Especialización en Inteligencia Artificial y Machine Learning.</p>
+            </div>
+            
+            <div class="education-item">
+                <h3>Máster en Desarrollo Web Avanzado</h3>
+                <p>Escuela Digital de Madrid</p>
+                <p class="education-date">2022 - 2023</p>
+                <p>Enfoque en tecnologías modernas como React, Node.js y GraphQL.</p>
+            </div>
+            
+            <div class="education-item">
+                <h3>Certificación AWS Solutions Architect</h3>
+                <p>Amazon Web Services</p>
+                <p class="education-date">2023</p>
+                <p>Arquitectura de soluciones escalables en la nube.</p>
+            </div>
+        </div>
+    </section>
 
     <script>
-        // Global variables
-        let lastScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        let scrollTimeout;
-        const nameElement = document.getElementById('name');
-        const enterButton = document.getElementById('enterButton');
-        
-        // Improved scroll handler function
-        function handleScroll() {
-            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Only trigger if significant scroll (> 5px)
-            if (Math.abs(currentScrollPosition - lastScrollPosition) > 5) {
-                if (currentScrollPosition > lastScrollPosition) {
-                    // Scrolling down - hide name
-                    nameElement.classList.add('hidden');
-                } else {
-                    // Scrolling up - show name
-                    nameElement.classList.remove('hidden');
-                }
-            }
-            
-            lastScrollPosition = currentScrollPosition;
-            
-            // Reset after stopping scrolling
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                nameElement.classList.remove('hidden');
-            }, 1000);
-        }
-
-        // Initialize scroll event listener
-        window.addEventListener('scroll', handleScroll);
-
-        document.getElementById('enterButton').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const transition = document.getElementById('transition');
-            const name = document.getElementById('name');
-            const background = document.getElementById('background');
-            const mainContent = document.getElementById('mainContent');
-            const newBackground = document.getElementById('newBackground');
-            const navMenu = document.getElementById('navMenu');
-            
-            // 1. White screen rises
-            transition.style.bottom = '100%';
-            
-            // 2. Hide enter button
-            enterButton.classList.add('hidden');
-            
-            // 3. Change name color to black, move it up and reduce size
-            setTimeout(() => {
-                name.style.color = 'black';
-                name.style.textShadow = 'none';
-                name.style.top = '10%';
-                name.style.fontSize = '3rem';
-            }, 500);
-            
-            // 4. Show main content when transition ends
-            setTimeout(() => {
-                mainContent.style.display = 'block';
-                
-                // 5. Show new image (now larger) and menu
-                setTimeout(() => {
-                    newBackground.style.opacity = '1';
-                    navMenu.style.opacity = '1';
-                    
-                    // Typing effect for both paragraphs
-                    const aboutText = "As a dedicated Data Engineering student, I am passionate about leveraging big data to drive decision-making and innovation. With hands-on experience in Python and data warehousing, I have developed a strong foundation in data management and analytics. I am eager to contribute to impactful projects and collaborate with industry professionals.";
-                    const personalText = "I'm passionate about exploring new places and capturing moments through photography. I love fashion, sharing my style on Instagram, and expressing my creativity through writing and painting.";
-                    
-                    const typedElement = document.getElementById('typed-text');
-                    const personalElement = document.getElementById('personal-text');
-                    
-                    // First paragraph
-                    typeWriter(aboutText, typedElement, 20, function() {
-                        // Second paragraph (starts when first ends)
-                        personalElement.style.borderRight = '2px solid #2a9d8f';
-                        typeWriter(personalText, personalElement, 20);
-                    });
-                }, 100);
-                
-                // Hide initial background
-                background.style.opacity = '0';
-            }, 1000);
-        });
-
-        // Smooth navigation to sections
-        document.querySelectorAll('.nav-item').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                document.querySelector(targetId).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Typing effect for About section (with callback)
-        function typeWriter(text, element, speed, callback) {
-            let i = 0;
-            element.innerHTML = '';
-            element.style.borderRight = '2px solid #2a9d8f';
-            
-            const interval = setInterval(() => {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                } else {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        element.style.borderRight = 'none';
-                        if (callback) callback();
-                    }, 500);
-                }
-            }, speed);
-        }
-
-        // Function to expand/collapse skills columns
-        function toggleSkillColumn(column) {
-            const currentlyActive = document.querySelector('.skill-column.active');
-            
-            // If clicked column is already active, close it
-            if (column.classList.contains('active')) {
-                column.classList.remove('active');
-                return;
-            }
-            
-            // If another column is active, close it first
-            if (currentlyActive) {
-                currentlyActive.classList.remove('active');
-            }
-            
-            // Open new column
-            column.classList.add('active');
-        }
-
-        // Close column when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.skill-column') && !e.target.classList.contains('skill-column')) {
-                const activeColumn = document.querySelector('.skill-column.active');
-                if (activeColumn) {
-                    activeColumn.classList.remove('active');
-                }
-            }
-        });
-
-        // Function to handle contact form
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('contact-name').value;
-            const email = document.getElementById('contact-email').value;
-            const message = document.getElementById('contact-message').value;
-            
-            console.log('Form submitted:', { name, email, message });
-            
-            // Show success message
-            alert('Message sent successfully! Thank you for contacting me.');
-            
-            // Clear form
-            this.reset();
-        });
-
-        // Load skills background image when section is visible
+        // Opcional: Código para efecto de partículas
         document.addEventListener('DOMContentLoaded', function() {
-            const habilitatsSection = document.getElementById('habilitats');
-            const skillsContainer = habilitatsSection.querySelector('.skills-container');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Show content
-                        setTimeout(() => {
-                            skillsContainer.classList.add('visible');
-                        }, 500);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            observer.observe(habilitatsSection);
+            const particlesContainer = document.querySelector('.particles');
+            if (particlesContainer) {
+                // Código para generar partículas iría aquí
+                particlesContainer.innerHTML = '<div style="position:absolute;width:100%;height:100%;background:radial-gradient(circle, transparent 20%, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0.1) 80%, transparent 80%, transparent) 0% 0% / 40px 40px;"></div>';
+            }
         });
     </script>
 </body>
