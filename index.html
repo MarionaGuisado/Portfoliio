@@ -120,6 +120,22 @@
             z-index: 5;
         }
 
+        .education-background {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 85%;
+            height: 75%;
+            background-image: url('education-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 1;
+            z-index: 1;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
         .nav-menu {
             position: absolute;
             top: 45%;
@@ -219,7 +235,6 @@
         }
 
         #formacio {
-            background: url('education-bg.jpg') center/cover no-repeat;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -236,12 +251,12 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.3);
-            z-index: 1;
+            z-index: 2;
         }
 
         .education-title {
             position: relative;
-            z-index: 2;
+            z-index: 3;
             color: white;
             text-align: center;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
@@ -518,6 +533,12 @@
                 top: 50%;
             }
             
+            .education-background {
+                width: 95%;
+                height: 65%;
+                top: 50%;
+            }
+            
             .nav-menu {
                 top: 50%;
             }
@@ -614,6 +635,7 @@
             </section>
 
             <section id="formacio" class="section">
+                <div class="education-background"></div>
                 <h2 class="section-title education-title">Education</h2>
             </section>
 
@@ -656,239 +678,4 @@
                         <div class="skill-title-container">
                             <h3 class="skill-title">SOFT SKILLS</h3>
                         </div>
-                        <img src="soft-skills-bg.jpg" alt="Soft Skills" class="skill-image">
-                        <div class="skill-content">
-                            <ul class="skill-list">
-                                <li>Teamwork</li>
-                                <li>Problem Solving</li>
-                                <li>Critical Thinking</li>
-                                <li>Adaptability</li>
-                                <li>Effective Communication</li>
-                                <li>Leadership</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="projectes" class="section">
-                <video autoplay muted loop class="video-background">
-                    <source src="texto.mp4" type="video/mp4">
-                    Your browser does not support HTML5 video.
-                </video>
-                <h2 class="project-title top-left">Project 1</h2>
-                <h2 class="project-title top-right">Project 2</h2>
-                <h2 class="project-title bottom-left">Project 3</h2>
-                <h2 class="project-title bottom-right">Project 4</h2>
-            </section>
-
-            <section id="contacte" class="section">
-                <div class="contacte-container">
-                    <form class="contacte-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="contact-name">Name</label>
-                            <input type="text" id="contact-name" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contact-email">Email</label>
-                            <input type="email" id="contact-email" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contact-message">Message</label>
-                            <textarea id="contact-message" class="form-control" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <script>
-        // Global variables
-        let lastScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        let scrollTimeout;
-        const nameElement = document.getElementById('name');
-        const enterButton = document.getElementById('enterButton');
-        
-        // Improved scroll handler function
-        function handleScroll() {
-            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Only trigger if significant scroll (> 5px)
-            if (Math.abs(currentScrollPosition - lastScrollPosition) > 5) {
-                if (currentScrollPosition > lastScrollPosition) {
-                    // Scrolling down - hide name
-                    nameElement.classList.add('hidden');
-                } else {
-                    // Scrolling up - show name
-                    nameElement.classList.remove('hidden');
-                }
-            }
-            
-            lastScrollPosition = currentScrollPosition;
-            
-            // Reset after stopping scrolling
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                nameElement.classList.remove('hidden');
-            }, 1000);
-        }
-
-        // Initialize scroll event listener
-        window.addEventListener('scroll', handleScroll);
-
-        document.getElementById('enterButton').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const transition = document.getElementById('transition');
-            const name = document.getElementById('name');
-            const background = document.getElementById('background');
-            const mainContent = document.getElementById('mainContent');
-            const newBackground = document.getElementById('newBackground');
-            const navMenu = document.getElementById('navMenu');
-            
-            // 1. White screen rises
-            transition.style.bottom = '100%';
-            
-            // 2. Hide enter button
-            enterButton.classList.add('hidden');
-            
-            // 3. Change name color to black, move it up and reduce size
-            setTimeout(() => {
-                name.style.color = 'black';
-                name.style.textShadow = 'none';
-                name.style.top = '10%';
-                name.style.fontSize = '3rem';
-            }, 500);
-            
-            // 4. Show main content when transition ends
-            setTimeout(() => {
-                mainContent.style.display = 'block';
-                
-                // 5. Show new image (now larger) and menu
-                setTimeout(() => {
-                    newBackground.style.opacity = '1';
-                    navMenu.style.opacity = '1';
-                    
-                    // Typing effect for both paragraphs
-                    const aboutText = "As a dedicated Data Engineering student, I am passionate about leveraging big data to drive decision-making and innovation. With hands-on experience in Python and data warehousing, I have developed a strong foundation in data management and analytics. I am eager to contribute to impactful projects and collaborate with industry professionals.";
-                    const personalText = "I'm passionate about exploring new places and capturing moments through photography. I love fashion, sharing my style on Instagram, and expressing my creativity through writing and painting.";
-                    
-                    const typedElement = document.getElementById('typed-text');
-                    const personalElement = document.getElementById('personal-text');
-                    
-                    // First paragraph
-                    typeWriter(aboutText, typedElement, 20, function() {
-                        // Second paragraph (starts when first ends)
-                        personalElement.style.borderRight = '2px solid #2a9d8f';
-                        typeWriter(personalText, personalElement, 20);
-                    });
-                }, 100);
-                
-                // Hide initial background
-                background.style.opacity = '0';
-            }, 1000);
-        });
-
-        // Smooth navigation to sections
-        document.querySelectorAll('.nav-item').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                document.querySelector(targetId).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Typing effect for About section (with callback)
-        function typeWriter(text, element, speed, callback) {
-            let i = 0;
-            element.innerHTML = '';
-            element.style.borderRight = '2px solid #2a9d8f';
-            
-            const interval = setInterval(() => {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                } else {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        element.style.borderRight = 'none';
-                        if (callback) callback();
-                    }, 500);
-                }
-            }, speed);
-        }
-
-        // Function to expand/collapse skills columns
-        function toggleSkillColumn(column) {
-            const currentlyActive = document.querySelector('.skill-column.active');
-            
-            // If clicked column is already active, close it
-            if (column.classList.contains('active')) {
-                column.classList.remove('active');
-                return;
-            }
-            
-            // If another column is active, close it first
-            if (currentlyActive) {
-                currentlyActive.classList.remove('active');
-            }
-            
-            // Open new column
-            column.classList.add('active');
-        }
-
-        // Close column when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.skill-column') && !e.target.classList.contains('skill-column')) {
-                const activeColumn = document.querySelector('.skill-column.active');
-                if (activeColumn) {
-                    activeColumn.classList.remove('active');
-                }
-            }
-        });
-
-        // Function to handle contact form
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('contact-name').value;
-            const email = document.getElementById('contact-email').value;
-            const message = document.getElementById('contact-message').value;
-            
-            console.log('Form submitted:', { name, email, message });
-            
-            // Show success message
-            alert('Message sent successfully! Thank you for contacting me.');
-            
-            // Clear form
-            this.reset();
-        });
-
-        // Load skills background image when section is visible
-        document.addEventListener('DOMContentLoaded', function() {
-            const habilitatsSection = document.getElementById('habilitats');
-            const skillsContainer = habilitatsSection.querySelector('.skills-container');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Show content
-                        setTimeout(() => {
-                            skillsContainer.classList.add('visible');
-                        }, 500);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            observer.observe(habilitatsSection);
-        });
-    </script>
-</body>
-</html>
+                        <img src="soft-skills-
