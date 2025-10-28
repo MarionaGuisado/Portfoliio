@@ -178,118 +178,187 @@
             color: white;
         }
 
-        /* NUEVO DISEÑO DE TIMELINE BASADO EN LA IMAGEN */
-        .modern-timeline {
-            position: relative;
-            width: 100%;
-            max-width: 1000px;
-            margin: 60px auto;
-            padding: 40px 0;
-        }
-
-        .timeline-path {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 3px;
-            height: 100%;
-            background: linear-gradient(to bottom, #2a9d8f, #e9c46a, #f4a261, #e76f51);
-            transform: translateX(-50%);
-            z-index: 1;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 80px;
-            width: 100%;
+        /* NUEVO DISEÑO DE EDUCATION BASADO EN EL CONTENIDO ACTUALIZADO */
+        .education-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2;
+            flex-direction: column;
+            gap: 40px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .timeline-item:nth-child(odd) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-year {
-            width: 120px;
-            text-align: center;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            padding: 10px 0;
-            position: relative;
-            z-index: 3;
-        }
-
-        .timeline-dot {
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 4;
-            box-shadow: 0 0 0 6px rgba(42, 157, 143, 0.8);
-        }
-
-        .timeline-content {
-            width: 40%;
+        .education-item {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
             padding: 30px;
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-            color: #333;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
             position: relative;
+            overflow: hidden;
         }
 
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-right: 60px;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 60px;
-        }
-
-        .timeline-content::before {
+        .education-item::before {
             content: '';
             position: absolute;
-            top: 50%;
-            width: 0;
-            height: 0;
-            border-style: solid;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #2a9d8f, #e76f51);
         }
 
-        .timeline-item:nth-child(odd) .timeline-content::before {
-            right: -15px;
-            transform: translateY(-50%);
-            border-width: 10px 0 10px 15px;
-            border-color: transparent transparent transparent rgba(255, 255, 255, 0.95);
+        .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
-        .timeline-item:nth-child(even) .timeline-content::before {
-            left: -15px;
-            transform: translateY(-50%);
-            border-width: 10px 15px 10px 0;
-            border-color: transparent rgba(255, 255, 255, 0.95) transparent transparent;
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
         }
 
-        .timeline-title {
+        .education-info {
+            flex: 1;
+        }
+
+        .institution {
             font-size: 1.5rem;
             color: #2a9d8f;
             font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .location {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 400;
             margin-bottom: 10px;
         }
 
-        .timeline-description {
+        .degree {
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .date {
             font-size: 1rem;
+            color: #e76f51;
+            font-weight: 500;
+            text-align: right;
+            min-width: 200px;
+        }
+
+        .education-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .honors {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #2a9d8f;
+        }
+
+        .honors-title {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .honors-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .honors-list li {
+            font-size: 0.9rem;
             color: #555;
-            font-weight: 400;
-            line-height: 1.6;
+            margin-bottom: 3px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .honors-list li:before {
+            content: "•";
+            color: #2a9d8f;
+            position: absolute;
+            left: 0;
+        }
+
+        .coursework {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #e9c46a;
+        }
+
+        .coursework-title {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .coursework-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .course-tag {
+            background: #e9ecef;
+            color: #2a9d8f;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .leadership {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #e76f51;
+        }
+
+        .leadership-title {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .leadership-text {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .certification {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #4cc9b8;
+        }
+
+        .certification-title {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .certification-text {
+            font-size: 0.9rem;
+            color: #555;
         }
 
         .nav-menu {
@@ -850,29 +919,110 @@
             line-height: 1.5;
         }
 
-        /* CORRECCIONES PARA LA SECCIÓN CONTACTO */
+        /* NUEVO DISEÑO PARA LA SECCIÓN DE CONTACTO */
         #contacte {
             background: url('contacte-bg.jpg') center/cover no-repeat;
             position: relative;
             display: flex;
-            align-items: flex-end;
-            justify-content: flex-end;
+            align-items: center;
+            justify-content: center;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
-            padding-bottom: 50px;
-            padding-right: 50px;
+            padding: 80px 0;
         }
 
         .contacte-container {
-            width: 45%;
-            max-width: 500px;
-            background-color: rgba(255, 255, 255, 0.85);
-            border-radius: 15px;
-            padding: 40px;
-            margin-bottom: 100px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 1000px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-title {
+            font-size: 2rem;
+            color: #2a9d8f;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .contact-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #2a9d8f, #4cc9b8);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .contact-text {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 3px;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .linkedin-link {
+            color: #2a9d8f;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .linkedin-link:hover {
+            color: #21867a;
+            text-decoration: underline;
         }
 
         .contacte-form {
@@ -985,6 +1135,24 @@
                 margin: 20px;
             }
 
+            .education-container {
+                gap: 25px;
+            }
+
+            .education-item {
+                padding: 20px;
+            }
+
+            .education-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .date {
+                text-align: left;
+                min-width: auto;
+            }
+
             .skills-container {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -995,7 +1163,10 @@
                 padding: 20px;
             }
 
-            .languages-grid,
+            .languages-grid {
+                grid-template-columns: 1fr;
+            }
+
             .soft-skills-grid {
                 grid-template-columns: 1fr;
             }
@@ -1014,72 +1185,18 @@
                 padding: 20px;
             }
 
-            #contacte {
-                padding-bottom: 30px;
-                padding-right: 0;
-                justify-content: center;
-            }
-            
             .contacte-container {
-                width: 85%;
-                padding: 25px;
-                margin: 15px;
-                margin-bottom: 50px;
-            }
-            
-            .contacte-form {
-                gap: 20px;
-            }
-            
-            .form-control {
-                padding: 12px 15px;
-            }
-            
-            .submit-btn {
-                padding: 12px 25px;
-                font-size: 1rem;
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px;
             }
 
-            /* Versión móvil del nuevo timeline */
-            .modern-timeline {
-                margin: 40px auto;
-                padding: 20px 0;
+            .contact-info {
+                order: 2;
             }
-            
-            .timeline-path {
-                left: 30px;
-                transform: none;
-            }
-            
-            .timeline-item {
-                flex-direction: row !important;
-                margin-bottom: 50px;
-            }
-            
-            .timeline-year {
-                width: 80px;
-                font-size: 1.5rem;
-                position: absolute;
-                left: -90px;
-                top: 0;
-            }
-            
-            .timeline-dot {
-                left: 30px;
-            }
-            
-            .timeline-content {
-                width: calc(100% - 40px);
-                margin-left: 60px !important;
-                margin-right: 0 !important;
-            }
-            
-            .timeline-item:nth-child(odd) .timeline-content::before,
-            .timeline-item:nth-child(even) .timeline-content::before {
-                left: -15px;
-                right: auto;
-                border-width: 10px 15px 10px 0;
-                border-color: transparent rgba(255, 255, 255, 0.95) transparent transparent;
+
+            .contacte-form {
+                order: 1;
             }
         }
     </style>
@@ -1114,53 +1231,65 @@
                 <div class="education-background"></div>
                 <h2 class="education-title">Education</h2>
                 <div class="education-content">
-                    <div class="modern-timeline">
-                        <div class="timeline-path"></div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-year">2021</div>
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <div class="timeline-title">Begin Now</div>
-                                <div class="timeline-description">
-                                    Started my journey in Data Engineering with a focus on building strong foundations in programming, data analysis, and database management.
+                    <div class="education-container">
+                        <!-- UAB -->
+                        <div class="education-item">
+                            <div class="education-header">
+                                <div class="education-info">
+                                    <div class="institution">Universitat Autònoma de Barcelona (UAB)</div>
+                                    <div class="location">Barcelona, Spain</div>
+                                    <div class="degree">Bachelor of Data Engineering</div>
+                                </div>
+                                <div class="date">September 2023 - June 2027 (expected)</div>
+                            </div>
+                            <div class="education-details">
+                                <div class="honors">
+                                    <div class="honors-title">Honors</div>
+                                    <ul class="honors-list">
+                                        <li>Mathematics</li>
+                                    </ul>
+                                </div>
+                                <div class="coursework">
+                                    <div class="coursework-title">Relevant Coursework</div>
+                                    <div class="coursework-list">
+                                        <span class="course-tag">Python Programming</span>
+                                        <span class="course-tag">Business Organization</span>
+                                        <span class="course-tag">Management</span>
+                                        <span class="course-tag">Computer Networks</span>
+                                        <span class="course-tag">SQL</span>
+                                    </div>
+                                </div>
+                                <div class="leadership">
+                                    <div class="leadership-title">Leadership</div>
+                                    <div class="leadership-text">Elected Class Representative</div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-year">2022</div>
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <div class="timeline-title">Data Engineering Degree</div>
-                                <div class="timeline-description">
-                                    Currently pursuing a degree in Data Engineering with focus on big data technologies, 
-                                    data warehousing, and ETL processes. Specialized in Python programming and SQL databases.
+
+                        <!-- Escola Ginebró -->
+                        <div class="education-item">
+                            <div class="education-header">
+                                <div class="education-info">
+                                    <div class="institution">Escola Ginebró</div>
+                                    <div class="location">Barcelona, Spain</div>
+                                    <div class="degree">High School Diploma</div>
                                 </div>
+                                <div class="date">September 2011 - June 2023</div>
                             </div>
                         </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-year">2023</div>
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <div class="timeline-title">Python Certification</div>
-                                <div class="timeline-description">
-                                    Completed specialized certification in Python programming for data analysis, 
-                                    machine learning, and data visualization using libraries like Pandas, NumPy, and Matplotlib.
+
+                        <!-- Certificación Advanced -->
+                        <div class="education-item">
+                            <div class="education-header">
+                                <div class="education-info">
+                                    <div class="institution">Advanced English Certificate</div>
+                                    <div class="location">C1 Level</div>
                                 </div>
+                                <div class="date">April 2025</div>
                             </div>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-year">2024</div>
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <div class="timeline-title">Advanced Skills Development</div>
-                                <div class="timeline-description">
-                                    Focused on advanced data engineering concepts including cloud computing, 
-                                    distributed systems, and real-time data processing to prepare for professional challenges.
-                                </div>
+                            <div class="certification">
+                                <div class="certification-title">Certification</div>
+                                <div class="certification-text">Successfully obtained C1 Advanced English certification</div>
                             </div>
                         </div>
                     </div>
@@ -1243,10 +1372,6 @@
                             <div class="language-item">
                                 <div class="language-name">English</div>
                                 <div class="language-level">C1 Advanced</div>
-                            </div>
-                            <div class="language-item">
-                                <div class="language-name">French</div>
-                                <div class="language-level">B1 Intermediate</div>
                             </div>
                         </div>
                     </div>
@@ -1432,8 +1557,57 @@
 
             <section id="contacte" class="section">
                 <div class="contacte-container">
-                    <h2 style="text-align: center; color: #2a9d8f; margin-bottom: 30px; font-weight: 500;">Get In Touch</h2>
+                    <div class="contact-info">
+                        <h2 class="contact-title">Get In Touch</h2>
+                        <p class="contact-subtitle">I'm always open to discussing new opportunities, projects, or just having a chat about technology and data engineering.</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">✉️</div>
+                                <div class="contact-text">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value">marionagsd@gmail.com</div>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">📱</div>
+                                <div class="contact-text">
+                                    <div class="contact-label">Phone</div>
+                                    <div class="contact-value">+34 601 497 852</div>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">💼</div>
+                                <div class="contact-text">
+                                    <div class="contact-label">LinkedIn</div>
+                                    <div class="contact-value">
+                                        <a href="#" class="linkedin-link">Connect with me on LinkedIn</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">🌍</div>
+                                <div class="contact-text">
+                                    <div class="contact-label">Nationality</div>
+                                    <div class="contact-value">Spanish</div>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">📍</div>
+                                <div class="contact-text">
+                                    <div class="contact-label">Location</div>
+                                    <div class="contact-value">Barcelona, Spain</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <form class="contacte-form" id="contactForm">
+                        <h3 style="color: #2a9d8f; margin-bottom: 20px; font-weight: 500;">Send me a message</h3>
                         <div class="form-group">
                             <label for="contact-name">Name</label>
                             <input type="text" id="contact-name" class="form-control" required>
