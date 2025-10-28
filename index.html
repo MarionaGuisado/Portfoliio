@@ -120,20 +120,144 @@
             z-index: 5;
         }
 
+        /* CORRECCIONES PARA LA SECCIÓN EDUCATION */
+        #formacio {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding-top: 80px;
+            background-color: #f8f9fa;
+            overflow: hidden;
+        }
+
         .education-background {
             position: absolute;
-            top: 55%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 85%;
-            height: 75%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: url('education-bg.jpg');
             background-size: cover;
             background-position: center;
             opacity: 1;
             z-index: 1;
-            border-radius: 0;
-            box-shadow: none;
+        }
+
+        .education-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+        .education-title {
+            position: relative;
+            z-index: 3;
+            color: white;
+            text-align: center;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            font-size: 3.5rem;
+            margin-top: 80px;
+            margin-bottom: 40px;
+        }
+
+        .education-content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        .timeline-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 40px 0;
+        }
+
+        .timeline-path {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #2a9d8f, #e9c46a, #f4a261, #e76f51);
+            transform: translateX(-50%);
+            z-index: 1;
+            border-radius: 10px;
+        }
+
+        .timeline-marker {
+            position: relative;
+            margin-bottom: 60px;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .timeline-marker:nth-child(odd) {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        .timeline-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .timeline-content {
+            width: calc(50% - 70px);
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .timeline-year {
+            font-size: 1.2rem;
+            color: #e76f51;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            color: #2a9d8f;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .timeline-description {
+            font-size: 1rem;
+            color: #555;
+            font-weight: 400;
         }
 
         .nav-menu {
@@ -212,12 +336,13 @@
         }
 
         .about-text-container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 40px;
             color: #333;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.85);
             border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .typed-text, .personal-text {
@@ -232,36 +357,6 @@
             text-align: left;
             margin-bottom: 20px;
             font-weight: 400;
-        }
-
-        #formacio {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding-top: 80px;
-        }
-
-        #formacio::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.3);
-            z-index: 2;
-        }
-
-        .education-title {
-            position: relative;
-            z-index: 3;
-            color: white;
-            text-align: center;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-            font-size: 3.5rem;
-            margin-top: 80px;
         }
 
         #habilitats {
@@ -436,27 +531,29 @@
             text-align: right;
         }
 
+        /* CORRECCIONES PARA LA SECCIÓN CONTACTO */
         #contacte {
             background: url('contacte-bg.jpg') center/cover no-repeat;
             position: relative;
             display: flex;
             align-items: flex-end;
-            justify-content: center;
+            justify-content: flex-end;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
             padding-bottom: 50px;
+            padding-right: 50px;
         }
 
         .contacte-container {
-            width: 100%;
-            max-width: 800px;
-            background-color: transparent;
+            width: 45%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.85);
             border-radius: 15px;
             padding: 40px;
-            margin: 20px;
             margin-bottom: 100px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .contacte-form {
@@ -487,7 +584,7 @@
             border-radius: 8px;
             font-size: 1rem;
             font-family: 'Playfair Display', serif;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.9);
             transition: all 0.3s ease;
         }
 
@@ -586,9 +683,12 @@
 
             #contacte {
                 padding-bottom: 30px;
+                padding-right: 0;
+                justify-content: center;
             }
             
             .contacte-container {
+                width: 85%;
                 padding: 25px;
                 margin: 15px;
                 margin-bottom: 50px;
@@ -605,6 +705,40 @@
             .submit-btn {
                 padding: 12px 25px;
                 font-size: 1rem;
+            }
+
+            /* Versión móvil de la línea del tiempo */
+            .timeline-path {
+                left: 30px;
+                transform: none;
+            }
+            
+            .timeline-marker {
+                flex-direction: row;
+                text-align: left;
+                margin-bottom: 40px;
+            }
+            
+            .timeline-marker:nth-child(odd) {
+                flex-direction: row;
+                text-align: left;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 100px);
+                margin-left: 60px;
+            }
+            
+            .timeline-image {
+                width: 80px;
+                height: 80px;
+                position: absolute;
+                left: -50px;
+            }
+            
+            .timeline-marker:nth-child(odd) .timeline-image {
+                left: auto;
+                right: -50px;
             }
         }
     </style>
@@ -630,13 +764,81 @@
                 <h2 class="section-title">About Me</h2>
                 <div class="about-text-container">
                     <p id="typed-text" class="typed-text"></p>
-                    <p id="personal-text" class="personal-text"></p>
                 </div>
             </section>
 
             <section id="formacio" class="section">
                 <div class="education-background"></div>
-                <h2 class="section-title education-title">Education</h2>
+                <h2 class="education-title">Education</h2>
+                <div class="education-content">
+                    <div class="timeline-container">
+                        <div class="timeline-path"></div>
+                        
+                        <div class="timeline-marker">
+                            <div class="timeline-image">
+                                <div style="width: 100%; height: 100%; background-color: #2a9d8f; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                                    UNI
+                                </div>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-year">2021 - Present</div>
+                                <div class="timeline-title">Data Engineering Degree</div>
+                                <div class="timeline-description">
+                                    Currently pursuing a degree in Data Engineering with focus on big data technologies, 
+                                    data warehousing, and ETL processes. Specialized in Python programming and SQL databases.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-marker">
+                            <div class="timeline-image">
+                                <div style="width: 100%; height: 100%; background-color: #e9c46a; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                                    HS
+                                </div>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-year">2019 - 2021</div>
+                                <div class="timeline-title">Science & Technology Baccalaureate</div>
+                                <div class="timeline-description">
+                                    Completed high school with honors in Science and Technology track, 
+                                    with advanced mathematics, physics, and computer science courses.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-marker">
+                            <div class="timeline-image">
+                                <div style="width: 100%; height: 100%; background-color: #f4a261; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                                    CERT
+                                </div>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-year">2022</div>
+                                <div class="timeline-title">Python for Data Science Certification</div>
+                                <div class="timeline-description">
+                                    Completed specialized certification in Python programming for data analysis, 
+                                    machine learning, and data visualization using libraries like Pandas, NumPy, and Matplotlib.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-marker">
+                            <div class="timeline-image">
+                                <div style="width: 100%; height: 100%; background-color: #e76f51; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                                    ENG
+                                </div>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-year">2020</div>
+                                <div class="timeline-title">C1 Advanced English Certificate</div>
+                                <div class="timeline-description">
+                                    Achieved C1 level certification in English, demonstrating advanced proficiency 
+                                    in both written and spoken communication for academic and professional contexts.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section id="habilitats" class="section">
@@ -706,6 +908,7 @@
 
             <section id="contacte" class="section">
                 <div class="contacte-container">
+                    <h2 style="text-align: center; color: #2a9d8f; margin-bottom: 30px; font-weight: 500;">Get In Touch</h2>
                     <form class="contacte-form" id="contactForm">
                         <div class="form-group">
                             <label for="contact-name">Name</label>
@@ -796,19 +999,13 @@
                     newBackground.style.opacity = '1';
                     navMenu.style.opacity = '1';
                     
-                    // Typing effect for both paragraphs
-                    const aboutText = "As a dedicated Data Engineering student, I am passionate about leveraging big data to drive decision-making and innovation. With hands-on experience in Python and data warehousing, I have developed a strong foundation in data management and analytics. I am eager to contribute to impactful projects and collaborate with industry professionals.";
-                    const personalText = "I'm passionate about exploring new places and capturing moments through photography. I love fashion, sharing my style on Instagram, and expressing my creativity through writing and painting.";
+                    // Typing effect for the new About Me text
+                    const aboutText = "A highly motivated Data Engineering student with a strong academic foundation and a passion for transforming data into actionable insights. Demonstrated ability to lead and collaborate effectively through roles as Class Representative and organizer of technology events, fostering communication between diverse groups and driving community engagement. Combines technical knowledge in data analysis with exceptional interpersonal skills, adaptability, and a solutions-oriented mindset. Eager to contribute by leveraging a unique blend of analytical thinking, leadership experience, and a commitment to delivering value in dynamic, team-based environments.";
                     
                     const typedElement = document.getElementById('typed-text');
-                    const personalElement = document.getElementById('personal-text');
                     
-                    // First paragraph
-                    typeWriter(aboutText, typedElement, 20, function() {
-                        // Second paragraph (starts when first ends)
-                        personalElement.style.borderRight = '2px solid #2a9d8f';
-                        typeWriter(personalText, personalElement, 20);
-                    });
+                    // Type the new text
+                    typeWriter(aboutText, typedElement, 20);
                 }, 100);
                 
                 // Hide initial background
