@@ -120,7 +120,198 @@
             z-index: 5;
         }
 
-        /* CORRECCIONES PARA LA SECCIÓN EDUCATION */
+        .nav-menu {
+            position: absolute;
+            top: 60%; /* MOVIDO MÁS ABAJO */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            opacity: 0;
+            transition: opacity 1s ease;
+            z-index: 6;
+            background-color: transparent;
+            padding: 0;
+            width: auto;
+        }
+
+        .nav-item {
+            padding: 8px 0;
+            color: black;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            border-bottom: none;
+            font-weight: 500;
+        }
+
+        .nav-item:hover {
+            color: #2a9d8f;
+            transform: scale(1.05);
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 0;
+            position: relative;
+            top: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin: 1rem 0;
+            color: black;
+            text-align: center;
+            padding-top: 20px;
+            position: relative;
+            z-index: 2;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .section-content {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* SECCIÓN PROFESSIONAL PROFILE (ANTES ABOUT ME) */
+        #sobre-mi {
+            background: url('sobre-mi-bg.jpg') center/cover no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+
+        .about-text-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .typed-text, .personal-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #333;
+            min-height: 120px;
+            border-right: 2px solid #2a9d8f;
+            white-space: pre-wrap;
+            overflow: hidden;
+            display: inline-block;
+            text-align: left;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        /* NUEVA SECCIÓN EXPERIENCIA Y LIDERAZGO (MOVIDA ANTES DE EDUCATION) */
+        #experiencia {
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 0;
+        }
+
+        .experience-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .experience-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #e9c46a, #f4a261);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .experience-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #e9c46a, #f4a261);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(233, 196, 106, 0.3);
+        }
+
+        .experience-role {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .experience-organization {
+            font-size: 1.1rem;
+            color: #e76f51;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .experience-details {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .experience-detail {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        /* SECCIÓN EDUCATION CON FONDO UNIFORME */
         #formacio {
             position: relative;
             display: flex;
@@ -129,40 +320,15 @@
             justify-content: flex-start;
             min-height: 100vh;
             padding-top: 80px;
-            background-color: #f8f9fa;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); /* FONDO UNIFORME */
             overflow: hidden;
-        }
-
-        .education-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('education-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 1;
-            z-index: 1;
-        }
-
-        .education-background::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            z-index: 2;
         }
 
         .education-title {
             position: relative;
             z-index: 3;
-            color: white;
+            color: #2c3e50;
             text-align: center;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
             font-size: 3.5rem;
             margin-top: 80px;
             margin-bottom: 40px;
@@ -175,7 +341,7 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 40px 20px;
-            color: white;
+            color: #333;
         }
 
         /* NUEVO DISEÑO DE EDUCATION BASADO EN EL CONTENIDO ACTUALIZADO */
@@ -361,105 +527,6 @@
             color: #555;
         }
 
-        .nav-menu {
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            opacity: 0;
-            transition: opacity 1s ease;
-            z-index: 6;
-            background-color: transparent;
-            padding: 0;
-            width: auto;
-        }
-
-        .nav-item {
-            padding: 8px 0;
-            color: black;
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            background-color: transparent;
-            border-bottom: none;
-            font-weight: 500;
-        }
-
-        .nav-item:hover {
-            color: #2a9d8f;
-            transform: scale(1.05);
-        }
-
-        .section {
-            min-height: 100vh;
-            padding: 0;
-            position: relative;
-            top: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            margin: 1rem 0;
-            color: black;
-            text-align: center;
-            padding-top: 20px;
-            position: relative;
-            z-index: 2;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        .section-content {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        #sobre-mi {
-            background: url('sobre-mi-bg.jpg') center/cover no-repeat;
-            position: relative;
-            display: flex;
-            align-items: center;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
-        }
-
-        .about-text-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px;
-            color: #333;
-            background-color: rgba(255, 255, 255, 0.85);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .typed-text, .personal-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #333;
-            min-height: 120px;
-            border-right: 2px solid #2a9d8f;
-            white-space: pre-wrap;
-            overflow: hidden;
-            display: inline-block;
-            text-align: left;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
         /* NUEVO DISEÑO MEJORADO PARA SKILLS */
         #habilitats {
             position: relative;
@@ -641,7 +708,7 @@
             font-weight: 500;
         }
 
-        /* NUEVO DISEÑO PARA PROYECTOS */
+        /* NUEVO DISEÑO PARA PROYECTOS (SIN FILE MANAGEMENT) */
         #projectes {
             position: relative;
             min-height: 100vh;
@@ -744,97 +811,6 @@
             font-size: 0.9rem;
             color: #555;
             line-height: 1.5;
-        }
-
-        /* NUEVA SECCIÓN EXPERIENCIA Y LIDERAZGO */
-        #experiencia {
-            position: relative;
-            min-height: 100vh;
-            width: 100%;
-            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 0;
-        }
-
-        .experience-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .experience-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .experience-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #e9c46a, #f4a261);
-        }
-
-        .experience-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .experience-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #e9c46a, #f4a261);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(233, 196, 106, 0.3);
-        }
-
-        .experience-role {
-            font-size: 1.3rem;
-            color: #2c3e50;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .experience-organization {
-            font-size: 1.1rem;
-            color: #e76f51;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-
-        .experience-details {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .experience-detail {
-            background: #f8f9fa;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: #555;
-            line-height: 1.4;
         }
 
         /* NUEVA SECCIÓN ACTIVIDADES EXTRACURRICULARES */
@@ -1099,14 +1075,8 @@
                 top: 50%;
             }
             
-            .education-background {
-                width: 95%;
-                height: 65%;
-                top: 50%;
-            }
-            
             .nav-menu {
-                top: 50%;
+                top: 60%; /* CONSISTENTE CON LA VERSIÓN DESKTOP */
             }
             
             .nav-item {
@@ -1211,24 +1181,88 @@
         <div class="main-content" id="mainContent">
             <div class="new-background" id="newBackground"></div>
             <div class="nav-menu" id="navMenu">
-                <a href="#sobre-mi" class="nav-item">About Me</a>
+                <a href="#sobre-mi" class="nav-item">Professional Profile</a>
+                <a href="#experiencia" class="nav-item">Experience</a>
                 <a href="#formacio" class="nav-item">Education</a>
                 <a href="#habilitats" class="nav-item">Skills</a>
                 <a href="#projectes" class="nav-item">Projects</a>
-                <a href="#experiencia" class="nav-item">Experience</a>
                 <a href="#actividades" class="nav-item">Activities</a>
                 <a href="#contacte" class="nav-item">Contact</a>
             </div>
 
             <section id="sobre-mi" class="section">
-                <h2 class="section-title">About Me</h2>
+                <h2 class="section-title">Professional Profile</h2>
                 <div class="about-text-container">
                     <p id="typed-text" class="typed-text"></p>
                 </div>
             </section>
 
+            <section id="experiencia" class="section">
+                <h2 class="section-title">Experience & Leadership</h2>
+                <div class="experience-container">
+                    <!-- Representante de Clase -->
+                    <div class="experience-card">
+                        <div class="experience-icon">👥</div>
+                        <h3 class="experience-role">Class Representative</h3>
+                        <div class="experience-organization">UAB</div>
+                        <div class="experience-details">
+                            <div class="experience-detail">Liaison for 60+ students</div>
+                            <div class="experience-detail">Organization of study sessions</div>
+                            <div class="experience-detail">Facilitated communication between faculty and students</div>
+                        </div>
+                    </div>
+
+                    <!-- Tutor Privado -->
+                    <div class="experience-card">
+                        <div class="experience-icon">📚</div>
+                        <h3 class="experience-role">Private Tutor</h3>
+                        <div class="experience-organization">Mathematics & English</div>
+                        <div class="experience-details">
+                            <div class="experience-detail">15% improvement in student grades</div>
+                            <div class="experience-detail">Adaptation to different learning styles</div>
+                            <div class="experience-detail">Personalized teaching methodologies</div>
+                        </div>
+                    </div>
+
+                    <!-- Organizadora de Hackathon -->
+                    <div class="experience-card">
+                        <div class="experience-icon">💻</div>
+                        <h3 class="experience-role">Hackathon Organizer</h3>
+                        <div class="experience-organization">InterHack BCN 25-26</div>
+                        <div class="experience-details">
+                            <div class="experience-detail">Logistical coordination</div>
+                            <div class="experience-detail">Participant management</div>
+                            <div class="experience-detail">Event planning and execution</div>
+                        </div>
+                    </div>
+
+                    <!-- Equipo de Eventos Sociales -->
+                    <div class="experience-card">
+                        <div class="experience-icon">🤝</div>
+                        <h3 class="experience-role">Social Events Team</h3>
+                        <div class="experience-organization">Finance Generation Association</div>
+                        <div class="experience-details">
+                            <div class="experience-detail">Networking events organization</div>
+                            <div class="experience-detail">Professional relationship building</div>
+                            <div class="experience-detail">Industry connections development</div>
+                        </div>
+                    </div>
+
+                    <!-- Organizadora de Conferencia -->
+                    <div class="experience-card">
+                        <div class="experience-icon">🎤</div>
+                        <h3 class="experience-role">Conference Organizer</h3>
+                        <div class="experience-organization">"THE DRIVE TO DEVELOP" with JetBrains</div>
+                        <div class="experience-details">
+                            <div class="experience-detail">70+ student participants</div>
+                            <div class="experience-detail">Speaker coordination</div>
+                            <div class="experience-detail">Event promotion and management</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section id="formacio" class="section">
-                <div class="education-background"></div>
                 <h2 class="education-title">Education</h2>
                 <div class="education-content">
                     <div class="education-container">
@@ -1450,86 +1484,6 @@
                             <div class="achievement-text">Query Optimization Focus</div>
                         </div>
                         <p class="project-benefit">Designed and implemented efficient database schemas following normalization principles, optimizing query performance and data integrity.</p>
-                    </div>
-
-                    <!-- Multimedia File Manager -->
-                    <div class="project-card">
-                        <div class="project-icon">📁</div>
-                        <h3 class="project-title">Multimedia File Manager</h3>
-                        <div class="project-technologies">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">os module</span>
-                            <span class="tech-tag">uuid</span>
-                        </div>
-                        <div class="project-achievement">
-                            <div class="achievement-text">Speed Improvement</div>
-                        </div>
-                        <p class="project-benefit">Created an efficient file management system for organizing and processing multimedia files with enhanced search and categorization capabilities.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="experiencia" class="section">
-                <h2 class="section-title">Experience & Leadership</h2>
-                <div class="experience-container">
-                    <!-- Representante de Clase -->
-                    <div class="experience-card">
-                        <div class="experience-icon">👥</div>
-                        <h3 class="experience-role">Class Representative</h3>
-                        <div class="experience-organization">UAB</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">Liaison for 60+ students</div>
-                            <div class="experience-detail">Organization of study sessions</div>
-                            <div class="experience-detail">Facilitated communication between faculty and students</div>
-                        </div>
-                    </div>
-
-                    <!-- Tutor Privado -->
-                    <div class="experience-card">
-                        <div class="experience-icon">📚</div>
-                        <h3 class="experience-role">Private Tutor</h3>
-                        <div class="experience-organization">Mathematics & English</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">15% improvement in student grades</div>
-                            <div class="experience-detail">Adaptation to different learning styles</div>
-                            <div class="experience-detail">Personalized teaching methodologies</div>
-                        </div>
-                    </div>
-
-                    <!-- Organizadora de Hackathon -->
-                    <div class="experience-card">
-                        <div class="experience-icon">💻</div>
-                        <h3 class="experience-role">Hackathon Organizer</h3>
-                        <div class="experience-organization">InterHack BCN 25-26</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">Logistical coordination</div>
-                            <div class="experience-detail">Participant management</div>
-                            <div class="experience-detail">Event planning and execution</div>
-                        </div>
-                    </div>
-
-                    <!-- Equipo de Eventos Sociales -->
-                    <div class="experience-card">
-                        <div class="experience-icon">🤝</div>
-                        <h3 class="experience-role">Social Events Team</h3>
-                        <div class="experience-organization">Finance Generation Association</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">Networking events organization</div>
-                            <div class="experience-detail">Professional relationship building</div>
-                            <div class="experience-detail">Industry connections development</div>
-                        </div>
-                    </div>
-
-                    <!-- Organizadora de Conferencia -->
-                    <div class="experience-card">
-                        <div class="experience-icon">🎤</div>
-                        <h3 class="experience-role">Conference Organizer</h3>
-                        <div class="experience-organization">"THE DRIVE TO DEVELOP" with JetBrains</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">70+ student participants</div>
-                            <div class="experience-detail">Speaker coordination</div>
-                            <div class="experience-detail">Event promotion and management</div>
-                        </div>
                     </div>
                 </div>
             </section>
