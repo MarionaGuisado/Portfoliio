@@ -8,40 +8,12 @@
     <link rel="preload" href="contacte-bg.jpg" as="image">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #2a9d8f;
-            --secondary-color: #e76f51;
-            --accent-color: #e9c46a;
-            --dark-color: #2c3e50;
-            --light-color: #f8f9fa;
-            --text-color: #333;
-            --bg-color: #ffffff;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        .dark-mode {
-            --primary-color: #4cc9b8;
-            --secondary-color: #f4a261;
-            --accent-color: #e9c46a;
-            --dark-color: #1a1a2e;
-            --light-color: #16213e;
-            --text-color: #e6e6e6;
-            --bg-color: #0f3460;
-            --card-bg: #1a1a2e;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
             overflow: hidden;
             font-family: 'Playfair Display', serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.5s ease, color 0.5s ease;
         }
 
         .container {
@@ -70,7 +42,8 @@
             z-index: 2;
             letter-spacing: 1px;
             font-weight: 500;
-            transition: var(--transition);
+            transition: opacity 0.3s ease, transform 0.3s ease, top 0.5s ease, color 0.5s ease, font-size 0.5s ease;
+            will-change: opacity, transform, top, color, font-size;
             background-color: transparent !important;
             padding: 0;
         }
@@ -95,16 +68,12 @@
             background-color: rgba(0, 0, 0, 0.3);
             color: white;
             border: 2px solid white;
+            border-radius: 30px;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             text-decoration: none;
             z-index: 3;
             font-family: 'Playfair Display', serif;
-        }
-
-        .enter-button:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateX(-50%) scale(1.05);
         }
 
         .enter-button.hidden {
@@ -146,12 +115,14 @@
             background-position: center;
             opacity: 0;
             transition: opacity 1s ease;
+            border-radius: 0;
+            box-shadow: none;
             z-index: 5;
         }
 
         .nav-menu {
             position: absolute;
-            top: 60%;
+            top: 60%; /* MOVIDO MÁS ABAJO */
             left: 50%;
             transform: translate(-50%, -50%);
             display: flex;
@@ -171,53 +142,33 @@
             color: black;
             text-decoration: none;
             font-size: 1.5rem;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             background-color: transparent;
+            border-bottom: none;
             font-weight: 500;
         }
 
         .nav-item:hover {
-            color: var(--primary-color);
+            color: #2a9d8f;
             transform: scale(1.05);
-        }
-
-        .dark-mode-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            background: var(--card-bg);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
         }
 
         .section {
             min-height: 100vh;
-            padding: 80px 0;
+            padding: 0;
             position: relative;
+            top: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            transition: var(--transition);
         }
 
         .section-title {
             font-size: 3rem;
-            margin: 2rem 0;
-            color: var(--text-color);
+            margin: 1rem 0;
+            color: black;
             text-align: center;
+            padding-top: 20px;
             position: relative;
             z-index: 2;
             font-weight: 500;
@@ -233,34 +184,34 @@
             z-index: 2;
         }
 
-        /* SECCIÓN PROFESSIONAL PROFILE */
+        /* SECCIÓN PROFESSIONAL PROFILE (ANTES ABOUT ME) */
         #sobre-mi {
             background: url('sobre-mi-bg.jpg') center/cover no-repeat;
             position: relative;
             display: flex;
             align-items: center;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
         }
 
         .about-text-container {
             max-width: 800px;
             margin: 0 auto;
             padding: 40px;
-            color: var(--text-color);
+            color: #333;
             background-color: rgba(255, 255, 255, 0.85);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .dark-mode .about-text-container {
-            background-color: rgba(26, 26, 46, 0.85);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .typed-text, .personal-text {
             font-size: 1.2rem;
             line-height: 1.8;
-            color: var(--text-color);
+            color: #333;
             min-height: 120px;
-            border-right: 2px solid var(--primary-color);
+            border-right: 2px solid #2a9d8f;
             white-space: pre-wrap;
             overflow: hidden;
             display: inline-block;
@@ -269,9 +220,17 @@
             font-weight: 400;
         }
 
-        /* SECCIÓN EXPERIENCIA Y LIDERAZGO */
+        /* NUEVA SECCIÓN EXPERIENCIA Y LIDERAZGO (MOVIDA ANTES DE EDUCATION) */
         #experiencia {
-            background: linear-gradient(135deg, var(--light-color) 0%, var(--bg-color) 100%);
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 0;
         }
 
         .experience-container {
@@ -285,18 +244,13 @@
         }
 
         .experience-card {
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
             padding: 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            border-left: 4px solid var(--accent-color);
-        }
-
-        .experience-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .experience-card::before {
@@ -306,13 +260,19 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+            background: linear-gradient(90deg, #e9c46a, #f4a261);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .experience-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            background: linear-gradient(135deg, #e9c46a, #f4a261);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -324,14 +284,14 @@
 
         .experience-role {
             font-size: 1.3rem;
-            color: var(--text-color);
+            color: #2c3e50;
             font-weight: 600;
             margin-bottom: 10px;
         }
 
         .experience-organization {
             font-size: 1.1rem;
-            color: var(--secondary-color);
+            color: #e76f51;
             font-weight: 500;
             margin-bottom: 15px;
         }
@@ -343,30 +303,35 @@
         }
 
         .experience-detail {
-            background: var(--light-color);
+            background: #f8f9fa;
             padding: 10px;
+            border-radius: 8px;
             font-size: 0.9rem;
-            color: var(--text-color);
+            color: #555;
             line-height: 1.4;
-            transition: var(--transition);
         }
 
-        .dark-mode .experience-detail {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* SECCIÓN EDUCATION */
+        /* SECCIÓN EDUCATION CON FONDO UNIFORME */
         #formacio {
-            background: linear-gradient(135deg, var(--bg-color) 0%, var(--light-color) 100%);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding-top: 80px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); /* FONDO UNIFORME */
+            overflow: hidden;
         }
 
         .education-title {
             position: relative;
             z-index: 3;
-            color: var(--text-color);
+            color: #2c3e50;
             text-align: center;
             font-size: 3.5rem;
-            margin: 2rem 0;
+            margin-top: 80px;
+            margin-bottom: 40px;
         }
 
         .education-content {
@@ -376,9 +341,10 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 40px 20px;
-            color: var(--text-color);
+            color: #333;
         }
 
+        /* NUEVO DISEÑO DE EDUCATION BASADO EN EL CONTENIDO ACTUALIZADO */
         .education-container {
             display: flex;
             flex-direction: column;
@@ -389,13 +355,23 @@
         }
 
         .education-item {
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
             padding: 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            border-left: 4px solid var(--primary-color);
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #2a9d8f, #e76f51);
         }
 
         .education-item:hover {
@@ -416,28 +392,28 @@
 
         .institution {
             font-size: 1.5rem;
-            color: var(--primary-color);
+            color: #2a9d8f;
             font-weight: 600;
             margin-bottom: 5px;
         }
 
         .location {
             font-size: 1rem;
-            color: var(--text-color);
+            color: #666;
             font-weight: 400;
             margin-bottom: 10px;
         }
 
         .degree {
             font-size: 1.2rem;
-            color: var(--text-color);
+            color: #333;
             font-weight: 500;
             margin-bottom: 5px;
         }
 
         .date {
             font-size: 1rem;
-            color: var(--secondary-color);
+            color: #e76f51;
             font-weight: 500;
             text-align: right;
             min-width: 200px;
@@ -449,23 +425,16 @@
             gap: 15px;
         }
 
-        .honors, .coursework, .leadership, .certification {
-            background: var(--light-color);
+        .honors {
+            background: #f8f9fa;
             padding: 12px;
-            border-left: 4px solid var(--primary-color);
-            transition: var(--transition);
+            border-radius: 8px;
+            border-left: 4px solid #2a9d8f;
         }
 
-        .dark-mode .honors, 
-        .dark-mode .coursework, 
-        .dark-mode .leadership, 
-        .dark-mode .certification {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .honors-title, .coursework-title, .leadership-title, .certification-title {
+        .honors-title {
             font-size: 1rem;
-            color: var(--text-color);
+            color: #333;
             font-weight: 500;
             margin-bottom: 5px;
         }
@@ -478,7 +447,7 @@
 
         .honors-list li {
             font-size: 0.9rem;
-            color: var(--text-color);
+            color: #555;
             margin-bottom: 3px;
             padding-left: 15px;
             position: relative;
@@ -486,9 +455,23 @@
 
         .honors-list li:before {
             content: "•";
-            color: var(--primary-color);
+            color: #2a9d8f;
             position: absolute;
             left: 0;
+        }
+
+        .coursework {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #e9c46a;
+        }
+
+        .coursework-title {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 5px;
         }
 
         .coursework-list {
@@ -498,23 +481,64 @@
         }
 
         .course-tag {
-            background: var(--light-color);
-            color: var(--primary-color);
+            background: #e9ecef;
+            color: #2a9d8f;
             padding: 4px 10px;
+            border-radius: 15px;
             font-size: 0.8rem;
             font-weight: 500;
-            border: 1px solid var(--primary-color);
-            transition: var(--transition);
         }
 
-        .course-tag:hover {
-            background: var(--primary-color);
-            color: white;
+        .leadership {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #e76f51;
         }
 
-        /* SECCIÓN SKILLS */
+        .leadership-title {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .leadership-text {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .certification {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #4cc9b8;
+        }
+
+        .certification-title {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .certification-text {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* NUEVO DISEÑO MEJORADO PARA SKILLS */
         #habilitats {
-            background: linear-gradient(135deg, var(--dark-color) 0%, var(--bg-color) 100%);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(135deg, #1a2a3a 0%, #2a3a4a 100%);
+            padding: 80px 0;
+            overflow: hidden;
         }
 
         .skills-container {
@@ -528,13 +552,23 @@
         }
 
         .skill-category {
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
             padding: 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            border-left: 4px solid var(--primary-color);
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #2a9d8f, #e76f51);
         }
 
         .skill-category:hover {
@@ -551,7 +585,8 @@
         .skill-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary-color), #21867a);
+            background: linear-gradient(135deg, #2a9d8f, #21867a);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -563,7 +598,7 @@
 
         .skill-title {
             font-size: 1.8rem;
-            color: var(--primary-color);
+            color: #2a9d8f;
             font-weight: 600;
             margin: 0;
         }
@@ -588,26 +623,28 @@
 
         .skill-name {
             font-size: 1.1rem;
-            color: var(--text-color);
+            color: #333;
             font-weight: 500;
         }
 
         .skill-percentage {
             font-size: 0.9rem;
-            color: var(--primary-color);
+            color: #2a9d8f;
             font-weight: 600;
         }
 
         .skill-bar {
             height: 8px;
-            background: var(--light-color);
+            background: #e9ecef;
+            border-radius: 10px;
             overflow: hidden;
             position: relative;
         }
 
         .skill-progress {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), #4cc9b8);
+            border-radius: 10px;
+            background: linear-gradient(90deg, #2a9d8f, #4cc9b8);
             transition: width 1.5s ease-in-out;
             width: 0;
         }
@@ -622,33 +659,27 @@
         .language-item {
             text-align: center;
             padding: 15px;
-            background: var(--light-color);
-            transition: var(--transition);
-            border: 1px solid var(--primary-color);
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
         }
 
         .language-item:hover {
-            background: var(--primary-color);
-            color: white;
+            background: #e9ecef;
             transform: scale(1.05);
         }
 
         .language-name {
             font-size: 1.1rem;
-            color: var(--text-color);
+            color: #333;
             font-weight: 500;
             margin-bottom: 5px;
         }
 
         .language-level {
             font-size: 0.9rem;
-            color: var(--primary-color);
+            color: #2a9d8f;
             font-weight: 500;
-        }
-
-        .language-item:hover .language-name,
-        .language-item:hover .language-level {
-            color: white;
         }
 
         .soft-skills-grid {
@@ -658,32 +689,36 @@
         }
 
         .soft-skill-item {
-            background: var(--light-color);
+            background: #f8f9fa;
             padding: 15px;
+            border-radius: 10px;
             text-align: center;
-            transition: var(--transition);
-            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+            border-left: 4px solid #2a9d8f;
         }
 
         .soft-skill-item:hover {
-            background: var(--primary-color);
-            color: white;
+            background: #e9ecef;
             transform: translateY(-5px);
         }
 
         .soft-skill-name {
             font-size: 1rem;
-            color: var(--text-color);
+            color: #333;
             font-weight: 500;
         }
 
-        .soft-skill-item:hover .soft-skill-name {
-            color: white;
-        }
-
-        /* SECCIÓN PROYECTOS */
+        /* NUEVO DISEÑO PARA PROYECTOS (SIN FILE MANAGEMENT) */
         #projectes {
-            background: linear-gradient(135deg, var(--light-color) 0%, var(--bg-color) 100%);
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6572 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 0;
         }
 
         .projects-container {
@@ -697,13 +732,23 @@
         }
 
         .project-card {
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
             padding: 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            border-left: 4px solid var(--secondary-color);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #e76f51, #f4a261);
         }
 
         .project-card:hover {
@@ -714,7 +759,8 @@
         .project-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            background: linear-gradient(135deg, #e76f51, #f4a261);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -726,7 +772,7 @@
 
         .project-title {
             font-size: 1.5rem;
-            color: var(--text-color);
+            color: #2c3e50;
             font-weight: 600;
             margin-bottom: 15px;
         }
@@ -739,100 +785,45 @@
         }
 
         .tech-tag {
-            background: var(--light-color);
-            color: var(--primary-color);
+            background: #e9ecef;
+            color: #2a9d8f;
             padding: 5px 12px;
+            border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 500;
-            border: 1px solid var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .tech-tag:hover {
-            background: var(--primary-color);
-            color: white;
         }
 
         .project-achievement {
-            background: var(--light-color);
+            background: #f8f9fa;
             padding: 12px;
+            border-radius: 8px;
             margin-bottom: 15px;
-            border-left: 4px solid var(--secondary-color);
-            transition: var(--transition);
-        }
-
-        .dark-mode .project-achievement {
-            background: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #e76f51;
         }
 
         .achievement-text {
             font-size: 0.9rem;
-            color: var(--text-color);
+            color: #333;
             font-weight: 500;
         }
 
         .project-benefit {
             font-size: 0.9rem;
-            color: var(--text-color);
+            color: #555;
             line-height: 1.5;
         }
 
-        /* SECCIÓN TESTIMONIOS */
-        #testimonios {
-            background: linear-gradient(135deg, var(--dark-color) 0%, var(--bg-color) 100%);
-        }
-
-        .testimonials-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .testimonial-card {
-            background: var(--card-bg);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-left: 4px solid var(--accent-color);
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .testimonial-subject {
-            font-size: 1.2rem;
-            color: var(--accent-color);
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            font-size: 1rem;
-            color: var(--text-color);
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .testimonial-author {
-            font-size: 0.9rem;
-            color: var(--text-color);
-            font-weight: 500;
-            text-align: right;
-        }
-
-        /* SECCIÓN ACTIVIDADES */
+        /* NUEVA SECCIÓN ACTIVIDADES EXTRACURRICULARES */
         #actividades {
-            background: linear-gradient(135deg, var(--light-color) 0%, var(--bg-color) 100%);
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(135deg, #2a3a4a 0%, #1a2a3a 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 0;
         }
 
         .activities-container {
@@ -846,13 +837,23 @@
         }
 
         .activity-card {
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
             padding: 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            border-left: 4px solid var(--primary-color);
+        }
+
+        .activity-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #2a9d8f, #4cc9b8);
         }
 
         .activity-card:hover {
@@ -863,7 +864,8 @@
         .activity-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary-color), #4cc9b8);
+            background: linear-gradient(135deg, #2a9d8f, #4cc9b8);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -875,47 +877,48 @@
 
         .activity-title {
             font-size: 1.3rem;
-            color: var(--text-color);
+            color: #2c3e50;
             font-weight: 600;
             margin-bottom: 10px;
         }
 
         .activity-company {
             font-size: 1.1rem;
-            color: var(--primary-color);
+            color: #2a9d8f;
             font-weight: 500;
             margin-bottom: 15px;
         }
 
         .activity-description {
             font-size: 0.95rem;
-            color: var(--text-color);
+            color: #555;
             line-height: 1.5;
         }
 
-        /* SECCIÓN CONTACTO */
+        /* NUEVO DISEÑO PARA LA SECCIÓN DE CONTACTO */
         #contacte {
             background: url('contacte-bg.jpg') center/cover no-repeat;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            padding: 80px 0;
         }
 
         .contacte-container {
             width: 90%;
             max-width: 1000px;
             background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
             padding: 50px;
-            box-shadow: var(--shadow);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
-            transition: var(--transition);
-        }
-
-        .dark-mode .contacte-container {
-            background-color: rgba(26, 26, 46, 0.9);
         }
 
         .contact-info {
@@ -926,14 +929,14 @@
 
         .contact-title {
             font-size: 2rem;
-            color: var(--primary-color);
+            color: #2a9d8f;
             font-weight: 600;
             margin-bottom: 10px;
         }
 
         .contact-subtitle {
             font-size: 1.1rem;
-            color: var(--text-color);
+            color: #666;
             margin-bottom: 30px;
             line-height: 1.6;
         }
@@ -949,29 +952,21 @@
             align-items: center;
             gap: 15px;
             padding: 15px;
-            background: var(--light-color);
-            transition: var(--transition);
-            border-left: 4px solid var(--primary-color);
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
         }
 
         .contact-item:hover {
-            background: var(--primary-color);
+            background: #e9ecef;
             transform: translateX(5px);
-        }
-
-        .contact-item:hover .contact-label,
-        .contact-item:hover .contact-value {
-            color: white;
-        }
-
-        .dark-mode .contact-item {
-            background: rgba(255, 255, 255, 0.1);
         }
 
         .contact-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--primary-color), #4cc9b8);
+            background: linear-gradient(135deg, #2a9d8f, #4cc9b8);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -985,20 +980,20 @@
 
         .contact-label {
             font-size: 0.9rem;
-            color: var(--text-color);
+            color: #666;
             margin-bottom: 3px;
         }
 
         .contact-value {
             font-size: 1.1rem;
-            color: var(--text-color);
+            color: #333;
             font-weight: 500;
         }
 
         .linkedin-link {
-            color: var(--primary-color);
+            color: #2a9d8f;
             text-decoration: none;
-            transition: var(--transition);
+            transition: color 0.3s ease;
         }
 
         .linkedin-link:hover {
@@ -1020,9 +1015,9 @@
             position: absolute;
             top: -10px;
             left: 20px;
-            background-color: var(--card-bg);
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 0 10px;
-            color: var(--primary-color);
+            color: #2a9d8f;
             font-size: 1rem;
             font-weight: 500;
         }
@@ -1030,17 +1025,17 @@
         .form-control {
             width: 100%;
             padding: 15px 20px;
-            border: 2px solid var(--primary-color);
+            border: 2px solid #2a9d8f;
+            border-radius: 8px;
             font-size: 1rem;
             font-family: 'Playfair Display', serif;
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            transition: var(--transition);
+            background-color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--secondary-color);
+            border-color: #e76f51;
             box-shadow: 0 0 0 3px rgba(231, 111, 81, 0.2);
         }
 
@@ -1050,13 +1045,14 @@
         }
 
         .submit-btn {
-            background-color: var(--primary-color);
+            background-color: #2a9d8f;
             color: white;
             border: none;
             padding: 15px 30px;
             font-size: 1.1rem;
+            border-radius: 8px;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             font-family: 'Playfair Display', serif;
             font-weight: 500;
             margin-top: 10px;
@@ -1080,7 +1076,7 @@
             }
             
             .nav-menu {
-                top: 60%;
+                top: 60%; /* CONSISTENTE CON LA VERSIÓN DESKTOP */
             }
             
             .nav-item {
@@ -1092,7 +1088,7 @@
             .section-title {
                 font-size: 2rem;
                 padding-top: 15px;
-                margin: 1rem 0;
+                margin: 0.5rem 0;
             }
 
             .education-title {
@@ -1147,8 +1143,7 @@
 
             .projects-container,
             .experience-container,
-            .activities-container,
-            .testimonials-container {
+            .activities-container {
                 grid-template-columns: 1fr;
                 gap: 20px;
                 padding: 20px 15px;
@@ -1156,8 +1151,7 @@
 
             .project-card,
             .experience-card,
-            .activity-card,
-            .testimonial-card {
+            .activity-card {
                 padding: 20px;
             }
 
@@ -1185,8 +1179,6 @@
         <div class="transition" id="transition"></div>
         
         <div class="main-content" id="mainContent">
-            <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
-            
             <div class="new-background" id="newBackground"></div>
             <div class="nav-menu" id="navMenu">
                 <a href="#sobre-mi" class="nav-item">Professional Profile</a>
@@ -1194,7 +1186,6 @@
                 <a href="#formacio" class="nav-item">Education</a>
                 <a href="#habilitats" class="nav-item">Skills</a>
                 <a href="#projectes" class="nav-item">Projects</a>
-                <a href="#testimonios" class="nav-item">Testimonials</a>
                 <a href="#actividades" class="nav-item">Activities</a>
                 <a href="#contacte" class="nav-item">Contact</a>
             </div>
@@ -1242,18 +1233,6 @@
                             <div class="experience-detail">Logistical coordination</div>
                             <div class="experience-detail">Participant management</div>
                             <div class="experience-detail">Event planning and execution</div>
-                        </div>
-                    </div>
-
-                    <!-- Web Development -->
-                    <div class="experience-card">
-                        <div class="experience-icon">🌐</div>
-                        <h3 class="experience-role">Web Developer</h3>
-                        <div class="experience-organization">Mármoles Company</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">Created company website from scratch</div>
-                            <div class="experience-detail">80% increase in customer inquiries</div>
-                            <div class="experience-detail">Significant business growth through digital presence</div>
                         </div>
                     </div>
 
@@ -1506,72 +1485,6 @@
                         </div>
                         <p class="project-benefit">Designed and implemented efficient database schemas following normalization principles, optimizing query performance and data integrity.</p>
                     </div>
-
-                    <!-- Portfolio Website -->
-                    <div class="project-card">
-                        <div class="project-icon">🌟</div>
-                        <h3 class="project-title">Personal Portfolio Website</h3>
-                        <div class="project-technologies">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                        <div class="project-achievement">
-                            <div class="achievement-text">Fully Responsive Design</div>
-                        </div>
-                        <p class="project-benefit">Designed and developed this personal portfolio website from scratch, implementing modern UI/UX principles, dark mode functionality, and smooth animations to showcase my skills and projects effectively.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="testimonios" class="section">
-                <h2 class="section-title">Teaching Testimonials</h2>
-                <div class="testimonials-container">
-                    <!-- Testimonio Marbres Genevat -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-subject">💬 Testimoni</div>
-                        <p class="testimonial-text">"Gràcies a la pàgina web que ens va dissenyar la Mariona, la nostra empresa ha guanyat molta visibilitat. En pocs mesos, el nombre de persones que contacten amb nosaltres ha augmentat aproximadament un 80%, i això s’ha traduït en més feina i nous clients. Estem molt contents amb el resultat — és una web clara, moderna i molt fàcil d’utilitzar."</p>
-                        <div class="testimonial-author">— Equip de Marbres Genevat</div>
-                    </div>
-
-                    <!-- Matemáticas -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-subject">🧮 Matemáticas / repaso general</div>
-                        <p class="testimonial-text">"Antes me costaban mucho las mates, pero con Mariona empecé a entender los ejercicios y ahora saco muy buenas notas. Explica muy claro y tiene mucha paciencia."</p>
-                        <div class="testimonial-author">— Clara, 4º de ESO</div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <div class="testimonial-subject">🧮 Matemáticas / repaso general</div>
-                        <p class="testimonial-text">"Gracias a las clases con Mariona entendí temas que en clase me parecían imposibles. Me ayudó a preparar los exámenes y a tener más confianza."</p>
-                        <div class="testimonial-author">— Pau, 2º de Bachillerato</div>
-                    </div>
-
-                    <!-- Inglés -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-subject">🇬🇧 Inglés</div>
-                        <p class="testimonial-text">"Las clases con Mariona son muy divertidas. Hacemos juegos y hablo mucho más en inglés sin miedo a equivocarme."</p>
-                        <div class="testimonial-author">— Laia, 1º de ESO</div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <div class="testimonial-subject">🇬🇧 Inglés</div>
-                        <p class="testimonial-text">"Mariona me ayudó a mejorar mi vocabulario y mi pronunciación. Ahora entiendo mucho mejor las películas en inglés."</p>
-                        <div class="testimonial-author">— Marc, 3º de ESO</div>
-                    </div>
-
-                    <!-- General -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-subject">💬 General / tutorías personalizadas</div>
-                        <p class="testimonial-text">"Mariona siempre se adapta a lo que necesito. Si tengo examen, repasamos; si tengo dudas, las resuelve con ejemplos fáciles de entender."</p>
-                        <div class="testimonial-author">— Anna, estudiante de ESO</div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <div class="testimonial-subject">💬 General / tutorías personalizadas</div>
-                        <p class="testimonial-text">"Lo que más me gusta es que hace las clases amenas y me anima a seguir aprendiendo. Gracias a ella he mejorado un montón."</p>
-                        <div class="testimonial-author">— Pol, 1º de Bachillerato</div>
-                    </div>
                 </div>
             </section>
 
@@ -1648,7 +1561,7 @@
                     </div>
                     
                     <form class="contacte-form" id="contactForm">
-                        <h3 style="color: var(--primary-color); margin-bottom: 20px; font-weight: 500;">Send me a message</h3>
+                        <h3 style="color: #2a9d8f; margin-bottom: 20px; font-weight: 500;">Send me a message</h3>
                         <div class="form-group">
                             <label for="contact-name">Name</label>
                             <input type="text" id="contact-name" class="form-control" required>
@@ -1767,7 +1680,7 @@
         function typeWriter(text, element, speed, callback) {
             let i = 0;
             element.innerHTML = '';
-            element.style.borderRight = '2px solid var(--primary-color)';
+            element.style.borderRight = '2px solid #2a9d8f';
             
             const interval = setInterval(() => {
                 if (i < text.length) {
@@ -1824,38 +1737,6 @@
             
             // Clear form
             this.reset();
-        });
-
-        // Dark mode functionality
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const body = document.body;
-
-        darkModeToggle.addEventListener('click', function() {
-            body.classList.toggle('dark-mode');
-            darkModeToggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
-        });
-
-        // Add scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections for scroll animations
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(section);
         });
     </script>
 </body>
