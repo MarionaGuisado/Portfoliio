@@ -8,12 +8,40 @@
     <link rel="preload" href="contacte-bg.jpg" as="image">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #2a9d8f;
+            --secondary-color: #e76f51;
+            --accent-color: #e9c46a;
+            --dark-color: #2c3e50;
+            --light-color: #f8f9fa;
+            --text-color: #333;
+            --bg-color: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s ease;
+        }
+
+        .dark-mode {
+            --primary-color: #4cc9b8;
+            --secondary-color: #f4a261;
+            --accent-color: #e9c46a;
+            --dark-color: #1a2a3a;
+            --light-color: #2a3a4a;
+            --text-color: #f8f9fa;
+            --bg-color: #1a2a3a;
+            --card-bg: rgba(42, 58, 74, 0.95);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
             overflow: hidden;
             font-family: 'Playfair Display', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
 
         .container {
@@ -76,6 +104,11 @@
             font-family: 'Playfair Display', serif;
         }
 
+        .enter-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateX(-50%) scale(1.05);
+        }
+
         .enter-button.hidden {
             display: none;
         }
@@ -122,7 +155,7 @@
 
         .nav-menu {
             position: absolute;
-            top: 60%; /* MOVIDO MÁS ABAJO */
+            top: 60%;
             left: 50%;
             transform: translate(-50%, -50%);
             display: flex;
@@ -149,7 +182,7 @@
         }
 
         .nav-item:hover {
-            color: #2a9d8f;
+            color: var(--primary-color);
             transform: scale(1.05);
         }
 
@@ -161,12 +194,13 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            margin-bottom: 50px;
         }
 
         .section-title {
             font-size: 3rem;
             margin: 1rem 0;
-            color: black;
+            color: var(--text-color);
             text-align: center;
             padding-top: 20px;
             position: relative;
@@ -184,7 +218,30 @@
             z-index: 2;
         }
 
-        /* SECCIÓN PROFESSIONAL PROFILE (ANTES ABOUT ME) */
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: var(--card-bg);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* SECCIÓN PROFESSIONAL PROFILE */
         #sobre-mi {
             background: url('sobre-mi-bg.jpg') center/cover no-repeat;
             position: relative;
@@ -200,18 +257,18 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 40px;
-            color: #333;
-            background-color: rgba(255, 255, 255, 0.85);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: var(--text-color);
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
 
         .typed-text, .personal-text {
             font-size: 1.2rem;
             line-height: 1.8;
-            color: #333;
+            color: var(--text-color);
             min-height: 120px;
-            border-right: 2px solid #2a9d8f;
+            border-right: 2px solid var(--primary-color);
             white-space: pre-wrap;
             overflow: hidden;
             display: inline-block;
@@ -220,12 +277,12 @@
             font-weight: 400;
         }
 
-        /* NUEVA SECCIÓN EXPERIENCIA Y LIDERAZGO (MOVIDA ANTES DE EDUCATION) */
+        /* SECCIÓN EXPERIENCIA Y LIDERAZGO */
         #experiencia {
             position: relative;
             min-height: 100vh;
             width: 100%;
-            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            background: linear-gradient(135deg, var(--dark-color) 0%, #2c3e50 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -244,11 +301,10 @@
         }
 
         .experience-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
+            background: var(--card-bg);
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            transition: all 0.4s ease;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
@@ -260,7 +316,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #e9c46a, #f4a261);
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
         }
 
         .experience-card:hover {
@@ -271,8 +327,7 @@
         .experience-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #e9c46a, #f4a261);
-            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -284,14 +339,14 @@
 
         .experience-role {
             font-size: 1.3rem;
-            color: #2c3e50;
+            color: var(--dark-color);
             font-weight: 600;
             margin-bottom: 10px;
         }
 
         .experience-organization {
             font-size: 1.1rem;
-            color: #e76f51;
+            color: var(--secondary-color);
             font-weight: 500;
             margin-bottom: 15px;
         }
@@ -303,15 +358,83 @@
         }
 
         .experience-detail {
-            background: #f8f9fa;
+            background: var(--light-color);
             padding: 10px;
-            border-radius: 8px;
             font-size: 0.9rem;
             color: #555;
             line-height: 1.4;
+            transition: var(--transition);
         }
 
-        /* SECCIÓN EDUCATION CON FONDO UNIFORME */
+        .experience-detail:hover {
+            transform: translateX(5px);
+        }
+
+        /* Timeline visual para experiencia */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: var(--card-bg);
+            position: relative;
+            border-radius: 0;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: var(--bg-color);
+            border: 4px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -12px;
+        }
+
+        /* SECCIÓN EDUCATION */
         #formacio {
             position: relative;
             display: flex;
@@ -320,14 +443,14 @@
             justify-content: flex-start;
             min-height: 100vh;
             padding-top: 80px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); /* FONDO UNIFORME */
+            background: linear-gradient(135deg, var(--light-color) 0%, #e9ecef 100%);
             overflow: hidden;
         }
 
         .education-title {
             position: relative;
             z-index: 3;
-            color: #2c3e50;
+            color: var(--dark-color);
             text-align: center;
             font-size: 3.5rem;
             margin-top: 80px;
@@ -341,10 +464,9 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 40px 20px;
-            color: #333;
+            color: var(--text-color);
         }
 
-        /* NUEVO DISEÑO DE EDUCATION BASADO EN EL CONTENIDO ACTUALIZADO */
         .education-container {
             display: flex;
             flex-direction: column;
@@ -355,11 +477,10 @@
         }
 
         .education-item {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
+            background: var(--card-bg);
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            transition: all 0.4s ease;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
@@ -371,7 +492,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #2a9d8f, #e76f51);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
 
         .education-item:hover {
@@ -392,7 +513,7 @@
 
         .institution {
             font-size: 1.5rem;
-            color: #2a9d8f;
+            color: var(--primary-color);
             font-weight: 600;
             margin-bottom: 5px;
         }
@@ -406,14 +527,14 @@
 
         .degree {
             font-size: 1.2rem;
-            color: #333;
+            color: var(--text-color);
             font-weight: 500;
             margin-bottom: 5px;
         }
 
         .date {
             font-size: 1rem;
-            color: #e76f51;
+            color: var(--secondary-color);
             font-weight: 500;
             text-align: right;
             min-width: 200px;
@@ -425,16 +546,20 @@
             gap: 15px;
         }
 
-        .honors {
-            background: #f8f9fa;
+        .honors, .coursework, .leadership, .certification {
+            background: var(--light-color);
             padding: 12px;
-            border-radius: 8px;
-            border-left: 4px solid #2a9d8f;
+            border-left: 4px solid var(--primary-color);
+            transition: var(--transition);
         }
 
-        .honors-title {
+        .honors:hover, .coursework:hover, .leadership:hover, .certification:hover {
+            transform: translateX(5px);
+        }
+
+        .honors-title, .coursework-title, .leadership-title, .certification-title {
             font-size: 1rem;
-            color: #333;
+            color: var(--text-color);
             font-weight: 500;
             margin-bottom: 5px;
         }
@@ -455,23 +580,9 @@
 
         .honors-list li:before {
             content: "•";
-            color: #2a9d8f;
+            color: var(--primary-color);
             position: absolute;
             left: 0;
-        }
-
-        .coursework {
-            background: #f8f9fa;
-            padding: 12px;
-            border-radius: 8px;
-            border-left: 4px solid #e9c46a;
-        }
-
-        .coursework-title {
-            font-size: 1rem;
-            color: #333;
-            font-weight: 500;
-            margin-bottom: 5px;
         }
 
         .coursework-list {
@@ -481,53 +592,20 @@
         }
 
         .course-tag {
-            background: #e9ecef;
-            color: #2a9d8f;
+            background: var(--light-color);
+            color: var(--primary-color);
             padding: 4px 10px;
-            border-radius: 15px;
             font-size: 0.8rem;
             font-weight: 500;
+            transition: var(--transition);
         }
 
-        .leadership {
-            background: #f8f9fa;
-            padding: 12px;
-            border-radius: 8px;
-            border-left: 4px solid #e76f51;
+        .course-tag:hover {
+            background: var(--primary-color);
+            color: white;
         }
 
-        .leadership-title {
-            font-size: 1rem;
-            color: #333;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-
-        .leadership-text {
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        .certification {
-            background: #f8f9fa;
-            padding: 12px;
-            border-radius: 8px;
-            border-left: 4px solid #4cc9b8;
-        }
-
-        .certification-title {
-            font-size: 1rem;
-            color: #333;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-
-        .certification-text {
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        /* NUEVO DISEÑO MEJORADO PARA SKILLS */
+        /* SECCIÓN SKILLS */
         #habilitats {
             position: relative;
             display: flex;
@@ -552,11 +630,10 @@
         }
 
         .skill-category {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
+            background: var(--card-bg);
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            transition: all 0.4s ease;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
@@ -568,7 +645,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #2a9d8f, #e76f51);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
 
         .skill-category:hover {
@@ -585,8 +662,7 @@
         .skill-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #2a9d8f, #21867a);
-            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-color), #21867a);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -598,7 +674,7 @@
 
         .skill-title {
             font-size: 1.8rem;
-            color: #2a9d8f;
+            color: var(--primary-color);
             font-weight: 600;
             margin: 0;
         }
@@ -623,28 +699,26 @@
 
         .skill-name {
             font-size: 1.1rem;
-            color: #333;
+            color: var(--text-color);
             font-weight: 500;
         }
 
         .skill-percentage {
             font-size: 0.9rem;
-            color: #2a9d8f;
+            color: var(--primary-color);
             font-weight: 600;
         }
 
         .skill-bar {
             height: 8px;
-            background: #e9ecef;
-            border-radius: 10px;
+            background: var(--light-color);
             overflow: hidden;
             position: relative;
         }
 
         .skill-progress {
             height: 100%;
-            border-radius: 10px;
-            background: linear-gradient(90deg, #2a9d8f, #4cc9b8);
+            background: linear-gradient(90deg, var(--primary-color), #4cc9b8);
             transition: width 1.5s ease-in-out;
             width: 0;
         }
@@ -659,9 +733,8 @@
         .language-item {
             text-align: center;
             padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            transition: all 0.3s ease;
+            background: var(--light-color);
+            transition: var(--transition);
         }
 
         .language-item:hover {
@@ -671,14 +744,14 @@
 
         .language-name {
             font-size: 1.1rem;
-            color: #333;
+            color: var(--text-color);
             font-weight: 500;
             margin-bottom: 5px;
         }
 
         .language-level {
             font-size: 0.9rem;
-            color: #2a9d8f;
+            color: var(--primary-color);
             font-weight: 500;
         }
 
@@ -689,12 +762,11 @@
         }
 
         .soft-skill-item {
-            background: #f8f9fa;
+            background: var(--light-color);
             padding: 15px;
-            border-radius: 10px;
             text-align: center;
-            transition: all 0.3s ease;
-            border-left: 4px solid #2a9d8f;
+            transition: var(--transition);
+            border-left: 4px solid var(--primary-color);
         }
 
         .soft-skill-item:hover {
@@ -704,16 +776,16 @@
 
         .soft-skill-name {
             font-size: 1rem;
-            color: #333;
+            color: var(--text-color);
             font-weight: 500;
         }
 
-        /* NUEVO DISEÑO PARA PROYECTOS (SIN FILE MANAGEMENT) */
+        /* SECCIÓN PROYECTOS */
         #projectes {
             position: relative;
             min-height: 100vh;
             width: 100%;
-            background: linear-gradient(135deg, #2c3e50 0%, #4a6572 100%);
+            background: linear-gradient(135deg, var(--dark-color) 0%, #4a6572 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -732,11 +804,10 @@
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
+            background: var(--card-bg);
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            transition: all 0.4s ease;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
@@ -748,7 +819,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #e76f51, #f4a261);
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
         }
 
         .project-card:hover {
@@ -759,8 +830,7 @@
         .project-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #e76f51, #f4a261);
-            border-radius: 12px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -772,7 +842,7 @@
 
         .project-title {
             font-size: 1.5rem;
-            color: #2c3e50;
+            color: var(--dark-color);
             font-weight: 600;
             margin-bottom: 15px;
         }
@@ -785,25 +855,34 @@
         }
 
         .tech-tag {
-            background: #e9ecef;
-            color: #2a9d8f;
+            background: var(--light-color);
+            color: var(--primary-color);
             padding: 5px 12px;
-            border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .tech-tag:hover {
+            background: var(--primary-color);
+            color: white;
         }
 
         .project-achievement {
-            background: #f8f9fa;
+            background: var(--light-color);
             padding: 12px;
-            border-radius: 8px;
             margin-bottom: 15px;
-            border-left: 4px solid #e76f51;
+            border-left: 4px solid var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .project-achievement:hover {
+            transform: translateX(5px);
         }
 
         .achievement-text {
             font-size: 0.9rem;
-            color: #333;
+            color: var(--text-color);
             font-weight: 500;
         }
 
@@ -813,7 +892,32 @@
             line-height: 1.5;
         }
 
-        /* NUEVA SECCIÓN ACTIVIDADES EXTRACURRICULARES */
+        /* Filtro de habilidades en proyectos */
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            background: var(--card-bg);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* SECCIÓN ACTIVIDADES EXTRACURRICULARES */
         #actividades {
             position: relative;
             min-height: 100vh;
@@ -837,11 +941,10 @@
         }
 
         .activity-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
+            background: var(--card-bg);
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            transition: all 0.4s ease;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
@@ -853,7 +956,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #2a9d8f, #4cc9b8);
+            background: linear-gradient(90deg, var(--primary-color), #4cc9b8);
         }
 
         .activity-card:hover {
@@ -864,8 +967,7 @@
         .activity-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #2a9d8f, #4cc9b8);
-            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-color), #4cc9b8);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -877,14 +979,14 @@
 
         .activity-title {
             font-size: 1.3rem;
-            color: #2c3e50;
+            color: var(--dark-color);
             font-weight: 600;
             margin-bottom: 10px;
         }
 
         .activity-company {
             font-size: 1.1rem;
-            color: #2a9d8f;
+            color: var(--primary-color);
             font-weight: 500;
             margin-bottom: 15px;
         }
@@ -895,7 +997,77 @@
             line-height: 1.5;
         }
 
-        /* NUEVO DISEÑO PARA LA SECCIÓN DE CONTACTO */
+        /* SECCIÓN TESTIMONIOS */
+        #testimonios {
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(135deg, var(--light-color) 0%, #e9ecef 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 0;
+        }
+
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .testimonial-subject {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+            text-align: right;
+        }
+
+        /* SECCIÓN DE CONTACTO */
         #contacte {
             background: url('contacte-bg.jpg') center/cover no-repeat;
             position: relative;
@@ -912,8 +1084,7 @@
         .contacte-container {
             width: 90%;
             max-width: 1000px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
+            background-color: var(--card-bg);
             padding: 50px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
             display: grid;
@@ -929,7 +1100,7 @@
 
         .contact-title {
             font-size: 2rem;
-            color: #2a9d8f;
+            color: var(--primary-color);
             font-weight: 600;
             margin-bottom: 10px;
         }
@@ -952,9 +1123,8 @@
             align-items: center;
             gap: 15px;
             padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            transition: all 0.3s ease;
+            background: var(--light-color);
+            transition: var(--transition);
         }
 
         .contact-item:hover {
@@ -965,8 +1135,7 @@
         .contact-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #2a9d8f, #4cc9b8);
-            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary-color), #4cc9b8);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -986,12 +1155,12 @@
 
         .contact-value {
             font-size: 1.1rem;
-            color: #333;
+            color: var(--text-color);
             font-weight: 500;
         }
 
         .linkedin-link {
-            color: #2a9d8f;
+            color: var(--primary-color);
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -1015,9 +1184,9 @@
             position: absolute;
             top: -10px;
             left: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: var(--card-bg);
             padding: 0 10px;
-            color: #2a9d8f;
+            color: var(--primary-color);
             font-size: 1rem;
             font-weight: 500;
         }
@@ -1025,17 +1194,17 @@
         .form-control {
             width: 100%;
             padding: 15px 20px;
-            border: 2px solid #2a9d8f;
-            border-radius: 8px;
+            border: 2px solid var(--primary-color);
             font-size: 1rem;
             font-family: 'Playfair Display', serif;
-            background-color: rgba(255, 255, 255, 0.9);
-            transition: all 0.3s ease;
+            background-color: var(--card-bg);
+            transition: var(--transition);
+            color: var(--text-color);
         }
 
         .form-control:focus {
             outline: none;
-            border-color: #e76f51;
+            border-color: var(--secondary-color);
             box-shadow: 0 0 0 3px rgba(231, 111, 81, 0.2);
         }
 
@@ -1045,14 +1214,13 @@
         }
 
         .submit-btn {
-            background-color: #2a9d8f;
+            background-color: var(--primary-color);
             color: white;
             border: none;
             padding: 15px 30px;
             font-size: 1.1rem;
-            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             font-family: 'Playfair Display', serif;
             font-weight: 500;
             margin-top: 10px;
@@ -1076,7 +1244,7 @@
             }
             
             .nav-menu {
-                top: 60%; /* CONSISTENTE CON LA VERSIÓN DESKTOP */
+                top: 60%;
             }
             
             .nav-item {
@@ -1125,619 +1293,4 @@
 
             .skills-container {
                 grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 20px 15px;
-            }
-
-            .skill-category {
-                padding: 20px;
-            }
-
-            .languages-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .soft-skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-container,
-            .experience-container,
-            .activities-container {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 20px 15px;
-            }
-
-            .project-card,
-            .experience-card,
-            .activity-card {
-                padding: 20px;
-            }
-
-            .contacte-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                padding: 30px;
-            }
-
-            .contact-info {
-                order: 2;
-            }
-
-            .contacte-form {
-                order: 1;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="background" id="background"></div>
-        <div class="name visible" id="name">Mariona Guisado</div>
-        <a href="#" class="enter-button" id="enterButton">Enter</a>
-        <div class="transition" id="transition"></div>
-        
-        <div class="main-content" id="mainContent">
-            <div class="new-background" id="newBackground"></div>
-            <div class="nav-menu" id="navMenu">
-                <a href="#sobre-mi" class="nav-item">Professional Profile</a>
-                <a href="#experiencia" class="nav-item">Experience</a>
-                <a href="#formacio" class="nav-item">Education</a>
-                <a href="#habilitats" class="nav-item">Skills</a>
-                <a href="#projectes" class="nav-item">Projects</a>
-                <a href="#actividades" class="nav-item">Activities</a>
-                <a href="#contacte" class="nav-item">Contact</a>
-            </div>
-
-            <section id="sobre-mi" class="section">
-                <h2 class="section-title">Professional Profile</h2>
-                <div class="about-text-container">
-                    <p id="typed-text" class="typed-text"></p>
-                </div>
-            </section>
-
-            <section id="experiencia" class="section">
-                <h2 class="section-title">Experience & Leadership</h2>
-                <div class="experience-container">
-                    <!-- Representante de Clase -->
-                    <div class="experience-card">
-                        <div class="experience-icon">👥</div>
-                        <h3 class="experience-role">Class Representative</h3>
-                        <div class="experience-organization">UAB</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">Liaison for 60+ students</div>
-                            <div class="experience-detail">Organization of study sessions</div>
-                            <div class="experience-detail">Facilitated communication between faculty and students</div>
-                        </div>
-                    </div>
-
-                    <!-- Tutor Privado -->
-                    <div class="experience-card">
-                        <div class="experience-icon">📚</div>
-                        <h3 class="experience-role">Private Tutor</h3>
-                        <div class="experience-organization">Mathematics & English</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">15% improvement in student grades</div>
-                            <div class="experience-detail">Adaptation to different learning styles</div>
-                            <div class="experience-detail">Personalized teaching methodologies</div>
-                        </div>
-                    </div>
-
-                    <!-- Organizadora de Hackathon -->
-                    <div class="experience-card">
-                        <div class="experience-icon">💻</div>
-                        <h3 class="experience-role">Hackathon Organizer</h3>
-                        <div class="experience-organization">InterHack BCN 25-26</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">Logistical coordination</div>
-                            <div class="experience-detail">Participant management</div>
-                            <div class="experience-detail">Event planning and execution</div>
-                        </div>
-                    </div>
-
-                    <!-- Equipo de Eventos Sociales -->
-                    <div class="experience-card">
-                        <div class="experience-icon">🤝</div>
-                        <h3 class="experience-role">Social Events Team</h3>
-                        <div class="experience-organization">Finance Generation Association</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">Networking events organization</div>
-                            <div class="experience-detail">Professional relationship building</div>
-                            <div class="experience-detail">Industry connections development</div>
-                        </div>
-                    </div>
-
-                    <!-- Organizadora de Conferencia -->
-                    <div class="experience-card">
-                        <div class="experience-icon">🎤</div>
-                        <h3 class="experience-role">Conference Organizer</h3>
-                        <div class="experience-organization">"THE DRIVE TO DEVELOP" with JetBrains</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">70+ student participants</div>
-                            <div class="experience-detail">Speaker coordination</div>
-                            <div class="experience-detail">Event promotion and management</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="formacio" class="section">
-                <h2 class="education-title">Education</h2>
-                <div class="education-content">
-                    <div class="education-container">
-                        <!-- UAB -->
-                        <div class="education-item">
-                            <div class="education-header">
-                                <div class="education-info">
-                                    <div class="institution">Universitat Autònoma de Barcelona (UAB)</div>
-                                    <div class="location">Barcelona, Spain</div>
-                                    <div class="degree">Bachelor of Data Engineering</div>
-                                </div>
-                                <div class="date">September 2023 - June 2027 (expected)</div>
-                            </div>
-                            <div class="education-details">
-                                <div class="honors">
-                                    <div class="honors-title">Honors</div>
-                                    <ul class="honors-list">
-                                        <li>Mathematics</li>
-                                    </ul>
-                                </div>
-                                <div class="coursework">
-                                    <div class="coursework-title">Relevant Coursework</div>
-                                    <div class="coursework-list">
-                                        <span class="course-tag">Python Programming</span>
-                                        <span class="course-tag">Business Organization</span>
-                                        <span class="course-tag">Management</span>
-                                        <span class="course-tag">Computer Networks</span>
-                                        <span class="course-tag">SQL</span>
-                                    </div>
-                                </div>
-                                <div class="leadership">
-                                    <div class="leadership-title">Leadership</div>
-                                    <div class="leadership-text">Elected Class Representative</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Escola Ginebró -->
-                        <div class="education-item">
-                            <div class="education-header">
-                                <div class="education-info">
-                                    <div class="institution">Escola Ginebró</div>
-                                    <div class="location">Barcelona, Spain</div>
-                                    <div class="degree">High School Diploma</div>
-                                </div>
-                                <div class="date">September 2011 - June 2023</div>
-                            </div>
-                        </div>
-
-                        <!-- Certificación Advanced -->
-                        <div class="education-item">
-                            <div class="education-header">
-                                <div class="education-info">
-                                    <div class="institution">Advanced English Certificate</div>
-                                    <div class="location">C1 Level</div>
-                                </div>
-                                <div class="date">April 2025</div>
-                            </div>
-                            <div class="certification">
-                                <div class="certification-title">Certification</div>
-                                <div class="certification-text">Successfully obtained C1 Advanced English certification</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="habilitats" class="section">
-                <h2 class="section-title">Skills</h2>
-                <div class="skills-container">
-                    <!-- Hard Skills -->
-                    <div class="skill-category">
-                        <div class="skill-header">
-                            <div class="skill-icon">💻</div>
-                            <h3 class="skill-title">Technical Skills</h3>
-                        </div>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Python</span>
-                                    <span class="skill-percentage">90%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">SQL & Databases</span>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="85"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Data Warehousing</span>
-                                    <span class="skill-percentage">80%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="80"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">ETL Processes</span>
-                                    <span class="skill-percentage">75%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="75"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Data Visualization</span>
-                                    <span class="skill-percentage">70%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="70"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Languages -->
-                    <div class="skill-category">
-                        <div class="skill-header">
-                            <div class="skill-icon">🌐</div>
-                            <h3 class="skill-title">Languages</h3>
-                        </div>
-                        <div class="languages-grid">
-                            <div class="language-item">
-                                <div class="language-name">Catalan</div>
-                                <div class="language-level">Native</div>
-                            </div>
-                            <div class="language-item">
-                                <div class="language-name">Spanish</div>
-                                <div class="language-level">Native</div>
-                            </div>
-                            <div class="language-item">
-                                <div class="language-name">English</div>
-                                <div class="language-level">C1 Advanced</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Soft Skills -->
-                    <div class="skill-category">
-                        <div class="skill-header">
-                            <div class="skill-icon">🤝</div>
-                            <h3 class="skill-title">Soft Skills</h3>
-                        </div>
-                        <div class="soft-skills-grid">
-                            <div class="soft-skill-item">
-                                <div class="soft-skill-name">Teamwork</div>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="soft-skill-name">Problem Solving</div>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="soft-skill-name">Critical Thinking</div>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="soft-skill-name">Adaptability</div>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="soft-skill-name">Communication</div>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="soft-skill-name">Leadership</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="projectes" class="section">
-                <h2 class="section-title">Technical Projects</h2>
-                <div class="projects-container">
-                    <!-- Movie Recommendation Engine -->
-                    <div class="project-card">
-                        <div class="project-icon">🎬</div>
-                        <h3 class="project-title">Movie Recommendation Engine</h3>
-                        <div class="project-technologies">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">pandas</span>
-                            <span class="tech-tag">scikit-learn</span>
-                        </div>
-                        <div class="project-achievement">
-                            <div class="achievement-text">85% Accuracy</div>
-                        </div>
-                        <p class="project-benefit">Developed a sophisticated recommendation system using collaborative filtering and content-based approaches to suggest movies based on user preferences and viewing history.</p>
-                    </div>
-
-                    <!-- Parallel Computing Optimization -->
-                    <div class="project-card">
-                        <div class="project-icon">⚡</div>
-                        <h3 class="project-title">Parallel Computing Optimization</h3>
-                        <div class="project-technologies">
-                            <span class="tech-tag">CUDA</span>
-                            <span class="tech-tag">OpenMP</span>
-                        </div>
-                        <div class="project-achievement">
-                            <div class="achievement-text">40% Faster Performance</div>
-                        </div>
-                        <p class="project-benefit">Optimized computational algorithms using parallel processing techniques, significantly reducing execution time for complex data processing tasks.</p>
-                    </div>
-
-                    <!-- Relational Database Design -->
-                    <div class="project-card">
-                        <div class="project-icon">🗃️</div>
-                        <h3 class="project-title">Relational Database Design</h3>
-                        <div class="project-technologies">
-                            <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">Normalization</span>
-                        </div>
-                        <div class="project-achievement">
-                            <div class="achievement-text">Query Optimization Focus</div>
-                        </div>
-                        <p class="project-benefit">Designed and implemented efficient database schemas following normalization principles, optimizing query performance and data integrity.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="actividades" class="section">
-                <h2 class="section-title">Extracurricular Activities</h2>
-                <div class="activities-container">
-                    <!-- J.P. Morgan Event -->
-                    <div class="activity-card">
-                        <div class="activity-icon">🏦</div>
-                        <h3 class="activity-title">"Insight into Markets" Event</h3>
-                        <div class="activity-company">J.P. Morgan</div>
-                        <p class="activity-description">Participated in an exclusive financial markets event, gaining insights into investment banking, market analysis, and trading strategies from industry professionals.</p>
-                    </div>
-
-                    <!-- UBS Zurich Event -->
-                    <div class="activity-card">
-                        <div class="activity-icon">📈</div>
-                        <h3 class="activity-title">Trading Event</h3>
-                        <div class="activity-company">UBS Zurich</div>
-                        <p class="activity-description">Engaged in hands-on trading simulations and learned about global market dynamics, risk management, and investment strategies at one of the world's leading financial institutions.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contacte" class="section">
-                <div class="contacte-container">
-                    <div class="contact-info">
-                        <h2 class="contact-title">Get In Touch</h2>
-                        <p class="contact-subtitle">I'm always open to discussing new opportunities, projects, or just having a chat about technology and data engineering.</p>
-                        
-                        <div class="contact-details">
-                            <div class="contact-item">
-                                <div class="contact-icon">✉️</div>
-                                <div class="contact-text">
-                                    <div class="contact-label">Email</div>
-                                    <div class="contact-value">marionagsd@gmail.com</div>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">📱</div>
-                                <div class="contact-text">
-                                    <div class="contact-label">Phone</div>
-                                    <div class="contact-value">+34 601 497 852</div>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">💼</div>
-                                <div class="contact-text">
-                                    <div class="contact-label">LinkedIn</div>
-                                    <div class="contact-value">
-                                        <a href="#" class="linkedin-link">Connect with me on LinkedIn</a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">🌍</div>
-                                <div class="contact-text">
-                                    <div class="contact-label">Nationality</div>
-                                    <div class="contact-value">Spanish</div>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">📍</div>
-                                <div class="contact-text">
-                                    <div class="contact-label">Location</div>
-                                    <div class="contact-value">Barcelona, Spain</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <form class="contacte-form" id="contactForm">
-                        <h3 style="color: #2a9d8f; margin-bottom: 20px; font-weight: 500;">Send me a message</h3>
-                        <div class="form-group">
-                            <label for="contact-name">Name</label>
-                            <input type="text" id="contact-name" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contact-email">Email</label>
-                            <input type="email" id="contact-email" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contact-message">Message</label>
-                            <textarea id="contact-message" class="form-control" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <script>
-        // Global variables
-        let lastScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        let scrollTimeout;
-        const nameElement = document.getElementById('name');
-        const enterButton = document.getElementById('enterButton');
-        
-        // Improved scroll handler function
-        function handleScroll() {
-            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Only trigger if significant scroll (> 5px)
-            if (Math.abs(currentScrollPosition - lastScrollPosition) > 5) {
-                if (currentScrollPosition > lastScrollPosition) {
-                    // Scrolling down - hide name
-                    nameElement.classList.add('hidden');
-                } else {
-                    // Scrolling up - show name
-                    nameElement.classList.remove('hidden');
-                }
-            }
-            
-            lastScrollPosition = currentScrollPosition;
-            
-            // Reset after stopping scrolling
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                nameElement.classList.remove('hidden');
-            }, 1000);
-        }
-
-        // Initialize scroll event listener
-        window.addEventListener('scroll', handleScroll);
-
-        document.getElementById('enterButton').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const transition = document.getElementById('transition');
-            const name = document.getElementById('name');
-            const background = document.getElementById('background');
-            const mainContent = document.getElementById('mainContent');
-            const newBackground = document.getElementById('newBackground');
-            const navMenu = document.getElementById('navMenu');
-            
-            // 1. White screen rises
-            transition.style.bottom = '100%';
-            
-            // 2. Hide enter button
-            enterButton.classList.add('hidden');
-            
-            // 3. Change name color to black, move it up and reduce size
-            setTimeout(() => {
-                name.style.color = 'black';
-                name.style.textShadow = 'none';
-                name.style.top = '10%';
-                name.style.fontSize = '3rem';
-            }, 500);
-            
-            // 4. Show main content when transition ends
-            setTimeout(() => {
-                mainContent.style.display = 'block';
-                
-                // 5. Show new image (now larger) and menu
-                setTimeout(() => {
-                    newBackground.style.opacity = '1';
-                    navMenu.style.opacity = '1';
-                    
-                    // Typing effect for the new About Me text
-                    const aboutText = "A highly motivated Data Engineering student with a strong academic foundation and a passion for transforming data into actionable insights. Demonstrated ability to lead and collaborate effectively through roles as Class Representative and organizer of technology events, fostering communication between diverse groups and driving community engagement. Combines technical knowledge in data analysis with exceptional interpersonal skills, adaptability, and a solutions-oriented mindset. Eager to contribute by leveraging a unique blend of analytical thinking, leadership experience, and a commitment to delivering value in dynamic, team-based environments.";
-                    
-                    const typedElement = document.getElementById('typed-text');
-                    
-                    // Type the new text
-                    typeWriter(aboutText, typedElement, 20);
-                }, 100);
-                
-                // Hide initial background
-                background.style.opacity = '0';
-            }, 1000);
-        });
-
-        // Smooth navigation to sections
-        document.querySelectorAll('.nav-item').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                document.querySelector(targetId).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Typing effect for About section (with callback)
-        function typeWriter(text, element, speed, callback) {
-            let i = 0;
-            element.innerHTML = '';
-            element.style.borderRight = '2px solid #2a9d8f';
-            
-            const interval = setInterval(() => {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                } else {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        element.style.borderRight = 'none';
-                        if (callback) callback();
-                    }, 500);
-                }
-            }, speed);
-        }
-
-        // Animate skill bars when section is visible
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            skillBars.forEach(bar => {
-                const width = bar.getAttribute('data-width');
-                bar.style.width = width + '%';
-            });
-        }
-
-        // Observe when skills section is visible
-        const skillsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(animateSkillBars, 300);
-                }
-            });
-        }, { threshold: 0.3 });
-
-        // Start observing when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            const skillsSection = document.getElementById('habilitats');
-            if (skillsSection) {
-                skillsObserver.observe(skillsSection);
-            }
-        });
-
-        // Function to handle contact form
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('contact-name').value;
-            const email = document.getElementById('contact-email').value;
-            const message = document.getElementById('contact-message').value;
-            
-            console.log('Form submitted:', { name, email, message });
-            
-            // Show success message
-            alert('Message sent successfully! Thank you for contacting me.');
-            
-            // Clear form
-            this.reset();
-        });
-    </script>
-</body>
-</html>
+                gap: 20px
