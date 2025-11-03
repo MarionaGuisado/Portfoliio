@@ -167,15 +167,16 @@
             z-index: 5;
         }
 
+        /* ÍNDICE MÁS JUNTO Y CENTRADO A LA IZQUIERDA */
         .nav-menu {
             position: absolute;
             top: 60%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            left: 15%; /* Cambiado de 50% a 15% para centrar a la izquierda */
+            transform: translateY(-50%); /* Solo translateY para mantener alineación vertical */
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 15px;
+            align-items: flex-start; /* Alineado a la izquierda */
+            gap: 10px; /* Reducido de 15px a 10px para menos espacio entre elementos */
             opacity: 0;
             transition: opacity 1s ease;
             z-index: 6;
@@ -185,7 +186,7 @@
         }
 
         .nav-item {
-            padding: 12px 0;
+            padding: 8px 0; /* Reducido de 12px a 8px */
             color: black;
             text-decoration: none;
             font-size: 1.5rem;
@@ -361,9 +362,9 @@
             transform: scale(1.1);
         }
 
-        /* SECCIÓN PROFESSIONAL PROFILE */
+        /* SECCIÓN PROFESSIONAL PROFILE - FONDO OSCURO */
         #sobre-mi {
-            background: url('sobre-mi-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             position: relative;
             display: flex;
             align-items: center;
@@ -495,95 +496,6 @@
             transform: translateX(5px);
         }
 
-        /* SECCIÓN TESTIMONIOS - MEJORADA */
-        .testimonials-section {
-            width: 90%;
-            max-width: 1200px;
-            margin: 60px auto 0;
-            padding: 40px 20px;
-        }
-
-        .testimonials-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 40px;
-            color: white;
-            font-weight: 500;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .testimonials-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .testimonial-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .testimonial-text {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--text-color);
-            margin-bottom: 20px;
-            font-style: italic;
-            position: relative;
-        }
-
-        .testimonial-text::before {
-            content: """;
-            font-size: 3rem;
-            color: var(--primary-color);
-            position: absolute;
-            top: -20px;
-            left: -10px;
-            opacity: 0.3;
-            font-family: Georgia, serif;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-        }
-
-        .author-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .author-name {
-            font-weight: 600;
-            color: var(--dark-color);
-        }
-
-        .author-role {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
         /* BAFARADA (TOOLTIP) PARA PRIVATE TUTOR Y BUSINESS TESTIMONIALS */
         .tutor-bubble {
             position: relative;
@@ -658,7 +570,7 @@
             font-weight: 500;
         }
 
-        /* SECCIÓN EDUCATION */
+        /* SECCIÓN EDUCATION - FONDO OSCURO */
         #formacio {
             position: relative;
             display: flex;
@@ -667,14 +579,14 @@
             justify-content: flex-start;
             min-height: 100vh;
             padding-top: 80px;
-            background: linear-gradient(135deg, var(--light-color) 0%, #e9ecef 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             overflow: hidden;
         }
 
         .education-title {
             position: relative;
             z-index: 3;
-            color: var(--dark-color);
+            color: white; /* Cambiado a blanco para contraste con fondo oscuro */
             text-align: center;
             font-size: 3.5rem;
             margin-top: 80px;
@@ -1201,9 +1113,9 @@
             line-height: 1.5;
         }
 
-        /* SECCIÓN DE CONTACTO */
+        /* SECCIÓN DE CONTACTO - SIN FONDO DE IMAGEN */
         #contacte {
-            background: url('contacte-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             position: relative;
             display: flex;
             align-items: center;
@@ -1486,10 +1398,13 @@
         }
 
         /* TÍTULOS EN BLANCO PARA SECCIONES OSCURAS */
+        #sobre-mi .section-title,
         #experiencia .section-title,
+        #formacio .section-title,
         #habilitats .section-title,
         #projectes .section-title,
-        #actividades .section-title {
+        #actividades .section-title,
+        #contacte .section-title {
             color: white;
         }
 
@@ -1506,11 +1421,12 @@
             
             .nav-menu {
                 top: 60%;
+                left: 10%; /* Ajustado para móviles */
             }
             
             .nav-item {
                 width: 160px;
-                padding: 10px 20px;
+                padding: 8px 0; /* Mantenemos el padding reducido */
                 font-size: 1rem;
             }
 
@@ -1590,10 +1506,6 @@
             .experience-card,
             .activity-card {
                 padding: 20px;
-            }
-
-            .testimonials-container {
-                grid-template-columns: 1fr;
             }
 
             .tutor-bubble-content {
@@ -1737,23 +1649,12 @@
                             <div class="experience-detail">Participant management</div>
                             <div class="experience-detail">Event planning and execution</div>
                         </div>
-                        
-                        <!-- Bafarada para Business Testimonials -->
-                        <div class="tutor-bubble">
-                            <div class="tutor-bubble-trigger">
-                                <i class="fas fa-comment-alt"></i> Business Testimonials
-                            </div>
-                            <div class="tutor-bubble-content">
-                                <div class="bubble-text">"Gràcies a la pàgina web que ens va dissenyar la Mariona, la nostra empresa ha guanyat molta visibilitat. En pocs mesos, el nombre de persones que contacten amb nosaltres ha augmentat aproximadament un 80%."</div>
-                                <div class="bubble-author">— Màrmoles Genevat</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
 
             <section id="formacio" class="section">
-                <h2 class="education-title">Education</h2>
+                <h2 class="section-title">Education</h2>
                 <div class="education-content">
                     <div class="education-container">
                         <!-- UAB -->
@@ -1959,6 +1860,17 @@
                                 <span class="tech-tag">Responsive Design</span>
                                 <span class="tech-tag">UI/UX</span>
                             </div>
+                            
+                            <!-- Bafarada para Business Testimonials -->
+                            <div class="tutor-bubble">
+                                <div class="tutor-bubble-trigger">
+                                    <i class="fas fa-comment-alt"></i> Business Testimonials
+                                </div>
+                                <div class="tutor-bubble-content">
+                                    <div class="bubble-text">"Gràcies a la pàgina web que ens va dissenyar la Mariona, la nostra empresa ha guanyat molta visibilitat. En pocs mesos, el nombre de persones que contacten amb nosaltres ha augmentat aproximadament un 80%."</div>
+                                    <div class="bubble-author">— Màrmoles Genevat</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -2020,6 +1932,7 @@
             </section>
 
             <section id="contacte" class="section">
+                <h2 class="section-title">Contact</h2>
                 <div class="contacte-container">
                     <div class="contact-info">
                         <h2 class="contact-title">Get In Touch</h2>
