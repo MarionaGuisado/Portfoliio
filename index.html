@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2a9d8f;
-            --secondary-color: #e76f51;
-            --accent-color: #e9c46a;
-            --dark-color: #2c3e50;
+            --primary-color: #6a11cb;
+            --secondary-color: #ff6b6b;
+            --accent-color: #ffd93d;
+            --dark-color: #2d3436;
             --light-color: #f8f9fa;
-            --text-color: #333;
+            --text-color: #2d3436;
             --bg-color: #ffffff;
             --card-bg: rgba(255, 255, 255, 0.95);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -24,19 +24,15 @@
         }
 
         .dark-mode {
-            --primary-color: #4cc9b8;
-            --secondary-color: #f4a261;
-            --accent-color: #e9c46a;
-            --dark-color: #1a2a3a;
-            --light-color: #2a3a4a;
+            --primary-color: #8a2be2;
+            --secondary-color: #ff8787;
+            --accent-color: #ffe066;
+            --dark-color: #1a1a1a;
+            --light-color: #2a2a2a;
             --text-color: #f8f9fa;
-            --bg-color: #1a2a3a;
-            --card-bg: rgba(42, 58, 74, 0.95);
+            --bg-color: #121212;
+            --card-bg: rgba(42, 42, 42, 0.95);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        * {
-            box-sizing: border-box;
         }
 
         body {
@@ -171,15 +167,16 @@
             z-index: 5;
         }
 
+        /* ÍNDICE MÁS JUNTO Y CENTRADO A LA IZQUIERDA */
         .nav-menu {
             position: absolute;
             top: 60%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            left: 15%; /* Cambiado de 50% a 15% para centrar a la izquierda */
+            transform: translateY(-50%); /* Solo translateY para mantener alineación vertical */
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 15px;
+            align-items: flex-start; /* Alineado a la izquierda */
+            gap: 10px; /* Reducido de 15px a 10px para menos espacio entre elementos */
             opacity: 0;
             transition: opacity 1s ease;
             z-index: 6;
@@ -189,7 +186,7 @@
         }
 
         .nav-item {
-            padding: 12px 0;
+            padding: 8px 0; /* Reducido de 12px a 8px */
             color: black;
             text-decoration: none;
             font-size: 1.5rem;
@@ -213,21 +210,21 @@
             left: 0;
             width: 100%;
             background-color: var(--card-bg);
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             transition: var(--transition);
-            padding: 5px 0;
+            padding: 5px 0; /* Reducido de 8px a 5px */
             display: none;
             backdrop-filter: blur(10px);
         }
 
         .header.scrolled {
-            padding: 3px 0;
+            padding: 3px 0; /* Reducido de 5px a 3px */
             background-color: rgba(255, 255, 255, 0.95);
         }
 
         .dark-mode .header.scrolled {
-            background-color: rgba(42, 58, 74, 0.95);
+            background-color: rgba(42, 42, 42, 0.95);
         }
 
         .header-content {
@@ -246,8 +243,8 @@
         }
 
         .logo-circle {
-            width: 32px;
-            height: 32px;
+            width: 35px;
+            height: 35px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 50%;
             display: flex;
@@ -255,14 +252,14 @@
             justify-content: center;
             color: white;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-family: 'Playfair Display', serif;
-            margin-right: 8px;
+            margin-right: 10px;
         }
 
         .logo-text {
             font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 500;
             color: var(--dark-color);
         }
@@ -273,7 +270,7 @@
 
         .header-nav {
             display: flex;
-            gap: 20px;
+            gap: 25px;
         }
 
         .header-nav a {
@@ -282,8 +279,8 @@
             font-weight: 500;
             transition: var(--transition);
             position: relative;
-            padding: 3px 0;
-            font-size: 0.85rem;
+            padding: 5px 0;
+            font-size: 0.9rem;
         }
 
         .dark-mode .header-nav a {
@@ -300,7 +297,7 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 1px;
+            height: 2px;
             background-color: var(--primary-color);
             transition: var(--transition);
         }
@@ -313,6 +310,7 @@
             min-height: 100vh;
             padding: 0;
             position: relative;
+            top: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -344,13 +342,13 @@
         /* Dark mode toggle */
         .dark-mode-toggle {
             position: fixed;
-            top: 15px;
-            right: 15px;
+            top: 20px;
+            right: 20px;
             z-index: 100;
             background: var(--card-bg);
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -364,9 +362,9 @@
             transform: scale(1.1);
         }
 
-        /* SECCIÓN PROFESSIONAL PROFILE */
+        /* SECCIÓN PROFESSIONAL PROFILE - FONDO OSCURO */
         #sobre-mi {
-            background: url('sobre-mi-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             position: relative;
             display: flex;
             align-items: center;
@@ -401,12 +399,12 @@
             font-weight: 400;
         }
 
-        /* SECCIÓN EXPERIENCIA Y LIDERAZGO */
+        /* SECCIÓN EXPERIENCIA Y LIDERAZGO - COLOR CAMBIADO */
         #experiencia {
             position: relative;
             min-height: 100vh;
             width: 100%;
-            background: linear-gradient(135deg, var(--dark-color) 0%, #2c3e50 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -459,7 +457,7 @@
             margin-bottom: 20px;
             color: white;
             font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(233, 196, 106, 0.3);
+            box-shadow: 0 5px 15px rgba(255, 217, 61, 0.3);
             border-radius: 50%;
         }
 
@@ -498,15 +496,15 @@
             transform: translateX(5px);
         }
 
-        /* BAFARADAS (TOOLTIPS) PARA TESTIMONIOS */
-        .tutor-bubble, .business-bubble {
+        /* BAFARADA (TOOLTIP) PARA PRIVATE TUTOR Y BUSINESS TESTIMONIALS */
+        .tutor-bubble {
             position: relative;
             display: inline-block;
             cursor: pointer;
             margin-top: 10px;
         }
 
-        .tutor-bubble-trigger, .business-bubble-trigger {
+        .tutor-bubble-trigger {
             background: var(--primary-color);
             color: white;
             padding: 8px 15px;
@@ -519,12 +517,12 @@
             gap: 5px;
         }
 
-        .tutor-bubble-trigger:hover, .business-bubble-trigger:hover {
-            background: #21867a;
+        .tutor-bubble-trigger:hover {
+            background: #5a0db0;
             transform: scale(1.05);
         }
 
-        .tutor-bubble-content, .business-bubble-content {
+        .tutor-bubble-content {
             position: absolute;
             bottom: 100%;
             left: 50%;
@@ -542,7 +540,7 @@
             margin-bottom: 15px;
         }
 
-        .tutor-bubble-content::after, .business-bubble-content::after {
+        .tutor-bubble-content::after {
             content: '';
             position: absolute;
             top: 100%;
@@ -552,8 +550,7 @@
             border-top-color: white;
         }
 
-        .tutor-bubble:hover .tutor-bubble-content,
-        .business-bubble:hover .business-bubble-content {
+        .tutor-bubble:hover .tutor-bubble-content {
             opacity: 1;
             visibility: visible;
             bottom: calc(100% + 10px);
@@ -573,7 +570,7 @@
             font-weight: 500;
         }
 
-        /* SECCIÓN EDUCATION */
+        /* SECCIÓN EDUCATION - FONDO OSCURO */
         #formacio {
             position: relative;
             display: flex;
@@ -582,14 +579,14 @@
             justify-content: flex-start;
             min-height: 100vh;
             padding-top: 80px;
-            background: linear-gradient(135deg, var(--light-color) 0%, #e9ecef 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             overflow: hidden;
         }
 
         .education-title {
             position: relative;
             z-index: 3;
-            color: var(--dark-color);
+            color: white; /* Cambiado a blanco para contraste con fondo oscuro */
             text-align: center;
             font-size: 3.5rem;
             margin-top: 80px;
@@ -751,7 +748,7 @@
             color: white;
         }
 
-        /* SECCIÓN SKILLS */
+        /* SECCIÓN SKILLS - COLOR CAMBIADO */
         #habilitats {
             position: relative;
             display: flex;
@@ -760,7 +757,7 @@
             justify-content: center;
             min-height: 100vh;
             width: 100%;
-            background: linear-gradient(135deg, #1a2a3a 0%, #2a3a4a 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             padding: 80px 0;
             overflow: hidden;
         }
@@ -809,14 +806,14 @@
         .skill-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary-color), #21867a);
+            background: linear-gradient(135deg, var(--primary-color), #5a0db0);
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 20px;
             color: white;
             font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(42, 157, 143, 0.3);
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
             border-radius: 50%;
         }
 
@@ -868,7 +865,7 @@
 
         .skill-progress {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), #4cc9b8);
+            background: linear-gradient(90deg, var(--primary-color), #8a2be2);
             transition: width 1.5s ease-in-out;
             width: 0;
             border-radius: 4px;
@@ -932,12 +929,12 @@
             font-weight: 500;
         }
 
-        /* SECCIÓN PROYECTOS */
+        /* SECCIÓN PROYECTOS MEJORADA - COLOR CAMBIADO */
         #projectes {
             position: relative;
             min-height: 100vh;
             width: 100%;
-            background: linear-gradient(135deg, var(--dark-color) 0%, #4a6572 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1033,12 +1030,12 @@
             color: white;
         }
 
-        /* SECCIÓN ACTIVIDADES EXTRACURRICULARES */
+        /* SECCIÓN ACTIVIDADES EXTRACURRICULARES - COLOR CAMBIADO */
         #actividades {
             position: relative;
             min-height: 100vh;
             width: 100%;
-            background: linear-gradient(135deg, #2a3a4a 0%, #1a2a3a 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1073,7 +1070,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), #4cc9b8);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
 
         .activity-card:hover {
@@ -1084,14 +1081,14 @@
         .activity-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary-color), #4cc9b8);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
             color: white;
             font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(42, 157, 143, 0.3);
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
             border-radius: 50%;
         }
 
@@ -1116,9 +1113,9 @@
             line-height: 1.5;
         }
 
-        /* SECCIÓN DE CONTACTO - SIN NATIONALITY Y LOCATION */
+        /* SECCIÓN DE CONTACTO - SIN FONDO DE IMAGEN */
         #contacte {
-            background: url('contacte-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             position: relative;
             display: flex;
             align-items: center;
@@ -1219,7 +1216,7 @@
         }
 
         .linkedin-link:hover {
-            color: #21867a;
+            color: #5a0db0;
             text-decoration: underline;
         }
 
@@ -1259,7 +1256,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(231, 111, 81, 0.2);
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
         }
 
         textarea.form-control {
@@ -1282,7 +1279,7 @@
         }
 
         .submit-btn:hover {
-            background-color: #21867a;
+            background-color: #5a0db0;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
@@ -1396,8 +1393,19 @@
         }
 
         .back-to-top:hover {
-            background-color: #21867a;
+            background-color: #5a0db0;
             transform: translateY(-5px);
+        }
+
+        /* TÍTULOS EN BLANCO PARA SECCIONES OSCURAS */
+        #sobre-mi .section-title,
+        #experiencia .section-title,
+        #formacio .section-title,
+        #habilitats .section-title,
+        #projectes .section-title,
+        #actividades .section-title,
+        #contacte .section-title {
+            color: white;
         }
 
         @media (max-width: 768px) {
@@ -1413,16 +1421,17 @@
             
             .nav-menu {
                 top: 60%;
+                left: 10%; /* Ajustado para móviles */
             }
             
             .nav-item {
                 width: 160px;
-                padding: 10px 20px;
+                padding: 8px 0; /* Mantenemos el padding reducido */
                 font-size: 1rem;
             }
 
             .header {
-                padding: 3px 0;
+                padding: 3px 0; /* Reducido de 5px a 3px */
             }
 
             .header-nav {
@@ -1499,13 +1508,13 @@
                 padding: 20px;
             }
 
-            .tutor-bubble-content, .business-bubble-content {
+            .tutor-bubble-content {
                 width: 250px;
                 left: 0;
                 transform: none;
             }
 
-            .tutor-bubble-content::after, .business-bubble-content::after {
+            .tutor-bubble-content::after {
                 left: 30px;
             }
 
@@ -1548,7 +1557,7 @@
         <a href="#" class="enter-button" id="enterButton">Enter</a>
         <div class="transition" id="transition"></div>
         
-        <!-- HEADER FIJO - MÁS FINO -->
+        <!-- HEADER FIJO -->
         <header class="header" id="header">
             <div class="header-content">
                 <a href="#" class="logo">
@@ -1614,7 +1623,7 @@
                             <div class="experience-detail">Personalized teaching methodologies</div>
                         </div>
                         
-                        <!-- Bafarada para Private Tutor con todos los testimonios de estudiantes -->
+                        <!-- Bafarada para Student Testimonials -->
                         <div class="tutor-bubble">
                             <div class="tutor-bubble-trigger">
                                 <i class="fas fa-comment-alt"></i> Student Testimonials
@@ -1622,12 +1631,10 @@
                             <div class="tutor-bubble-content">
                                 <div class="bubble-text">"Antes me costaban mucho las mates, pero con Mariona empecé a entender los ejercicios y ahora saco muy buenas notas. Explica muy claro y tiene mucha paciencia."</div>
                                 <div class="bubble-author">— Clara, 4º de ESO</div>
-                                
                                 <div class="bubble-text" style="margin-top: 15px;">"Las clases con Mariona son muy divertidas. Hacemos juegos y hablo mucho más en inglés sin miedo a equivocarme."</div>
                                 <div class="bubble-author">— Laia, 1º de ESO</div>
-                                
                                 <div class="bubble-text" style="margin-top: 15px;">"Mariona siempre se adapta a lo que necesito. Si tengo examen, repasamos; si tengo dudas, las resuelve con ejemplos fáciles de entender."</div>
-                                <div class="bubble-author">— Anna, estudiante de ESO</div>
+                                <div class="bubble-author">— Anna, ESO Student</div>
                             </div>
                         </div>
                     </div>
@@ -1642,24 +1649,12 @@
                             <div class="experience-detail">Participant management</div>
                             <div class="experience-detail">Event planning and execution</div>
                         </div>
-                        
-                        <!-- Bafarada para Mármoles Genevat -->
-                        <div class="business-bubble">
-                            <div class="business-bubble-trigger">
-                                <i class="fas fa-building"></i> Business Testimonial
-                            </div>
-                            <div class="business-bubble-content">
-                                <div class="bubble-text">"Gràcies a la pàgina web que ens va dissenyar la Mariona, la nostra empresa ha guanyat molta visibilitat. En pocs mesos, el nombre de persones que contacten amb nosaltres ha augmentat aproximadament un 80%, i això s'ha traduït en més feina i nous clients. Estem molt contents amb el resultat — és una web clara, moderna i molt fàcil d'utilitzar."</div>
-                                <div class="bubble-author">— Equip de Marbres Genevat</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Resto de las secciones se mantienen igual -->
             <section id="formacio" class="section">
-                <h2 class="education-title">Education</h2>
+                <h2 class="section-title">Education</h2>
                 <div class="education-content">
                     <div class="education-container">
                         <!-- UAB -->
@@ -1865,6 +1860,17 @@
                                 <span class="tech-tag">Responsive Design</span>
                                 <span class="tech-tag">UI/UX</span>
                             </div>
+                            
+                            <!-- Bafarada para Business Testimonials -->
+                            <div class="tutor-bubble">
+                                <div class="tutor-bubble-trigger">
+                                    <i class="fas fa-comment-alt"></i> Business Testimonials
+                                </div>
+                                <div class="tutor-bubble-content">
+                                    <div class="bubble-text">"Gràcies a la pàgina web que ens va dissenyar la Mariona, la nostra empresa ha guanyat molta visibilitat. En pocs mesos, el nombre de persones que contacten amb nosaltres ha augmentat aproximadament un 80%."</div>
+                                    <div class="bubble-author">— Màrmoles Genevat</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -1885,10 +1891,10 @@
                         </div>
                     </div>
 
-                    <!-- Movie Recommendation Engine - CON FOTO -->
+                    <!-- Movie Recommendation Engine -->
                     <div class="project-card" data-category="data">
                         <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1489599809505-f2d4cbd55d1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Movie Recommendation Engine">
+                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Movie Recommendation Engine">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Movie Recommendation Engine</h3>
@@ -1926,6 +1932,7 @@
             </section>
 
             <section id="contacte" class="section">
+                <h2 class="section-title">Contact</h2>
                 <div class="contacte-container">
                     <div class="contact-info">
                         <h2 class="contact-title">Get In Touch</h2>
@@ -2018,84 +2025,239 @@
     </div>
 
     <script>
-        // Solución para el botón Enter
-        document.addEventListener('DOMContentLoaded', function() {
-            const enterButton = document.getElementById('enterButton');
+        // Global variables
+        let lastScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        let scrollTimeout;
+        const nameElement = document.getElementById('name');
+        const enterButton = document.getElementById('enterButton');
+        const backToTopButton = document.getElementById('backToTop');
+        const header = document.getElementById('header');
+        
+        // Improved scroll handler function
+        function handleScroll() {
+            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Only trigger if significant scroll (> 5px)
+            if (Math.abs(currentScrollPosition - lastScrollPosition) > 5) {
+                if (currentScrollPosition > lastScrollPosition) {
+                    // Scrolling down - hide name
+                    nameElement.classList.add('hidden');
+                } else {
+                    // Scrolling up - show name
+                    nameElement.classList.remove('hidden');
+                }
+            }
+            
+            lastScrollPosition = currentScrollPosition;
+            
+            // Reset after stopping scrolling
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                nameElement.classList.remove('hidden');
+            }, 1000);
+
+            // Show/hide back to top button
+            if (currentScrollPosition > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+
+            // Header scroll effect - aparece cuando ya no se ve el índice inicial
+            if (currentScrollPosition > 400) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+
+        // Initialize scroll event listener
+        window.addEventListener('scroll', handleScroll);
+
+        // Back to top functionality
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        document.getElementById('enterButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            
             const transition = document.getElementById('transition');
             const name = document.getElementById('name');
             const background = document.getElementById('background');
             const mainContent = document.getElementById('mainContent');
             const newBackground = document.getElementById('newBackground');
             const navMenu = document.getElementById('navMenu');
-            const header = document.getElementById('header');
-
-            if (enterButton) {
-                enterButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    console.log('Enter button clicked'); // Para debugging
-                    
-                    // 1. White screen rises
-                    transition.style.bottom = '100%';
-                    
-                    // 2. Hide enter button
-                    enterButton.classList.add('hidden');
-                    
-                    // 3. Change name color to black, move it up and reduce size
-                    setTimeout(() => {
-                        name.style.color = 'black';
-                        name.style.textShadow = 'none';
-                        name.style.top = '10%';
-                        name.style.fontSize = '3rem';
-                    }, 500);
-                    
-                    // 4. Show main content when transition ends
-                    setTimeout(() => {
-                        mainContent.style.display = 'block';
-                        header.style.display = 'block';
-                        
-                        // 5. Show new image (now larger) and menu
-                        setTimeout(() => {
-                            newBackground.style.opacity = '1';
-                            navMenu.style.opacity = '1';
-                            
-                            // Typing effect for the new About Me text
-                            const aboutText = "A highly motivated Data Engineering student with a strong academic foundation and a passion for transforming data into actionable insights. Demonstrated ability to lead and collaborate effectively through roles as Class Representative and organizer of technology events, fostering communication between diverse groups and driving community engagement. Combines technical knowledge in data analysis with exceptional interpersonal skills, adaptability, and a solutions-oriented mindset. Eager to contribute by leveraging a unique blend of analytical thinking, leadership experience, and a commitment to delivering value in dynamic, team-based environments.";
-                            
-                            const typedElement = document.getElementById('typed-text');
-                            
-                            // Type the new text
-                            typeWriter(aboutText, typedElement, 20);
-                        }, 100);
-                        
-                        // Hide initial background
-                        background.style.opacity = '0';
-                    }, 1000);
-                });
-            } else {
-                console.error('Enter button not found');
-            }
-
-            // Typing effect function
-            function typeWriter(text, element, speed, callback) {
-                let i = 0;
-                element.innerHTML = '';
-                element.style.borderRight = '2px solid var(--primary-color)';
+            
+            // 1. White screen rises
+            transition.style.bottom = '100%';
+            
+            // 2. Hide enter button
+            enterButton.classList.add('hidden');
+            
+            // 3. Change name color to black, move it up and reduce size
+            setTimeout(() => {
+                name.style.color = 'black';
+                name.style.textShadow = 'none';
+                name.style.top = '10%';
+                name.style.fontSize = '3rem';
+            }, 500);
+            
+            // 4. Show main content when transition ends
+            setTimeout(() => {
+                mainContent.style.display = 'block';
+                header.style.display = 'block';
                 
-                const interval = setInterval(() => {
-                    if (i < text.length) {
-                        element.innerHTML += text.charAt(i);
-                        i++;
-                    } else {
-                        clearInterval(interval);
-                        setTimeout(() => {
-                            element.style.borderRight = 'none';
-                            if (callback) callback();
-                        }, 500);
-                    }
-                }, speed);
-            }
+                // 5. Show new image (now larger) and menu
+                setTimeout(() => {
+                    newBackground.style.opacity = '1';
+                    navMenu.style.opacity = '1';
+                    
+                    // Typing effect for the new About Me text
+                    const aboutText = "A highly motivated Data Engineering student with a strong academic foundation and a passion for transforming data into actionable insights. Demonstrated ability to lead and collaborate effectively through roles as Class Representative and organizer of technology events, fostering communication between diverse groups and driving community engagement. Combines technical knowledge in data analysis with exceptional interpersonal skills, adaptability, and a solutions-oriented mindset. Eager to contribute by leveraging a unique blend of analytical thinking, leadership experience, and a commitment to delivering value in dynamic, team-based environments.";
+                    
+                    const typedElement = document.getElementById('typed-text');
+                    
+                    // Type the new text
+                    typeWriter(aboutText, typedElement, 20);
+                }, 100);
+                
+                // Hide initial background
+                background.style.opacity = '0';
+            }, 1000);
+        });
 
-            // El resto del JavaScript se mantiene igual...
+        // Smooth navigation to sections
+        document.querySelectorAll('.nav-item, .footer-link, .header-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Typing effect for About section (with callback)
+        function typeWriter(text, element, speed, callback) {
+            let i = 0;
+            element.innerHTML = '';
+            element.style.borderRight = '2px solid var(--primary-color)';
+            
+            const interval = setInterval(() => {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        element.style.borderRight = 'none';
+                        if (callback) callback();
+                    }, 500);
+                }
+            }, speed);
+        }
+
+        // Animate skill bars when section is visible
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width + '%';
+            });
+        }
+
+        // Observe when skills section is visible
+        const skillsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(animateSkillBars, 300);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        // Start observing when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillsSection = document.getElementById('habilitats');
+            if (skillsSection) {
+                skillsObserver.observe(skillsSection);
+            }
+        });
+
+        // Function to handle contact form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const message = document.getElementById('contact-message').value;
+            
+            console.log('Form submitted:', { name, email, message });
+            
+            // Show success message
+            alert('Message sent successfully! Thank you for contacting me.');
+            
+            // Clear form
+            this.reset();
+        });
+
+        // Dark mode toggle functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+
+        // Filter functionality for projects and skills
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                const container = this.closest('.section').querySelector('.projects-container, .skills-container');
+                
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Filter items
+                if (container) {
+                    const items = container.querySelectorAll('.project-card, .skill-category');
+                    items.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        });
+
+        // Smooth transitions for section changes
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for smooth appearance
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
         });
     </script>
 </body>
