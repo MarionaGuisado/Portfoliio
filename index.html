@@ -6,7 +6,8 @@
     <title>Mariona Guisado</title>
     <link rel="preload" href="sobre-mi-bg.jpg" as="image">
     <link rel="preload" href="contacte-bg.jpg" as="image">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #2a9d8f;
@@ -19,6 +20,7 @@
             --card-bg: rgba(255, 255, 255, 0.95);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             --transition: all 0.4s ease;
+            --border-radius: 8px;
         }
 
         .dark-mode {
@@ -38,10 +40,18 @@
             padding: 0;
             height: 100vh;
             overflow: hidden;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: background-color 0.5s ease, color 0.5s ease;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
         }
 
         .container {
@@ -69,11 +79,12 @@
             text-align: center;
             z-index: 2;
             letter-spacing: 1px;
-            font-weight: 500;
+            font-weight: 600;
             transition: opacity 0.3s ease, transform 0.3s ease, top 0.5s ease, color 0.5s ease, font-size 0.5s ease;
             will-change: opacity, transform, top, color, font-size;
             background-color: transparent !important;
             padding: 0;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .name.hidden {
@@ -102,6 +113,8 @@
             text-decoration: none;
             z-index: 3;
             font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         .enter-button:hover {
@@ -143,7 +156,7 @@
             transform: translate(-50%, -50%);
             width: 85%;
             height: 75%;
-            background-image: url('img2.jpg');
+            background-image: url('img22.jpg');
             background-size: cover;
             background-position: center;
             opacity: 0;
@@ -171,7 +184,7 @@
         }
 
         .nav-item {
-            padding: 8px 0;
+            padding: 12px 0;
             color: black;
             text-decoration: none;
             font-size: 1.5rem;
@@ -179,11 +192,115 @@
             background-color: transparent;
             border-bottom: none;
             font-weight: 500;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.5px;
         }
 
         .nav-item:hover {
             color: var(--primary-color);
             transform: scale(1.05);
+        }
+
+        /* HEADER FIJO */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+            padding: 15px 0;
+            display: none;
+        }
+
+        .header.scrolled {
+            padding: 10px 0;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .dark-mode .header.scrolled {
+            background-color: rgba(42, 58, 74, 0.95);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-circle {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+            font-family: 'Playfair Display', serif;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .dark-mode .logo-text {
+            color: var(--text-color);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .header-nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .dark-mode .header-nav a {
+            color: var(--text-color);
+        }
+
+        .header-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .header-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .header-nav a:hover::after {
+            width: 100%;
         }
 
         .section {
@@ -198,14 +315,14 @@
         }
 
         .section-title {
-            font-size: 3rem;
-            margin: 1rem 0;
+            font-size: 3.5rem;
+            margin: 2rem 0 1.5rem;
             color: var(--text-color);
             text-align: center;
-            padding-top: 20px;
+            padding-top: 40px;
             position: relative;
             z-index: 2;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 0.5px;
         }
 
@@ -213,7 +330,7 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 30px;
             position: relative;
             z-index: 2;
         }
@@ -256,11 +373,12 @@
         .about-text-container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px;
+            padding: 50px;
             color: var(--text-color);
             background-color: var(--card-bg);
             box-shadow: var(--shadow);
             transition: var(--transition);
+            border-radius: var(--border-radius);
         }
 
         .typed-text, .personal-text {
@@ -307,6 +425,7 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            border-radius: var(--border-radius);
         }
 
         .experience-card::before {
@@ -335,10 +454,11 @@
             color: white;
             font-size: 1.5rem;
             box-shadow: 0 5px 15px rgba(233, 196, 106, 0.3);
+            border-radius: 50%;
         }
 
         .experience-role {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--dark-color);
             font-weight: 600;
             margin-bottom: 10px;
@@ -359,78 +479,16 @@
 
         .experience-detail {
             background: var(--light-color);
-            padding: 10px;
-            font-size: 0.9rem;
+            padding: 12px;
+            font-size: 0.95rem;
             color: #555;
             line-height: 1.4;
             transition: var(--transition);
+            border-radius: 4px;
         }
 
         .experience-detail:hover {
             transform: translateX(5px);
-        }
-
-        /* Timeline visual para experiencia */
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 0;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: var(--primary-color);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
-        }
-
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-
-        .timeline-content {
-            padding: 20px 30px;
-            background-color: var(--card-bg);
-            position: relative;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-5px);
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            right: -13px;
-            background-color: var(--bg-color);
-            border: 4px solid var(--primary-color);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .timeline-item:nth-child(even)::after {
-            left: -12px;
         }
 
         /* SECCIÓN EDUCATION */
@@ -482,6 +540,7 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            border-radius: var(--border-radius);
         }
 
         .education-item::before {
@@ -511,7 +570,7 @@
         }
 
         .institution {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--primary-color);
             font-weight: 600;
             margin-bottom: 5px;
@@ -525,7 +584,7 @@
         }
 
         .degree {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text-color);
             font-weight: 500;
             margin-bottom: 5px;
@@ -547,9 +606,10 @@
 
         .honors, .coursework, .leadership, .certification {
             background: var(--light-color);
-            padding: 12px;
+            padding: 15px;
             border-left: 4px solid var(--primary-color);
             transition: var(--transition);
+            border-radius: 4px;
         }
 
         .honors:hover, .coursework:hover, .leadership:hover, .certification:hover {
@@ -557,10 +617,10 @@
         }
 
         .honors-title, .coursework-title, .leadership-title, .certification-title {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--text-color);
             font-weight: 500;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .honors-list {
@@ -570,9 +630,9 @@
         }
 
         .honors-list li {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #555;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
             padding-left: 15px;
             position: relative;
         }
@@ -593,10 +653,11 @@
         .course-tag {
             background: var(--light-color);
             color: var(--primary-color);
-            padding: 4px 10px;
-            font-size: 0.8rem;
+            padding: 6px 12px;
+            font-size: 0.85rem;
             font-weight: 500;
             transition: var(--transition);
+            border-radius: 20px;
         }
 
         .course-tag:hover {
@@ -635,6 +696,7 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            border-radius: var(--border-radius);
         }
 
         .skill-category::before {
@@ -669,6 +731,7 @@
             color: white;
             font-size: 1.5rem;
             box-shadow: 0 5px 15px rgba(42, 157, 143, 0.3);
+            border-radius: 50%;
         }
 
         .skill-title {
@@ -713,6 +776,7 @@
             background: var(--light-color);
             overflow: hidden;
             position: relative;
+            border-radius: 4px;
         }
 
         .skill-progress {
@@ -720,6 +784,7 @@
             background: linear-gradient(90deg, var(--primary-color), #4cc9b8);
             transition: width 1.5s ease-in-out;
             width: 0;
+            border-radius: 4px;
         }
 
         .languages-grid {
@@ -731,9 +796,10 @@
 
         .language-item {
             text-align: center;
-            padding: 15px;
+            padding: 20px;
             background: var(--light-color);
             transition: var(--transition);
+            border-radius: var(--border-radius);
         }
 
         .language-item:hover {
@@ -762,10 +828,11 @@
 
         .soft-skill-item {
             background: var(--light-color);
-            padding: 15px;
+            padding: 20px;
             text-align: center;
             transition: var(--transition);
             border-left: 4px solid var(--primary-color);
+            border-radius: 4px;
         }
 
         .soft-skill-item:hover {
@@ -779,7 +846,7 @@
             font-weight: 500;
         }
 
-        /* SECCIÓN PROYECTOS */
+        /* SECCIÓN PROYECTOS MEJORADA */
         #projectes {
             position: relative;
             min-height: 100vh;
@@ -794,7 +861,7 @@
 
         .projects-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             width: 90%;
             max-width: 1200px;
@@ -804,62 +871,74 @@
 
         .project-card {
             background: var(--card-bg);
-            padding: 30px;
             box-shadow: var(--shadow);
-            transition: var(--transition);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            border-radius: var(--border-radius);
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        .project-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(231, 111, 81, 0.3);
+            flex-direction: column;
         }
 
         .project-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--dark-color);
             font-weight: 600;
             margin-bottom: 15px;
+        }
+
+        .project-description {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex-grow: 1;
         }
 
         .project-technologies {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .tech-tag {
             background: var(--light-color);
             color: var(--primary-color);
-            padding: 5px 12px;
-            font-size: 0.8rem;
+            padding: 6px 12px;
+            font-size: 0.85rem;
             font-weight: 500;
             transition: var(--transition);
+            border-radius: 20px;
         }
 
         .tech-tag:hover {
@@ -867,28 +946,37 @@
             color: white;
         }
 
-        .project-achievement {
-            background: var(--light-color);
-            padding: 12px;
-            margin-bottom: 15px;
-            border-left: 4px solid var(--secondary-color);
-            transition: var(--transition);
+        .project-buttons {
+            display: flex;
+            gap: 10px;
         }
 
-        .project-achievement:hover {
-            transform: translateX(5px);
-        }
-
-        .achievement-text {
-            font-size: 0.9rem;
-            color: var(--text-color);
+        .project-btn {
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
             font-weight: 500;
+            transition: var(--transition);
+            text-align: center;
+            flex: 1;
         }
 
-        .project-benefit {
-            font-size: 0.9rem;
-            color: #555;
-            line-height: 1.5;
+        .project-btn:hover {
+            background: #21867a;
+            transform: translateY(-2px);
+        }
+
+        .project-btn.secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .project-btn.secondary:hover {
+            background: var(--primary-color);
+            color: white;
         }
 
         /* Testimonios dentro de proyectos */
@@ -899,6 +987,7 @@
             border-left: 4px solid var(--primary-color);
             font-style: italic;
             transition: var(--transition);
+            border-radius: 4px;
         }
 
         .project-testimonial:hover {
@@ -932,11 +1021,12 @@
             background: var(--card-bg);
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
-            padding: 8px 16px;
+            padding: 10px 20px;
             cursor: pointer;
             transition: var(--transition);
             font-family: 'Playfair Display', serif;
             font-weight: 500;
+            border-radius: 30px;
         }
 
         .filter-btn:hover, .filter-btn.active {
@@ -974,6 +1064,7 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            border-radius: var(--border-radius);
         }
 
         .activity-card::before {
@@ -1002,10 +1093,11 @@
             color: white;
             font-size: 1.5rem;
             box-shadow: 0 5px 15px rgba(42, 157, 143, 0.3);
+            border-radius: 50%;
         }
 
         .activity-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--dark-color);
             font-weight: 600;
             margin-bottom: 10px;
@@ -1032,6 +1124,7 @@
             border-left: 4px solid var(--primary-color);
             font-style: italic;
             transition: var(--transition);
+            border-radius: 4px;
         }
 
         .activity-testimonial:hover {
@@ -1061,6 +1154,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
+            border-radius: var(--border-radius);
         }
 
         .contact-info {
@@ -1070,7 +1164,7 @@
         }
 
         .contact-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
             font-weight: 600;
             margin-bottom: 10px;
@@ -1096,6 +1190,7 @@
             padding: 15px;
             background: var(--light-color);
             transition: var(--transition);
+            border-radius: var(--border-radius);
         }
 
         .contact-item:hover {
@@ -1112,6 +1207,7 @@
             justify-content: center;
             color: white;
             font-size: 1.2rem;
+            border-radius: 50%;
         }
 
         .contact-text {
@@ -1167,10 +1263,11 @@
             padding: 15px 20px;
             border: 2px solid var(--primary-color);
             font-size: 1rem;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--card-bg);
             transition: var(--transition);
             color: var(--text-color);
+            border-radius: var(--border-radius);
         }
 
         .form-control:focus {
@@ -1195,12 +1292,126 @@
             font-family: 'Playfair Display', serif;
             font-weight: 500;
             margin-top: 10px;
+            border-radius: 30px;
         }
 
         .submit-btn:hover {
             background-color: #21867a;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* FOOTER MEJORADO */
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* BOTÓN VOLVER ARRIBA */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 99;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #21867a;
+            transform: translateY(-5px);
         }
 
         @media (max-width: 768px) {
@@ -1224,10 +1435,18 @@
                 font-size: 1rem;
             }
 
+            .header {
+                padding: 10px 0;
+            }
+
+            .header-nav {
+                display: none;
+            }
+
             .section-title {
-                font-size: 2rem;
+                font-size: 2.5rem;
                 padding-top: 15px;
-                margin: 0.5rem 0;
+                margin: 1rem 0;
             }
 
             .education-title {
@@ -1294,6 +1513,10 @@
                 padding: 20px;
             }
 
+            .project-buttons {
+                flex-direction: column;
+            }
+
             .contacte-container {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -1307,6 +1530,22 @@
             .contacte-form {
                 order: 1;
             }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .social-links {
+                gap: 15px;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
         }
     </style>
 </head>
@@ -1316,6 +1555,25 @@
         <div class="name visible" id="name">Mariona Guisado</div>
         <a href="#" class="enter-button" id="enterButton">Enter</a>
         <div class="transition" id="transition"></div>
+        
+        <!-- HEADER FIJO -->
+        <header class="header" id="header">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-circle">MG</div>
+                    <div class="logo-text">Mariona Guisado</div>
+                </a>
+                <nav class="header-nav">
+                    <a href="#sobre-mi">Profile</a>
+                    <a href="#experiencia">Experience</a>
+                    <a href="#formacio">Education</a>
+                    <a href="#habilitats">Skills</a>
+                    <a href="#projectes">Projects</a>
+                    <a href="#actividades">Activities</a>
+                    <a href="#contacte">Contact</a>
+                </nav>
+            </div>
+        </header>
         
         <div class="main-content" id="mainContent">
             <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
@@ -1614,17 +1872,23 @@
                 <div class="projects-container">
                     <!-- Web Development - Empresa de Mármoles -->
                     <div class="project-card" data-category="web">
-                        <div class="project-icon">🏗️</div>
-                        <h3 class="project-title">Mármoles Genevat Website</h3>
-                        <div class="project-technologies">
-                            <span class="tech-tag">HTML/CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Responsive Design</span>
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Mármoles Genevat Website">
                         </div>
-                        <div class="project-achievement">
-                            <div class="achievement-text">80% Increase in Customer Contacts</div>
+                        <div class="project-content">
+                            <h3 class="project-title">Mármoles Genevat Website</h3>
+                            <p class="project-description">Designed and developed a modern, user-friendly website for a marble company, resulting in significant business growth and increased visibility in the market.</p>
+                            <div class="project-technologies">
+                                <span class="tech-tag">HTML/CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Responsive Design</span>
+                                <span class="tech-tag">UI/UX</span>
+                            </div>
+                            <div class="project-buttons">
+                                <a href="#" class="project-btn">View Project</a>
+                                <a href="#" class="project-btn secondary">Source Code</a>
+                            </div>
                         </div>
-                        <p class="project-benefit">Designed and developed a modern, user-friendly website for a marble company, resulting in significant business growth and increased visibility in the market.</p>
                         
                         <!-- Testimonio del proyecto de mármoles -->
                         <div class="project-testimonial">
@@ -1635,60 +1899,86 @@
 
                     <!-- Portfolio Personal -->
                     <div class="project-card" data-category="portfolio">
-                        <div class="project-icon">💼</div>
-                        <h3 class="project-title">Personal Portfolio Website</h3>
-                        <div class="project-technologies">
-                            <span class="tech-tag">HTML/CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Responsive Design</span>
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Personal Portfolio Website">
                         </div>
-                        <div class="project-achievement">
-                            <div class="achievement-text">Professional Online Presence</div>
+                        <div class="project-content">
+                            <h3 class="project-title">Personal Portfolio Website</h3>
+                            <p class="project-description">Created a comprehensive personal portfolio website to showcase skills, projects, and experience, featuring modern design, smooth animations, and responsive layout.</p>
+                            <div class="project-technologies">
+                                <span class="tech-tag">HTML/CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Responsive Design</span>
+                                <span class="tech-tag">Animations</span>
+                            </div>
+                            <div class="project-buttons">
+                                <a href="#" class="project-btn">Live Demo</a>
+                                <a href="#" class="project-btn secondary">Source Code</a>
+                            </div>
                         </div>
-                        <p class="project-benefit">Created a comprehensive personal portfolio website to showcase skills, projects, and experience, featuring modern design, smooth animations, and responsive layout.</p>
                     </div>
 
                     <!-- Movie Recommendation Engine -->
                     <div class="project-card" data-category="data">
-                        <div class="project-icon">🎬</div>
-                        <h3 class="project-title">Movie Recommendation Engine</h3>
-                        <div class="project-technologies">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">pandas</span>
-                            <span class="tech-tag">scikit-learn</span>
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1489599809505-f2d4cbd55d1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Movie Recommendation Engine">
                         </div>
-                        <div class="project-achievement">
-                            <div class="achievement-text">85% Accuracy</div>
+                        <div class="project-content">
+                            <h3 class="project-title">Movie Recommendation Engine</h3>
+                            <p class="project-description">Developed a sophisticated recommendation system using collaborative filtering and content-based approaches to suggest movies based on user preferences and viewing history.</p>
+                            <div class="project-technologies">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">pandas</span>
+                                <span class="tech-tag">scikit-learn</span>
+                                <span class="tech-tag">Machine Learning</span>
+                            </div>
+                            <div class="project-buttons">
+                                <a href="#" class="project-btn">View Project</a>
+                                <a href="#" class="project-btn secondary">Source Code</a>
+                            </div>
                         </div>
-                        <p class="project-benefit">Developed a sophisticated recommendation system using collaborative filtering and content-based approaches to suggest movies based on user preferences and viewing history.</p>
                     </div>
 
                     <!-- Parallel Computing Optimization -->
                     <div class="project-card" data-category="data">
-                        <div class="project-icon">⚡</div>
-                        <h3 class="project-title">Parallel Computing Optimization</h3>
-                        <div class="project-technologies">
-                            <span class="tech-tag">CUDA</span>
-                            <span class="tech-tag">OpenMP</span>
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Parallel Computing Optimization">
                         </div>
-                        <div class="project-achievement">
-                            <div class="achievement-text">40% Faster Performance</div>
+                        <div class="project-content">
+                            <h3 class="project-title">Parallel Computing Optimization</h3>
+                            <p class="project-description">Optimized computational algorithms using parallel processing techniques, significantly reducing execution time for complex data processing tasks.</p>
+                            <div class="project-technologies">
+                                <span class="tech-tag">CUDA</span>
+                                <span class="tech-tag">OpenMP</span>
+                                <span class="tech-tag">C++</span>
+                                <span class="tech-tag">Performance</span>
+                            </div>
+                            <div class="project-buttons">
+                                <a href="#" class="project-btn">View Project</a>
+                                <a href="#" class="project-btn secondary">Source Code</a>
+                            </div>
                         </div>
-                        <p class="project-benefit">Optimized computational algorithms using parallel processing techniques, significantly reducing execution time for complex data processing tasks.</p>
                     </div>
 
                     <!-- Relational Database Design -->
                     <div class="project-card" data-category="data">
-                        <div class="project-icon">🗃️</div>
-                        <h3 class="project-title">Relational Database Design</h3>
-                        <div class="project-technologies">
-                            <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">Normalization</span>
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Relational Database Design">
                         </div>
-                        <div class="project-achievement">
-                            <div class="achievement-text">Query Optimization Focus</div>
+                        <div class="project-content">
+                            <h3 class="project-title">Relational Database Design</h3>
+                            <p class="project-description">Designed and implemented efficient database schemas following normalization principles, optimizing query performance and data integrity.</p>
+                            <div class="project-technologies">
+                                <span class="tech-tag">SQL</span>
+                                <span class="tech-tag">Normalization</span>
+                                <span class="tech-tag">Database Design</span>
+                                <span class="tech-tag">Query Optimization</span>
+                            </div>
+                            <div class="project-buttons">
+                                <a href="#" class="project-btn">View Project</a>
+                                <a href="#" class="project-btn secondary">Source Code</a>
+                            </div>
                         </div>
-                        <p class="project-benefit">Designed and implemented efficient database schemas following normalization principles, optimizing query performance and data integrity.</p>
                     </div>
                 </div>
             </section>
@@ -1725,15 +2015,7 @@
                                 <div class="contact-icon">✉️</div>
                                 <div class="contact-text">
                                     <div class="contact-label">Email</div>
-                                    <div class="contact-value">marionagsd@gmail.com</div>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">📱</div>
-                                <div class="contact-text">
-                                    <div class="contact-label">Phone</div>
-                                    <div class="contact-value">+34 601 497 852</div>
+                                    <div class="contact-value">mariona.guisado.p@gmail.com</div>
                                 </div>
                             </div>
                             
@@ -1786,7 +2068,48 @@
                     </form>
                 </div>
             </section>
+
+            <!-- FOOTER MEJORADO -->
+            <footer class="footer">
+                <div class="footer-content">
+                    <div class="footer-logo">Mariona Guisado</div>
+                    <p class="footer-subtitle">Data Engineering Student | Problem Solver | Future Innovator</p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <a href="#sobre-mi" class="footer-link">Professional Profile</a>
+                        <a href="#experiencia" class="footer-link">Experience</a>
+                        <a href="#formacio" class="footer-link">Education</a>
+                        <a href="#habilitats" class="footer-link">Skills</a>
+                        <a href="#projectes" class="footer-link">Projects</a>
+                        <a href="#contacte" class="footer-link">Contact</a>
+                    </div>
+                    
+                    <div class="footer-bottom">
+                        <p>&copy; 2023 Mariona Guisado. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
         </div>
+    </div>
+
+    <!-- BOTÓN VOLVER ARRIBA -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
     </div>
 
     <script>
@@ -1795,6 +2118,8 @@
         let scrollTimeout;
         const nameElement = document.getElementById('name');
         const enterButton = document.getElementById('enterButton');
+        const backToTopButton = document.getElementById('backToTop');
+        const header = document.getElementById('header');
         
         // Improved scroll handler function
         function handleScroll() {
@@ -1818,10 +2143,32 @@
             scrollTimeout = setTimeout(() => {
                 nameElement.classList.remove('hidden');
             }, 1000);
+
+            // Show/hide back to top button
+            if (currentScrollPosition > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+
+            // Header scroll effect
+            if (currentScrollPosition > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         }
 
         // Initialize scroll event listener
         window.addEventListener('scroll', handleScroll);
+
+        // Back to top functionality
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
         document.getElementById('enterButton').addEventListener('click', function(e) {
             e.preventDefault();
@@ -1850,6 +2197,7 @@
             // 4. Show main content when transition ends
             setTimeout(() => {
                 mainContent.style.display = 'block';
+                header.style.display = 'block';
                 
                 // 5. Show new image (now larger) and menu
                 setTimeout(() => {
@@ -1871,7 +2219,7 @@
         });
 
         // Smooth navigation to sections
-        document.querySelectorAll('.nav-item').forEach(link => {
+        document.querySelectorAll('.nav-item, .footer-link, .header-nav a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
