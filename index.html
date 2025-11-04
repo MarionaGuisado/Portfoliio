@@ -1283,7 +1283,6 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-
         /* FOOTER MEJORADO */
         .footer {
             background-color: var(--dark-color);
@@ -1398,13 +1397,10 @@
         }
 
         /* TÍTULOS EN BLANCO PARA SECCIONES OSCURAS */
-        #sobre-mi .section-title,
         #experiencia .section-title,
-        #formacio .section-title,
         #habilitats .section-title,
         #projectes .section-title,
-        #actividades .section-title,
-        #contacte .section-title {
+        #actividades .section-title {
             color: white;
         }
 
@@ -1421,12 +1417,11 @@
             
             .nav-menu {
                 top: 60%;
-                left: 10%; /* Ajustado para móviles */
             }
             
             .nav-item {
                 width: 160px;
-                padding: 8px 0; /* Mantenemos el padding reducido */
+                padding: 10px 20px;
                 font-size: 1rem;
             }
 
@@ -1506,6 +1501,10 @@
             .experience-card,
             .activity-card {
                 padding: 20px;
+            }
+
+            .testimonials-container {
+                grid-template-columns: 1fr;
             }
 
             .tutor-bubble-content {
@@ -1649,12 +1648,23 @@
                             <div class="experience-detail">Participant management</div>
                             <div class="experience-detail">Event planning and execution</div>
                         </div>
+                        
+                        <!-- Bafarada para Business Testimonials -->
+                        <div class="tutor-bubble">
+                            <div class="tutor-bubble-trigger">
+                                <i class="fas fa-comment-alt"></i> Business Testimonials
+                            </div>
+                            <div class="tutor-bubble-content">
+                                <div class="bubble-text">"Gràcies a la pàgina web que ens va dissenyar la Mariona, la nostra empresa ha guanyat molta visibilitat. En pocs mesos, el nombre de persones que contacten amb nosaltres ha augmentat aproximadament un 80%."</div>
+                                <div class="bubble-author">— Màrmoles Genevat</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <section id="formacio" class="section">
-                <h2 class="section-title">Education</h2>
+                <h2 class="education-title">Education</h2>
                 <div class="education-content">
                     <div class="education-container">
                         <!-- UAB -->
@@ -1860,17 +1870,6 @@
                                 <span class="tech-tag">Responsive Design</span>
                                 <span class="tech-tag">UI/UX</span>
                             </div>
-                            
-                            <!-- Bafarada para Business Testimonials -->
-                            <div class="tutor-bubble">
-                                <div class="tutor-bubble-trigger">
-                                    <i class="fas fa-comment-alt"></i> Business Testimonials
-                                </div>
-                                <div class="tutor-bubble-content">
-                                    <div class="bubble-text">"Gràcies a la pàgina web que ens va dissenyar la Mariona, la nostra empresa ha guanyat molta visibilitat. En pocs mesos, el nombre de persones que contacten amb nosaltres ha augmentat aproximadament un 80%."</div>
-                                    <div class="bubble-author">— Màrmoles Genevat</div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
@@ -1932,7 +1931,6 @@
             </section>
 
             <section id="contacte" class="section">
-                <h2 class="section-title">Contact</h2>
                 <div class="contacte-container">
                     <div class="contact-info">
                         <h2 class="contact-title">Get In Touch</h2>
