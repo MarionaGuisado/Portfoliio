@@ -64,7 +64,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background-image: url('pppp.jpg');
+            background-image: url('portada.jpg');
             background-size: cover;
             z-index: 1;
         }
@@ -167,15 +167,16 @@
             z-index: 5;
         }
 
+        /* ÍNDICE MÁS JUNTO Y CENTRADO A LA IZQUIERDA */
         .nav-menu {
             position: absolute;
             top: 60%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            left: 15%; /* Cambiado de 50% a 15% para centrar a la izquierda */
+            transform: translateY(-50%); /* Solo translateY para mantener alineación vertical */
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 15px;
+            align-items: flex-start; /* Alineado a la izquierda */
+            gap: 10px; /* Reducido de 15px a 10px para menos espacio entre elementos */
             opacity: 0;
             transition: opacity 1s ease;
             z-index: 6;
@@ -185,7 +186,7 @@
         }
 
         .nav-item {
-            padding: 12px 0;
+            padding: 8px 0; /* Reducido de 12px a 8px */
             color: black;
             text-decoration: none;
             font-size: 1.5rem;
@@ -212,13 +213,13 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             transition: var(--transition);
-            padding: 5px 0;
+            padding: 5px 0; /* Reducido de 8px a 5px */
             display: none;
             backdrop-filter: blur(10px);
         }
 
         .header.scrolled {
-            padding: 3px 0;
+            padding: 3px 0; /* Reducido de 5px a 3px */
             background-color: rgba(255, 255, 255, 0.95);
         }
 
@@ -309,6 +310,7 @@
             min-height: 100vh;
             padding: 0;
             position: relative;
+            top: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -360,9 +362,9 @@
             transform: scale(1.1);
         }
 
-        /* SECCIÓN PROFESSIONAL PROFILE */
+        /* SECCIÓN PROFESSIONAL PROFILE - FONDO OSCURO */
         #sobre-mi {
-            background: url('sobre-mi-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             position: relative;
             display: flex;
             align-items: center;
@@ -402,7 +404,7 @@
             position: relative;
             min-height: 100vh;
             width: 100%;
-            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -494,96 +496,7 @@
             transform: translateX(5px);
         }
 
-        /* SECCIÓN TESTIMONIOS - REORGANIZADA */
-        .testimonials-section {
-            width: 90%;
-            max-width: 1200px;
-            margin: 60px auto 0;
-            padding: 40px 20px;
-        }
-
-        .testimonials-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 40px;
-            color: white;
-            font-weight: 500;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .testimonials-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .testimonial-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .testimonial-text {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--text-color);
-            margin-bottom: 20px;
-            font-style: italic;
-            position: relative;
-        }
-
-        .testimonial-text::before {
-            content: """;
-            font-size: 3rem;
-            color: var(--primary-color);
-            position: absolute;
-            top: -20px;
-            left: -10px;
-            opacity: 0.3;
-            font-family: Georgia, serif;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-        }
-
-        .author-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .author-name {
-            font-weight: 600;
-            color: var(--dark-color);
-        }
-
-        .author-role {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* BAFARADA (TOOLTIP) PARA PRIVATE TUTOR */
+        /* BAFARADA (TOOLTIP) PARA PRIVATE TUTOR Y BUSINESS TESTIMONIALS */
         .tutor-bubble {
             position: relative;
             display: inline-block;
@@ -657,67 +570,7 @@
             font-weight: 500;
         }
 
-        /* BAFARADA PARA BUSINESS TESTIMONIALS */
-        .business-bubble {
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .business-bubble-trigger {
-            background: var(--secondary-color);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .business-bubble-trigger:hover {
-            background: #ff5252;
-            transform: scale(1.05);
-        }
-
-        .business-bubble-content {
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            color: #333;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            width: 300px;
-            z-index: 10;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            margin-bottom: 15px;
-        }
-
-        .business-bubble-content::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 10px solid transparent;
-            border-top-color: white;
-        }
-
-        .business-bubble:hover .business-bubble-content {
-            opacity: 1;
-            visibility: visible;
-            bottom: calc(100% + 10px);
-        }
-
-        /* SECCIÓN EDUCATION */
+        /* SECCIÓN EDUCATION - FONDO OSCURO */
         #formacio {
             position: relative;
             display: flex;
@@ -726,14 +579,14 @@
             justify-content: flex-start;
             min-height: 100vh;
             padding-top: 80px;
-            background: linear-gradient(135deg, var(--light-color) 0%, #e9ecef 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             overflow: hidden;
         }
 
         .education-title {
             position: relative;
             z-index: 3;
-            color: var(--dark-color);
+            color: white; /* Cambiado a blanco para contraste con fondo oscuro */
             text-align: center;
             font-size: 3.5rem;
             margin-top: 80px;
@@ -895,7 +748,7 @@
             color: white;
         }
 
-        /* SECCIÓN SKILLS - TÍTULO EN BLANCO */
+        /* SECCIÓN SKILLS - COLOR CAMBIADO */
         #habilitats {
             position: relative;
             display: flex;
@@ -904,7 +757,7 @@
             justify-content: center;
             min-height: 100vh;
             width: 100%;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             padding: 80px 0;
             overflow: hidden;
         }
@@ -1081,7 +934,7 @@
             position: relative;
             min-height: 100vh;
             width: 100%;
-            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1182,7 +1035,7 @@
             position: relative;
             min-height: 100vh;
             width: 100%;
-            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1260,9 +1113,9 @@
             line-height: 1.5;
         }
 
-        /* SECCIÓN DE CONTACTO */
+        /* SECCIÓN DE CONTACTO - SIN FONDO DE IMAGEN */
         #contacte {
-            background: url('contacte-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* Cambiado a fondo oscuro */
             position: relative;
             display: flex;
             align-items: center;
@@ -1544,9 +1397,15 @@
             transform: translateY(-5px);
         }
 
-        /* TÍTULOS EN BLANCO */
-        .white-title {
-            color: white !important;
+        /* TÍTULOS EN BLANCO PARA SECCIONES OSCURAS */
+        #sobre-mi .section-title,
+        #experiencia .section-title,
+        #formacio .section-title,
+        #habilitats .section-title,
+        #projectes .section-title,
+        #actividades .section-title,
+        #contacte .section-title {
+            color: white;
         }
 
         @media (max-width: 768px) {
@@ -1562,16 +1421,17 @@
             
             .nav-menu {
                 top: 60%;
+                left: 10%; /* Ajustado para móviles */
             }
             
             .nav-item {
                 width: 160px;
-                padding: 10px 20px;
+                padding: 8px 0; /* Mantenemos el padding reducido */
                 font-size: 1rem;
             }
 
             .header {
-                padding: 3px 0;
+                padding: 3px 0; /* Reducido de 5px a 3px */
             }
 
             .header-nav {
@@ -1648,19 +1508,13 @@
                 padding: 20px;
             }
 
-            .testimonials-container {
-                grid-template-columns: 1fr;
-            }
-
-            .tutor-bubble-content,
-            .business-bubble-content {
+            .tutor-bubble-content {
                 width: 250px;
                 left: 0;
                 transform: none;
             }
 
-            .tutor-bubble-content::after,
-            .business-bubble-content::after {
+            .tutor-bubble-content::after {
                 left: 30px;
             }
 
@@ -1744,7 +1598,7 @@
             </section>
 
             <section id="experiencia" class="section">
-                <h2 class="section-title white-title">Experience & Leadership</h2>
+                <h2 class="section-title">Experience & Leadership</h2>
                 <div class="experience-container">
                     <!-- Representante de Clase -->
                     <div class="experience-card">
@@ -1769,7 +1623,7 @@
                             <div class="experience-detail">Personalized teaching methodologies</div>
                         </div>
                         
-                        <!-- Bafarada para Private Tutor -->
+                        <!-- Bafarada para Student Testimonials -->
                         <div class="tutor-bubble">
                             <div class="tutor-bubble-trigger">
                                 <i class="fas fa-comment-alt"></i> Student Testimonials
@@ -1777,27 +1631,9 @@
                             <div class="tutor-bubble-content">
                                 <div class="bubble-text">"Antes me costaban mucho las mates, pero con Mariona empecé a entender los ejercicios y ahora saco muy buenas notas. Explica muy claro y tiene mucha paciencia."</div>
                                 <div class="bubble-author">— Clara, 4º de ESO</div>
-                            </div>
-                        </div>
-                        
-                        <!-- Segundo testimonio de estudiante -->
-                        <div class="tutor-bubble" style="margin-top: 15px;">
-                            <div class="tutor-bubble-trigger">
-                                <i class="fas fa-comment-alt"></i> More Student Testimonials
-                            </div>
-                            <div class="tutor-bubble-content">
-                                <div class="bubble-text">"Las clases con Mariona son muy divertidas. Hacemos juegos y hablo mucho más en inglés sin miedo a equivocarme."</div>
+                                <div class="bubble-text" style="margin-top: 15px;">"Las clases con Mariona son muy divertidas. Hacemos juegos y hablo mucho más en inglés sin miedo a equivocarme."</div>
                                 <div class="bubble-author">— Laia, 1º de ESO</div>
-                            </div>
-                        </div>
-                        
-                        <!-- Tercer testimonio de estudiante -->
-                        <div class="tutor-bubble" style="margin-top: 15px;">
-                            <div class="tutor-bubble-trigger">
-                                <i class="fas fa-comment-alt"></i> Additional Testimonials
-                            </div>
-                            <div class="tutor-bubble-content">
-                                <div class="bubble-text">"Mariona siempre se adapta a lo que necesito. Si tengo examen, repasamos; si tengo dudas, las resuelve con ejemplos fáciles de entender."</div>
+                                <div class="bubble-text" style="margin-top: 15px;">"Mariona siempre se adapta a lo que necesito. Si tengo examen, repasamos; si tengo dudas, las resuelve con ejemplos fáciles de entender."</div>
                                 <div class="bubble-author">— Anna, ESO Student</div>
                             </div>
                         </div>
@@ -1813,23 +1649,12 @@
                             <div class="experience-detail">Participant management</div>
                             <div class="experience-detail">Event planning and execution</div>
                         </div>
-                        
-                        <!-- Bafarada para Business Testimonial -->
-                        <div class="business-bubble" style="margin-top: 15px;">
-                            <div class="business-bubble-trigger">
-                                <i class="fas fa-building"></i> Business Testimonial
-                            </div>
-                            <div class="business-bubble-content">
-                                <div class="bubble-text">"Gràcies a la pàgina web que ens va dissenyar la Mariona, la nostra empresa ha guanyat molta visibilitat. En pocs mesos, el nombre de persones que contacten amb nosaltres ha augmentat aproximadament un 80%."</div>
-                                <div class="bubble-author">— Màrmoles Genevat</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
 
             <section id="formacio" class="section">
-                <h2 class="education-title">Education</h2>
+                <h2 class="section-title">Education</h2>
                 <div class="education-content">
                     <div class="education-container">
                         <!-- UAB -->
@@ -1897,7 +1722,7 @@
             </section>
 
             <section id="habilitats" class="section">
-                <h2 class="section-title white-title">Skills</h2>
+                <h2 class="section-title">Skills</h2>
                 <div class="project-filters">
                     <button class="filter-btn active" data-filter="all">All</button>
                     <button class="filter-btn" data-filter="technical">Technical</button>
@@ -2013,7 +1838,7 @@
             </section>
 
             <section id="projectes" class="section">
-                <h2 class="section-title white-title">Technical Projects</h2>
+                <h2 class="section-title">Technical Projects</h2>
                 <div class="project-filters">
                     <button class="filter-btn active" data-filter="all">All</button>
                     <button class="filter-btn" data-filter="web">Web Development</button>
@@ -2034,6 +1859,17 @@
                                 <span class="tech-tag">JavaScript</span>
                                 <span class="tech-tag">Responsive Design</span>
                                 <span class="tech-tag">UI/UX</span>
+                            </div>
+                            
+                            <!-- Bafarada para Business Testimonials -->
+                            <div class="tutor-bubble">
+                                <div class="tutor-bubble-trigger">
+                                    <i class="fas fa-comment-alt"></i> Business Testimonials
+                                </div>
+                                <div class="tutor-bubble-content">
+                                    <div class="bubble-text">"Gràcies a la pàgina web que ens va dissenyar la Mariona, la nostra empresa ha guanyat molta visibilitat. En pocs mesos, el nombre de persones que contacten amb nosaltres ha augmentat aproximadament un 80%."</div>
+                                    <div class="bubble-author">— Màrmoles Genevat</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2075,7 +1911,7 @@
             </section>
 
             <section id="actividades" class="section">
-                <h2 class="section-title white-title">Extracurricular Activities</h2>
+                <h2 class="section-title">Extracurricular Activities</h2>
                 <div class="activities-container">
                     <!-- J.P. Morgan Event -->
                     <div class="activity-card">
@@ -2096,6 +1932,7 @@
             </section>
 
             <section id="contacte" class="section">
+                <h2 class="section-title">Contact</h2>
                 <div class="contacte-container">
                     <div class="contact-info">
                         <h2 class="contact-title">Get In Touch</h2>
