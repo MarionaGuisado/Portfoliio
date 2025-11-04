@@ -1,369 +1,245 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mariona Guisado</title>
-    <style>
-        /* ESTILS BÀSICS PER COMENÇAR */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<script>
+    // Inicialització automàtica - ELIMINA AQUESTA PART SI VOLS EL BOTÓ "ENTER"
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("Pàgina carregada correctament!");
+        
+        // Iniciar automàticament (ELIMINA AQUESTES 3 LÍNIES SI VOLS EL BOTÓ ENTER)
+        setTimeout(function() {
+            startPortfolio();
+        }, 1000);
+    });
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #1a1a1a;
-            color: white;
-            overflow-x: hidden;
-        }
+    function startPortfolio() {
+        console.log("Iniciant portfolio...");
+        
+        const transition = document.getElementById('transition');
+        const name = document.getElementById('name');
+        const background = document.getElementById('background');
+        const mainContent = document.getElementById('mainContent');
+        const newBackground = document.getElementById('newBackground');
+        const navMenu = document.getElementById('navMenu');
+        const header = document.getElementById('header');
+        const enterButton = document.getElementById('enterButton');
 
-        /* PANTALLA D'INICI */
-        .start-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: opacity 1s ease;
-        }
-
-        .start-screen.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .name {
-            font-size: 4rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            font-weight: 300;
-        }
-
-        .enter-button {
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .enter-button:hover {
-            background: white;
-            color: black;
-        }
-
-        /* CONTINGUT PRINCIPAL */
-        .main-content {
-            display: none;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-
-        .main-content.visible {
-            display: block;
-            opacity: 1;
-        }
-
-        /* HEADER */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(26, 26, 26, 0.95);
-            padding: 15px 0;
-            z-index: 100;
-            display: none;
-        }
-
-        .header.visible {
-            display: block;
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 30px;
-            transition: color 0.3s ease;
-        }
-
-        .nav a:hover {
-            color: #6a11cb;
-        }
-
-        /* SECCIONS */
-        .section {
-            min-height: 100vh;
-            padding: 100px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 50px;
-            text-align: center;
-        }
-
-        /* ABOUT SECTION */
-        .about-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* TARGETES */
-        .card {
-            background: #2a2a2a;
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            border-left: 4px solid #6a11cb;
-        }
-
-        .card h3 {
-            color: #6a11cb;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        /* FOOTER */
-        .footer {
-            background: #1a1a1a;
-            padding: 50px 20px;
-            text-align: center;
-            border-top: 1px solid #333;
-        }
-    </style>
-</head>
-<body>
-    <!-- PANTALLA D'INICI SIMPLIFICADA -->
-    <div class="start-screen" id="startScreen">
-        <h1 class="name">Mariona Guisado</h1>
-        <button class="enter-button" id="enterButton">Enter</button>
-    </div>
-
-    <!-- CONTINGUT PRINCIPAL -->
-    <div class="main-content" id="mainContent">
-        <!-- HEADER -->
-        <header class="header" id="header">
-            <div class="header-content">
-                <div class="logo">Mariona Guisado</div>
-                <nav class="nav">
-                    <a href="#sobre-mi">Profile</a>
-                    <a href="#experiencia">Experience</a>
-                    <a href="#formacio">Education</a>
-                    <a href="#habilitats">Skills</a>
-                    <a href="#projectes">Projects</a>
-                    <a href="#contacte">Contact</a>
-                </nav>
-            </div>
-        </header>
-
-        <!-- SECCIÓ SOBRE MI -->
-        <section id="sobre-mi" class="section">
-            <h2 class="section-title">Professional Profile</h2>
-            <div class="about-text">
-                A highly motivated Data Engineering student with a strong academic foundation and a passion for transforming data into actionable insights. Demonstrated ability to lead and collaborate effectively through roles as Class Representative and organizer of technology events, fostering communication between diverse groups and driving community engagement.
-            </div>
-        </section>
-
-        <!-- SECCIÓ EXPERIÈNCIA -->
-        <section id="experiencia" class="section">
-            <h2 class="section-title">Experience & Leadership</h2>
+        // 1. Transició blanca
+        transition.style.bottom = '100%';
+        
+        // 2. Amagar botó Enter
+        enterButton.classList.add('hidden');
+        
+        // 3. Canviar estil del nom
+        setTimeout(() => {
+            name.style.color = 'black';
+            name.style.textShadow = 'none';
+            name.style.top = '10%';
+            name.style.fontSize = '3rem';
+        }, 500);
+        
+        // 4. Mostrar contingut principal
+        setTimeout(() => {
+            mainContent.style.display = 'block';
+            header.style.display = 'block';
             
-            <div class="card">
-                <h3>Class Representative</h3>
-                <p><strong>UAB</strong></p>
-                <p>Liaison for 60+ students. Organization of study sessions. Facilitated communication between faculty and students.</p>
-            </div>
-
-            <div class="card">
-                <h3>Private Tutor</h3>
-                <p><strong>Mathematics & English</strong></p>
-                <p>15% improvement in student grades. Adaptation to different learning styles. Personalized teaching methodologies.</p>
-            </div>
-
-            <div class="card">
-                <h3>Hackathon Organizer</h3>
-                <p><strong>InterHack BCN 25-26</strong></p>
-                <p>Logistical coordination. Participant management. Event planning and execution.</p>
-            </div>
-        </section>
-
-        <!-- SECCIÓ EDUCACIÓ -->
-        <section id="formacio" class="section">
-            <h2 class="section-title">Education</h2>
+            // 5. Mostrar nova imatge i menú
+            setTimeout(() => {
+                newBackground.style.opacity = '1';
+                navMenu.style.opacity = '1';
+                
+                // Efecte d'escriptura
+                const aboutText = "A highly motivated Data Engineering student with a strong academic foundation and a passion for transforming data into actionable insights. Demonstrated ability to lead and collaborate effectively through roles as Class Representative and organizer of technology events, fostering communication between diverse groups and driving community engagement. Combines technical knowledge in data analysis with exceptional interpersonal skills, adaptability, and a solutions-oriented mindset. Eager to contribute by leveraging a unique blend of analytical thinking, leadership experience, and a commitment to delivering value in dynamic, team-based environments.";
+                
+                const typedElement = document.getElementById('typed-text');
+                typeWriter(aboutText, typedElement, 20);
+            }, 100);
             
-            <div class="card">
-                <h3>Universitat Autònoma de Barcelona (UAB)</h3>
-                <p><strong>Bachelor of Data Engineering</strong></p>
-                <p>September 2023 - June 2027 (expected)</p>
-                <p><em>Honors in Mathematics</em></p>
-            </div>
+            // Amagar fons inicial
+            background.style.opacity = '0';
+        }, 1000);
+    }
 
-            <div class="card">
-                <h3>Escola Ginebró</h3>
-                <p><strong>High School Diploma</strong></p>
-                <p>September 2011 - June 2023</p>
-            </div>
+    // Si vols el botó Enter, afegeix aquest event listener:
+    // document.getElementById('enterButton').addEventListener('click', function(e) {
+    //     e.preventDefault();
+    //     startPortfolio();
+    // });
 
-            <div class="card">
-                <h3>Advanced English Certificate</h3>
-                <p><strong>C1 Level</strong></p>
-                <p>April 2025</p>
-            </div>
-        </section>
-
-        <!-- SECCIÓ HABILITATS -->
-        <section id="habilitats" class="section">
-            <h2 class="section-title">Skills</h2>
-            
-            <div class="card">
-                <h3>Technical Skills</h3>
-                <p>Python, SQL, Data Warehousing, ETL Processes, Data Visualization</p>
-            </div>
-
-            <div class="card">
-                <h3>Languages</h3>
-                <p>Catalan (Native), Spanish (Native), English (C1 Advanced)</p>
-            </div>
-
-            <div class="card">
-                <h3>Soft Skills</h3>
-                <p>Teamwork, Problem Solving, Critical Thinking, Adaptability, Communication, Leadership</p>
-            </div>
-        </section>
-
-        <!-- SECCIÓ PROJECTES -->
-        <section id="projectes" class="section">
-            <h2 class="section-title">Technical Projects</h2>
-            
-            <div class="card">
-                <h3>Mármoles Genevat Website</h3>
-                <p>Designed and developed a modern, user-friendly website for a marble company, resulting in significant business growth and increased visibility in the market.</p>
-                <p><strong>Technologies:</strong> HTML/CSS, JavaScript, Responsive Design, UI/UX</p>
-            </div>
-
-            <div class="card">
-                <h3>Personal Portfolio Website</h3>
-                <p>Created a comprehensive personal portfolio website to showcase skills, projects, and experience.</p>
-                <p><strong>Technologies:</strong> HTML/CSS, JavaScript, Responsive Design, Animations</p>
-            </div>
-
-            <div class="card">
-                <h3>Movie Recommendation Engine</h3>
-                <p>Developed a sophisticated recommendation system using collaborative filtering and content-based approaches.</p>
-                <p><strong>Technologies:</strong> Python, pandas, scikit-learn, Machine Learning</p>
-            </div>
-        </section>
-
-        <!-- SECCIÓ CONTACTE -->
-        <section id="contacte" class="section">
-            <h2 class="section-title">Contact</h2>
-            
-            <div class="card">
-                <h3>Get In Touch</h3>
-                <p><strong>Email:</strong> mariona.guisado.p@gmail.com</p>
-                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mariona-guisado-parras-30a984294/" style="color: #6a11cb;">Connect with me</a></p>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="footer">
-            <p>&copy; 2024 Mariona Guisado. All rights reserved.</p>
-            <p>Data Engineering Student | Problem Solver | Future Innovator</p>
-        </footer>
-    </div>
-
-    <script>
-        // Codi JavaScript SIMPLIFICAT i SEGUR
-        console.log("Script carregat correctament!");
-
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log("DOM carregat!");
-            
-            const startScreen = document.getElementById('startScreen');
-            const enterButton = document.getElementById('enterButton');
-            const mainContent = document.getElementById('mainContent');
-            const header = document.getElementById('header');
-
-            // Verificar que els elements existeixen
-            if (!startScreen || !enterButton || !mainContent || !header) {
-                console.error("No s'han trobat tots els elements necessaris!");
-                return;
+    // Efecte d'escriptura
+    function typeWriter(text, element, speed) {
+        let i = 0;
+        element.innerHTML = '';
+        element.style.borderRight = '2px solid var(--primary-color)';
+        
+        const interval = setInterval(() => {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+            } else {
+                clearInterval(interval);
+                setTimeout(() => {
+                    element.style.borderRight = 'none';
+                }, 500);
             }
+        }, speed);
+    }
 
-            console.log("Tots els elements trobats!");
+    // Configuració d'esdeveniments
+    document.addEventListener('DOMContentLoaded', function() {
+        setupEventListeners();
+        setupAnimations();
+    });
 
-            // Esperar a que l'usuari faci clic al botó Enter
-            enterButton.addEventListener('click', function() {
-                console.log("Botó Enter clicat!");
-                
-                // Amagar pantalla d'inici
-                startScreen.classList.add('hidden');
-                
-                // Mostrar contingut principal
-                setTimeout(function() {
-                    mainContent.classList.add('visible');
-                    header.classList.add('visible');
-                    console.log("Contingut principal mostrat!");
-                }, 1000);
+    function setupEventListeners() {
+        // Navegació suau
+        document.querySelectorAll('.nav-item, .footer-link, .header-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
+        });
 
-            // Navegació suau
-            document.querySelectorAll('.nav a').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
+        // Botó tornar a dalt
+        const backToTopButton = document.getElementById('backToTop');
+        if (backToTopButton) {
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
             });
+        }
+
+        // Formulari de contacte
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Message sent successfully! Thank you for contacting me.');
+                this.reset();
+            });
+        }
+
+        // Dark mode
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                this.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            });
+        }
+
+        // Filtres
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                const container = this.closest('.section').querySelector('.projects-container, .skills-container');
+                
+                // Actualitzar botó actiu
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Filtrar elements
+                if (container) {
+                    const items = container.querySelectorAll('.project-card, .skill-category');
+                    items.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                }
+            });
         });
 
-        // Gestió del scroll per mostrar/amagar header
+        // Scroll handling
+        let lastScrollPosition = 0;
+        let scrollTimeout;
+
         window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(26, 26, 26, 0.98)';
-            } else {
-                header.style.background = 'rgba(26, 26, 26, 0.95)';
+            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Botó tornar a dalt
+            const backToTopButton = document.getElementById('backToTop');
+            if (backToTopButton) {
+                if (currentScrollPosition > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
             }
+
+            // Header effect
+            const header = document.getElementById('header');
+            if (header && header.style.display !== 'none') {
+                if (currentScrollPosition > 400) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+
+            lastScrollPosition = currentScrollPosition;
         });
-    </script>
-</body>
-</html>
+    }
+
+    function setupAnimations() {
+        // Barres d'habilitats
+        const skillsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        const skillBars = document.querySelectorAll('.skill-progress');
+                        skillBars.forEach(bar => {
+                            const width = bar.getAttribute('data-width');
+                            bar.style.width = width + '%';
+                        });
+                    }, 300);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const skillsSection = document.getElementById('habilitats');
+        if (skillsSection) {
+            skillsObserver.observe(skillsSection);
+        }
+
+        // Transicions de seccions
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observar totes les seccions
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Actualitzar any copyright
+        const yearElement = document.querySelector('.footer-bottom p');
+        if (yearElement) {
+            const currentYear = new Date().getFullYear();
+            yearElement.innerHTML = `&copy; ${currentYear} Mariona Guisado. All rights reserved.`;
+        }
+    }
+</script>
