@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,6 +35,12 @@
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -57,7 +63,8 @@
         .container {
             position: relative;
             width: 100%;
-            height: 100%;
+            height: 100vh;
+            overflow: hidden;
         }
 
         .background {
@@ -66,11 +73,12 @@
             height: 100%;
             background-image: url('pppp.jpg');
             background-size: cover;
+            background-position: center;
             z-index: 1;
         }
 
         .name {
-            position: fixed;
+            position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -80,22 +88,15 @@
             z-index: 2;
             letter-spacing: 1px;
             font-weight: 500;
-            transition: opacity 0.3s ease, transform 0.3s ease, top 0.5s ease, color 0.5s ease, font-size 0.5s ease;
-            will-change: opacity, transform, top, color, font-size;
-            background-color: transparent !important;
-            padding: 0;
+            transition: all 0.5s ease;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             font-family: 'Playfair Display', serif;
         }
 
         .name.hidden {
             opacity: 0;
-            transform: translate(-50%, -50%) scale(0.9);
+            transform: translate(-50%, -50%) scale(0.8);
             pointer-events: none;
-        }
-
-        .name.visible {
-            opacity: 1;
         }
 
         .enter-button {
@@ -111,7 +112,6 @@
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-decoration: none;
             z-index: 3;
             font-family: 'Playfair Display', serif;
             font-weight: 500;
@@ -124,7 +124,8 @@
         }
 
         .enter-button.hidden {
-            display: none;
+            opacity: 0;
+            pointer-events: none;
         }
 
         .transition {
@@ -146,24 +147,22 @@
             height: 100%;
             display: none;
             z-index: 5;
-            overflow-y: auto;
-            scroll-behavior: smooth;
+            overflow: hidden;
         }
 
-        /* CORRECCIÓ DEL VÍDEO */
         .video-container {
             position: absolute;
-            top: 55%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 85%;
-            height: 75%;
+            width: 90%;
+            height: 80%;
             opacity: 0;
-            transition: opacity 1s ease;
-            border-radius: 0;
-            box-shadow: none;
+            transition: opacity 1s ease 0.5s;
             z-index: 5;
             overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
         }
 
         .video-container.visible {
@@ -174,9 +173,160 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
+        }
+
+        /* Controls per si cal */
+        .video-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 6;
+            display: flex;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-container:hover .video-controls {
+            opacity: 1;
+        }
+
+        .control-btn {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Loading spinner */
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            z-index: 6;
+        }
+
+        .loading.hidden {
+            display: none;
         }
     </style>
 </head>
+<body>
+    <div class="container">
+        <div class="background"></div>
+        <div class="name">Mariona Guisado</div>
+        <button class="enter-button" onclick="enterSite()">Entrar</button>
+        <div class="transition"></div>
+        
+        <div class="main-content">
+            <div class="video-container">
+                <div class="loading">Carregant vídeo...</div>
+                <video id="mainVideo" preload="metadata">
+                    <!-- Prova diferents formats per major compatibilitat -->
+                    <source src="por.mov" type="video/quicktime">
+                    <source src="por.mp4" type="video/mp4">
+                    <source src="por.webm" type="video/webm">
+                    El teu navegador no suporta la reproducció de vídeos.
+                </video>
+                <div class="video-controls">
+                    <button class="control-btn" onclick="togglePlay()">⏯️</button>
+                    <button class="control-btn" onclick="toggleMute()">🔊</button>
+                    <button class="control-btn" onclick="replayVideo()">🔄</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function enterSite() {
+            const name = document.querySelector('.name');
+            const enterButton = document.querySelector('.enter-button');
+            const transition = document.querySelector('.transition');
+            const mainContent = document.querySelector('.main-content');
+            const videoContainer = document.querySelector('.video-container');
+            const video = document.getElementById('mainVideo');
+            const loading = document.querySelector('.loading');
+
+            // Amagar nom i botó
+            name.classList.add('hidden');
+            enterButton.classList.add('hidden');
+
+            // Activar transició
+            setTimeout(() => {
+                transition.style.bottom = '0';
+            }, 100);
+
+            // Mostrar contingut principal i iniciar vídeo
+            setTimeout(() => {
+                mainContent.style.display = 'block';
+                
+                // Intentar reproduir el vídeo
+                setTimeout(() => {
+                    videoContainer.classList.add('visible');
+                    
+                    // Configurar i reproduir vídeo
+                    video.muted = true; // Necessari per autoplay
+                    video.loop = true;
+                    
+                    const playPromise = video.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            // Vídeo reproduït correctament
+                            loading.classList.add('hidden');
+                        }).catch(error => {
+                            // Error en reproducció, mostrar controls
+                            console.log("Error en reproducció automàtica:", error);
+                            loading.textContent = "Fes clic per reproduir";
+                            loading.classList.remove('hidden');
+                            loading.style.cursor = 'pointer';
+                            loading.onclick = () => {
+                                video.play();
+                                loading.classList.add('hidden');
+                            };
+                        });
+                    }
+                }, 500);
+            }, 1000);
+        }
+
+        // Funcions de control del vídeo
+        function togglePlay() {
+            const video = document.getElementById('mainVideo');
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
+
+        function toggleMute() {
+            const video = document.getElementById('mainVideo');
+            video.muted = !video.muted;
+        }
+
+        function replayVideo() {
+            const video = document.getElementById('mainVideo');
+            video.currentTime = 0;
+            video.play();
+        }
+
+        // També permetre entrar amb la tecla Enter
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                enterSite();
+            }
+        });
+    </script>
+</body>
+</html>
 <body>
     <div class="container">
         <div class="background"></div>
