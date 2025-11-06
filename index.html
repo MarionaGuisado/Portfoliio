@@ -173,9 +173,9 @@
         }
 
         /* ÍNDICE MÁS JUNTO Y CENTRADO A LA IZQUIERDA */
-         .nav-menu {
+        .nav-menu {
             position: absolute;
-            top: 55%;
+            top: 60%;
             left: 15%;
             transform: translateY(-50%);
             display: flex;
@@ -188,13 +188,7 @@
             background-color: transparent;
             padding: 0;
             width: auto;
-            /* Nuevo efecto cristal */
-            background-color: rgba(255,255,255,0.25);
-            backdrop-filter: blur(9px);
-            padding: 14px 24px;
-            border-radius: 12px;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-         }
+        }
 
         .nav-item {
             padding: 5px 0;
@@ -214,7 +208,7 @@
             transform: scale(1.05);
         }
 
-        /* HEADER FIJO - MÁS FINO */
+        /* HEADER FIJO - MÁS FINO - SIN LOGO */
         .header {
             position: fixed;
             top: 0;
@@ -240,44 +234,14 @@
 
         .header-content {
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Centrado en lugar de espacio entre */
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .logo-circle {
-            width: 35px;
-            height: 35px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 1rem;
-            font-family: 'Playfair Display', serif;
-            margin-right: 10px;
-        }
-
-        .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--dark-color);
-        }
-
-        .dark-mode .logo-text {
-            color: var(--text-color);
-        }
+        /* LOGO ELIMINADO - SE HA QUITADO EL CÓDIGO DEL LOGO */
 
         .header-nav {
             display: flex;
@@ -350,7 +314,111 @@
             z-index: 2;
         }
 
-        /* Dark mode toggle */
+        /* NUEVO DISEÑO PARA LA SECCIÓN PROFESSIONAL PROFILE */
+        #sobre-mi {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+
+        .profile-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 40px;
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 50px 30px;
+            align-items: center;
+        }
+
+        .profile-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        .square-photo {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-radius: 0; /* Cantonadas rectas */
+        }
+
+        .square-photo:nth-child(1) {
+            position: relative;
+            z-index: 2;
+            transform: translate(10px, 10px); /* Desplazada hacia abajo y derecha */
+        }
+
+        .square-photo:nth-child(2) {
+            position: relative;
+            z-index: 1;
+            transform: translate(-10px, -10px); /* Desplazada hacia arriba y izquierda */
+        }
+
+        .square-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-center {
+            padding: 30px;
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .profile-center:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .typed-text, .personal-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            min-height: 120px;
+            white-space: pre-wrap;
+            overflow: hidden;
+            display: inline-block;
+            text-align: left;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .profile-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rectangular-photo {
+            width: 100%;
+            max-width: 300px;
+            height: 400px;
+            object-fit: cover;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-radius: 0; /* Cantonadas rectas */
+        }
+
+        .rectangular-photo:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Resto del CSS permanece igual */
         .dark-mode-toggle {
             position: fixed;
             top: 20px;
@@ -371,43 +439,6 @@
 
         .dark-mode-toggle:hover {
             transform: scale(1.1);
-        }
-
-        /* SECCIÓN PROFESSIONAL PROFILE - FONDO OSCURO */
-        #sobre-mi {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            position: relative;
-            display: flex;
-            align-items: center;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
-        }
-
-        .about-text-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 50px;
-            color: var(--text-color);
-            background-color: var(--card-bg);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-radius: var(--border-radius);
-        }
-
-        .typed-text, .personal-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--text-color);
-            min-height: 120px;
-            border-right: 2px solid var(--primary-color);
-            white-space: pre-wrap;
-            overflow: hidden;
-            display: inline-block;
-            text-align: left;
-            margin-bottom: 20px;
-            font-weight: 400;
         }
 
         /* SECCIÓN EXPERIENCIA Y LIDERAZGO - COLOR CAMBIADO */
@@ -581,15 +612,15 @@
             font-weight: 500;
         }
 
-        /* SECCIÓN EDUCATION - FONDO OSCURO - COMPACTADA */
+        /* SECCIÓN EDUCATION - FONDO OSCURO */
         #formacio {
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            min-height: 80vh; /* Reducido de 100vh */
-            padding-top: 60px; /* Reducido de 80px */
+            min-height: 100vh;
+            padding-top: 80px;
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             overflow: hidden;
         }
@@ -600,8 +631,8 @@
             color: white;
             text-align: center;
             font-size: 3.5rem;
-            margin-top: 40px; /* Reducido de 80px */
-            margin-bottom: 30px; /* Reducido de 40px */
+            margin-top: 80px;
+            margin-bottom: 40px;
             font-family: 'Playfair Display', serif;
             font-weight: 500;
         }
@@ -612,14 +643,14 @@
             width: 100%;
             max-width: 1000px;
             margin: 0 auto;
-            padding: 30px 20px; /* Reducido de 40px 20px */
+            padding: 40px 20px;
             color: var(--text-color);
         }
 
         .education-container {
             display: flex;
             flex-direction: column;
-            gap: 25px; /* Reducido de 40px */
+            gap: 40px;
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
@@ -627,7 +658,7 @@
 
         .education-item {
             background: var(--card-bg);
-            padding: 25px; /* Reducido de 30px */
+            padding: 30px;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
@@ -654,7 +685,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 15px; /* Reducido de 20px */
+            margin-bottom: 20px;
         }
 
         .education-info {
@@ -662,7 +693,7 @@
         }
 
         .institution {
-            font-size: 1.4rem; /* Reducido de 1.6rem */
+            font-size: 1.6rem;
             color: var(--primary-color);
             font-weight: 600;
             margin-bottom: 5px;
@@ -670,14 +701,14 @@
         }
 
         .location {
-            font-size: 0.9rem; /* Reducido de 1rem */
+            font-size: 1rem;
             color: #666;
             font-weight: 400;
-            margin-bottom: 8px; /* Reducido de 10px */
+            margin-bottom: 10px;
         }
 
         .degree {
-            font-size: 1.1rem; /* Reducido de 1.3rem */
+            font-size: 1.3rem;
             color: var(--text-color);
             font-weight: 500;
             margin-bottom: 5px;
@@ -685,22 +716,22 @@
         }
 
         .date {
-            font-size: 0.9rem; /* Reducido de 1rem */
+            font-size: 1rem;
             color: var(--secondary-color);
             font-weight: 500;
             text-align: right;
-            min-width: 180px; /* Reducido de 200px */
+            min-width: 200px;
         }
 
         .education-details {
             display: flex;
             flex-direction: column;
-            gap: 12px; /* Reducido de 15px */
+            gap: 15px;
         }
 
         .honors, .coursework, .leadership, .certification {
             background: var(--light-color);
-            padding: 12px; /* Reducido de 15px */
+            padding: 15px;
             border-left: 4px solid var(--primary-color);
             transition: var(--transition);
             border-radius: 4px;
@@ -711,10 +742,10 @@
         }
 
         .honors-title, .coursework-title, .leadership-title, .certification-title {
-            font-size: 1rem; /* Reducido de 1.1rem */
+            font-size: 1.1rem;
             color: var(--text-color);
             font-weight: 500;
-            margin-bottom: 6px; /* Reducido de 8px */
+            margin-bottom: 8px;
         }
 
         .honors-list {
@@ -724,9 +755,9 @@
         }
 
         .honors-list li {
-            font-size: 0.9rem; /* Reducido de 0.95rem */
+            font-size: 0.95rem;
             color: #555;
-            margin-bottom: 4px; /* Reducido de 5px */
+            margin-bottom: 5px;
             padding-left: 15px;
             position: relative;
         }
@@ -741,14 +772,14 @@
         .coursework-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px; /* Reducido de 8px */
+            gap: 8px;
         }
 
         .course-tag {
             background: var(--light-color);
             color: var(--primary-color);
-            padding: 5px 10px; /* Reducido de 6px 12px */
-            font-size: 0.8rem; /* Reducido de 0.85rem */
+            padding: 6px 12px;
+            font-size: 0.85rem;
             font-weight: 500;
             transition: var(--transition);
             border-radius: 20px;
@@ -1635,6 +1666,45 @@
                 font-size: 1rem;
             }
 
+            .profile-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px 20px;
+            }
+
+            .profile-left {
+                order: 1;
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .square-photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .square-photo:nth-child(1) {
+                transform: translate(5px, 5px);
+            }
+
+            .square-photo:nth-child(2) {
+                transform: translate(-5px, -5px);
+            }
+
+            .profile-center {
+                order: 3;
+                padding: 20px;
+            }
+
+            .profile-right {
+                order: 2;
+            }
+
+            .rectangular-photo {
+                max-width: 250px;
+                height: 300px;
+            }
+
             .about-text-container {
                 padding: 20px;
                 margin: 20px;
@@ -1762,13 +1832,9 @@
         <a href="#" class="enter-button" id="enterButton">Enter</a>
         <div class="transition" id="transition"></div>
         
-        <!-- HEADER FIJO -->
+        <!-- HEADER FIJO - SIN LOGO -->
         <header class="header" id="header">
             <div class="header-content">
-                <a href="#" class="logo">
-                    <div class="logo-circle">MG</div>
-                    <div class="logo-text">Mariona Guisado</div>
-                </a>
                 <nav class="header-nav">
                     <a href="#sobre-mi">Profile</a>
                     <a href="#experiencia">Experience</a>
@@ -1804,8 +1870,17 @@
 
             <section id="sobre-mi" class="section">
                 <h2 class="section-title">Professional Profile</h2>
-                <div class="about-text-container">
-                    <p id="typed-text" class="typed-text"></p>
+                <div class="profile-container">
+                    <div class="profile-left">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Profile Photo 1" class="square-photo">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Profile Photo 2" class="square-photo">
+                    </div>
+                    <div class="profile-center">
+                        <p id="typed-text" class="typed-text"></p>
+                    </div>
+                    <div class="profile-right">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Profile Photo 3" class="rectangular-photo">
+                    </div>
                 </div>
             </section>
 
