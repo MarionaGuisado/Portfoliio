@@ -173,9 +173,9 @@
         }
 
         /* ÍNDICE MÁS JUNTO Y CENTRADO A LA IZQUIERDA */
-        .nav-menu {
+         .nav-menu {
             position: absolute;
-            top: 60%;
+            top: 55%;
             left: 15%;
             transform: translateY(-50%);
             display: flex;
@@ -188,7 +188,13 @@
             background-color: transparent;
             padding: 0;
             width: auto;
-        }
+            /* Nuevo efecto cristal */
+            background-color: rgba(255,255,255,0.25);
+            backdrop-filter: blur(9px);
+            padding: 14px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+         }
 
         .nav-item {
             padding: 5px 0;
@@ -208,7 +214,7 @@
             transform: scale(1.05);
         }
 
-        /* HEADER FIJO - MÁS FINO - SIN LOGO */
+        /* HEADER FIJO - MÁS FINO */
         .header {
             position: fixed;
             top: 0;
@@ -234,14 +240,44 @@
 
         .header-content {
             display: flex;
-            justify-content: center; /* Centrado en lugar de espacio entre */
+            justify-content: space-between;
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* LOGO ELIMINADO - SE HA QUITADO EL CÓDIGO DEL LOGO */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-circle {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            font-family: 'Playfair Display', serif;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .dark-mode .logo-text {
+            color: var(--text-color);
+        }
 
         .header-nav {
             display: flex;
@@ -314,104 +350,7 @@
             z-index: 2;
         }
 
-        /* NUEVO DISEÑO PARA LA SECCIÓN PROFESSIONAL PROFILE */
-        #sobre-mi {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            position: relative;
-            display: flex;
-            align-items: center;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
-        }
-
-        .profile-container {
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            gap: 40px;
-            width: 90%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 50px 30px;
-            align-items: center;
-        }
-
-        .profile-left {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            position: relative;
-        }
-
-        .square-photo {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-radius: 0; /* Cantonadas rectas */
-        }
-
-        .square-photo:nth-child(1) {
-            position: relative;
-            z-index: 2;
-            transform: translate(10px, 10px); /* Desplazada hacia abajo y derecha */
-        }
-
-        .square-photo:nth-child(2) {
-            position: relative;
-            z-index: 1;
-            transform: translate(-10px, -10px); /* Desplazada hacia arriba y izquierda */
-        }
-
-        .square-photo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .profile-center {
-            padding: 30px;
-            /* ELIMINADO: background-color y box-shadow */
-            transition: var(--transition);
-        }
-
-        .typed-text, .personal-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: white; /* Texto en blanco */
-            min-height: 120px;
-            white-space: pre-wrap;
-            overflow: hidden;
-            display: inline-block;
-            text-align: left;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
-        .profile-right {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .rectangular-photo {
-            width: 100%;
-            max-width: 300px;
-            height: 400px;
-            object-fit: cover;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-radius: 0; /* Cantonadas rectas */
-        }
-
-        .rectangular-photo:hover {
-            transform: scale(1.03);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Resto del CSS permanece igual */
+        /* Dark mode toggle */
         .dark-mode-toggle {
             position: fixed;
             top: 20px;
@@ -432,6 +371,96 @@
 
         .dark-mode-toggle:hover {
             transform: scale(1.1);
+        }
+
+        /* SECCIÓN PROFESSIONAL PROFILE - FONDO OSCURO - MEJORADA */
+        #sobre-mi {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            padding: 80px 0;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .about-text-container {
+            color: white;
+            background-color: transparent;
+            box-shadow: none;
+            padding: 0;
+        }
+
+        .typed-text, .personal-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: white;
+            min-height: 120px;
+            border-right: 2px solid var(--primary-color);
+            white-space: pre-wrap;
+            overflow: hidden;
+            display: inline-block;
+            text-align: left;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .about-images-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+        }
+
+        .about-image-left {
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        .about-images-right {
+            position: relative;
+            margin-left: -40px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .about-image-right-a {
+            width: 220px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+
+        .about-image-right-b {
+            width: 220px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-left: 40px;
+            z-index: 1;
         }
 
         /* SECCIÓN EXPERIENCIA Y LIDERAZGO - COLOR CAMBIADO */
@@ -605,15 +634,15 @@
             font-weight: 500;
         }
 
-        /* SECCIÓN EDUCATION - FONDO OSCURO */
+        /* SECCIÓN EDUCATION - FONDO OSCURO - COMPACTADA */
         #formacio {
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            min-height: 100vh;
-            padding-top: 80px;
+            min-height: 80vh; /* Reducido de 100vh */
+            padding-top: 60px; /* Reducido de 80px */
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             overflow: hidden;
         }
@@ -624,8 +653,8 @@
             color: white;
             text-align: center;
             font-size: 3.5rem;
-            margin-top: 80px;
-            margin-bottom: 40px;
+            margin-top: 40px; /* Reducido de 80px */
+            margin-bottom: 30px; /* Reducido de 40px */
             font-family: 'Playfair Display', serif;
             font-weight: 500;
         }
@@ -636,14 +665,14 @@
             width: 100%;
             max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 30px 20px; /* Reducido de 40px 20px */
             color: var(--text-color);
         }
 
         .education-container {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 25px; /* Reducido de 40px */
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
@@ -651,7 +680,7 @@
 
         .education-item {
             background: var(--card-bg);
-            padding: 30px;
+            padding: 25px; /* Reducido de 30px */
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
@@ -678,7 +707,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Reducido de 20px */
         }
 
         .education-info {
@@ -686,7 +715,7 @@
         }
 
         .institution {
-            font-size: 1.6rem;
+            font-size: 1.4rem; /* Reducido de 1.6rem */
             color: var(--primary-color);
             font-weight: 600;
             margin-bottom: 5px;
@@ -694,14 +723,14 @@
         }
 
         .location {
-            font-size: 1rem;
+            font-size: 0.9rem; /* Reducido de 1rem */
             color: #666;
             font-weight: 400;
-            margin-bottom: 10px;
+            margin-bottom: 8px; /* Reducido de 10px */
         }
 
         .degree {
-            font-size: 1.3rem;
+            font-size: 1.1rem; /* Reducido de 1.3rem */
             color: var(--text-color);
             font-weight: 500;
             margin-bottom: 5px;
@@ -709,22 +738,22 @@
         }
 
         .date {
-            font-size: 1rem;
+            font-size: 0.9rem; /* Reducido de 1rem */
             color: var(--secondary-color);
             font-weight: 500;
             text-align: right;
-            min-width: 200px;
+            min-width: 180px; /* Reducido de 200px */
         }
 
         .education-details {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px; /* Reducido de 15px */
         }
 
         .honors, .coursework, .leadership, .certification {
             background: var(--light-color);
-            padding: 15px;
+            padding: 12px; /* Reducido de 15px */
             border-left: 4px solid var(--primary-color);
             transition: var(--transition);
             border-radius: 4px;
@@ -735,10 +764,10 @@
         }
 
         .honors-title, .coursework-title, .leadership-title, .certification-title {
-            font-size: 1.1rem;
+            font-size: 1rem; /* Reducido de 1.1rem */
             color: var(--text-color);
             font-weight: 500;
-            margin-bottom: 8px;
+            margin-bottom: 6px; /* Reducido de 8px */
         }
 
         .honors-list {
@@ -748,9 +777,9 @@
         }
 
         .honors-list li {
-            font-size: 0.95rem;
+            font-size: 0.9rem; /* Reducido de 0.95rem */
             color: #555;
-            margin-bottom: 5px;
+            margin-bottom: 4px; /* Reducido de 5px */
             padding-left: 15px;
             position: relative;
         }
@@ -765,14 +794,14 @@
         .coursework-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px; /* Reducido de 8px */
         }
 
         .course-tag {
             background: var(--light-color);
             color: var(--primary-color);
-            padding: 6px 12px;
-            font-size: 0.85rem;
+            padding: 5px 10px; /* Reducido de 6px 12px */
+            font-size: 0.8rem; /* Reducido de 0.85rem */
             font-weight: 500;
             transition: var(--transition);
             border-radius: 20px;
@@ -964,106 +993,38 @@
             font-weight: 500;
         }
 
-        /* SECCIÓN PROYECTOS MEJORADA - COLOR CAMBIADO */
-        #projectes {
-            position: relative;
-            min-height: 100vh;
-            width: 100%;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 0;
-        }
+        /* FILTROS PARA PROYECTOS */
+.project-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
 
-        .projects-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+.filter-btn {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 25px;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
 
-        .project-card {
-            background: var(--card-bg);
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--border-radius);
-            display: flex;
-            flex-direction: column;
-        }
+.filter-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .project-image {
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.05);
-        }
-
-        .project-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-title {
-            font-size: 1.6rem;
-            color: var(--dark-color);
-            font-weight: 600;
-            margin-bottom: 15px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .project-description {
-            font-size: 0.95rem;
-            color: #555;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .project-technologies {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .tech-tag {
-            background: var(--light-color);
-            color: var(--primary-color);
-            padding: 6px 12px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: var(--transition);
-            border-radius: 20px;
-        }
-
-        .tech-tag:hover {
-            background: var(--primary-color);
-            color: white;
-        }
+.filter-btn.active {
+    background-color: white;
+    color: #1a1a1a;
+}
 
         /* SECCIÓN ACTIVIDADES EXTRACURRICULARES - COLOR CAMBIADO */
         #actividades {
@@ -1650,6 +1611,27 @@
                 margin: 1rem 0;
             }
 
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-images-container {
+                height: 400px;
+                order: -1;
+            }
+
+            .about-image-left {
+                width: 250px;
+                height: 320px;
+            }
+
+            .about-image-right-a,
+            .about-image-right-b {
+                width: 180px;
+                height: 150px;
+            }
+
             .education-title {
                 font-size: 2.5rem;
                 margin-top: 60px;
@@ -1659,48 +1641,9 @@
                 font-size: 1rem;
             }
 
-            .profile-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                padding: 30px 20px;
-            }
-
-            .profile-left {
-                order: 1;
-                flex-direction: row;
-                justify-content: center;
-            }
-
-            .square-photo {
-                width: 150px;
-                height: 150px;
-            }
-
-            .square-photo:nth-child(1) {
-                transform: translate(5px, 5px);
-            }
-
-            .square-photo:nth-child(2) {
-                transform: translate(-5px, -5px);
-            }
-
-            .profile-center {
-                order: 3;
-                padding: 20px;
-            }
-
-            .profile-right {
-                order: 2;
-            }
-
-            .rectangular-photo {
-                max-width: 250px;
-                height: 300px;
-            }
-
             .about-text-container {
-                padding: 20px;
-                margin: 20px;
+                padding: 0;
+                margin: 0;
             }
 
             .education-container {
@@ -1825,9 +1768,13 @@
         <a href="#" class="enter-button" id="enterButton">Enter</a>
         <div class="transition" id="transition"></div>
         
-        <!-- HEADER FIJO - SIN LOGO -->
+        <!-- HEADER FIJO -->
         <header class="header" id="header">
             <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-circle">MG</div>
+                    <div class="logo-text">Mariona Guisado</div>
+                </a>
                 <nav class="header-nav">
                     <a href="#sobre-mi">Profile</a>
                     <a href="#experiencia">Experience</a>
@@ -1863,16 +1810,16 @@
 
             <section id="sobre-mi" class="section">
                 <h2 class="section-title">Professional Profile</h2>
-                <div class="profile-container">
-                    <div class="profile-left">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Profile Photo 1" class="square-photo">
-                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Profile Photo 2" class="square-photo">
-                    </div>
-                    <div class="profile-center">
+                <div class="about-container">
+                    <div class="about-text-container">
                         <p id="typed-text" class="typed-text"></p>
                     </div>
-                    <div class="profile-right">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Profile Photo 3" class="rectangular-photo">
+                    <div class="about-images-container">
+                        <img src="https://images.unsplash.com/photo-1581089778245-3ce67677f718?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image" class="about-image-left">
+                        <div class="about-images-right">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image A" class="about-image-right-a">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image B" class="about-image-right-b">
+                        </div>
                     </div>
                 </div>
             </section>
@@ -2310,18 +2257,7 @@
                     <p class="footer-subtitle">Data Engineering Student | Problem Solver | Future Innovator</p>
                     
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/mariona-guisado-parras-30a984294/" class="social-link" data-platform="LinkedIn" target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/marionaguisado" class="social-link" data-platform="GitHub" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://twitter.com/marionaguisado" class="social-link" data-platform="Twitter" target="_blank">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://www.instagram.com/mariona_gsdo/" class="social-link" data-platform="Instagram" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
+                        
                     </div>
                     
                     <div class="footer-links">
