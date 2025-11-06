@@ -993,106 +993,38 @@
             font-weight: 500;
         }
 
-        /* SECCIÓN PROYECTOS MEJORADA - COLOR CAMBIADO */
-        #projectes {
-            position: relative;
-            min-height: 100vh;
-            width: 100%;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 0;
-        }
+        /* FILTROS PARA PROYECTOS */
+.project-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
 
-        .projects-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+.filter-btn {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 25px;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
 
-        .project-card {
-            background: var(--card-bg);
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--border-radius);
-            display: flex;
-            flex-direction: column;
-        }
+.filter-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .project-image {
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.05);
-        }
-
-        .project-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-title {
-            font-size: 1.6rem;
-            color: var(--dark-color);
-            font-weight: 600;
-            margin-bottom: 15px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .project-description {
-            font-size: 0.95rem;
-            color: #555;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .project-technologies {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .tech-tag {
-            background: var(--light-color);
-            color: var(--primary-color);
-            padding: 6px 12px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: var(--transition);
-            border-radius: 20px;
-        }
-
-        .tech-tag:hover {
-            background: var(--primary-color);
-            color: white;
-        }
+.filter-btn.active {
+    background-color: white;
+    color: #1a1a1a;
+}
 
         /* SECCIÓN ACTIVIDADES EXTRACURRICULARES - COLOR CAMBIADO */
         #actividades {
