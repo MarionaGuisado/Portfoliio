@@ -173,9 +173,9 @@
         }
 
         /* ÍNDICE MÁS JUNTO Y CENTRADO A LA IZQUIERDA */
-         .nav-menu {
+        .nav-menu {
             position: absolute;
-            top: 55%;
+            top: 60%;
             left: 15%;
             transform: translateY(-50%);
             display: flex;
@@ -188,13 +188,7 @@
             background-color: transparent;
             padding: 0;
             width: auto;
-            /* Nuevo efecto cristal */
-            background-color: rgba(255,255,255,0.25);
-            backdrop-filter: blur(9px);
-            padding: 14px 24px;
-            border-radius: 12px;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-         }
+        }
 
         .nav-item {
             padding: 5px 0;
@@ -240,43 +234,24 @@
 
         .header-content {
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* MODIFICADO: centrado */
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
+        /* MODIFICACIÓN: Logo eliminado */
         .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
+            display: none;
         }
 
         .logo-circle {
-            width: 35px;
-            height: 35px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 1rem;
-            font-family: 'Playfair Display', serif;
-            margin-right: 10px;
+            display: none;
         }
 
         .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--dark-color);
-        }
-
-        .dark-mode .logo-text {
-            color: var(--text-color);
+            display: none;
         }
 
         .header-nav {
@@ -439,7 +414,7 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
-            overflow: visible;
+            overflow: hidden;
             border-radius: var(--border-radius);
         }
 
@@ -1762,13 +1737,10 @@
         <a href="#" class="enter-button" id="enterButton">Enter</a>
         <div class="transition" id="transition"></div>
         
-        <!-- HEADER FIJO -->
+        <!-- HEADER FIJO - MODIFICADO: eliminado completamente el logo -->
         <header class="header" id="header">
             <div class="header-content">
-                <a href="#" class="logo">
-                    <div class="logo-circle">MG</div>
-                    <div class="logo-text">Mariona Guisado</div>
-                </a>
+                <!-- Logo eliminado completamente -->
                 <nav class="header-nav">
                     <a href="#sobre-mi">Profile</a>
                     <a href="#experiencia">Experience</a>
