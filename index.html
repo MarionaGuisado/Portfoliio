@@ -870,6 +870,38 @@
             overflow: hidden;
         }
 
+        /* CANVI: Filtres amb lletres blanques, fons transparent i contorn blanc amb cantonades arrodonides */
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 25px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: white;
+            color: #1a1a1a;
+        }
+
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1721,6 +1753,16 @@
                 font-size: 2.5rem;
                 padding-top: 15px;
                 margin: 1rem 0;
+            }
+
+            /* CANVI: Filtres responsius */
+            .project-filters {
+                gap: 10px;
+            }
+
+            .filter-btn {
+                padding: 10px 18px;
+                font-size: 0.9rem;
             }
 
             /* NUEVO DISEÑO RESPONSIVE PARA PROFESSIONAL PROFILE */
