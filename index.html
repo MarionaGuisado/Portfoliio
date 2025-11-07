@@ -214,7 +214,7 @@
             transform: scale(1.05);
         }
 
-        /* HEADER FIJO - MÁS FINO */
+        /* HEADER FIJO - MÁS ESTRECHO */
         .header {
             position: fixed;
             top: 0;
@@ -224,13 +224,13 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             transition: var(--transition);
-            padding: 3px 0;
+            padding: 8px 0; /* Más estrecho */
             display: none;
             backdrop-filter: blur(10px);
         }
 
         .header.scrolled {
-            padding: 2px 0;
+            padding: 6px 0; /* Más estrecho cuando scrolleado */
             background-color: rgba(255, 255, 255, 0.95);
         }
 
@@ -254,8 +254,8 @@
         }
 
         .logo-circle {
-            width: 35px;
-            height: 35px;
+            width: 30px; /* Más pequeño */
+            height: 30px; /* Más pequeño */
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 50%;
             display: flex;
@@ -263,14 +263,14 @@
             justify-content: center;
             color: white;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.9rem; /* Más pequeño */
             font-family: 'Playfair Display', serif;
-            margin-right: 10px;
+            margin-right: 8px; /* Menos espacio */
         }
 
         .logo-text {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
+            font-size: 1.1rem; /* Más pequeño */
             font-weight: 500;
             color: var(--dark-color);
         }
@@ -281,7 +281,7 @@
 
         .header-nav {
             display: flex;
-            gap: 25px;
+            gap: 20px; /* Menos espacio entre enlaces */
         }
 
         .header-nav a {
@@ -290,8 +290,8 @@
             font-weight: 500;
             transition: var(--transition);
             position: relative;
-            padding: 5px 0;
-            font-size: 0.9rem;
+            padding: 4px 0; /* Menos padding */
+            font-size: 0.85rem; /* Más pequeño */
         }
 
         .dark-mode .header-nav a {
@@ -308,7 +308,7 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 1px; /* Línea más fina */
             background-color: var(--primary-color);
             transition: var(--transition);
         }
@@ -353,13 +353,13 @@
         /* Dark mode toggle */
         .dark-mode-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 15px; /* Ajustado para header más estrecho */
+            right: 15px; /* Ajustado para header más estrecho */
             z-index: 100;
             background: var(--card-bg);
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 45px; /* Más pequeño */
+            height: 45px; /* Más pequeño */
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -373,7 +373,7 @@
             transform: scale(1.1);
         }
 
-        /* SECCIÓN PROFESSIONAL PROFILE - NUEVO DISEÑO CON IMÁGENES A AMBOS LADOS */
+        /* SECCIÓN PROFESSIONAL PROFILE - NUEVO DISEÑO CON CANTOS RECTOS Y SIN LÍNEA LILA */
         #sobre-mi {
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             position: relative;
@@ -388,26 +388,12 @@
 
         .about-container {
             display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             width: 90%;
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
             align-items: center;
-        }
-
-        .about-image-left {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            transition: var(--transition);
-        }
-
-        .about-image-left:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
         .about-text-container {
@@ -415,7 +401,6 @@
             background-color: transparent;
             box-shadow: none;
             padding: 0;
-            text-align: center;
         }
 
         .typed-text, .personal-text {
@@ -423,7 +408,7 @@
             line-height: 1.8;
             color: white;
             min-height: 120px;
-            border-right: 2px solid var(--primary-color);
+            /* QUITADA: border-right: 2px solid var(--primary-color); - Línea lila eliminada */
             white-space: pre-wrap;
             overflow: hidden;
             display: inline-block;
@@ -432,28 +417,51 @@
             font-weight: 400;
         }
 
-        .about-images-right {
+        /* CANVI: Nou disseny per a les imatges - 2 a l'esquerra i 1 a la dreta amb cantos rectos */
+        .about-images-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+        }
+
+        .about-images-left {
+            position: relative;
+            margin-right: 40px;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            gap: 30px;
-            height: 500px;
             justify-content: space-between;
         }
 
-        .about-image-right-a,
-        .about-image-right-b {
-            width: 100%;
-            height: 235px;
+        .about-image-left-a {
+            width: 220px;
+            height: 180px;
             object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            transition: var(--transition);
+            border-radius: 0; /* CANTOS RECTOS */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            z-index: 1;
         }
 
-        .about-image-right-a:hover,
-        .about-image-right-b:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        .about-image-left-b {
+            width: 220px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 0; /* CANTOS RECTOS */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-left: 40px;
+            z-index: 1;
+        }
+
+        .about-image-right {
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 0; /* CANTOS RECTOS */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 2;
         }
 
         /* SECCIÓN EXPERIENCIA Y LIDERAZGO - COLOR CAMBIADO */
@@ -1742,7 +1750,7 @@
             }
 
             .header {
-                padding: 2px 0;
+                padding: 6px 0; /* Más estrecho en móvil */
             }
 
             .header-nav {
@@ -1771,25 +1779,20 @@
                 gap: 30px;
             }
 
-            .about-image-left {
-                height: 300px;
-                order: 1;
+            .about-images-container {
+                height: 400px;
+                order: -1;
             }
 
-            .about-text-container {
-                order: 2;
+            .about-image-right {
+                width: 250px;
+                height: 320px;
             }
 
-            .about-images-right {
-                height: auto;
-                order: 3;
-                flex-direction: row;
-                gap: 15px;
-            }
-
-            .about-image-right-a,
-            .about-image-right-b {
-                height: 200px;
+            .about-image-left-a,
+            .about-image-left-b {
+                width: 180px;
+                height: 150px;
             }
 
             .education-title {
@@ -1947,11 +1950,12 @@
         <a href="#" class="enter-button" id="enterButton">Enter</a>
         <div class="transition" id="transition"></div>
         
-        <!-- HEADER FIJO -->
+        <!-- HEADER FIJO - MÁS ESTRECHO -->
         <header class="header" id="header">
             <div class="header-content">
                 <a href="#" class="logo">
-                    
+                    <div class="logo-circle">MG</div>
+                    <div class="logo-text">Mariona Guisado</div>
                 </a>
                 <nav class="header-nav">
                     <a href="#sobre-mi">Profile</a>
@@ -1989,18 +1993,16 @@
             <section id="sobre-mi" class="section">
                 <h2 class="section-title">Professional Profile</h2>
                 <div class="about-container">
-                    <!-- Imagen a la izquierda -->
-                    <img src="https://images.unsplash.com/photo-1581089778245-3ce67677f718?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image" class="about-image-left">
-                    
-                    <!-- Texto en el centro -->
                     <div class="about-text-container">
                         <p id="typed-text" class="typed-text"></p>
                     </div>
-                    
-                    <!-- Imágenes a la derecha -->
-                    <div class="about-images-right">
-                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image A" class="about-image-right-a">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image B" class="about-image-right-b">
+                    <div class="about-images-container">
+                        <!-- CANVI: 2 imatges a l'esquerra i 1 a la dreta amb cantos rectos -->
+                        <div class="about-images-left">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image A" class="about-image-left-a">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image B" class="about-image-left-b">
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1581089778245-3ce67677f718?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image" class="about-image-right">
                     </div>
                 </div>
             </section>
@@ -2643,7 +2645,7 @@
         function typeWriter(text, element, speed, callback) {
             let i = 0;
             element.innerHTML = '';
-            element.style.borderRight = '2px solid var(--primary-color)';
+            // QUITADA: element.style.borderRight = '2px solid var(--primary-color)'; - Línea lila eliminada
             
             const interval = setInterval(() => {
                 if (i < text.length) {
@@ -2652,7 +2654,7 @@
                 } else {
                     clearInterval(interval);
                     setTimeout(() => {
-                        element.style.borderRight = 'none';
+                        // QUITADA: element.style.borderRight = 'none'; - Línea lila eliminada
                         if (callback) callback();
                     }, 500);
                 }
