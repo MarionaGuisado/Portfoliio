@@ -373,7 +373,7 @@
             transform: scale(1.1);
         }
 
-        /* SECCIÓN PROFESSIONAL PROFILE - NUEVO DISEÑO CON IMÁGENES A AMBOS LADOS */
+        /* SECCIÓN PROFESSIONAL PROFILE - FONDO OSCURO - MEJORADA */
         #sobre-mi {
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             position: relative;
@@ -388,26 +388,12 @@
 
         .about-container {
             display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             width: 90%;
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
             align-items: center;
-        }
-
-        .about-image-left {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            transition: var(--transition);
-        }
-
-        .about-image-left:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
         .about-text-container {
@@ -415,7 +401,6 @@
             background-color: transparent;
             box-shadow: none;
             padding: 0;
-            text-align: center;
         }
 
         .typed-text, .personal-text {
@@ -432,28 +417,51 @@
             font-weight: 400;
         }
 
-        .about-images-right {
+        /* CANVI: Nou disseny per a les imatges - 2 a l'esquerra sobreposades i 1 a la dreta */
+        .about-images-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+        }
+
+        .about-images-left {
+            position: relative;
+            margin-right: 40px;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            gap: 30px;
-            height: 500px;
             justify-content: space-between;
         }
 
-        .about-image-right-a,
-        .about-image-right-b {
-            width: 100%;
-            height: 235px;
+        .about-image-left-a {
+            width: 220px;
+            height: 180px;
             object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            transition: var(--transition);
+            border-radius: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            z-index: 1;
         }
 
-        .about-image-right-a:hover,
-        .about-image-right-b:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        .about-image-left-b {
+            width: 220px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-left: 40px;
+            z-index: 1;
+        }
+
+        .about-image-right {
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 2;
         }
 
         /* SECCIÓN EXPERIENCIA Y LIDERAZGO - COLOR CAMBIADO */
@@ -627,7 +635,7 @@
             font-weight: 500;
         }
 
-        /* SECCIÓN EDUCATION - NUEVO DISEÑO CON FONDO OSCURO */
+        /* NUEVA SECCIÓN EDUCATION - LÍNEA DE TIEMPO HORIZONTAL */
         #formacio {
             position: relative;
             display: flex;
@@ -635,19 +643,23 @@
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            padding: 40px 0;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             overflow: hidden;
+        }
+
+        .dark-mode #formacio {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
         }
 
         .education-title {
             position: relative;
             z-index: 3;
-            color: white; /* Título en blanco */
+            color: var(--text-color);
             text-align: center;
             font-size: 3.5rem;
-            margin-top: 20px;
-            margin-bottom: 40px;
+            margin-top: 40px;
+            margin-bottom: 80px;
             font-family: 'Playfair Display', serif;
             font-weight: 500;
         }
@@ -658,21 +670,21 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 10px 20px;
-            color: white; /* Texto en blanco */
+            padding: 30px 20px;
+            color: var(--text-color);
         }
 
         .education-timeline-horizontal {
             position: relative;
             width: 100%;
             margin: 0 auto;
-            padding: 20px 0 40px;
+            padding: 60px 0 40px;
         }
 
         .education-timeline-horizontal::before {
             content: '';
             position: absolute;
-            top: 40%;
+            top: 50%;
             left: 0;
             right: 0;
             height: 4px;
@@ -685,7 +697,7 @@
         .education-items-container {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             position: relative;
             z-index: 2;
         }
@@ -696,7 +708,7 @@
             align-items: center;
             position: relative;
             width: 30%;
-            min-height: 380px;
+            min-height: 400px;
         }
 
         .timeline-point-horizontal {
@@ -705,7 +717,7 @@
             background: var(--primary-color);
             border: 4px solid var(--bg-color);
             border-radius: 50%;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             box-shadow: 0 0 0 4px var(--primary-color);
             z-index: 3;
             position: relative;
@@ -714,7 +726,7 @@
         .education-card-horizontal {
             background: var(--card-bg);
             border-radius: 16px;
-            padding: 25px;
+            padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
             position: relative;
@@ -722,7 +734,6 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             width: 100%;
             text-align: center;
-            margin-top: -30px;
         }
 
         .education-card-horizontal::before {
@@ -741,79 +752,79 @@
         }
 
         .education-icon-horizontal {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
-            margin: 0 auto 15px;
+            margin: 0 auto 20px;
         }
 
         .education-header-horizontal {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .education-degree-horizontal {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             color: var(--primary-color);
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-family: 'Playfair Display', serif;
         }
 
         .education-institution-horizontal {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             color: var(--text-color);
             font-weight: 500;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
         }
 
         .education-location-horizontal {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #666;
             font-weight: 400;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .education-date-horizontal {
             display: inline-block;
             background: var(--light-color);
             color: var(--primary-color);
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .education-details-horizontal {
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         .education-detail-item-horizontal {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             text-align: left;
         }
 
         .detail-icon-horizontal {
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             background: var(--light-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 10px;
+            margin-right: 12px;
             flex-shrink: 0;
             color: var(--primary-color);
-            font-size: 0.75rem;
+            font-size: 0.8rem;
         }
 
         .detail-content-horizontal {
@@ -821,31 +832,31 @@
         }
 
         .detail-title-horizontal {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-color);
             font-weight: 500;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
         }
 
         .detail-text-horizontal {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #666;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         .coursework-list-horizontal {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 8px;
+            gap: 8px;
+            margin-top: 10px;
             justify-content: center;
         }
 
         .course-tag-horizontal {
             background: var(--light-color);
             color: var(--primary-color);
-            padding: 5px 10px;
-            font-size: 0.75rem;
+            padding: 6px 12px;
+            font-size: 0.8rem;
             font-weight: 500;
             transition: var(--transition);
             border-radius: 20px;
@@ -868,6 +879,38 @@
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             padding: 80px 0;
             overflow: hidden;
+        }
+
+        /* CANVI: Filtres amb lletres blanques, fons transparent i contorn blanc amb cantonades arrodonides */
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 25px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: white;
+            color: #1a1a1a;
         }
 
         .skills-container {
@@ -1681,8 +1724,7 @@
         #habilitats .section-title,
         #projectes .section-title,
         #actividades .section-title,
-        #contacte .section-title,
-        #formacio .section-title {
+        #contacte .section-title {
             color: white;
         }
 
@@ -1723,40 +1765,49 @@
                 margin: 1rem 0;
             }
 
-            /* NUEVO DISEÑO RESPONSIVE PARA PROFESSIONAL PROFILE */
             .about-container {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 40px;
             }
 
-            .about-image-left {
-                height: 300px;
-                order: 1;
+            .about-images-container {
+                height: 400px;
+                order: -1;
             }
 
-            .about-text-container {
-                order: 2;
+            .about-image-right {
+                width: 250px;
+                height: 320px;
             }
 
-            .about-images-right {
-                height: auto;
-                order: 3;
-                flex-direction: row;
-                gap: 15px;
-            }
-
-            .about-image-right-a,
-            .about-image-right-b {
-                height: 200px;
+            .about-image-left-a,
+            .about-image-left-b {
+                width: 180px;
+                height: 150px;
             }
 
             .education-title {
                 font-size: 2.5rem;
-                margin-top: 40px;
+                margin-top: 60px;
             }
 
             .typed-text, .personal-text {
                 font-size: 1rem;
+            }
+
+            .about-text-container {
+                padding: 0;
+                margin: 0;
+            }
+
+            /* CANVI: Filtres responsius */
+            .project-filters {
+                gap: 10px;
+            }
+
+            .filter-btn {
+                padding: 10px 18px;
+                font-size: 0.9rem;
             }
 
             /* NUEVO DISEÑO RESPONSIVE PARA EDUCACIÓN HORIZONTAL */
@@ -1790,7 +1841,6 @@
             .education-card-horizontal {
                 text-align: left;
                 flex: 1;
-                margin-top: 0;
             }
 
             .education-icon-horizontal {
@@ -1947,18 +1997,16 @@
             <section id="sobre-mi" class="section">
                 <h2 class="section-title">Professional Profile</h2>
                 <div class="about-container">
-                    <!-- Imagen a la izquierda -->
-                    <img src="https://images.unsplash.com/photo-1581089778245-3ce67677f718?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image" class="about-image-left">
-                    
-                    <!-- Texto en el centro -->
                     <div class="about-text-container">
                         <p id="typed-text" class="typed-text"></p>
                     </div>
-                    
-                    <!-- Imágenes a la derecha -->
-                    <div class="about-images-right">
-                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image A" class="about-image-right-a">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image B" class="about-image-right-b">
+                    <div class="about-images-container">
+                        <!-- CANVI: 2 imatges a l'esquerra sobreposades i 1 a la dreta -->
+                        <div class="about-images-left">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image A" class="about-image-left-a">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image B" class="about-image-left-b">
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1581089778245-3ce67677f718?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image" class="about-image-right">
                     </div>
                 </div>
             </section>
@@ -2019,7 +2067,7 @@
                 </div>
             </section>
 
-            <!-- SECCIÓN EDUCATION - NUEVO DISEÑO CON FONDO OSCURO -->
+            <!-- NUEVA SECCIÓN EDUCATION - LÍNEA DE TIEMPO HORIZONTAL -->
             <section id="formacio" class="section">
                 <h2 class="education-title">Education</h2>
                 <div class="education-content">
@@ -2079,40 +2127,25 @@
                                         <div class="education-location-horizontal">Barcelona, Spain</div>
                                         <div class="education-date-horizontal">September 2011 - June 2023</div>
                                     </div>
-                                    <div class="education-details-horizontal">
-                                        <div class="education-detail-item-horizontal">
-                                            <div class="detail-icon-horizontal">🏆</div>
-                                            <div class="detail-content-horizontal">
-                                                <div class="detail-title-horizontal">Achievements</div>
-                                                <div class="detail-text-horizontal">Selected to participate in the "TXT Debate" league</div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 
-                            <!-- CERTIFICACIONES - Ahora incluye Taekwondo y Advanced English -->
+                            <!-- Certificación Advanced -->
                             <div class="education-item-horizontal">
                                 <div class="timeline-point-horizontal"></div>
                                 <div class="education-card-horizontal">
                                     <div class="education-icon-horizontal">📜</div>
                                     <div class="education-header-horizontal">
-                                        <h3 class="education-degree-horizontal">Certifications</h3>
-                                        <div class="education-date-horizontal">2023 - 2025</div>
+                                        <h3 class="education-degree-horizontal">Advanced English Certificate</h3>
+                                        <div class="education-institution-horizontal">C1 Level</div>
+                                        <div class="education-date-horizontal">April 2025</div>
                                     </div>
                                     <div class="education-details-horizontal">
                                         <div class="education-detail-item-horizontal">
-                                            <div class="detail-icon-horizontal">🥋</div>
-                                            <div class="detail-content-horizontal">
-                                                <div class="detail-title-horizontal">Taekwondo Timekeeper Judge</div>
-                                                <div class="detail-text-horizontal">Official certification obtained in 2023</div>
-                                            </div>
-                                        </div>
-                                        <div class="education-detail-item-horizontal">
                                             <div class="detail-icon-horizontal">✅</div>
                                             <div class="detail-content-horizontal">
-                                                <div class="detail-title-horizontal">Advanced English Certificate</div>
-                                                <div class="detail-text-horizontal">C1 Level certification (April 2025)</div>
+                                                <div class="detail-title-horizontal">Certification</div>
+                                                <div class="detail-text-horizontal">Successfully obtained C1 Advanced English certification</div>
                                             </div>
                                         </div>
                                     </div>
