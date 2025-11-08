@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mariona Guisado</title>
+    <!-- Precarga de imágenes para mejor rendimiento -->
     <link rel="preload" href="sobre-mi-bg.jpg" as="image">
     <link rel="preload" href="contacte-bg.jpg" as="image">
+    <!-- Fuentes de Google -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Iconos de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Variables CSS para colores y estilos reutilizables */
         :root {
             --primary-color: #6a11cb;
             --secondary-color: #ff6b6b;
@@ -23,6 +27,7 @@
             --border-radius: 8px;
         }
 
+        /* Modo oscuro - redefine variables para tema oscuro */
         .dark-mode {
             --primary-color: #8a2be2;
             --secondary-color: #ff8787;
@@ -35,6 +40,7 @@
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
+        /* Estilos base del cuerpo */
         body {
             margin: 0;
             padding: 0;
@@ -47,19 +53,22 @@
             line-height: 1.6;
         }
 
+        /* Estilos de tipografía para encabezados */
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
             line-height: 1.3;
-            margin-bottom: 0.5rem; /* Reducido */
+            margin-bottom: 1rem;
         }
 
+        /* Contenedor principal */
         .container {
             position: relative;
             width: 100%;
             height: 100%;
         }
 
+        /* Fondo inicial */
         .background {
             position: absolute;
             width: 100%;
@@ -69,6 +78,7 @@
             z-index: 1;
         }
 
+        /* Nombre en pantalla inicial */
         .name {
             position: fixed;
             top: 50%;
@@ -88,6 +98,7 @@
             font-family: 'Playfair Display', serif;
         }
 
+        /* Estados del nombre */
         .name.hidden {
             opacity: 0;
             transform: translate(-50%, -50%) scale(0.9);
@@ -98,10 +109,7 @@
             opacity: 1;
         }
 
-        .name.completely-hidden {
-            display: none !important;
-        }
-
+        /* Botón de entrada */
         .enter-button {
             position: absolute;
             top: 60%;
@@ -131,6 +139,7 @@
             display: none;
         }
 
+        /* Transición de pantalla */
         .transition {
             position: absolute;
             bottom: -100%;
@@ -142,6 +151,7 @@
             transition: all 1s ease;
         }
 
+        /* Contenido principal (oculto inicialmente) */
         .main-content {
             position: absolute;
             top: 0;
@@ -154,7 +164,7 @@
             scroll-behavior: smooth;
         }
 
-        /* CAMBIO: Reemplazar imagen por video */
+        /* Video de fondo */
         .new-background {
             position: absolute;
             top: 55%;
@@ -176,8 +186,8 @@
             object-fit: cover;
         }
 
-        /* ÍNDICE MÁS JUNTO Y CENTRADO A LA IZQUIERDA - ESQUINAS RECTAS */
-         .nav-menu {
+        /* Menú de navegación con efecto cristal */
+        .nav-menu {
             position: absolute;
             top: 55%;
             left: 15%;
@@ -192,14 +202,14 @@
             background-color: transparent;
             padding: 0;
             width: auto;
-            /* Nuevo efecto cristal - ESQUINAS RECTAS */
             background-color: rgba(255,255,255,0.25);
             backdrop-filter: blur(9px);
             padding: 14px 24px;
-            border-radius: 0; /* ESQUINAS RECTAS */
+            border-radius: 12px;
             box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-         }
+        }
 
+        /* Elementos del menú */
         .nav-item {
             padding: 5px 0;
             color: black;
@@ -218,7 +228,7 @@
             transform: scale(1.05);
         }
 
-        /* HEADER FIJO - MÁS ESTRECHO Y SIN TEXTO */
+        /* Header fijo */
         .header {
             position: fixed;
             top: 0;
@@ -228,13 +238,13 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             transition: var(--transition);
-            padding: 4px 0; /* MÁS DELGADO */
+            padding: 6px 0;
             display: none;
             backdrop-filter: blur(10px);
         }
 
         .header.scrolled {
-            padding: 2px 0; /* MÁS DELGADO cuando scrolleado */
+            padding: 4px 0;
             background-color: rgba(255, 255, 255, 0.95);
         }
 
@@ -242,6 +252,7 @@
             background-color: rgba(42, 42, 42, 0.95);
         }
 
+        /* Contenido del header */
         .header-content {
             display: flex;
             justify-content: space-between;
@@ -251,6 +262,7 @@
             padding: 0 20px;
         }
 
+        /* Logo */
         .logo {
             display: flex;
             align-items: center;
@@ -258,8 +270,8 @@
         }
 
         .logo-circle {
-            width: 30px; /* Más pequeño */
-            height: 30px; /* Más pequeño */
+            width: 30px;
+            height: 30px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 50%;
             display: flex;
@@ -267,16 +279,26 @@
             justify-content: center;
             color: white;
             font-weight: 600;
-            font-size: 0.9rem; /* Más pequeño */
+            font-size: 0.9rem;
             font-family: 'Playfair Display', serif;
-            /* ELIMINADO: margin-right: 8px; - Solo queda el círculo */
+            margin-right: 8px;
         }
 
-        /* ELIMINADO: .logo-text - Ya no se muestra "Mariona Guisado" */
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
 
+        .dark-mode .logo-text {
+            color: var(--text-color);
+        }
+
+        /* Navegación del header */
         .header-nav {
             display: flex;
-            gap: 20px; /* Menos espacio entre enlaces */
+            gap: 20px;
         }
 
         .header-nav a {
@@ -285,8 +307,8 @@
             font-weight: 500;
             transition: var(--transition);
             position: relative;
-            padding: 4px 0; /* Menos padding */
-            font-size: 0.85rem; /* Más pequeño */
+            padding: 4px 0;
+            font-size: 0.85rem;
         }
 
         .dark-mode .header-nav a {
@@ -303,7 +325,7 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 1px; /* Línea más fina */
+            height: 1px;
             background-color: var(--primary-color);
             transition: var(--transition);
         }
@@ -312,6 +334,7 @@
             width: 100%;
         }
 
+        /* Secciones principales */
         .section {
             min-height: 100vh;
             padding: 0;
@@ -320,15 +343,15 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            margin-bottom: 30px; /* Reducido */
+            margin-bottom: 50px;
         }
 
         .section-title {
             font-size: 3.5rem;
-            margin: 1rem 0 0.5rem; /* Reducido */
+            margin: 2rem 0 1.5rem;
             color: var(--text-color);
             text-align: center;
-            padding-top: 20px; /* Reducido */
+            padding-top: 40px;
             position: relative;
             z-index: 2;
             font-weight: 500;
@@ -340,21 +363,21 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px; /* Reducido */
+            padding: 30px;
             position: relative;
             z-index: 2;
         }
 
-        /* Dark mode toggle */
+        /* Botón de modo oscuro */
         .dark-mode-toggle {
             position: fixed;
-            top: 10px; /* Ajustado para header más estrecho */
-            right: 10px; /* Ajustado para header más estrecho */
+            top: 15px;
+            right: 15px;
             z-index: 100;
             background: var(--card-bg);
             border: none;
-            width: 45px; /* Más pequeño */
-            height: 45px; /* Más pequeño */
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -368,7 +391,7 @@
             transform: scale(1.1);
         }
 
-        /* SECCIÓN PROFESSIONAL PROFILE - NUEVO DISEÑO CON CANTOS RECTOS Y SIN LÍNEA LILA */
+        /* Sección Sobre Mí */
         #sobre-mi {
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             position: relative;
@@ -378,66 +401,17 @@
             backface-visibility: hidden;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
-            padding: 5px 0; /* Reducido */
+            padding: 80px 0;
         }
 
         .about-container {
-          display: flex;
-          align-items: center;      /* alinea verticalmente */
-          justify-content: center;  /* centra el bloque global */
-          gap: 32px;                /* separación entre columnas */
-          padding: 15px; /* Reducido */
-          width: 100%;
-          box-sizing: border-box;
-        }
-
-        /* Columnas de imágenes izquierda / derecha */
-        .about-images-left,
-        .about-images-right {
-          display: flex;
-          flex-direction: column;
-          gap: 15px; /* Reducido */
-          flex: 0 0 240px; /* ancho fijo aproximado (no crece, no encoge) */
-          box-sizing: border-box;
-        }
-
-        /* Contenedor de texto en el centro — ocupa más espacio */
-        .about-text-container {
-          flex: 1 1 420px; /* crece para llenar el espacio disponible */
-          min-width: 220px;
-          max-width: 900px;
-        }
-
-        /* Estilos comunes para todas las imágenes */
-        .about-image {
-          width: 100%;
-          height: auto;
-          object-fit: cover;
-          border-radius: 0;             /* cantos rectos */
-          box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-          display: block;
-        }
-
-        /* Ajustes específicos que tenías — ahora sin márgenes problemáticos */
-        .about-image-left-a,
-        .about-image-left-b {
-          height: 180px;
-          width: 220px; /* como querías */
-          /* Si quieres que estén pegadas a la izquierda del texto, usa align-self */
-          align-self: flex-start; 
-        }
-
-        /* Si quieres que la segunda imagen izquierda esté desplazada hacia la derecha ligeramente */
-        .about-image-left-b {
-          align-self: flex-end; /* o usa margin-left si lo prefieres */
-        }
-
-        /* Imagen derecha mayor */
-        .about-image-right {
-          width: 300px;
-          height: 400px;
-          align-self: center;
-          flex-shrink: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+            align-items: center;
         }
 
         .about-text-container {
@@ -447,21 +421,68 @@
             padding: 0;
         }
 
+        /* Texto con efecto de escritura */
         .typed-text, .personal-text {
             font-size: 1.2rem;
             line-height: 1.8;
             color: white;
             min-height: 120px;
-            /* QUITADA: border-right: 2px solid var(--primary-color); - Línea lila eliminada */
             white-space: pre-wrap;
             overflow: hidden;
             display: inline-block;
             text-align: left;
-            margin-bottom: 15px; /* Reducido */
+            margin-bottom: 20px;
             font-weight: 400;
         }
 
-        /* SECCIÓN EXPERIENCIA Y LIDERAZGO - COLOR CAMBIADO */
+        /* Contenedor de imágenes */
+        .about-images-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+        }
+
+        .about-images-left {
+            position: relative;
+            margin-right: 40px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .about-image-left-a {
+            width: 220px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+
+        .about-image-left-b {
+            width: 220px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-left: 40px;
+            z-index: 1;
+        }
+
+        .about-image-right {
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        /* Sección Experiencia */
         #experiencia {
             position: relative;
             min-height: 100vh;
@@ -471,22 +492,23 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 5px 0; /* Reducido */
+            padding: 80px 0;
         }
 
         .experience-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px; /* Reducido */
+            gap: 30px;
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px; /* Reducido */
+            padding: 40px 20px;
         }
 
+        /* Tarjetas de experiencia */
         .experience-card {
             background: var(--card-bg);
-            padding: 25px; /* Reducido */
+            padding: 30px;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
@@ -516,7 +538,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px; /* Reducido */
+            margin-bottom: 20px;
             color: white;
             font-size: 1.5rem;
             box-shadow: 0 5px 15px rgba(255, 217, 61, 0.3);
@@ -527,7 +549,7 @@
             font-size: 1.4rem;
             color: var(--dark-color);
             font-weight: 600;
-            margin-bottom: 8px; /* Reducido */
+            margin-bottom: 10px;
             font-family: 'Playfair Display', serif;
         }
 
@@ -535,18 +557,18 @@
             font-size: 1.1rem;
             color: var(--secondary-color);
             font-weight: 500;
-            margin-bottom: 12px; /* Reducido */
+            margin-bottom: 15px;
         }
 
         .experience-details {
             display: flex;
             flex-direction: column;
-            gap: 8px; /* Reducido */
+            gap: 10px;
         }
 
         .experience-detail {
             background: var(--light-color);
-            padding: 10px; /* Reducido */
+            padding: 12px;
             font-size: 0.95rem;
             color: #555;
             line-height: 1.4;
@@ -558,12 +580,12 @@
             transform: translateX(5px);
         }
 
-        /* BAFARADA (TOOLTIP) MEJORADA PARA STUDENT TESTIMONIALS */
+        /* Tooltip para testimonios */
         .tutor-bubble {
             position: relative;
             display: inline-block;
             cursor: pointer;
-            margin-top: 8px; /* Reducido */
+            margin-top: 10px;
         }
 
         .tutor-bubble-trigger {
@@ -591,7 +613,7 @@
             transform: translateX(-50%);
             background: white;
             color: #333;
-            padding: 15px; /* Reducido */
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             width: 320px;
@@ -599,7 +621,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            margin-bottom: 12px; /* Reducido */
+            margin-bottom: 15px;
         }
 
         .tutor-bubble-content::after {
@@ -615,13 +637,13 @@
         .tutor-bubble:hover .tutor-bubble-content {
             opacity: 1;
             visibility: visible;
-            bottom: calc(100% + 8px); /* Reducido */
+            bottom: calc(100% + 10px);
         }
 
         .bubble-text {
             font-size: 0.9rem;
             line-height: 1.5;
-            margin-bottom: 8px; /* Reducido */
+            margin-bottom: 10px;
             font-style: italic;
         }
 
@@ -632,7 +654,7 @@
             font-weight: 500;
         }
 
-        /* SECCIÓN EDUCATION - NUEVO DISEÑO CON FONDO OSCURO */
+        /* Sección Educación */
         #formacio {
             position: relative;
             display: flex;
@@ -640,7 +662,7 @@
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            padding: 5px 0; /* Reducido */
+            padding: 40px 0;
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             overflow: hidden;
         }
@@ -648,11 +670,11 @@
         .education-title {
             position: relative;
             z-index: 3;
-            color: white; /* Título en blanco */
+            color: white;
             text-align: center;
             font-size: 3.5rem;
-            margin-top: 15px; /* Reducido */
-            margin-bottom: 30px; /* Reducido */
+            margin-top: 20px;
+            margin-bottom: 40px;
             font-family: 'Playfair Display', serif;
             font-weight: 500;
         }
@@ -663,15 +685,16 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 8px 20px; /* Reducido */
-            color: white; /* Texto en blanco */
+            padding: 10px 20px;
+            color: white;
         }
 
+        /* Línea de tiempo horizontal */
         .education-timeline-horizontal {
             position: relative;
             width: 100%;
             margin: 0 auto;
-            padding: 15px 0 30px; /* Reducido */
+            padding: 20px 0 40px;
         }
 
         .education-timeline-horizontal::before {
@@ -710,16 +733,17 @@
             background: var(--primary-color);
             border: 4px solid var(--bg-color);
             border-radius: 50%;
-            margin-bottom: 15px; /* Reducido */
+            margin-bottom: 20px;
             box-shadow: 0 0 0 4px var(--primary-color);
             z-index: 3;
             position: relative;
         }
 
+        /* Tarjetas de educación */
         .education-card-horizontal {
             background: var(--card-bg);
             border-radius: 16px;
-            padding: 20px; /* Reducido */
+            padding: 25px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
             position: relative;
@@ -727,7 +751,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             width: 100%;
             text-align: center;
-            margin-top: -25px; /* Reducido */
+            margin-top: -30px;
         }
 
         .education-card-horizontal::before {
@@ -756,18 +780,18 @@
             color: white;
             font-size: 1.5rem;
             box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
-            margin: 0 auto 12px; /* Reducido */
+            margin: 0 auto 15px;
         }
 
         .education-header-horizontal {
-            margin-bottom: 12px; /* Reducido */
+            margin-bottom: 15px;
         }
 
         .education-degree-horizontal {
             font-size: 1.4rem;
             color: var(--primary-color);
             font-weight: 600;
-            margin-bottom: 5px; /* Reducido */
+            margin-bottom: 6px;
             font-family: 'Playfair Display', serif;
         }
 
@@ -775,14 +799,14 @@
             font-size: 1.1rem;
             color: var(--text-color);
             font-weight: 500;
-            margin-bottom: 3px; /* Reducido */
+            margin-bottom: 4px;
         }
 
         .education-location-horizontal {
             font-size: 0.9rem;
             color: #666;
             font-weight: 400;
-            margin-bottom: 6px; /* Reducido */
+            margin-bottom: 8px;
         }
 
         .education-date-horizontal {
@@ -793,17 +817,17 @@
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
-            margin-bottom: 10px; /* Reducido */
+            margin-bottom: 12px;
         }
 
         .education-details-horizontal {
-            margin-top: 12px; /* Reducido */
+            margin-top: 15px;
         }
 
         .education-detail-item-horizontal {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 10px; /* Reducido */
+            margin-bottom: 12px;
             text-align: left;
         }
 
@@ -829,7 +853,7 @@
             font-size: 0.95rem;
             color: var(--text-color);
             font-weight: 500;
-            margin-bottom: 3px; /* Reducido */
+            margin-bottom: 4px;
         }
 
         .detail-text-horizontal {
@@ -838,7 +862,30 @@
             line-height: 1.4;
         }
 
-        /* SECCIÓN SKILLS - COLOR CAMBIADO */
+        .coursework-list-horizontal {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+            justify-content: center;
+        }
+
+        .course-tag-horizontal {
+            background: var(--light-color);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: var(--transition);
+            border-radius: 20px;
+        }
+
+        .course-tag-horizontal:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Sección Habilidades */
         #habilitats {
             position: relative;
             display: flex;
@@ -848,16 +895,16 @@
             min-height: 100vh;
             width: 100%;
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            padding: 5px 0; /* Reducido */
+            padding: 80px 0;
             overflow: hidden;
         }
 
-        /* CANVI: Filtres amb lletres blanques, fons transparent i contorn blanc amb cantonades arrodonides */
+        /* Filtros de proyectos */
         .project-filters {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 30px; /* Reducido */
+            margin-bottom: 40px;
             flex-wrap: wrap;
         }
 
@@ -887,16 +934,17 @@
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px; /* Reducido */
+            gap: 30px;
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px; /* Reducido */
+            padding: 40px 20px;
         }
 
+        /* Categorías de habilidades */
         .skill-category {
             background: var(--card-bg);
-            padding: 25px; /* Reducido */
+            padding: 30px;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
@@ -922,7 +970,7 @@
         .skill-header {
             display: flex;
             align-items: center;
-            margin-bottom: 20px; /* Reducido */
+            margin-bottom: 25px;
         }
 
         .skill-icon {
@@ -950,13 +998,13 @@
         .skill-items {
             display: flex;
             flex-direction: column;
-            gap: 12px; /* Reducido */
+            gap: 15px;
         }
 
         .skill-item {
             display: flex;
             flex-direction: column;
-            gap: 6px; /* Reducido */
+            gap: 8px;
         }
 
         .skill-info {
@@ -977,6 +1025,7 @@
             font-weight: 600;
         }
 
+        /* Barras de habilidades */
         .skill-bar {
             height: 8px;
             background: var(--light-color);
@@ -993,16 +1042,17 @@
             border-radius: 4px;
         }
 
+        /* Grid de idiomas */
         .languages-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px; /* Reducido */
-            margin-top: 8px; /* Reducido */
+            gap: 20px;
+            margin-top: 10px;
         }
 
         .language-item {
             text-align: center;
-            padding: 15px; /* Reducido */
+            padding: 20px;
             background: var(--light-color);
             transition: var(--transition);
             border-radius: var(--border-radius);
@@ -1025,15 +1075,16 @@
             font-weight: 500;
         }
 
+        /* Grid de habilidades blandas */
         .soft-skills-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px; /* Reducido */
+            gap: 15px;
         }
 
         .soft-skill-item {
             background: var(--light-color);
-            padding: 15px; /* Reducido */
+            padding: 20px;
             text-align: center;
             transition: var(--transition);
             border-left: 4px solid var(--primary-color);
@@ -1051,7 +1102,7 @@
             font-weight: 500;
         }
 
-        /* SECCIÓN PROYECTOS MEJORADA - COLOR CAMBIADO */
+        /* Sección Proyectos */
         #projectes {
             position: relative;
             min-height: 100vh;
@@ -1061,19 +1112,20 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 5px 0; /* Reducido */
+            padding: 80px 0;
         }
 
         .projects-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px; /* Reducido */
+            gap: 30px;
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px; /* Reducido */
+            padding: 40px 20px;
         }
 
+        /* Tarjetas de proyectos */
         .project-card {
             background: var(--card-bg);
             box-shadow: var(--shadow);
@@ -1108,7 +1160,7 @@
         }
 
         .project-content {
-            padding: 20px; /* Reducido */
+            padding: 25px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -1118,7 +1170,7 @@
             font-size: 1.6rem;
             color: var(--dark-color);
             font-weight: 600;
-            margin-bottom: 12px; /* Reducido */
+            margin-bottom: 15px;
             font-family: 'Playfair Display', serif;
         }
 
@@ -1126,7 +1178,7 @@
             font-size: 0.95rem;
             color: #555;
             line-height: 1.5;
-            margin-bottom: 15px; /* Reducido */
+            margin-bottom: 20px;
             flex-grow: 1;
         }
 
@@ -1134,7 +1186,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 15px; /* Reducido */
+            margin-bottom: 20px;
         }
 
         .tech-tag {
@@ -1152,7 +1204,7 @@
             color: white;
         }
 
-        /* SECCIÓN ACTIVIDADES EXTRACURRICULARES - COLOR CAMBIADO */
+        /* Sección Actividades */
         #actividades {
             position: relative;
             min-height: 100vh;
@@ -1162,22 +1214,23 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 5px 0; /* Reducido */
+            padding: 80px 0;
         }
 
         .activities-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px; /* Reducido */
+            gap: 30px;
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px; /* Reducido */
+            padding: 40px 20px;
         }
 
+        /* Tarjetas de actividades */
         .activity-card {
             background: var(--card-bg);
-            padding: 25px; /* Reducido */
+            padding: 30px;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
@@ -1207,7 +1260,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px; /* Reducido */
+            margin-bottom: 20px;
             color: white;
             font-size: 1.5rem;
             box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
@@ -1218,7 +1271,7 @@
             font-size: 1.4rem;
             color: var(--dark-color);
             font-weight: 600;
-            margin-bottom: 8px; /* Reducido */
+            margin-bottom: 10px;
             font-family: 'Playfair Display', serif;
         }
 
@@ -1226,7 +1279,7 @@
             font-size: 1.1rem;
             color: var(--primary-color);
             font-weight: 500;
-            margin-bottom: 12px; /* Reducido */
+            margin-bottom: 15px;
         }
 
         .activity-description {
@@ -1235,7 +1288,7 @@
             line-height: 1.5;
         }
 
-        /* SECCIÓN DE CONTACTO - SIN FONDO DE IMAGEN */
+        /* Sección Contacto */
         #contacte {
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             position: relative;
@@ -1246,55 +1299,55 @@
             backface-visibility: hidden;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
-            padding: 5px 0; /* Reducido */
+            padding: 80px 0;
             min-height: 100vh;
-            margin-bottom: 0; /* Eliminar margen inferior */
+            margin-bottom: 0;
         }
 
         .contacte-container {
             width: 90%;
             max-width: 1000px;
             background-color: var(--card-bg);
-            padding: 40px; /* Reducido */
+            padding: 50px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px; /* Reducido */
+            gap: 50px;
             border-radius: var(--border-radius);
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 20px; /* Reducido */
+            gap: 25px;
         }
 
         .contact-title {
             font-size: 2.2rem;
             color: var(--primary-color);
             font-weight: 600;
-            margin-bottom: 8px; /* Reducido */
+            margin-bottom: 10px;
             font-family: 'Playfair Display', serif;
         }
 
         .contact-subtitle {
             font-size: 1.1rem;
             color: #666;
-            margin-bottom: 25px; /* Reducido */
+            margin-bottom: 30px;
             line-height: 1.6;
         }
 
         .contact-details {
             display: flex;
             flex-direction: column;
-            gap: 15px; /* Reducido */
+            gap: 20px;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
             gap: 15px;
-            padding: 12px; /* Reducido */
+            padding: 15px;
             background: var(--light-color);
             transition: var(--transition);
             border-radius: var(--border-radius);
@@ -1344,10 +1397,11 @@
             text-decoration: underline;
         }
 
+        /* Formulario de contacto */
         .contacte-form {
             display: flex;
             flex-direction: column;
-            gap: 20px; /* Reducido */
+            gap: 25px;
         }
 
         .form-group {
@@ -1398,7 +1452,7 @@
             transition: var(--transition);
             font-family: 'Playfair Display', serif;
             font-weight: 500;
-            margin-top: 8px; /* Reducido */
+            margin-top: 10px;
             border-radius: 30px;
         }
 
@@ -1408,10 +1462,10 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* NUEVA SECCIÓN DE REDES SOCIALES - ESTÉTICA SOLICITADA */
+        /* Sección Redes Sociales */
         #social-media {
             background-color: #2A2F31;
-            padding: 30px 0 10px; /* Reducido */
+            padding: 100px 0 80px;
             text-align: center;
             min-height: 70vh;
             display: flex;
@@ -1429,7 +1483,7 @@
         .social-media-title {
             font-size: 2.5rem;
             color: #FFFFFF;
-            margin-bottom: 10px; /* Reducido */
+            margin-bottom: 12px;
             font-family: 'Playfair Display', serif;
             font-weight: 600;
             line-height: 1.2;
@@ -1438,7 +1492,7 @@
         .social-media-subtitle {
             font-size: 1.125rem;
             color: #D1D5DB;
-            margin-bottom: 50px; /* Reducido */
+            margin-bottom: 60px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -1449,7 +1503,7 @@
             display: flex;
             justify-content: center;
             gap: 16px;
-            margin-bottom: 30px; /* Reducido */
+            margin-bottom: 40px;
         }
 
         .social-icon {
@@ -1514,11 +1568,11 @@
             transform: translateY(-2px);
         }
 
-        /* FOOTER MEJORADO - ESTÉTICA SOLICITADA */
+        /* Footer */
         .footer {
             background-color: #2A2F31;
             color: #FFFFFF;
-            padding: 15px 0 10px; /* Reducido */
+            padding: 60px 0 30px;
             text-align: center;
         }
 
@@ -1532,13 +1586,13 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             font-weight: 500;
-            margin-bottom: 15px; /* Reducido */
+            margin-bottom: 20px;
             color: #FFFFFF;
         }
 
         .footer-subtitle {
             font-size: 1.1rem;
-            margin-bottom: 30px; /* Reducido */
+            margin-bottom: 40px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -1549,7 +1603,7 @@
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-bottom: 15px; /* Reducido */
+            margin-bottom: 20px;
         }
 
         .social-link {
@@ -1598,20 +1652,20 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 50px; /* Reducido */
-            margin-bottom: 30px; /* Reducido */
+            gap: 60px;
+            margin-bottom: 40px;
         }
 
         .footer-column {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 5px; /* Reducido */
+            gap: 6px;
         }
 
         .footer-column h4 {
             font-size: 1rem;
-            margin-bottom: 12px; /* Reducido */
+            margin-bottom: 15px;
             color: #7C3AED;
             font-family: 'Inter', sans-serif;
             font-weight: 600;
@@ -1630,7 +1684,7 @@
         }
 
         .footer-cta {
-            margin-bottom: 30px; /* Reducido */
+            margin-bottom: 40px;
         }
 
         .download-btn {
@@ -1653,12 +1707,12 @@
 
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 25px; /* Reducido */
+            padding-top: 30px;
             font-size: 0.9rem;
             color: #D1D5DB;
         }
 
-        /* BOTÓN VOLVER ARRIBA */
+        /* Botón volver arriba */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -1689,7 +1743,7 @@
             transform: translateY(-5px);
         }
 
-        /* TÍTULOS EN BLANCO PARA SECCIONES OSCURAS */
+        /* Títulos en blanco para secciones oscuras */
         #sobre-mi .section-title,
         #experiencia .section-title,
         #habilitats .section-title,
@@ -1700,6 +1754,7 @@
             color: white;
         }
 
+        /* Media queries para responsividad */
         @media (max-width: 768px) {
             .name {
                 font-size: 3rem;
@@ -1724,7 +1779,7 @@
             }
 
             .header {
-                padding: 6px 0; /* Más estrecho en móvil */
+                padding: 6px 0;
             }
 
             .header-nav {
@@ -1734,10 +1789,9 @@
             .section-title {
                 font-size: 2.5rem;
                 padding-top: 15px;
-                margin: 0.5rem 0; /* Reducido */
+                margin: 1rem 0;
             }
 
-            /* CANVI: Filtres responsius */
             .project-filters {
                 gap: 10px;
             }
@@ -1747,10 +1801,9 @@
                 font-size: 0.9rem;
             }
 
-            /* NUEVO DISEÑO RESPONSIVE PARA PROFESSIONAL PROFILE */
             .about-container {
                 grid-template-columns: 1fr;
-                gap: 25px; /* Reducido */
+                gap: 30px;
             }
 
             .about-images-container {
@@ -1771,14 +1824,13 @@
 
             .education-title {
                 font-size: 2.5rem;
-                margin-top: 30px; /* Reducido */
+                margin-top: 40px;
             }
 
             .typed-text, .personal-text {
                 font-size: 1rem;
             }
 
-            /* NUEVO DISEÑO RESPONSIVE PARA EDUCACIÓN HORIZONTAL */
             .education-timeline-horizontal::before {
                 top: 0;
                 left: 50%;
@@ -1790,7 +1842,7 @@
 
             .education-items-container {
                 flex-direction: column;
-                gap: 35px; /* Reducido */
+                gap: 40px;
             }
 
             .education-item-horizontal {
@@ -1798,12 +1850,12 @@
                 min-height: auto;
                 flex-direction: row;
                 align-items: flex-start;
-                gap: 25px; /* Reducido */
+                gap: 30px;
             }
 
             .timeline-point-horizontal {
                 margin-bottom: 0;
-                margin-top: 35px; /* Reducido */
+                margin-top: 40px;
             }
 
             .education-card-horizontal {
@@ -1813,17 +1865,21 @@
             }
 
             .education-icon-horizontal {
-                margin: 0 0 15px 0; /* Reducido */
+                margin: 0 0 20px 0;
+            }
+
+            .coursework-list-horizontal {
+                justify-content: flex-start;
             }
 
             .skills-container {
                 grid-template-columns: 1fr;
-                gap: 15px; /* Reducido */
-                padding: 15px 15px; /* Reducido */
+                gap: 20px;
+                padding: 20px 15px;
             }
 
             .skill-category {
-                padding: 15px; /* Reducido */
+                padding: 20px;
             }
 
             .languages-grid {
@@ -1838,14 +1894,14 @@
             .experience-container,
             .activities-container {
                 grid-template-columns: 1fr;
-                gap: 15px; /* Reducido */
-                padding: 15px 15px; /* Reducido */
+                gap: 20px;
+                padding: 20px 15px;
             }
 
             .project-card,
             .experience-card,
             .activity-card {
-                padding: 15px; /* Reducido */
+                padding: 20px;
             }
 
             .tutor-bubble-content {
@@ -1860,8 +1916,8 @@
 
             .contacte-container {
                 grid-template-columns: 1fr;
-                gap: 25px; /* Reducido */
-                padding: 25px; /* Reducido */
+                gap: 30px;
+                padding: 30px;
             }
 
             .contact-info {
@@ -1878,7 +1934,7 @@
 
             .social-media-subtitle {
                 font-size: 1rem;
-                margin-bottom: 35px; /* Reducido */
+                margin-bottom: 40px;
             }
 
             .social-icons {
@@ -1897,7 +1953,7 @@
 
             .footer-links {
                 flex-direction: column;
-                gap: 25px; /* Reducido */
+                gap: 30px;
             }
 
             .social-links {
@@ -1914,18 +1970,23 @@
     </style>
 </head>
 <body>
+    <!-- Contenedor principal -->
     <div class="container">
+        <!-- Fondo inicial -->
         <div class="background" id="background"></div>
+        <!-- Nombre principal -->
         <div class="name visible" id="name">Mariona Guisado</div>
+        <!-- Botón de entrada -->
         <a href="#" class="enter-button" id="enterButton">Enter</a>
+        <!-- Transición de pantalla -->
         <div class="transition" id="transition"></div>
         
-        <!-- HEADER FIJO - MÁS ESTRECHO Y SIN TEXTO -->
+        <!-- Header fijo -->
         <header class="header" id="header">
             <div class="header-content">
                 <a href="#" class="logo">
                     <div class="logo-circle">MG</div>
-                    <!-- ELIMINADO: .logo-text - Ya no se muestra "Mariona Guisado" -->
+                    <div class="logo-text">Mariona Guisado</div>
                 </a>
                 <nav class="header-nav">
                     <a href="#sobre-mi">Profile</a>
@@ -1939,10 +2000,12 @@
             </div>
         </header>
         
+        <!-- Contenido principal (oculto inicialmente) -->
         <div class="main-content" id="mainContent">
+            <!-- Botón de modo oscuro -->
             <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
             
-            <!-- CAMBIO: Reemplazar imagen por video -->
+            <!-- Video de fondo -->
             <div class="new-background" id="newBackground">
                 <video class="background-video" autoplay muted loop>
                     <source src="por.MOV" type="video/mp4">
@@ -1950,6 +2013,7 @@
                 </video>
             </div>
             
+            <!-- Menú de navegación -->
             <div class="nav-menu" id="navMenu">
                 <a href="#sobre-mi" class="nav-item">Professional Profile</a>
                 <a href="#experiencia" class="nav-item">Experience</a>
@@ -1960,31 +2024,26 @@
                 <a href="#contacte" class="nav-item">Contact</a>
             </div>
 
+            <!-- Sección Perfil Profesional -->
             <section id="sobre-mi" class="section">
-              <h2 class="section-title">Professional Profile</h2>
-
-              <div class="about-container">
-                <!-- IMÁGENES IZQUIERDA -->
-                <div class="about-images-left">
-                  <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                       alt="Professional Image A" class="about-image about-image-left-a">
-                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                       alt="Professional Image B" class="about-image about-image-left-b">
+                <h2 class="section-title">Professional Profile</h2>
+                <div class="about-container">
+                    <!-- Contenedor de imágenes -->
+                    <div class="about-images-container">
+                        <div class="about-images-left">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image A" class="about-image-left-a">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image B" class="about-image-left-b">
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1581089778245-3ce67677f718?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image" class="about-image-right">
+                    </div>
+                    <!-- Contenedor de texto -->
+                    <div class="about-text-container">
+                        <p id="typed-text" class="typed-text"></p>
+                    </div>
                 </div>
-            
-                <!-- TEXTO CENTRO -->
-                <div class="about-text-container">
-                  <p id="typed-text" class="typed-text">Aquí va tu texto profesional — reemplázalo por tu contenido real.</p>
-                </div>
-            
-                <!-- IMÁGENES DERECHA -->
-                <div class="about-images-right">
-                  <img src="https://images.unsplash.com/photo-1581089778245-3ce67677f718?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                       alt="Professional Image C" class="about-image about-image-right">
-                </div>
-              </div>
             </section>
 
+            <!-- Sección Experiencia -->
             <section id="experiencia" class="section">
                 <h2 class="section-title">Experience & Leadership</h2>
                 <div class="experience-container">
@@ -2011,7 +2070,7 @@
                             <div class="experience-detail">Personalized teaching methodologies</div>
                         </div>
                         
-                        <!-- Bafarada para Student Testimonials -->
+                        <!-- Tooltip para testimonios -->
                         <div class="tutor-bubble">
                             <div class="tutor-bubble-trigger">
                                 <i class="fas fa-comment-alt"></i> Student Testimonials
@@ -2041,7 +2100,7 @@
                 </div>
             </section>
 
-            <!-- SECCIÓN EDUCATION - NUEVO DISEÑO CON FONDO OSCURO -->
+            <!-- Sección Educación -->
             <section id="formacio" class="section">
                 <h2 class="education-title">Education</h2>
                 <div class="education-content">
@@ -2064,6 +2123,19 @@
                                             <div class="detail-content-horizontal">
                                                 <div class="detail-title-horizontal">Honors</div>
                                                 <div class="detail-text-horizontal">Mathematics</div>
+                                            </div>
+                                        </div>
+                                        <div class="education-detail-item-horizontal">
+                                            <div class="detail-icon-horizontal">📚</div>
+                                            <div class="detail-content-horizontal">
+                                                <div class="detail-title-horizontal">Relevant Coursework</div>
+                                                <div class="coursework-list-horizontal">
+                                                    <span class="course-tag-horizontal">Python Programming</span>
+                                                    <span class="course-tag-horizontal">Business Organization</span>
+                                                    <span class="course-tag-horizontal">Management</span>
+                                                    <span class="course-tag-horizontal">Computer Networks</span>
+                                                    <span class="course-tag-horizontal">SQL</span>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="education-detail-item-horizontal">
@@ -2094,16 +2166,13 @@
                                             <div class="detail-content-horizontal">
                                                 <div class="detail-title-horizontal">Achievements</div>
                                                 <div class="detail-text-horizontal">Selected to participate in the "TXT Debate" league</div>
-                                                <div class="detail-title-horizontal">TR Grade</div>
-                                                <div class="detail-text-horizontal">10/10" league</div>
-                                            
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- CERTIFICACIONES - Ahora incluye Taekwondo y Advanced English -->
+                            <!-- Certificaciones -->
                             <div class="education-item-horizontal">
                                 <div class="timeline-point-horizontal"></div>
                                 <div class="education-card-horizontal">
@@ -2135,8 +2204,10 @@
                 </div>
             </section>
 
+            <!-- Sección Habilidades -->
             <section id="habilitats" class="section">
                 <h2 class="section-title">Skills</h2>
+                <!-- Filtros de habilidades -->
                 <div class="project-filters">
                     <button class="filter-btn active" data-filter="all">All</button>
                     <button class="filter-btn" data-filter="technical">Technical</button>
@@ -2144,7 +2215,7 @@
                     <button class="filter-btn" data-filter="soft">Soft Skills</button>
                 </div>
                 <div class="skills-container">
-                    <!-- Hard Skills -->
+                    <!-- Habilidades Técnicas -->
                     <div class="skill-category" data-category="technical">
                         <div class="skill-header">
                             <div class="skill-icon">💻</div>
@@ -2180,7 +2251,7 @@
                             </div>
                             <div class="skill-item">
                                 <div class="skill-info">
-                                    <span class="skill-name">Computer networks</span>
+                                    <span class="skill-name">ETL Processes</span>
                                     <span class="skill-percentage">75%</span>
                                 </div>
                                 <div class="skill-bar">
@@ -2199,7 +2270,7 @@
                         </div>
                     </div>
 
-                    <!-- Languages -->
+                    <!-- Idiomas -->
                     <div class="skill-category" data-category="languages">
                         <div class="skill-header">
                             <div class="skill-icon">🌐</div>
@@ -2221,7 +2292,7 @@
                         </div>
                     </div>
 
-                    <!-- Soft Skills -->
+                    <!-- Habilidades Blandas -->
                     <div class="skill-category" data-category="soft">
                         <div class="skill-header">
                             <div class="skill-icon">🤝</div>
@@ -2251,12 +2322,15 @@
                 </div>
             </section>
 
+            <!-- Sección Proyectos -->
             <section id="projectes" class="section">
                 <h2 class="section-title">Technical Projects</h2>
+                <!-- Filtros de proyectos -->
                 <div class="project-filters">
                     <button class="filter-btn active" data-filter="all">All</button>
                     <button class="filter-btn" data-filter="web">Web Development</button>
                     <button class="filter-btn" data-filter="data">Data Projects</button>
+                    <button class="filter-btn" data-filter="portfolio">Portfolio</button>
                 </div>
                 <div class="projects-container">
                     <!-- Web Development - Empresa de Mármoles -->
@@ -2274,7 +2348,7 @@
                                 <span class="tech-tag">UI/UX</span>
                             </div>
                             
-                            <!-- Bafarada para Business Testimonials -->
+                            <!-- Tooltip para testimonios de negocio -->
                             <div class="tutor-bubble">
                                 <div class="tutor-bubble-trigger">
                                     <i class="fas fa-comment-alt"></i> Business Testimonials
@@ -2287,8 +2361,8 @@
                         </div>
                     </div>
 
-                    <!-- Portfolio Personal - AHORA EN WEB DEVELOPMENT -->
-                    <div class="project-card" data-category="web">
+                    <!-- Portfolio Personal -->
+                    <div class="project-card" data-category="portfolio">
                         <div class="project-image">
                             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Personal Portfolio Website">
                         </div>
@@ -2304,7 +2378,7 @@
                         </div>
                     </div>
 
-                    <!-- Movie Recommendation Engine -->
+                    <!-- Motor de Recomendación de Películas -->
                     <div class="project-card" data-category="data">
                         <div class="project-image">
                             <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Movie Recommendation Engine">
@@ -2323,10 +2397,11 @@
                 </div>
             </section>
 
+            <!-- Sección Actividades Extracurriculares -->
             <section id="actividades" class="section">
                 <h2 class="section-title">Extracurriculars and Volunteering</h2>
                 <div class="activities-container">
-                    <!-- J.P. Morgan Event -->
+                    <!-- Evento J.P. Morgan -->
                     <div class="activity-card">
                         <div class="activity-icon">🏦</div>
                         <h3 class="activity-title">"Insight into Markets" Event</h3>
@@ -2334,7 +2409,7 @@
                         <p class="activity-description">Participated in an exclusive financial markets event, gaining insights into investment banking, market analysis, and trading strategies from industry professionals.</p>
                     </div>
 
-                    <!-- UBS Zurich Event -->
+                    <!-- Evento UBS Zurich -->
                     <div class="activity-card">
                         <div class="activity-icon">📈</div>
                         <h3 class="activity-title">Trading Event</h3>
@@ -2342,41 +2417,57 @@
                         <p class="activity-description">Engaged in hands-on trading simulations and learned about global market dynamics, risk management, and investment strategies at one of the world's leading financial institutions.</p>
                     </div>
 
-                    <!-- VOLUNTARIADOS JUNTOS EN UNA SOLA TARJETA -->
+                    <!-- Voluntariado - El Xiprer -->
                     <div class="activity-card">
                         <div class="activity-icon">🤝</div>
-                        <h3 class="activity-title">Volunteering Activities</h3>
-                        <div class="activity-company">Community Support</div>
-                        <p class="activity-description">Participated in volunteering activities at El Xiprer, contributing to community support initiatives and assisting with various social programs for those in need. Also engaged in volunteering work at elderly care residences, providing companionship, support, and assistance to senior citizens, and organizing recreational activities.</p>
+                        <h3 class="activity-title">Volunteering at El Xiprer</h3>
+                        <div class="activity-company">Social Volunteering</div>
+                        <p class="activity-description">Participated in volunteering activities at El Xiprer, contributing to community support initiatives and assisting with various social programs for those in need.</p>
+                    </div>
+
+                    <!-- Voluntariado - Residències -->
+                    <div class="activity-card">
+                        <div class="activity-icon">❤️</div>
+                        <h3 class="activity-title">Volunteering at Residències</h3>
+                        <div class="activity-company">Elderly Care</div>
+                        <p class="activity-description">Engaged in volunteering work at elderly care residences, providing companionship, support, and assistance to senior citizens, and organizing recreational activities.</p>
                     </div>
                 </div>
             </section>
 
+            <!-- Sección Contacto -->
             <section id="contacte" class="section">
                 <h2 class="section-title">Contact</h2>
                 <div class="contacte-container">
+                    <!-- Información de contacto -->
                     <div class="contact-info">
                         <h2 class="contact-title">Get In Touch</h2>
                         <p class="contact-subtitle">I'm always open to discussing new opportunities, projects, or just having a chat about technology and data engineering.</p>
                         
                         <div class="contact-details">
                             <div class="contact-item">
-                                
+                                <div class="contact-icon">✉️</div>
                                 <div class="contact-text">
-                                    
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value">mariona.guisado.p@gmail.com</div>
                                 </div>
                             </div>
                             
                             <div class="contact-item">
+                                <div class="contact-icon">💼</div>
                                 <div class="contact-text">
-                                    
+                                    <div class="contact-label">LinkedIn</div>
+                                    <div class="contact-value">
+                                        <a href="#" class="linkedin-link">Connect with me on LinkedIn</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
+                    <!-- Formulario de contacto -->
                     <form class="contacte-form" id="contactForm">
-                        <h3 style="color: var(--primary-color); margin-bottom: 15px; font-weight: 500;">Send me a message</h3>
+                        <h3 style="color: var(--primary-color); margin-bottom: 20px; font-weight: 500;">Send me a message</h3>
                         <div class="form-group">
                             <label for="contact-name">Name</label>
                             <input type="text" id="contact-name" class="form-control" required>
@@ -2397,12 +2488,13 @@
                 </div>
             </section>
 
-            <!-- NUEVA SECCIÓN DE REDES SOCIALES - ESTÉTICA SOLICITADA -->
+            <!-- Sección Redes Sociales -->
             <section id="social-media" class="section">
                 <div class="social-media-container">
                     <h2 class="social-media-title">Mariona Guisado</h2>
                     <p class="social-media-subtitle">Data Engineering Student | Problem Solver | Future Innovator</p>
                     
+                    <!-- Iconos de redes sociales -->
                     <div class="social-icons">
                         <a href="https://www.linkedin.com/in/mariona-guisado-parras-30a984294/" class="social-icon" target="_blank">
                             <div class="social-icon-circle">
@@ -2433,47 +2525,58 @@
                         </a>
                     </div>
                     
-                    <a href="CV_Mariona_Guisado_Parras.pdf" class="download-cv-btn" download>
+                    <!-- Botón de descarga de CV -->
+                    <a href="path/to/your-cv.pdf" class="download-cv-btn" download>
                         <i class="fas fa-download"></i> Download CV
                     </a>
                 </div>
             </section>
 
-            <!-- FOOTER MEJORADO - ESTÉTICA SOLICITADA -->
+            <!-- Footer -->
             <footer class="footer">
                 <div class="footer-content">
                     <div class="footer-logo">Mariona Guisado</div>
                     <p class="footer-subtitle">Data Engineering Student | Problem Solver | Future Innovator</p>
                     
+                    <!-- Enlaces sociales en footer -->
                     <div class="social-links">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        
+                        <a href="https://www.linkedin.com/in/mariona-guisado-parras-30a984294/" class="social-link" data-platform="LinkedIn" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/marionaguisado" class="social-link" data-platform="GitHub" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://twitter.com/marionaguisado" class="social-link" data-platform="Twitter" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/mariona_gsdo/" class="social-link" data-platform="Instagram" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
                     </div>
                     
+                    <!-- Enlaces de navegación en footer -->
                     <div class="footer-links">
-                        
+                        <div class="footer-column">
+                            <h4>Navigation</h4>
+                            <a href="#sobre-mi" class="footer-link">Professional Profile</a>
+                            <a href="#experiencia" class="footer-link">Experience</a>
+                            <a href="#formacio" class="footer-link">Education</a>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Skills & Projects</h4>
+                            <a href="#habilitats" class="footer-link">Skills</a>
+                            <a href="#projectes" class="footer-link">Projects</a>
+                            <a href="#actividades" class="footer-link">Activities</a>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Contact</h4>
+                            <a href="#contacte" class="footer-link">Get in Touch</a>
+                            <a href="mailto:mariona.guisado.p@gmail.com" class="footer-link">Email</a>
+                            <a href="#social-media" class="footer-link">Social Media</a>
+                        </div>
                     </div>
                     
+                    <!-- Copyright -->
                     <div class="footer-bottom">
                         <p>&copy; 2023 Mariona Guisado. All rights reserved.</p>
                     </div>
@@ -2482,13 +2585,13 @@
         </div>
     </div>
 
-    <!-- BOTÓN VOLVER ARRIBA -->
+    <!-- Botón volver arriba -->
     <div class="back-to-top" id="backToTop">
         <i class="fas fa-chevron-up"></i>
     </div>
 
     <script>
-        // Global variables
+        // Variables globales
         let lastScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
         let scrollTimeout;
         const nameElement = document.getElementById('name');
@@ -2496,31 +2599,37 @@
         const backToTopButton = document.getElementById('backToTop');
         const header = document.getElementById('header');
         
-        // Improved scroll handler function - AHORA OCULTA EL NOMBRE COMPLETAMENTE
+        // Función mejorada para manejar el scroll
         function handleScroll() {
             const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-
-            // Ocultar el nom quan arribem a la primera secció (sobre-mi)
-            const sobreMiSection = document.getElementById('sobre-mi');
-            const sobreMiOffset = sobreMiSection.offsetTop;
-    
-            if (currentScrollPosition > sobreMiOffset - 100) {
-            nameElement.style.display = 'none';
-            } else {
-            nameElement.style.display = 'block';
+            
+            // Solo activar si hay un scroll significativo (> 5px)
+            if (Math.abs(currentScrollPosition - lastScrollPosition) > 5) {
+                if (currentScrollPosition > lastScrollPosition) {
+                    // Scrolling hacia abajo - ocultar nombre
+                    nameElement.classList.add('hidden');
+                } else {
+                    // Scrolling hacia arriba - mostrar nombre
+                    nameElement.classList.remove('hidden');
+                }
             }
-                     
             
             lastScrollPosition = currentScrollPosition;
             
-            // Show/hide back to top button
+            // Resetear después de detener el scroll
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                nameElement.classList.remove('hidden');
+            }, 1000);
+
+            // Mostrar/ocultar botón volver arriba
             if (currentScrollPosition > 300) {
                 backToTopButton.classList.add('visible');
             } else {
                 backToTopButton.classList.remove('visible');
             }
 
-            // Header scroll effect - aparece cuando ya no se ve el índice inicial
+            // Efecto de scroll en header - aparece cuando ya no se ve el índice inicial
             if (currentScrollPosition > 400) {
                 header.classList.add('scrolled');
             } else {
@@ -2528,10 +2637,10 @@
             }
         }
 
-        // Initialize scroll event listener
+        // Inicializar event listener para scroll
         window.addEventListener('scroll', handleScroll);
 
-        // Back to top functionality
+        // Funcionalidad de volver arriba
         backToTopButton.addEventListener('click', function() {
             window.scrollTo({
                 top: 0,
@@ -2539,6 +2648,7 @@
             });
         });
 
+        // Evento para el botón de entrada
         document.getElementById('enterButton').addEventListener('click', function(e) {
             e.preventDefault();
             
@@ -2549,13 +2659,13 @@
             const newBackground = document.getElementById('newBackground');
             const navMenu = document.getElementById('navMenu');
             
-            // 1. White screen rises
+            // 1. Pantalla blanca sube
             transition.style.bottom = '100%';
             
-            // 2. Hide enter button
+            // 2. Ocultar botón de entrada
             enterButton.classList.add('hidden');
             
-            // 3. Change name color to black, move it up and reduce size
+            // 3. Cambiar color del nombre a negro, moverlo arriba y reducir tamaño
             setTimeout(() => {
                 name.style.color = 'black';
                 name.style.textShadow = 'none';
@@ -2563,32 +2673,31 @@
                 name.style.fontSize = '3rem';
             }, 500);
             
-            // 4. Show main content when transition ends
+            // 4. Mostrar contenido principal cuando termina la transición
             setTimeout(() => {
                 mainContent.style.display = 'block';
                 header.style.display = 'block';
                 
-                // 5. Show new video (now larger) and menu
+                // 5. Mostrar video nuevo y menú
                 setTimeout(() => {
                     newBackground.style.opacity = '1';
                     navMenu.style.opacity = '1';
                     
-                    // Typing effect for the new About Me text
+                    // Efecto de escritura para el nuevo texto de About Me
                     const aboutText = "A highly motivated Data Engineering student with a strong academic foundation and a passion for transforming data into actionable insights. Demonstrated ability to lead and collaborate effectively through roles as Class Representative and organizer of technology events, fostering communication between diverse groups and driving community engagement. Combines technical knowledge in data analysis with exceptional interpersonal skills, adaptability, and a solutions-oriented mindset. Eager to contribute by leveraging a unique blend of analytical thinking, leadership experience, and a commitment to delivering value in dynamic, team-based environments.";
                     
                     const typedElement = document.getElementById('typed-text');
                     
-                    // Type the new text
+                    // Escribir el nuevo texto
                     typeWriter(aboutText, typedElement, 20);
                 }, 100);
                 
-                // Hide initial background
+                // Ocultar fondo inicial
                 background.style.opacity = '0';
-
             }, 1000);
         });
 
-        // Smooth navigation to sections
+        // Navegación suave a secciones
         document.querySelectorAll('.nav-item, .footer-link, .header-nav a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -2599,11 +2708,10 @@
             });
         });
 
-        // Typing effect for About section (with callback)
+        // Efecto de escritura para sección About
         function typeWriter(text, element, speed, callback) {
             let i = 0;
             element.innerHTML = '';
-            // QUITADA: element.style.borderRight = '2px solid var(--primary-color)'; - Línea lila eliminada
             
             const interval = setInterval(() => {
                 if (i < text.length) {
@@ -2612,14 +2720,13 @@
                 } else {
                     clearInterval(interval);
                     setTimeout(() => {
-                        // QUITADA: element.style.borderRight = 'none'; - Línea lila eliminada
                         if (callback) callback();
                     }, 500);
                 }
             }, speed);
         }
 
-        // Animate skill bars when section is visible
+        // Animar barras de habilidades cuando la sección es visible
         function animateSkillBars() {
             const skillBars = document.querySelectorAll('.skill-progress');
             skillBars.forEach(bar => {
@@ -2628,7 +2735,7 @@
             });
         }
 
-        // Observe when skills section is visible
+        // Observar cuando la sección de habilidades es visible
         const skillsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2637,7 +2744,7 @@
             });
         }, { threshold: 0.3 });
 
-        // Start observing when DOM is loaded
+        // Comenzar observación cuando el DOM está cargado
         document.addEventListener('DOMContentLoaded', function() {
             const skillsSection = document.getElementById('habilitats');
             if (skillsSection) {
@@ -2652,7 +2759,7 @@
             }
         });
 
-        // Function to handle contact form
+        // Función para manejar el formulario de contacto
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -2662,33 +2769,33 @@
             
             console.log('Form submitted:', { name, email, message });
             
-            // Show success message
+            // Mostrar mensaje de éxito
             alert('Message sent successfully! Thank you for contacting me.');
             
-            // Clear form
+            // Limpiar formulario
             this.reset();
         });
 
-        // Dark mode toggle functionality
+        // Funcionalidad de toggle de modo oscuro
         const darkModeToggle = document.getElementById('darkModeToggle');
         darkModeToggle.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
             darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
         });
 
-        // Filter functionality for projects and skills
+        // Funcionalidad de filtro para proyectos y habilidades
         document.querySelectorAll('.filter-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const filter = this.getAttribute('data-filter');
                 const container = this.closest('.section').querySelector('.projects-container, .skills-container');
                 
-                // Update active button
+                // Actualizar botón activo
                 document.querySelectorAll('.filter-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
                 this.classList.add('active');
                 
-                // Filter items
+                // Filtrar elementos
                 if (container) {
                     const items = container.querySelectorAll('.project-card, .skill-category');
                     items.forEach(item => {
@@ -2702,7 +2809,7 @@
             });
         });
 
-        // Smooth transitions for section changes
+        // Transiciones suaves para cambios de sección
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -2717,7 +2824,7 @@
             });
         }, observerOptions);
 
-        // Observe all sections for smooth appearance
+        // Observar todas las secciones para aparición suave
         document.querySelectorAll('.section').forEach(section => {
             section.style.opacity = 0;
             section.style.transform = 'translateY(20px)';
