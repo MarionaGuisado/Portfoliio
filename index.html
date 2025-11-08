@@ -378,13 +378,62 @@
         }
 
         .about-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            width: 90%;
-            max-width: 1300px;
-            margin: 0 auto;
-            align-items: center;
+          display: flex;
+          align-items: center;      /* alinea verticalmente */
+          justify-content: center;  /* centra el bloque global */
+          gap: 32px;                /* separación entre columnas */
+          padding: 20px;
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        /* Columnas de imágenes izquierda / derecha */
+        .about-images-left,
+        .about-images-right {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          flex: 0 0 240px; /* ancho fijo aproximado (no crece, no encoge) */
+          box-sizing: border-box;
+        }
+
+        /* Contenedor de texto en el centro — ocupa más espacio */
+        .about-text-container {
+          flex: 1 1 420px; /* crece para llenar el espacio disponible */
+          min-width: 220px;
+          max-width: 900px;
+        }
+
+        /* Estilos comunes para todas las imágenes */
+        .about-image {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          border-radius: 0;             /* cantos rectos */
+          box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+          display: block;
+        }
+
+        /* Ajustes específicos que tenías — ahora sin márgenes problemáticos */
+        .about-image-left-a,
+        .about-image-left-b {
+          height: 180px;
+          width: 220px; /* como querías */
+          /* Si quieres que estén pegadas a la izquierda del texto, usa align-self */
+          align-self: flex-start; 
+        }
+
+        /* Si quieres que la segunda imagen izquierda esté desplazada hacia la derecha ligeramente */
+        .about-image-left-b {
+          align-self: flex-end; /* o usa margin-left si lo prefieres */
+        }
+
+        /* Imagen derecha mayor */
+        .about-image-right {
+          width: 300px;
+          height: 400px;
+          align-self: center;
+          flex-shrink: 0;
         }
 
         .about-text-container {
@@ -406,53 +455,6 @@
             text-align: left;
             margin-bottom: 20px;
             font-weight: 400;
-        }
-
-        /* CANVI: Nou disseny per a les imatges - 2 a l'esquerra i 1 a la dreta amb cantos rectos */
-        .about-images-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 500px;
-        }
-
-        .about-images-left {
-            position: relative;
-            margin-right: 40px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .about-image-left-a {
-            width: 220px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 0; /* CANTOS RECTOS */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            margin-bottom: 20px;
-            z-index: 1;
-        }
-
-        .about-image-left-b {
-            width: 220px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 0; /* CANTOS RECTOS */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            margin-left: 40px;
-            z-index: 1;
-        }
-
-        .about-image-right {
-            width: 300px;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 0; /* CANTOS RECTOS */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            z-index: 2;
         }
 
         /* SECCIÓN EXPERIENCIA Y LIDERAZGO - COLOR CAMBIADO */
@@ -1955,21 +1957,28 @@
             </div>
 
             <section id="sobre-mi" class="section">
-                <h2 class="section-title">Professional Profile</h2>
-                <div class="about-container">
-                    <!-- CANVI: Les imatges ara estan a l'esquerra del text -->
-                    <div class="about-images-container">
-                        <!-- CANVI: 2 imatges a l'esquerra i 1 a la dreta amb cantos rectos -->
-                        <div class="about-images-left">
-                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image A" class="about-image-left-a">
-                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image B" class="about-image-left-b">
-                        </div>
-                        <img src="https://images.unsplash.com/photo-1581089778245-3ce67677f718?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image" class="about-image-right">
-                    </div>
-                    <div class="about-text-container">
-                        <p id="typed-text" class="typed-text"></p>
-                    </div>
+              <h2 class="section-title">Professional Profile</h2>
+
+              <div class="about-container">
+                <!-- IMÁGENES IZQUIERDA -->
+                <div class="about-images-left">
+                  <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                       alt="Professional Image A" class="about-image about-image-left-a">
+                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                       alt="Professional Image B" class="about-image about-image-left-b">
                 </div>
+            
+                <!-- TEXTO CENTRO -->
+                <div class="about-text-container">
+                  <p id="typed-text" class="typed-text">Aquí va tu texto profesional — reemplázalo por tu contenido real.</p>
+                </div>
+            
+                <!-- IMÁGENES DERECHA -->
+                <div class="about-images-right">
+                  <img src="https://images.unsplash.com/photo-1581089778245-3ce67677f718?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                       alt="Professional Image C" class="about-image about-image-right">
+                </div>
+              </div>
             </section>
 
             <section id="experiencia" class="section">
