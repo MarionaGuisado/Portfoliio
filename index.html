@@ -98,6 +98,10 @@
             opacity: 1;
         }
 
+        .name.completely-hidden {
+            display: none !important;
+        }
+
         .enter-button {
             position: absolute;
             top: 60%;
@@ -382,7 +386,7 @@
           align-items: center;      /* alinea verticalmente */
           justify-content: center;  /* centra el bloque global */
           gap: 32px;                /* separación entre columnas */
-          padding: 5px; /* Reducido */
+          padding: 15px; /* Reducido */
           width: 100%;
           box-sizing: border-box;
         }
@@ -2464,15 +2468,6 @@
                     </div>
                     
                     <div class="footer-links">
-
-
-
-
-
-
-
-
-
                         
                     </div>
                     
@@ -2504,9 +2499,9 @@
             
             // Hide name completely when scrolling
             if (currentScrollPosition > 50) {
-                nameElement.classList.add('hidden');
+                nameElement.classList.add('completely-hidden');
             } else {
-                nameElement.classList.remove('hidden');
+                nameElement.classList.remove('completely-hidden');
             }
             
             lastScrollPosition = currentScrollPosition;
@@ -2582,6 +2577,11 @@
                 
                 // Hide initial background
                 background.style.opacity = '0';
+                
+                // Ocultar completamente el nombre después de la transición
+                setTimeout(() => {
+                    name.classList.add('completely-hidden');
+                }, 1500);
             }, 1000);
         });
 
