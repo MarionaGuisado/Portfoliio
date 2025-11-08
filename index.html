@@ -371,52 +371,15 @@
           box-sizing: border-box;
         }
 
-        }
-
         /* Contenedor de texto en el centro — ocupa más espacio */
         .about-text-container {
-          flex: 1 1 420px; /* crece para llenar el espacio disponible */
-          min-width: 220px;
-          max-width: 900px;
-        }
-
-        /* Estilos comunes para todas las imágenes */
-        .about-image {
-          width: 100%;
-          height: auto;
-          object-fit: cover;
-          border-radius: 0;             /* cantos rectos */
-          box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-          display: block;
-        }
-
-        /* Ajustes específicos que tenías — ahora sin márgenes problemáticos */
-        .about-image-left-a,
-        .about-image-left-b {
-          height: 180px;
-          width: 220px; /* como querías */
-          /* Si quieres que estén pegadas a la izquierda del texto, usa align-self */
-          align-self: flex-start; 
-        }
-
-        /* Si quieres que la segunda imagen izquierda esté desplazada hacia la derecha ligeramente */
-        .about-image-left-b {
-          align-self: flex-end; /* o usa margin-left si lo prefieres */
-        }
-
-        /* Imagen derecha mayor */
-        .about-image-right {
-          width: 300px;
-          height: 400px;
-          align-self: center;
-          flex-shrink: 0;
-        }
-
-        .about-text-container {
-            color: white;
-            background-color: transparent;
-            box-shadow: none;
-            padding: 0;
+          flex: 1;
+          color: white;
+          background-color: transparent;
+          box-shadow: none;
+          padding: 0 40px; /* Márgenes a los lados */
+          text-align: justify; /* Texto justificado */
+          max-width: 100%;
         }
 
         .typed-text, .personal-text {
@@ -427,9 +390,10 @@
             white-space: pre-wrap;
             overflow: hidden;
             display: inline-block;
-            text-align: left;
+            text-align: justify; /* Texto justificado */
             margin-bottom: 5px; /* Reducido */
             font-weight: 400;
+            width: 100%;
         }
 
         /* SECCIÓN EXPERIENCIA Y LIDERAZGO */
@@ -1724,20 +1688,8 @@
                 gap: 25px; /* Reducido */
             }
 
-            .about-images-container {
-                height: 400px;
-                order: -1;
-            }
-
-            .about-image-right {
-                width: 250px;
-                height: 320px;
-            }
-
-            .about-image-left-a,
-            .about-image-left-b {
-                width: 180px;
-                height: 150px;
+            .about-text-container {
+                padding: 0 20px; /* Márgenes más pequeños en móvil */
             }
 
             .education-title {
@@ -1931,13 +1883,13 @@
 
             <section id="sobre-mi" class="section">
               <h2 class="section-title">Professional Profile</h2>
-            
+
+              <div class="about-container">
                 <!-- TEXTO CENTRO -->
                 <div class="about-text-container">
                   <p id="typed-text" class="typed-text">Aquí va tu texto profesional — reemplázalo por tu contenido real.</p>
                 </div>
-            
-
+              </div>
             </section>
 
             <section id="experiencia" class="section">
