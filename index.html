@@ -366,20 +366,20 @@
           display: flex;
           align-items: center;      /* alinea verticalmente */
           justify-content: center;  /* centra el bloque global */
-          gap: 32px;                /* separación entre columnas */
+    //      gap: 32px;                /* separación entre columnas */
           padding: 5px; /* Reducido */
           width: 100%;
           box-sizing: border-box;
         }
 
         /* Columnas de imágenes izquierda / derecha */
-        .about-images-left,
-        .about-images-right {
-          display: flex;
-          flex-direction: column;
-          gap: 15px; /* Reducido */
-          flex: 0 0 240px; /* ancho fijo aproximado (no crece, no encoge) */
-          box-sizing: border-box;
+//        .about-images-left,
+  //      .about-images-right {
+    //      display: flex;
+      //    flex-direction: column;
+        //  gap: 15px; /* Reducido */
+          //flex: 0 0 240px; /* ancho fijo aproximado (no crece, no encoge) */
+          //box-sizing: border-box;
         }
 
         /* Contenedor de texto en el centro — ocupa más espacio */
@@ -1941,14 +1941,14 @@
             <section id="sobre-mi" class="section">
               <h2 class="section-title">Professional Profile</h2>
 
-              <div class="about-container">
-                <!-- IMÁGENES IZQUIERDA -->
-                <div class="about-images-left">
-                  <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                       alt="Professional Image A" class="about-image about-image-left-a">
-                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                       alt="Professional Image B" class="about-image about-image-left-b">
-                </div>
+    //          <div class="about-container">
+      //          <!-- IMÁGENES IZQUIERDA -->
+        //        <div class="about-images-left">
+          //        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            //           alt="Professional Image A" class="about-image about-image-left-a">
+              //    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                //       alt="Professional Image B" class="about-image about-image-left-b">
+                //</div>
             
                 <!-- TEXTO CENTRO -->
                 <div class="about-text-container">
@@ -1956,10 +1956,10 @@
                 </div>
             
                 <!-- IMÁGENES DERECHA -->
-                <div class="about-images-right">
-                  <img src="https://images.unsplash.com/photo-1581089778245-3ce67677f718?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                       alt="Professional Image C" class="about-image about-image-right">
-                </div>
+//                <div class="about-images-right">
+  //                <img src="https://images.unsplash.com/photo-1581089778245-3ce67677f718?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    //                   alt="Professional Image C" class="about-image about-image-right">
+      //          </div>
               </div>
             </section>
 
@@ -2535,7 +2535,7 @@
                     const typedElement = document.getElementById('typed-text');
                     
                     // Type the new text
-                    typeWriter(aboutText, typedElement, 20);
+                    typeWriter(aboutText, typedElement, 10);
                 }, 100);
                 
                 // Hide initial background
