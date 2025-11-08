@@ -231,7 +231,7 @@
         }
 
         .header.scrolled {
-            padding: 10px 0; 
+            padding: 2px 0; 
             background-color: rgba(255, 255, 255, 0.95);
         }
 
@@ -257,7 +257,7 @@
 
         .header-nav {
             display: flex;
-            gap: 25px;
+            gap: 5px; /* Menos espacio entre enlaces */
         }
 
         .header-nav a {
@@ -266,8 +266,8 @@
             font-weight: 500;
             transition: var(--transition);
             position: relative;
-            padding: 4px 0;
-            font-size: 0.85rem;
+            padding: 4px 0; /* Menos padding */
+            font-size: 0.85rem; /* Más pequeño */
         }
 
         .dark-mode .header-nav a {
@@ -294,8 +294,10 @@
         }
 
         .section {
+            min-height: 100vh;
             padding: 0;
             position: relative;
+            top: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -304,10 +306,10 @@
 
         .section-title {
             font-size: 3.5rem;
-            margin: 1rem 0 0.5rem;
+            margin: 1rem 0 0.5rem; /* Reducido */
             color: var(--text-color);
             text-align: center;
-            padding-top: 10px;
+            padding-top: 10px; /* Reducido */
             position: relative;
             z-index: 2;
             font-weight: 500;
@@ -319,7 +321,7 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 10px;
+            padding: 10px; /* Reducido */
             position: relative;
             z-index: 2;
         }
@@ -327,13 +329,13 @@
         /* Dark mode toggle */
         .dark-mode-toggle {
             position: fixed;
-            top: 10px;
-            right: 10px;
+            top: 10px; /* Ajustado para header más estrecho */
+            right: 10px; /* Ajustado para header más estrecho */
             z-index: 100;
             background: var(--card-bg);
             border: none;
-            width: 45px;
-            height: 45px;
+            width: 45px; /* Más pequeño */
+            height: 45px; /* Más pequeño */
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -357,68 +359,114 @@
             backface-visibility: hidden;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
-            padding: 5px 0;
+            padding: 5px 0; /* Reducido */
         }
 
         .about-container {
           display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 5px;
+          align-items: center;      /* alinea verticalmente */
+          justify-content: center;  /* centra el bloque global */
+          gap: 32px;                /* separación entre columnas */
+          padding: 5px; /* Reducido */
           width: 100%;
+          box-sizing: border-box;
+        }
+
+        /* Columnas de imágenes izquierda / derecha */
+        .about-images-left,
+        .about-images-right {
+          display: flex;
+          flex-direction: column;
+          gap: 15px; /* Reducido */
+          flex: 0 0 240px; /* ancho fijo aproximado (no crece, no encoge) */
           box-sizing: border-box;
         }
 
         /* Contenedor de texto en el centro — ocupa más espacio */
         .about-text-container {
-          flex: 1;
-          color: white;
-          background-color: transparent;
-          box-shadow: none;
-          padding: 0 40px;
-          text-align: justify;
-          max-width: 100%;
+          flex: 1 1 420px; /* crece para llenar el espacio disponible */
+          min-width: 220px;
+          max-width: 900px;
+        }
+
+        /* Estilos comunes para todas las imágenes */
+        .about-image {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          border-radius: 0;             /* cantos rectos */
+          box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+          display: block;
+        }
+
+        /* Ajustes específicos que tenías — ahora sin márgenes problemáticos */
+        .about-image-left-a,
+        .about-image-left-b {
+          height: 180px;
+          width: 220px; /* como querías */
+          /* Si quieres que estén pegadas a la izquierda del texto, usa align-self */
+          align-self: flex-start; 
+        }
+
+        /* Si quieres que la segunda imagen izquierda esté desplazada hacia la derecha ligeramente */
+        .about-image-left-b {
+          align-self: flex-end; /* o usa margin-left si lo prefieres */
+        }
+
+        /* Imagen derecha mayor */
+        .about-image-right {
+          width: 300px;
+          height: 400px;
+          align-self: center;
+          flex-shrink: 0;
+        }
+
+        .about-text-container {
+            color: white;
+            background-color: transparent;
+            box-shadow: none;
+            padding: 0;
         }
 
         .typed-text, .personal-text {
             font-size: 1.2rem;
             line-height: 1.8;
             color: white;
-            min-height: 50px;
+            min-height: 120px;
             white-space: pre-wrap;
             overflow: hidden;
             display: inline-block;
-            text-align: justify;
-            margin-bottom: 5px;
+            text-align: left;
+            margin-bottom: 5px; /* Reducido */
             font-weight: 400;
-            width: 100%;
         }
 
         /* SECCIÓN EXPERIENCIA Y LIDERAZGO */
         #experiencia {
             position: relative;
+            min-height: 100vh;
             width: 100%;
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 5px 0;
+            padding: 5px 0; /* Reducido */
         }
 
         .experience-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 10px;
+            gap: 10px; /* Reducido */
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 10px 5px;
+            padding: 10px 5px; /* Reducido */
         }
 
         .experience-card {
             background: var(--card-bg);
-            padding: 10px;
+            padding: 10px; /* Reducido */
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
@@ -448,7 +496,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 5px;
+            margin-bottom: 5px; /* Reducido */
             color: white;
             font-size: 1.5rem;
             box-shadow: 0 5px 15px rgba(255, 217, 61, 0.3);
@@ -459,7 +507,7 @@
             font-size: 1.4rem;
             color: var(--dark-color);
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 8px; /* Reducido */
             font-family: 'Playfair Display', serif;
         }
 
@@ -467,18 +515,18 @@
             font-size: 1.1rem;
             color: var(--secondary-color);
             font-weight: 500;
-            margin-bottom: 12px;
+            margin-bottom: 12px; /* Reducido */
         }
 
         .experience-details {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 8px; /* Reducido */
         }
 
         .experience-detail {
             background: var(--light-color);
-            padding: 10px;
+            padding: 10px; /* Reducido */
             font-size: 0.95rem;
             color: #555;
             line-height: 1.4;
@@ -495,7 +543,7 @@
             position: relative;
             display: inline-block;
             cursor: pointer;
-            margin-top: 8px;
+            margin-top: 8px; /* Reducido */
         }
 
         .tutor-bubble-trigger {
@@ -523,7 +571,7 @@
             transform: translateX(-50%);
             background: white;
             color: #333;
-            padding: 15px;
+            padding: 15px; /* Reducido */
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             width: 320px;
@@ -531,7 +579,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            margin-bottom: 12px;
+            margin-bottom: 12px; /* Reducido */
         }
 
         .tutor-bubble-content::after {
@@ -547,13 +595,13 @@
         .tutor-bubble:hover .tutor-bubble-content {
             opacity: 1;
             visibility: visible;
-            bottom: calc(100% + 8px);
+            bottom: calc(100% + 8px); /* Reducido */
         }
 
         .bubble-text {
             font-size: 0.9rem;
             line-height: 1.5;
-            margin-bottom: 8px;
+            margin-bottom: 8px; /* Reducido */
             font-style: italic;
         }
 
@@ -571,7 +619,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding: 5px 0;
+            min-height: 100vh;
+            padding: 5px 0; /* Reducido */
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             overflow: hidden;
         }
@@ -579,11 +628,11 @@
         .education-title {
             position: relative;
             z-index: 3;
-            color: white;
+            color: white; /* Título en blanco */
             text-align: center;
             font-size: 3.5rem;
-            margin-top: 15px;
-            margin-bottom: 30px;
+            margin-top: 15px; /* Reducido */
+            margin-bottom: 30px; /* Reducido */
             font-family: 'Playfair Display', serif;
             font-weight: 500;
         }
@@ -594,15 +643,15 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 8px 20px;
-            color: white;
+            padding: 8px 20px; /* Reducido */
+            color: white; /* Texto en blanco */
         }
 
         .education-timeline-horizontal {
             position: relative;
             width: 100%;
             margin: 0 auto;
-            padding: 15px 0 30px;
+            padding: 15px 0 30px; /* Reducido */
         }
 
         .education-timeline-horizontal::before {
@@ -641,7 +690,7 @@
             background: var(--primary-color);
             border: 4px solid var(--bg-color);
             border-radius: 50%;
-            margin-bottom: 15px;
+            margin-bottom: 15px; /* Reducido */
             box-shadow: 0 0 0 4px var(--primary-color);
             z-index: 3;
             position: relative;
@@ -650,7 +699,7 @@
         .education-card-horizontal {
             background: var(--card-bg);
             border-radius: 16px;
-            padding: 20px;
+            padding: 20px; /* Reducido */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
             position: relative;
@@ -658,7 +707,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             width: 100%;
             text-align: center;
-            margin-top: -25px;
+            margin-top: -25px; /* Reducido */
         }
 
         .education-card-horizontal::before {
@@ -687,18 +736,18 @@
             color: white;
             font-size: 1.5rem;
             box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
-            margin: 0 auto 12px;
+            margin: 0 auto 12px; /* Reducido */
         }
 
         .education-header-horizontal {
-            margin-bottom: 12px;
+            margin-bottom: 12px; /* Reducido */
         }
 
         .education-degree-horizontal {
             font-size: 1.4rem;
             color: var(--primary-color);
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 5px; /* Reducido */
             font-family: 'Playfair Display', serif;
         }
 
@@ -706,14 +755,14 @@
             font-size: 1.1rem;
             color: var(--text-color);
             font-weight: 500;
-            margin-bottom: 3px;
+            margin-bottom: 3px; /* Reducido */
         }
 
         .education-location-horizontal {
             font-size: 0.9rem;
             color: #666;
             font-weight: 400;
-            margin-bottom: 6px;
+            margin-bottom: 6px; /* Reducido */
         }
 
         .education-date-horizontal {
@@ -724,17 +773,17 @@
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
-            margin-bottom: 10px;
+            margin-bottom: 10px; /* Reducido */
         }
 
         .education-details-horizontal {
-            margin-top: 12px;
+            margin-top: 12px; /* Reducido */
         }
 
         .education-detail-item-horizontal {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 10px;
+            margin-bottom: 10px; /* Reducido */
             text-align: left;
         }
 
@@ -760,7 +809,7 @@
             font-size: 0.95rem;
             color: var(--text-color);
             font-weight: 500;
-            margin-bottom: 3px;
+            margin-bottom: 3px; /* Reducido */
         }
 
         .detail-text-horizontal {
@@ -776,9 +825,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            min-height: 100vh;
             width: 100%;
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            padding: 5px 0;
+            padding: 5px 0; /* Reducido */
             overflow: hidden;
         }
 
@@ -787,7 +837,7 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 30px; /* Reducido */
             flex-wrap: wrap;
         }
 
@@ -817,16 +867,16 @@
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
+            gap: 25px; /* Reducido */
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 30px 20px; /* Reducido */
         }
 
         .skill-category {
             background: var(--card-bg);
-            padding: 25px;
+            padding: 25px; /* Reducido */
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
@@ -852,7 +902,7 @@
         .skill-header {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 20px; /* Reducido */
         }
 
         .skill-icon {
@@ -880,13 +930,13 @@
         .skill-items {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 12px; /* Reducido */
         }
 
         .skill-item {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 6px; /* Reducido */
         }
 
         .skill-info {
@@ -926,13 +976,13 @@
         .languages-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 8px;
+            gap: 15px; /* Reducido */
+            margin-top: 8px; /* Reducido */
         }
 
         .language-item {
             text-align: center;
-            padding: 15px;
+            padding: 15px; /* Reducido */
             background: var(--light-color);
             transition: var(--transition);
             border-radius: var(--border-radius);
@@ -958,12 +1008,12 @@
         .soft-skills-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            gap: 12px; /* Reducido */
         }
 
         .soft-skill-item {
             background: var(--light-color);
-            padding: 15px;
+            padding: 15px; /* Reducido */
             text-align: center;
             transition: var(--transition);
             border-left: 4px solid var(--primary-color);
@@ -984,23 +1034,24 @@
         /* SECCIÓN PROYECTOS MEJORADA - COLOR CAMBIADO */
         #projectes {
             position: relative;
+            min-height: 100vh;
             width: 100%;
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 5px 0;
+            padding: 5px 0; /* Reducido */
         }
 
         .projects-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
+            gap: 25px; /* Reducido */
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 30px 20px; /* Reducido */
         }
 
         .project-card {
@@ -1037,7 +1088,7 @@
         }
 
         .project-content {
-            padding: 20px;
+            padding: 20px; /* Reducido */
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -1047,7 +1098,7 @@
             font-size: 1.6rem;
             color: var(--dark-color);
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 12px; /* Reducido */
             font-family: 'Playfair Display', serif;
         }
 
@@ -1055,7 +1106,7 @@
             font-size: 0.95rem;
             color: #555;
             line-height: 1.5;
-            margin-bottom: 15px;
+            margin-bottom: 15px; /* Reducido */
             flex-grow: 1;
         }
 
@@ -1063,7 +1114,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 15px; /* Reducido */
         }
 
         .tech-tag {
@@ -1084,28 +1135,29 @@
         /* SECCIÓN ACTIVIDADES EXTRACURRICULARES - COLOR CAMBIADO */
         #actividades {
             position: relative;
+            min-height: 100vh;
             width: 100%;
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 5px 0;
+            padding: 5px 0; /* Reducido */
         }
 
         .activities-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
+            gap: 25px; /* Reducido */
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 30px 20px; /* Reducido */
         }
 
         .activity-card {
             background: var(--card-bg);
-            padding: 25px;
+            padding: 25px; /* Reducido */
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
@@ -1135,7 +1187,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
+            margin-bottom: 15px; /* Reducido */
             color: white;
             font-size: 1.5rem;
             box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
@@ -1146,7 +1198,7 @@
             font-size: 1.4rem;
             color: var(--dark-color);
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 8px; /* Reducido */
             font-family: 'Playfair Display', serif;
         }
 
@@ -1154,7 +1206,7 @@
             font-size: 1.1rem;
             color: var(--primary-color);
             font-weight: 500;
-            margin-bottom: 12px;
+            margin-bottom: 12px; /* Reducido */
         }
 
         .activity-description {
@@ -1174,54 +1226,55 @@
             backface-visibility: hidden;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
-            padding: 5px 0;
-            margin-bottom: 0;
+            padding: 5px 0; /* Reducido */
+            min-height: 100vh;
+            margin-bottom: 0; /* Eliminar margen inferior */
         }
 
         .contacte-container {
             width: 90%;
             max-width: 1000px;
             background-color: var(--card-bg);
-            padding: 40px;
+            padding: 40px; /* Reducido */
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 40px; /* Reducido */
             border-radius: var(--border-radius);
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 20px; /* Reducido */
         }
 
         .contact-title {
             font-size: 2.2rem;
             color: var(--primary-color);
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 8px; /* Reducido */
             font-family: 'Playfair Display', serif;
         }
 
         .contact-subtitle {
             font-size: 1.1rem;
             color: #666;
-            margin-bottom: 25px;
+            margin-bottom: 25px; /* Reducido */
             line-height: 1.6;
         }
 
         .contact-details {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 15px; /* Reducido */
         }
 
         .contact-item {
             display: flex;
             align-items: center;
             gap: 15px;
-            padding: 12px;
+            padding: 12px; /* Reducido */
             background: var(--light-color);
             transition: var(--transition);
             border-radius: var(--border-radius);
@@ -1274,8 +1327,7 @@
         .contacte-form {
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            margin-left: -20px; /* Mover ligeramente hacia la izquierda */
+            gap: 20px; /* Reducido */
         }
 
         .form-group {
@@ -1326,7 +1378,7 @@
             transition: var(--transition);
             font-family: 'Playfair Display', serif;
             font-weight: 500;
-            margin-top: 8px;
+            margin-top: 8px; /* Reducido */
             border-radius: 30px;
         }
 
@@ -1339,8 +1391,9 @@
         /* NUEVA SECCIÓN DE REDES SOCIALES - ESTÉTICA SOLICITADA */
         #social-media {
             background-color: #2A2F31;
-            padding: 30px 0 10px;
+            padding: 30px 0 10px; /* Reducido */
             text-align: center;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1356,7 +1409,7 @@
         .social-media-title {
             font-size: 2.5rem;
             color: #FFFFFF;
-            margin-bottom: 10px;
+            margin-bottom: 10px; /* Reducido */
             font-family: 'Playfair Display', serif;
             font-weight: 600;
             line-height: 1.2;
@@ -1365,7 +1418,7 @@
         .social-media-subtitle {
             font-size: 1.125rem;
             color: #D1D5DB;
-            margin-bottom: 50px;
+            margin-bottom: 50px; /* Reducido */
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -1376,7 +1429,7 @@
             display: flex;
             justify-content: center;
             gap: 16px;
-            margin-bottom: 30px;
+            margin-bottom: 30px; /* Reducido */
         }
 
         .social-icon {
@@ -1445,7 +1498,7 @@
         .footer {
             background-color: #2A2F31;
             color: #FFFFFF;
-            padding: 15px 0 10px;
+            padding: 15px 0 10px; /* Reducido */
             text-align: center;
         }
 
@@ -1459,13 +1512,13 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             font-weight: 500;
-            margin-bottom: 15px;
+            margin-bottom: 15px; /* Reducido */
             color: #FFFFFF;
         }
 
         .footer-subtitle {
             font-size: 1.1rem;
-            margin-bottom: 30px;
+            margin-bottom: 30px; /* Reducido */
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -1476,7 +1529,7 @@
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-bottom: 15px;
+            margin-bottom: 15px; /* Reducido */
         }
 
         .social-link {
@@ -1525,20 +1578,20 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 50px;
-            margin-bottom: 30px;
+            gap: 50px; /* Reducido */
+            margin-bottom: 30px; /* Reducido */
         }
 
         .footer-column {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 5px;
+            gap: 5px; /* Reducido */
         }
 
         .footer-column h4 {
             font-size: 1rem;
-            margin-bottom: 12px;
+            margin-bottom: 12px; /* Reducido */
             color: #7C3AED;
             font-family: 'Inter', sans-serif;
             font-weight: 600;
@@ -1557,7 +1610,7 @@
         }
 
         .footer-cta {
-            margin-bottom: 30px;
+            margin-bottom: 30px; /* Reducido */
         }
 
         .download-btn {
@@ -1580,7 +1633,7 @@
 
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 25px;
+            padding-top: 25px; /* Reducido */
             font-size: 0.9rem;
             color: #D1D5DB;
         }
@@ -1651,7 +1704,7 @@
             }
 
             .header {
-                padding: 6px 0;
+                padding: 6px 0; /* Más estrecho en móvil */
             }
 
             .header-nav {
@@ -1661,7 +1714,7 @@
             .section-title {
                 font-size: 2.5rem;
                 padding-top: 15px;
-                margin: 0.5rem 0;
+                margin: 0.5rem 0; /* Reducido */
             }
 
             /* CANVI: Filtres responsius */
@@ -1677,16 +1730,28 @@
             /* NUEVO DISEÑO RESPONSIVE PARA PROFESSIONAL PROFILE */
             .about-container {
                 grid-template-columns: 1fr;
-                gap: 25px;
+                gap: 25px; /* Reducido */
             }
 
-            .about-text-container {
-                padding: 0 20px;
+            .about-images-container {
+                height: 400px;
+                order: -1;
+            }
+
+            .about-image-right {
+                width: 250px;
+                height: 320px;
+            }
+
+            .about-image-left-a,
+            .about-image-left-b {
+                width: 180px;
+                height: 150px;
             }
 
             .education-title {
                 font-size: 2.5rem;
-                margin-top: 30px;
+                margin-top: 30px; /* Reducido */
             }
 
             .typed-text, .personal-text {
@@ -1705,7 +1770,7 @@
 
             .education-items-container {
                 flex-direction: column;
-                gap: 35px;
+                gap: 35px; /* Reducido */
             }
 
             .education-item-horizontal {
@@ -1713,12 +1778,12 @@
                 min-height: auto;
                 flex-direction: row;
                 align-items: flex-start;
-                gap: 25px;
+                gap: 25px; /* Reducido */
             }
 
             .timeline-point-horizontal {
                 margin-bottom: 0;
-                margin-top: 35px;
+                margin-top: 35px; /* Reducido */
             }
 
             .education-card-horizontal {
@@ -1728,17 +1793,17 @@
             }
 
             .education-icon-horizontal {
-                margin: 0 0 15px 0;
+                margin: 0 0 15px 0; /* Reducido */
             }
 
             .skills-container {
                 grid-template-columns: 1fr;
-                gap: 15px;
-                padding: 15px 15px;
+                gap: 15px; /* Reducido */
+                padding: 15px 15px; /* Reducido */
             }
 
             .skill-category {
-                padding: 15px;
+                padding: 15px; /* Reducido */
             }
 
             .languages-grid {
@@ -1753,14 +1818,14 @@
             .experience-container,
             .activities-container {
                 grid-template-columns: 1fr;
-                gap: 15px;
-                padding: 15px 15px;
+                gap: 15px; /* Reducido */
+                padding: 15px 15px; /* Reducido */
             }
 
             .project-card,
             .experience-card,
             .activity-card {
-                padding: 15px;
+                padding: 15px; /* Reducido */
             }
 
             .tutor-bubble-content {
@@ -1775,8 +1840,8 @@
 
             .contacte-container {
                 grid-template-columns: 1fr;
-                gap: 25px;
-                padding: 25px;
+                gap: 25px; /* Reducido */
+                padding: 25px; /* Reducido */
             }
 
             .contact-info {
@@ -1785,7 +1850,6 @@
 
             .contacte-form {
                 order: 1;
-                margin-left: 0; /* Reset en móvil */
             }
 
             .social-media-title {
@@ -1794,7 +1858,7 @@
 
             .social-media-subtitle {
                 font-size: 1rem;
-                margin-bottom: 35px;
+                margin-bottom: 35px; /* Reducido */
             }
 
             .social-icons {
@@ -1813,7 +1877,7 @@
 
             .footer-links {
                 flex-direction: column;
-                gap: 25px;
+                gap: 25px; /* Reducido */
             }
 
             .social-links {
@@ -1840,6 +1904,8 @@
         <header class="header" id="header">
             <div class="header-content">
                 <a href="#" class="logo">
+                    <div class="logo-circle">MG</div>
+                    <!-- ELIMINADO: .logo-text - Ya no se muestra "Mariona Guisado" -->
                 </a>
                 <nav class="header-nav">
                     <a href="#sobre-mi">Profile</a>
@@ -1878,9 +1944,23 @@
               <h2 class="section-title">Professional Profile</h2>
 
               <div class="about-container">
+                <!-- IMÁGENES IZQUIERDA -->
+                <div class="about-images-left">
+                  <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                       alt="Professional Image A" class="about-image about-image-left-a">
+                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                       alt="Professional Image B" class="about-image about-image-left-b">
+                </div>
+            
                 <!-- TEXTO CENTRO -->
                 <div class="about-text-container">
                   <p id="typed-text" class="typed-text">Aquí va tu texto profesional — reemplázalo por tu contenido real.</p>
+                </div>
+            
+                <!-- IMÁGENES DERECHA -->
+                <div class="about-images-right">
+                  <img src="https://images.unsplash.com/photo-1581089778245-3ce67677f718?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                       alt="Professional Image C" class="about-image about-image-right">
                 </div>
               </div>
             </section>
@@ -1924,29 +2004,6 @@
                                 <div class="bubble-text" style="margin-top: 15px;">"Mariona siempre se adapta a lo que necesito. Si tengo examen, repasamos; si tengo dudas, las resuelve con ejemplos fáciles de entender."</div>
                                 <div class="bubble-author">— Anna, ESO Student</div>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Member of the Social Events Team -->
-                    <div class="experience-card">
-                        <div class="experience-icon">🤝</div>
-                        <h3 class="experience-role">Member of the Social Events Team</h3>
-                        <div class="experience-organization">Finance Generation Association, FG BCN Ambassadors Team</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">Collaborate in the planning and organization of social and networking events to strengthen the community within the finance sector</div>
-                            <div class="experience-detail">Coordinate logistics and participant engagement for events that bridge the gap between academia and the professional financial world</div>
-                        </div>
-                    </div>
-
-                    <!-- Event Organizer | "THE DRIVE TO DEVELOP" Conference -->
-                    <div class="experience-card">
-                        <div class="experience-icon">🎤</div>
-                        <h3 class="experience-role">Event Organizer | "THE DRIVE TO DEVELOP" Conference with JetBrains</h3>
-                        <div class="experience-organization">May 2025</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">Organized a practical conference on AI-powered programming, prompt engineering, and real-world use cases for 70+ students at UAB</div>
-                            <div class="experience-detail">Coordinated event logistics, venue booking, and promotional activities to maximize student engagement and participation</div>
-                            <div class="experience-detail">Facilitated networking sessions between students and industry professionals, strengthening university-corporate partnerships</div>
                         </div>
                     </div>
 
@@ -2017,7 +2074,6 @@
                                             <div class="detail-content-horizontal">
                                                 <div class="detail-title-horizontal">Achievements</div>
                                                 <div class="detail-text-horizontal">Selected to participate in the "TXT Debate" league</div>
-                                     
                                                 <div class="detail-title-horizontal">TR Grade</div>
                                                 <div class="detail-text-horizontal">10/10" league</div>
                                             
@@ -2369,10 +2425,33 @@
                     <div class="footer-logo">Mariona Guisado</div>
                     <p class="footer-subtitle">Data Engineering Student | Problem Solver | Future Innovator</p>
                     
-                    <div class="social-links">                       
+                    <div class="social-links">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
                     </div>
                     
                     <div class="footer-links">
+                        
                     </div>
                     
                     <div class="footer-bottom">
@@ -2475,12 +2554,12 @@
                     navMenu.style.opacity = '1';
                     
                     // Typing effect for the new About Me text
-                    const aboutText = "Demonstrated ability to lead and collaborate effectively through roles as Class Representative and organizer of technology events, fostering communication between diverse groups and driving community engagement. Combines technical knowledge in data analysis, a strong academic foundation and a passion for transforming data into actionable insights, with exceptional interpersonal skills, adaptability, and a solutions-oriented mindset. Eager to contribute by leveraging a unique blend of analytical thinking, leadership experience, and a commitment to delivering value in dynamic, team-based environments.";
+                    const aboutText = "A highly motivated Data Engineering student with a strong academic foundation and a passion for transforming data into actionable insights. Demonstrated ability to lead and collaborate effectively through roles as Class Representative and organizer of technology events, fostering communication between diverse groups and driving community engagement. Combines technical knowledge in data analysis with exceptional interpersonal skills, adaptability, and a solutions-oriented mindset. Eager to contribute by leveraging a unique blend of analytical thinking, leadership experience, and a commitment to delivering value in dynamic, team-based environments.";
                     
                     const typedElement = document.getElementById('typed-text');
                     
                     // Type the new text
-                    typeWriter(aboutText, typedElement, 10);
+                    typeWriter(aboutText, typedElement, 20);
                 }, 100);
                 
                 // Hide initial background
@@ -2504,6 +2583,7 @@
         function typeWriter(text, element, speed, callback) {
             let i = 0;
             element.innerHTML = '';
+            // QUITADA: element.style.borderRight = '2px solid var(--primary-color)'; - Línea lila eliminada
             
             const interval = setInterval(() => {
                 if (i < text.length) {
@@ -2512,7 +2592,7 @@
                 } else {
                     clearInterval(interval);
                     setTimeout(() => {
-
+                        // QUITADA: element.style.borderRight = 'none'; - Línea lila eliminada
                         if (callback) callback();
                     }, 500);
                 }
