@@ -224,13 +224,13 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             transition: var(--transition);
-            padding: 8px 0; /* Más estrecho */
+            padding: 6px 0; /* MÁS DELGADO */
             display: none;
             backdrop-filter: blur(10px);
         }
 
         .header.scrolled {
-            padding: 6px 0; /* Más estrecho cuando scrolleado */
+            padding: 4px 0; /* MÁS DELGADO cuando scrolleado */
             background-color: rgba(255, 255, 255, 0.95);
         }
 
@@ -1993,9 +1993,7 @@
             <section id="sobre-mi" class="section">
                 <h2 class="section-title">Professional Profile</h2>
                 <div class="about-container">
-                    <div class="about-text-container">
-                        <p id="typed-text" class="typed-text"></p>
-                    </div>
+                    <!-- CANVI: Les imatges ara estan a l'esquerra del text -->
                     <div class="about-images-container">
                         <!-- CANVI: 2 imatges a l'esquerra i 1 a la dreta amb cantos rectos -->
                         <div class="about-images-left">
@@ -2003,6 +2001,9 @@
                             <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image B" class="about-image-left-b">
                         </div>
                         <img src="https://images.unsplash.com/photo-1581089778245-3ce67677f718?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Professional Image" class="about-image-right">
+                    </div>
+                    <div class="about-text-container">
+                        <p id="typed-text" class="typed-text"></p>
                     </div>
                 </div>
             </section>
@@ -2295,10 +2296,10 @@
                     <!-- Web Development - Empresa de Mármoles -->
                     <div class="project-card" data-category="web">
                         <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Mármoles Genevat Website">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Marbres Genevat Website">
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">Mármoles Genevat Website</h3>
+                            <h3 class="project-title">Marbres Genevat Website</h3>
                             <p class="project-description">Designed and developed a modern, user-friendly website for a marble company, resulting in significant business growth and increased visibility in the market.</p>
                             <div class="project-technologies">
                                 <span class="tech-tag">HTML/CSS</span>
@@ -2314,7 +2315,7 @@
                                 </div>
                                 <div class="tutor-bubble-content">
                                     <div class="bubble-text">"Gràcies a la pàgina web que ens va dissenyar la Mariona, la nostra empresa ha guanyat molta visibilitat. En pocs mesos, el nombre de persones que contacten amb nosaltres ha augmentat aproximadament un 80%."</div>
-                                    <div class="bubble-author">— Màrmoles Genevat</div>
+                                    <div class="bubble-author">— Marbres Genevat</div>
                                 </div>
                             </div>
                         </div>
@@ -2357,7 +2358,7 @@
             </section>
 
             <section id="actividades" class="section">
-                <h2 class="section-title">Extracurricular Activities</h2>
+                <h2 class="section-title">Extracurriculars and Volunteering</h2>
                 <div class="activities-container">
                     <!-- J.P. Morgan Event -->
                     <div class="activity-card">
@@ -2373,6 +2374,22 @@
                         <h3 class="activity-title">Trading Event</h3>
                         <div class="activity-company">UBS Zurich</div>
                         <p class="activity-description">Engaged in hands-on trading simulations and learned about global market dynamics, risk management, and investment strategies at one of the world's leading financial institutions.</p>
+                    </div>
+
+                    <!-- Volunteering - El Xiprer -->
+                    <div class="activity-card">
+                        <div class="activity-icon">🤝</div>
+                        <h3 class="activity-title">Volunteering at El Xiprer</h3>
+                        <div class="activity-company">Social Volunteering</div>
+                        <p class="activity-description">Participated in volunteering activities at El Xiprer, contributing to community support initiatives and assisting with various social programs for those in need.</p>
+                    </div>
+
+                    <!-- Volunteering - Residències -->
+                    <div class="activity-card">
+                        <div class="activity-icon">❤️</div>
+                        <h3 class="activity-title">Volunteering at Residències</h3>
+                        <div class="activity-company">Elderly Care</div>
+                        <p class="activity-description">Engaged in volunteering work at elderly care residences, providing companionship, support, and assistance to senior citizens, and organizing recreational activities.</p>
                     </div>
                 </div>
             </section>
