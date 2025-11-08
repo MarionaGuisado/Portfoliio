@@ -277,6 +277,7 @@
         .header-nav {
             display: flex;
             gap: 20px; /* Menos espacio entre enlaces */
+            margin-left: auto; /* Alinea los enlaces a la derecha */
         }
 
         .header-nav a {
@@ -456,7 +457,7 @@
             white-space: pre-wrap;
             overflow: hidden;
             display: inline-block;
-            text-align: left;
+            text-align: justify; /* CAMBIO: Texto justificado */
             margin-bottom: 15px; /* Reducido */
             font-weight: 400;
         }
@@ -1923,10 +1924,7 @@
         <!-- HEADER FIJO - MÁS ESTRECHO Y SIN TEXTO -->
         <header class="header" id="header">
             <div class="header-content">
-                <a href="#" class="logo">
-                    <div class="logo-circle">MG</div>
-                    <!-- ELIMINADO: .logo-text - Ya no se muestra "Mariona Guisado" -->
-                </a>
+                <!-- ELIMINADO: Logo MG -->
                 <nav class="header-nav">
                     <a href="#sobre-mi">Profile</a>
                     <a href="#experiencia">Experience</a>
@@ -2094,6 +2092,13 @@
                                             <div class="detail-content-horizontal">
                                                 <div class="detail-title-horizontal">Achievements</div>
                                                 <div class="detail-text-horizontal">Selected to participate in the "TXT Debate" league</div>
+                                            </div>
+                                        </div>
+                                        <div class="education-detail-item-horizontal">
+                                            <div class="detail-icon-horizontal">📝</div>
+                                            <div class="detail-content-horizontal">
+                                                <div class="detail-title-horizontal">TR Grade</div>
+                                                <div class="detail-text-horizontal">10/10</div>
                                             </div>
                                         </div>
                                     </div>
@@ -2422,11 +2427,12 @@
                             <span class="social-name">GitHub</span>
                         </a>
                         
-                        <a href="https://twitter.com/marionaguisado" class="social-icon" target="_blank">
+                        <!-- CAMBIO: Reemplazar Twitter por Gmail -->
+                        <a href="mailto:mariona.guisado.p@gmail.com" class="social-icon">
                             <div class="social-icon-circle">
-                                <i class="fab fa-twitter"></i>
+                                <i class="fas fa-envelope"></i>
                             </div>
-                            <span class="social-name">Twitter</span>
+                            <span class="social-name">Gmail</span>
                         </a>
                     </div>
                     
@@ -2443,32 +2449,39 @@
                     <p class="footer-subtitle">Data Engineering Student | Problem Solver | Future Innovator</p>
                     
                     <div class="social-links">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        
+                        <a href="https://www.linkedin.com/in/mariona-guisado-parras-30a984294/" class="social-link" target="_blank" data-platform="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/mariona_gsdo/" class="social-link" target="_blank" data-platform="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://github.com/marionaguisado" class="social-link" target="_blank" data-platform="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <!-- CAMBIO: Reemplazar Twitter por Gmail en el footer también -->
+                        <a href="mailto:mariona.guisado.p@gmail.com" class="social-link" data-platform="Gmail">
+                            <i class="fas fa-envelope"></i>
+                        </a>
                     </div>
                     
                     <div class="footer-links">
-                        
+                        <div class="footer-column">
+                            <h4>Navigation</h4>
+                            <a href="#sobre-mi" class="footer-link">Profile</a>
+                            <a href="#experiencia" class="footer-link">Experience</a>
+                            <a href="#formacio" class="footer-link">Education</a>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Skills</h4>
+                            <a href="#habilitats" class="footer-link">Technical Skills</a>
+                            <a href="#projectes" class="footer-link">Projects</a>
+                            <a href="#actividades" class="footer-link">Activities</a>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Contact</h4>
+                            <a href="#contacte" class="footer-link">Get in Touch</a>
+                            <a href="#social-media" class="footer-link">Social Media</a>
+                        </div>
                     </div>
                     
                     <div class="footer-bottom">
@@ -2496,17 +2509,18 @@
         // Improved scroll handler function - AHORA OCULTA EL NOMBRE COMPLETAMENTE
         function handleScroll() {
             const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-
+            
+            
             // Ocultar el nom quan arribem a la primera secció (sobre-mi)
             const sobreMiSection = document.getElementById('sobre-mi');
             const sobreMiOffset = sobreMiSection.offsetTop;
     
-            if (currentScrollPosition > sobreMiOffset - 100) {
-            nameElement.style.display = 'none';
+            // Hide name completely when scrolling
+            if (currentScrollPosition > 50) {
+                nameElement.classList.add('completely-hidden');
             } else {
-            nameElement.style.display = 'block';
+                nameElement.classList.remove('completely-hidden');
             }
-                     
             
             lastScrollPosition = currentScrollPosition;
             
@@ -2581,7 +2595,8 @@
                 
                 // Hide initial background
                 background.style.opacity = '0';
-
+                
+                
             }, 1000);
         });
 
