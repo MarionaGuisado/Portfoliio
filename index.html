@@ -51,7 +51,7 @@
             font-family: 'Playfair Display', serif;
             font-weight: 600;
             line-height: 1.3;
-            margin-bottom: 0.5rem; /* Reducido */
+            margin-bottom: 0.5rem;
         }
 
         .container {
@@ -154,7 +154,6 @@
             scroll-behavior: smooth;
         }
 
-        /* CAMBIO: Reemplazar imagen por video */
         .new-background {
             position: absolute;
             top: 55%;
@@ -192,11 +191,10 @@
             background-color: transparent;
             padding: 0;
             width: auto;
-            /* Nuevo efecto cristal - ESQUINAS RECTAS */
             background-color: rgba(255,255,255,0.25);
             backdrop-filter: blur(9px);
             padding: 14px 24px;
-            border-radius: 0; /* ESQUINAS RECTAS */
+            border-radius: 0;
             box-shadow: 0 4px 14px rgba(0,0,0,0.15);
          }
 
@@ -218,7 +216,6 @@
             transform: scale(1.05);
         }
 
-        /* HEADER FIJO  */
         .header {
             position: fixed;
             top: 0;
@@ -258,31 +255,9 @@
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-        /* ELIMINADO: .logo-text - Ya no se muestra "Mariona Guisado" */
-
         .header-nav {
             display: flex;
-            gap: 20px; /* Menos espacio entre enlaces */
+            gap: 5px; /* Menos espacio entre enlaces */
         }
 
         .header-nav a {
@@ -309,7 +284,7 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 1px; /* Línea más fina */
+            height: 1px;
             background-color: var(--primary-color);
             transition: var(--transition);
         }
@@ -326,7 +301,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            margin-bottom: 30px; /* Reducido */
+            margin-bottom: 10px; 
         }
 
         .section-title {
@@ -334,7 +309,7 @@
             margin: 1rem 0 0.5rem; /* Reducido */
             color: var(--text-color);
             text-align: center;
-            padding-top: 20px; /* Reducido */
+            padding-top: 10px; /* Reducido */
             position: relative;
             z-index: 2;
             font-weight: 500;
@@ -346,7 +321,7 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px; /* Reducido */
+            padding: 10px; /* Reducido */
             position: relative;
             z-index: 2;
         }
@@ -374,7 +349,7 @@
             transform: scale(1.1);
         }
 
-        /* SECCIÓN PROFESSIONAL PROFILE - NUEVO DISEÑO CON CANTOS RECTOS Y SIN LÍNEA LILA */
+        /* SECCIÓN PROFESSIONAL PROFILE */
         #sobre-mi {
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             position: relative;
@@ -392,7 +367,7 @@
           align-items: center;      /* alinea verticalmente */
           justify-content: center;  /* centra el bloque global */
           gap: 32px;                /* separación entre columnas */
-          padding: 15px; /* Reducido */
+          padding: 5px; /* Reducido */
           width: 100%;
           box-sizing: border-box;
         }
@@ -458,16 +433,15 @@
             line-height: 1.8;
             color: white;
             min-height: 120px;
-            /* QUITADA: border-right: 2px solid var(--primary-color); - Línea lila eliminada */
             white-space: pre-wrap;
             overflow: hidden;
             display: inline-block;
             text-align: left;
-            margin-bottom: 15px; /* Reducido */
+            margin-bottom: 5px; /* Reducido */
             font-weight: 400;
         }
 
-        /* SECCIÓN EXPERIENCIA Y LIDERAZGO - COLOR CAMBIADO */
+        /* SECCIÓN EXPERIENCIA Y LIDERAZGO */
         #experiencia {
             position: relative;
             min-height: 100vh;
@@ -483,16 +457,16 @@
         .experience-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px; /* Reducido */
+            gap: 10px; /* Reducido */
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px; /* Reducido */
+            padding: 10px 5px; /* Reducido */
         }
 
         .experience-card {
             background: var(--card-bg);
-            padding: 25px; /* Reducido */
+            padding: 10px; /* Reducido */
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
@@ -522,7 +496,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px; /* Reducido */
+            margin-bottom: 5px; /* Reducido */
             color: white;
             font-size: 1.5rem;
             box-shadow: 0 5px 15px rgba(255, 217, 61, 0.3);
@@ -564,7 +538,7 @@
             transform: translateX(5px);
         }
 
-        /* BAFARADA (TOOLTIP) MEJORADA PARA STUDENT TESTIMONIALS */
+        /* BAFARADA */
         .tutor-bubble {
             position: relative;
             display: inline-block;
