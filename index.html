@@ -172,7 +172,7 @@
             object-fit: cover;
         }
 
-        /* ÍNDICE MÁS JUNTO Y CENTRADO A LA IZQUIERDA */
+        /* ÍNDICE MÁS JUNTO Y CENTRADO A LA IZQUIERDA - ESQUINAS RECTAS */
          .nav-menu {
             position: absolute;
             top: 55%;
@@ -188,11 +188,11 @@
             background-color: transparent;
             padding: 0;
             width: auto;
-            /* Nuevo efecto cristal */
+            /* Nuevo efecto cristal - ESQUINAS RECTAS */
             background-color: rgba(255,255,255,0.25);
             backdrop-filter: blur(9px);
             padding: 14px 24px;
-            border-radius: 12px;
+            border-radius: 0; /* ESQUINAS RECTAS */
             box-shadow: 0 4px 14px rgba(0,0,0,0.15);
          }
 
@@ -839,29 +839,6 @@
             font-size: 0.85rem;
             color: #666;
             line-height: 1.4;
-        }
-
-        .coursework-list-horizontal {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 8px;
-            justify-content: center;
-        }
-
-        .course-tag-horizontal {
-            background: var(--light-color);
-            color: var(--primary-color);
-            padding: 5px 10px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            transition: var(--transition);
-            border-radius: 20px;
-        }
-
-        .course-tag-horizontal:hover {
-            background: var(--primary-color);
-            color: white;
         }
 
         /* SECCIÓN SKILLS - COLOR CAMBIADO */
@@ -1842,10 +1819,6 @@
                 margin: 0 0 20px 0;
             }
 
-            .coursework-list-horizontal {
-                justify-content: flex-start;
-            }
-
             .skills-container {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -2090,19 +2063,6 @@
                                             </div>
                                         </div>
                                         <div class="education-detail-item-horizontal">
-                                            <div class="detail-icon-horizontal">📚</div>
-                                            <div class="detail-content-horizontal">
-                                                <div class="detail-title-horizontal">Relevant Coursework</div>
-                                                <div class="coursework-list-horizontal">
-                                                    <span class="course-tag-horizontal">Python Programming</span>
-                                                    <span class="course-tag-horizontal">Business Organization</span>
-                                                    <span class="course-tag-horizontal">Management</span>
-                                                    <span class="course-tag-horizontal">Computer Networks</span>
-                                                    <span class="course-tag-horizontal">SQL</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="education-detail-item-horizontal">
                                             <div class="detail-icon-horizontal">👥</div>
                                             <div class="detail-content-horizontal">
                                                 <div class="detail-title-horizontal">Leadership</div>
@@ -2290,7 +2250,6 @@
                     <button class="filter-btn active" data-filter="all">All</button>
                     <button class="filter-btn" data-filter="web">Web Development</button>
                     <button class="filter-btn" data-filter="data">Data Projects</button>
-                    <button class="filter-btn" data-filter="portfolio">Portfolio</button>
                 </div>
                 <div class="projects-container">
                     <!-- Web Development - Empresa de Mármoles -->
@@ -2321,8 +2280,8 @@
                         </div>
                     </div>
 
-                    <!-- Portfolio Personal -->
-                    <div class="project-card" data-category="portfolio">
+                    <!-- Portfolio Personal - AHORA EN WEB DEVELOPMENT -->
+                    <div class="project-card" data-category="web">
                         <div class="project-image">
                             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Personal Portfolio Website">
                         </div>
@@ -2376,20 +2335,12 @@
                         <p class="activity-description">Engaged in hands-on trading simulations and learned about global market dynamics, risk management, and investment strategies at one of the world's leading financial institutions.</p>
                     </div>
 
-                    <!-- Volunteering - El Xiprer -->
+                    <!-- VOLUNTARIADOS JUNTOS EN UNA SOLA TARJETA -->
                     <div class="activity-card">
                         <div class="activity-icon">🤝</div>
-                        <h3 class="activity-title">Volunteering at El Xiprer</h3>
-                        <div class="activity-company">Social Volunteering</div>
-                        <p class="activity-description">Participated in volunteering activities at El Xiprer, contributing to community support initiatives and assisting with various social programs for those in need.</p>
-                    </div>
-
-                    <!-- Volunteering - Residències -->
-                    <div class="activity-card">
-                        <div class="activity-icon">❤️</div>
-                        <h3 class="activity-title">Volunteering at Residències</h3>
-                        <div class="activity-company">Elderly Care</div>
-                        <p class="activity-description">Engaged in volunteering work at elderly care residences, providing companionship, support, and assistance to senior citizens, and organizing recreational activities.</p>
+                        <h3 class="activity-title">Volunteering Activities</h3>
+                        <div class="activity-company">Community Support</div>
+                        <p class="activity-description">Participated in volunteering activities at El Xiprer, contributing to community support initiatives and assisting with various social programs for those in need. Also engaged in volunteering work at elderly care residences, providing companionship, support, and assistance to senior citizens, and organizing recreational activities.</p>
                     </div>
                 </div>
             </section>
