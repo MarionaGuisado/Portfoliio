@@ -2496,8 +2496,17 @@
         // Improved scroll handler function - AHORA OCULTA EL NOMBRE COMPLETAMENTE
         function handleScroll() {
             const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            
-         
+
+            // Ocultar el nom quan arribem a la primera secció (sobre-mi)
+            const sobreMiSection = document.getElementById('sobre-mi');
+            const sobreMiOffset = sobreMiSection.offsetTop;
+    
+            if (currentScrollPosition > sobreMiOffset - 100) {
+            nameElement.style.display = 'none';
+            } else {
+            nameElement.style.display = 'block';
+            }
+                     
             
             lastScrollPosition = currentScrollPosition;
             
@@ -2573,7 +2582,6 @@
                 // Hide initial background
                 background.style.opacity = '0';
 
-                name.style.display = 'none';
             }, 1000);
         });
 
