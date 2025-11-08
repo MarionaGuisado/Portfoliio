@@ -432,7 +432,7 @@
             font-size: 1.2rem;
             line-height: 1.8;
             color: white;
-            min-height: 100px;
+            min-height: 50px;
             white-space: pre-wrap;
             overflow: hidden;
             display: inline-block;
@@ -1904,8 +1904,6 @@
         <header class="header" id="header">
             <div class="header-content">
                 <a href="#" class="logo">
-                    <div class="logo-circle">MG</div>
-                    <!-- ELIMINADO: .logo-text - Ya no se muestra "Mariona Guisado" -->
                 </a>
                 <nav class="header-nav">
                     <a href="#sobre-mi">Profile</a>
@@ -2583,7 +2581,6 @@
         function typeWriter(text, element, speed, callback) {
             let i = 0;
             element.innerHTML = '';
-            // QUITADA: element.style.borderRight = '2px solid var(--primary-color)'; - Línea lila eliminada
             
             const interval = setInterval(() => {
                 if (i < text.length) {
@@ -2592,7 +2589,7 @@
                 } else {
                     clearInterval(interval);
                     setTimeout(() => {
-                        // QUITADA: element.style.borderRight = 'none'; - Línea lila eliminada
+
                         if (callback) callback();
                     }, 500);
                 }
