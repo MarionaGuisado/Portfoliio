@@ -2497,12 +2497,7 @@
         function handleScroll() {
             const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
             
-            // Hide name completely when scrolling
-            if (currentScrollPosition > 50) {
-                nameElement.classList.add('completely-hidden');
-            } else {
-                nameElement.classList.remove('completely-hidden');
-            }
+         
             
             lastScrollPosition = currentScrollPosition;
             
@@ -2577,11 +2572,8 @@
                 
                 // Hide initial background
                 background.style.opacity = '0';
-                
-                // Ocultar completamente el nombre después de la transición
-                setTimeout(() => {
-                    name.classList.add('completely-hidden');
-                }, 1500);
+
+                name.style.display = 'none';
             }, 1000);
         });
 
