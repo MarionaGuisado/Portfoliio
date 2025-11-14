@@ -41,7 +41,7 @@
             height: 100vh;
             overflow: visible;
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
+            background-color: white; /* Fondo blanco para toda la página */
             color: var(--text-color);
             transition: background-color 0.5s ease, color 0.5s ease;
             line-height: 1.6;
@@ -58,6 +58,7 @@
             position: relative;
             width: 100%;
             height: 100%;
+            background-color: white; /* Fondo blanco para el contenedor */
         }
 
         .background {
@@ -153,7 +154,7 @@
             overflow-y: auto;
             color: #ff6b6b;
             scroll-behavior: smooth;
-            background-color: #121212; /* Fondo oscuro para todo el contenido principal */
+            /* ELIMINADO: background-color: #121212; */
         }
 
         .new-background {
@@ -1633,8 +1634,12 @@
         }
 
         /* NUEVO: Fondo blanco para la sección inicial */
-        .container {
-            background-color: white;
+        .initial-section {
+            background-color: white !important;
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            z-index: 1;
         }
 
         @media (max-width: 768px) {
@@ -1840,556 +1845,557 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- SECCIÓN INICIAL BLANCA -->
+    <div class="initial-section">
         <div class="background" id="background"></div>
         <div class="name visible" id="name">Mariona Guisado</div>
         <a href="#" class="enter-button" id="enterButton">Enter</a>
         <div class="transition" id="transition"></div>
+    </div>
+    
+    <!-- HEADER FIJO - MÁS ESTRECHO Y SIN TEXTO -->
+    <header class="header" id="header">
+        <div class="header-content">
+            <a href="#" class="logo">
+            </a>
+            <nav class="header-nav">
+                <a href="#sobre-mi">Profile</a>
+                <a href="#experiencia">Experience</a>
+                <a href="#formacio">Education</a>
+                <a href="#habilitats">Skills</a>
+                <a href="#projectes">Projects</a>
+                <a href="#actividades">Activities</a>
+                <a href="#contacte">Contact</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="main-content" id="mainContent">
+        <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
         
-        <!-- HEADER FIJO - MÁS ESTRECHO Y SIN TEXTO -->
-        <header class="header" id="header">
-            <div class="header-content">
-                <a href="#" class="logo">
-                </a>
-                <nav class="header-nav">
-                    <a href="#sobre-mi">Profile</a>
-                    <a href="#experiencia">Experience</a>
-                    <a href="#formacio">Education</a>
-                    <a href="#habilitats">Skills</a>
-                    <a href="#projectes">Projects</a>
-                    <a href="#actividades">Activities</a>
-                    <a href="#contacte">Contact</a>
-                </nav>
-            </div>
-        </header>
+        <!-- CAMBIO: Reemplazar imagen por video -->
+        <div class="new-background" id="newBackground">
+            <video class="background-video" autoplay muted loop>
+                <source src="por.MOV" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
         
-        <div class="main-content" id="mainContent">
-            <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
-            
-            <!-- CAMBIO: Reemplazar imagen por video -->
-            <div class="new-background" id="newBackground">
-                <video class="background-video" autoplay muted loop>
-                    <source src="por.MOV" type="video/mp4">
-                    Tu navegador no soporta el elemento de video.
-                </video>
-            </div>
-            
-            <div class="nav-menu" id="navMenu">
-                <a href="#sobre-mi" class="nav-item">Professional Profile</a>
-                <a href="#experiencia" class="nav-item">Experience</a>
-                <a href="#formacio" class="nav-item">Education</a>
-                <a href="#habilitats" class="nav-item">Skills</a>
-                <a href="#projectes" class="nav-item">Projects</a>
-                <a href="#actividades" class="nav-item">Activities</a>
-                <a href="#contacte" class="nav-item">Contact</a>
-            </div>
+        <div class="nav-menu" id="navMenu">
+            <a href="#sobre-mi" class="nav-item">Professional Profile</a>
+            <a href="#experiencia" class="nav-item">Experience</a>
+            <a href="#formacio" class="nav-item">Education</a>
+            <a href="#habilitats" class="nav-item">Skills</a>
+            <a href="#projectes" class="nav-item">Projects</a>
+            <a href="#actividades" class="nav-item">Activities</a>
+            <a href="#contacte" class="nav-item">Contact</a>
+        </div>
 
-            <section id="sobre-mi" class="section">
-              <h2 class="section-title">Professional Profile</h2>
+        <section id="sobre-mi" class="section">
+          <h2 class="section-title">Professional Profile</h2>
 
-              <div class="about-container">
-                <!-- TEXTO CENTRO -->
-                <div class="about-text-container">
-                  <p id="typed-text" class="typed-text">Aquí va tu texto profesional — reemplázalo por tu contenido real.</p>
+          <div class="about-container">
+            <!-- TEXTO CENTRO -->
+            <div class="about-text-container">
+              <p id="typed-text" class="typed-text">Aquí va tu texto profesional — reemplázalo por tu contenido real.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="experiencia" class="section">
+            <h2 class="section-title">Experience & Leadership</h2>
+            <div class="experience-container">
+                <!-- Representante de Clase -->
+                <div class="experience-card">
+                    <div class="experience-icon">👥</div>
+                    <h3 class="experience-role">Class Representative</h3>
+                    <div class="experience-organization">UAB</div>
+                    <div class="experience-details">
+                        <div class="experience-detail">Liaison for 60+ students</div>
+                        <div class="experience-detail">Organization of study sessions</div>
+                        <div class="experience-detail">Facilitated communication between faculty and students</div>
+                    </div>
                 </div>
-              </div>
-            </section>
 
-            <section id="experiencia" class="section">
-                <h2 class="section-title">Experience & Leadership</h2>
-                <div class="experience-container">
-                    <!-- Representante de Clase -->
-                    <div class="experience-card">
-                        <div class="experience-icon">👥</div>
-                        <h3 class="experience-role">Class Representative</h3>
-                        <div class="experience-organization">UAB</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">Liaison for 60+ students</div>
-                            <div class="experience-detail">Organization of study sessions</div>
-                            <div class="experience-detail">Facilitated communication between faculty and students</div>
+                <!-- Tutor Privado -->
+                <div class="experience-card">
+                    <div class="experience-icon">📚</div>
+                    <h3 class="experience-role">Private Tutor</h3>
+                    <div class="experience-organization">Mathematics & English</div>
+                    <div class="experience-details">
+                        <div class="experience-detail">15% improvement in student grades</div>
+                        <div class="experience-detail">Adaptation to different learning styles</div>
+                        <div class="experience-detail">Personalized teaching methodologies</div>
+                    </div>
+                    
+                    <!-- Bafarada para Student Testimonials -->
+                    <div class="tutor-bubble">
+                        <div class="tutor-bubble-trigger">
+                            <i class="fas fa-comment-alt"></i> Student Testimonials
+                        </div>
+                        <div class="tutor-bubble-content">
+                            <div class="bubble-text">"Antes me costaban mucho las mates, pero con Mariona empecé a entender los ejercicios y ahora saco muy buenas notas. Explica muy claro y tiene mucha paciencia."</div>
+                            <div class="bubble-author">— Clara, 4º de ESO</div>
+                            <div class="bubble-text" style="margin-top: 15px;">"Las clases con Mariona son muy divertidas. Hacemos juegos y hablo mucho más en inglés sin miedo a equivocarme."</div>
+                            <div class="bubble-author">— Laia, 1º de ESO</div>
+                            <div class="bubble-text" style="margin-top: 15px;">"Mariona siempre se adapta a lo que necesito. Si tengo examen, repasamos; si tengo dudas, las resuelve con ejemplos fáciles de entender."</div>
+                            <div class="bubble-author">— Anna, ESO Student</div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Tutor Privado -->
-                    <div class="experience-card">
-                        <div class="experience-icon">📚</div>
-                        <h3 class="experience-role">Private Tutor</h3>
-                        <div class="experience-organization">Mathematics & English</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">15% improvement in student grades</div>
-                            <div class="experience-detail">Adaptation to different learning styles</div>
-                            <div class="experience-detail">Personalized teaching methodologies</div>
+                <!-- Member of the Social Events Team -->
+                <div class="experience-card">
+                    <div class="experience-icon">🤝</div>
+                    <h3 class="experience-role">Member of the Social Events Team</h3>
+                    <div class="experience-organization">Finance Generation Association, FG BCN Ambassadors Team</div>
+                    <div class="experience-details">
+                        <div class="experience-detail">Collaborate in the planning and organization of social and networking events to strengthen the community within the finance sector</div>
+                        <div class="experience-detail">Coordinate logistics and participant engagement for events that bridge the gap between academia and the professional financial world</div>
+                    </div>
+                </div>
+
+                <!-- Event Organizer | "THE DRIVE TO DEVELOP" Conference -->
+                <div class="experience-card">
+                    <div class="experience-icon">🎤</div>
+                    <h3 class="experience-role">Event Organizer | "THE DRIVE TO DEVELOP" Conference with JetBrains</h3>
+                    <div class="experience-organization">May 2025</div>
+                    <div class="experience-details">
+                        <div class="experience-detail">Organized a practical conference on AI-powered programming, prompt engineering, and real-world use cases for 70+ students at UAB</div>
+                        <div class="experience-detail">Coordinated event logistics, venue booking, and promotional activities to maximize student engagement and participation</div>
+                        <div class="experience-detail">Facilitated networking sessions between students and industry professionals, strengthening university-corporate partnerships</div>
+                    </div>
+                </div>
+
+                <!-- Organizadora de Hackathon -->
+                <div class="experience-card">
+                    <div class="experience-icon">💻</div>
+                    <h3 class="experience-role">Hackathon Organizer</h3>
+                    <div class="experience-organization">InterHack BCN 25-26</div>
+                    <div class="experience-details">
+                        <div class="experience-detail">Logistical coordination</div>
+                        <div class="experience-detail">Participant management</div>
+                        <div class="experience-detail">Event planning and execution</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN EDUCATION - NUEVO DISEÑO CON FONDO OSCURO -->
+        <section id="formacio" class="section">
+            <h2 class="education-title">Education</h2>
+            <div class="education-content">
+                <div class="education-timeline-horizontal">
+                    <div class="education-items-container">
+                        <!-- UAB -->
+                        <div class="education-item-horizontal">
+                            <div class="timeline-point-horizontal"></div>
+                            <div class="education-card-horizontal">
+                                <div class="education-icon-horizontal">🎓</div>
+                                <div class="education-header-horizontal">
+                                    <h3 class="education-degree-horizontal">Bachelor of Data Engineering</h3>
+                                    <div class="education-institution-horizontal">Universitat Autònoma de Barcelona (UAB)</div>
+                                    <div class="education-location-horizontal">Barcelona, Spain</div>
+                                    <div class="education-date-horizontal">September 2023 - June 2027 (expected)</div>
+                                </div>
+                                <div class="education-details-horizontal">
+                                    <div class="education-detail-item-horizontal">
+                                        <div class="detail-icon-horizontal">🏆</div>
+                                        <div class="detail-content-horizontal">
+                                            <div class="detail-title-horizontal">Honors</div>
+                                            <div class="detail-text-horizontal">Mathematics</div>
+                                        </div>
+                                    </div>
+                                    <div class="education-detail-item-horizontal">
+                                        <div class="detail-icon-horizontal">👥</div>
+                                        <div class="detail-content-horizontal">
+                                            <div class="detail-title-horizontal">Leadership</div>
+                                            <div class="detail-text-horizontal">Elected Class Representative & Member of the School Council</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Escola Ginebró -->
+                        <div class="education-item-horizontal">
+                            <div class="timeline-point-horizontal"></div>
+                            <div class="education-card-horizontal">
+                                <div class="education-icon-horizontal">🏫</div>
+                                <div class="education-header-horizontal">
+                                    <h3 class="education-degree-horizontal">High School Diploma</h3>
+                                    <div class="education-institution-horizontal">Escola Ginebró</div>
+                                    <div class="education-location-horizontal">Barcelona, Spain</div>
+                                    <div class="education-date-horizontal">September 2011 - June 2023</div>
+                                </div>
+                                <div class="education-details-horizontal">
+                                    <div class="education-detail-item-horizontal">
+                                        <div class="detail-icon-horizontal">🏆</div>
+                                        <div class="detail-content-horizontal">
+                                            <div class="detail-title-horizontal">Achievements</div>
+                                            <div class="detail-text-horizontal">Selected to participate in the "TXT Debate" league</div>
+                                 
+                                            <div class="detail-title-horizontal">TR Grade</div>
+                                            <div class="detail-text-horizontal">10/10" league</div>
+                                        
+                                        </div>
+                                    </div>
+                                    <div class="education-detail-item-horizontal">
+                                        <div class="detail-icon-horizontal">🌱</div>
+                                        <div class="detail-content-horizontal">
+                                            <div class="detail-title-horizontal">Leadership</div>
+                                            <div class="detail-text-horizontal">Environmental Representative</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CERTIFICACIONES - Ahora incluye Taekwondo, Advanced English, Gallop 3 y Blue Belt -->
+                        <div class="education-item-horizontal">
+                            <div class="timeline-point-horizontal"></div>
+                            <div class="education-card-horizontal">
+                                <div class="education-icon-horizontal">📜</div>
+                                <div class="education-header-horizontal">
+                                    <h3 class="education-degree-horizontal">Certifications</h3>
+                                    <div class="education-date-horizontal">2023 - 2025</div>
+                                </div>
+                                <div class="education-details-horizontal">
+                                    <div class="education-detail-item-horizontal">
+                                        <div class="detail-icon-horizontal">🥋</div>
+                                        <div class="detail-content-horizontal">
+                                            <div class="detail-title-horizontal">Taekwondo Timekeeper Judge</div>
+                                            <div class="detail-text-horizontal">Official certification obtained in 2023</div>
+                                        </div>
+                                    </div>
+                                    <div class="education-detail-item-horizontal">
+                                        <div class="detail-icon-horizontal">✅</div>
+                                        <div class="detail-content-horizontal">
+                                            <div class="detail-title-horizontal">Advanced English Certificate</div>
+                                            <div class="detail-text-horizontal">C1 Level certification (April 2025)</div>
+                                        </div>
+                                    </div>
+                                    <div class="education-detail-item-horizontal">
+                                        <div class="detail-icon-horizontal">🏇</div>
+                                        <div class="detail-content-horizontal">
+                                            <div class="detail-title-horizontal">Gallop 3</div>
+                                            <div class="detail-text-horizontal">Equestrian certification</div>
+                                        </div>
+                                    </div>
+                                    <div class="education-detail-item-horizontal">
+                                        <div class="detail-icon-horizontal">🥋</div>
+                                        <div class="detail-content-horizontal">
+                                            <div class="detail-title-horizontal">Blue Belt in Taekwondo</div>
+                                            <div class="detail-text-horizontal">Martial arts certification</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="habilitats" class="section">
+            <h2 class="section-title">Skills</h2>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="technical">Technical</button>
+                <button class="filter-btn" data-filter="languages">Languages</button>
+                <button class="filter-btn" data-filter="soft">Soft Skills</button>
+            </div>
+            <div class="skills-container">
+                <!-- Hard Skills -->
+                <div class="skill-category" data-category="technical">
+                    <div class="skill-header">
+                        <div class="skill-icon">💻</div>
+                        <h3 class="skill-title">Technical Skills</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">SQL & Databases</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Data Warehousing</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Computer networks</span>
+                                <span class="skill-percentage">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Data Visualization</span>
+                                <span class="skill-percentage">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="skill-category" data-category="languages">
+                    <div class="skill-header">
+                        <div class="skill-icon">🌐</div>
+                        <h3 class="skill-title">Languages</h3>
+                    </div>
+                    <div class="languages-grid">
+                        <div class="language-item">
+                            <div class="language-name">Catalan</div>
+                            <div class="language-level">Native</div>
+                        </div>
+                        <div class="language-item">
+                            <div class="language-name">Spanish</div>
+                            <div class="language-level">Native</div>
+                        </div>
+                        <div class="language-item">
+                            <div class="language-name">English</div>
+                            <div class="language-level">C1 Advanced</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="skill-category" data-category="soft">
+                    <div class="skill-header">
+                        <div class="skill-icon">🤝</div>
+                        <h3 class="skill-title">Soft Skills</h3>
+                    </div>
+                    <div class="soft-skills-grid">
+                        <div class="soft-skill-item">
+                            <div class="soft-skill-name">Teamwork</div>
+                        </div>
+                        <div class="soft-skill-item">
+                            <div class="soft-skill-name">Problem Solving</div>
+                        </div>
+                        <div class="soft-skill-item">
+                            <div class="soft-skill-name">Critical Thinking</div>
+                        </div>
+                        <div class="soft-skill-item">
+                            <div class="soft-skill-name">Adaptability</div>
+                        </div>
+                        <div class="soft-skill-item">
+                            <div class="soft-skill-name">Communication</div>
+                        </div>
+                        <div class="soft-skill-item">
+                            <div class="soft-skill-name">Leadership</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projectes" class="section">
+            <h2 class="section-title">Technical Projects</h2>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="data">Data Projects</button>
+            </div>
+            <div class="projects-container">
+                <!-- Web Development - Empresa de Mármoles -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Marbres Genevat Website">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Marbres Genevat Website</h3>
+                        <p class="project-description">Designed and developed a modern, user-friendly website for a marble company, resulting in significant business growth and increased visibility in the market.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Responsive Design</span>
+                            <span class="tech-tag">UI/UX</span>
                         </div>
                         
-                        <!-- Bafarada para Student Testimonials -->
+                        <!-- Bafarada para Business Testimonials -->
                         <div class="tutor-bubble">
                             <div class="tutor-bubble-trigger">
-                                <i class="fas fa-comment-alt"></i> Student Testimonials
+                                <i class="fas fa-comment-alt"></i> Business Testimonials
                             </div>
                             <div class="tutor-bubble-content">
-                                <div class="bubble-text">"Antes me costaban mucho las mates, pero con Mariona empecé a entender los ejercicios y ahora saco muy buenas notas. Explica muy claro y tiene mucha paciencia."</div>
-                                <div class="bubble-author">— Clara, 4º de ESO</div>
-                                <div class="bubble-text" style="margin-top: 15px;">"Las clases con Mariona son muy divertidas. Hacemos juegos y hablo mucho más en inglés sin miedo a equivocarme."</div>
-                                <div class="bubble-author">— Laia, 1º de ESO</div>
-                                <div class="bubble-text" style="margin-top: 15px;">"Mariona siempre se adapta a lo que necesito. Si tengo examen, repasamos; si tengo dudas, las resuelve con ejemplos fáciles de entender."</div>
-                                <div class="bubble-author">— Anna, ESO Student</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Member of the Social Events Team -->
-                    <div class="experience-card">
-                        <div class="experience-icon">🤝</div>
-                        <h3 class="experience-role">Member of the Social Events Team</h3>
-                        <div class="experience-organization">Finance Generation Association, FG BCN Ambassadors Team</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">Collaborate in the planning and organization of social and networking events to strengthen the community within the finance sector</div>
-                            <div class="experience-detail">Coordinate logistics and participant engagement for events that bridge the gap between academia and the professional financial world</div>
-                        </div>
-                    </div>
-
-                    <!-- Event Organizer | "THE DRIVE TO DEVELOP" Conference -->
-                    <div class="experience-card">
-                        <div class="experience-icon">🎤</div>
-                        <h3 class="experience-role">Event Organizer | "THE DRIVE TO DEVELOP" Conference with JetBrains</h3>
-                        <div class="experience-organization">May 2025</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">Organized a practical conference on AI-powered programming, prompt engineering, and real-world use cases for 70+ students at UAB</div>
-                            <div class="experience-detail">Coordinated event logistics, venue booking, and promotional activities to maximize student engagement and participation</div>
-                            <div class="experience-detail">Facilitated networking sessions between students and industry professionals, strengthening university-corporate partnerships</div>
-                        </div>
-                    </div>
-
-                    <!-- Organizadora de Hackathon -->
-                    <div class="experience-card">
-                        <div class="experience-icon">💻</div>
-                        <h3 class="experience-role">Hackathon Organizer</h3>
-                        <div class="experience-organization">InterHack BCN 25-26</div>
-                        <div class="experience-details">
-                            <div class="experience-detail">Logistical coordination</div>
-                            <div class="experience-detail">Participant management</div>
-                            <div class="experience-detail">Event planning and execution</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECCIÓN EDUCATION - NUEVO DISEÑO CON FONDO OSCURO -->
-            <section id="formacio" class="section">
-                <h2 class="education-title">Education</h2>
-                <div class="education-content">
-                    <div class="education-timeline-horizontal">
-                        <div class="education-items-container">
-                            <!-- UAB -->
-                            <div class="education-item-horizontal">
-                                <div class="timeline-point-horizontal"></div>
-                                <div class="education-card-horizontal">
-                                    <div class="education-icon-horizontal">🎓</div>
-                                    <div class="education-header-horizontal">
-                                        <h3 class="education-degree-horizontal">Bachelor of Data Engineering</h3>
-                                        <div class="education-institution-horizontal">Universitat Autònoma de Barcelona (UAB)</div>
-                                        <div class="education-location-horizontal">Barcelona, Spain</div>
-                                        <div class="education-date-horizontal">September 2023 - June 2027 (expected)</div>
-                                    </div>
-                                    <div class="education-details-horizontal">
-                                        <div class="education-detail-item-horizontal">
-                                            <div class="detail-icon-horizontal">🏆</div>
-                                            <div class="detail-content-horizontal">
-                                                <div class="detail-title-horizontal">Honors</div>
-                                                <div class="detail-text-horizontal">Mathematics</div>
-                                            </div>
-                                        </div>
-                                        <div class="education-detail-item-horizontal">
-                                            <div class="detail-icon-horizontal">👥</div>
-                                            <div class="detail-content-horizontal">
-                                                <div class="detail-title-horizontal">Leadership</div>
-                                                <div class="detail-text-horizontal">Elected Class Representative & Member of the School Council</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Escola Ginebró -->
-                            <div class="education-item-horizontal">
-                                <div class="timeline-point-horizontal"></div>
-                                <div class="education-card-horizontal">
-                                    <div class="education-icon-horizontal">🏫</div>
-                                    <div class="education-header-horizontal">
-                                        <h3 class="education-degree-horizontal">High School Diploma</h3>
-                                        <div class="education-institution-horizontal">Escola Ginebró</div>
-                                        <div class="education-location-horizontal">Barcelona, Spain</div>
-                                        <div class="education-date-horizontal">September 2011 - June 2023</div>
-                                    </div>
-                                    <div class="education-details-horizontal">
-                                        <div class="education-detail-item-horizontal">
-                                            <div class="detail-icon-horizontal">🏆</div>
-                                            <div class="detail-content-horizontal">
-                                                <div class="detail-title-horizontal">Achievements</div>
-                                                <div class="detail-text-horizontal">Selected to participate in the "TXT Debate" league</div>
-                                     
-                                                <div class="detail-title-horizontal">TR Grade</div>
-                                                <div class="detail-text-horizontal">10/10" league</div>
-                                            
-                                            </div>
-                                        </div>
-                                        <div class="education-detail-item-horizontal">
-                                            <div class="detail-icon-horizontal">🌱</div>
-                                            <div class="detail-content-horizontal">
-                                                <div class="detail-title-horizontal">Leadership</div>
-                                                <div class="detail-text-horizontal">Environmental Representative</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- CERTIFICACIONES - Ahora incluye Taekwondo, Advanced English, Gallop 3 y Blue Belt -->
-                            <div class="education-item-horizontal">
-                                <div class="timeline-point-horizontal"></div>
-                                <div class="education-card-horizontal">
-                                    <div class="education-icon-horizontal">📜</div>
-                                    <div class="education-header-horizontal">
-                                        <h3 class="education-degree-horizontal">Certifications</h3>
-                                        <div class="education-date-horizontal">2023 - 2025</div>
-                                    </div>
-                                    <div class="education-details-horizontal">
-                                        <div class="education-detail-item-horizontal">
-                                            <div class="detail-icon-horizontal">🥋</div>
-                                            <div class="detail-content-horizontal">
-                                                <div class="detail-title-horizontal">Taekwondo Timekeeper Judge</div>
-                                                <div class="detail-text-horizontal">Official certification obtained in 2023</div>
-                                            </div>
-                                        </div>
-                                        <div class="education-detail-item-horizontal">
-                                            <div class="detail-icon-horizontal">✅</div>
-                                            <div class="detail-content-horizontal">
-                                                <div class="detail-title-horizontal">Advanced English Certificate</div>
-                                                <div class="detail-text-horizontal">C1 Level certification (April 2025)</div>
-                                            </div>
-                                        </div>
-                                        <div class="education-detail-item-horizontal">
-                                            <div class="detail-icon-horizontal">🏇</div>
-                                            <div class="detail-content-horizontal">
-                                                <div class="detail-title-horizontal">Gallop 3</div>
-                                                <div class="detail-text-horizontal">Equestrian certification</div>
-                                            </div>
-                                        </div>
-                                        <div class="education-detail-item-horizontal">
-                                            <div class="detail-icon-horizontal">🥋</div>
-                                            <div class="detail-content-horizontal">
-                                                <div class="detail-title-horizontal">Blue Belt in Taekwondo</div>
-                                                <div class="detail-text-horizontal">Martial arts certification</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="bubble-text">"Gràcies a la pàgina web que ens va dissenyar la Mariona, la nostra empresa ha guanyat molta visibilitat. En pocs mesos, el nombre de persones que contacten amb nosaltres ha augmentat aproximadament un 80%."</div>
+                                <div class="bubble-author">— Marbres Genevat</div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            <section id="habilitats" class="section">
-                <h2 class="section-title">Skills</h2>
-                <div class="project-filters">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="technical">Technical</button>
-                    <button class="filter-btn" data-filter="languages">Languages</button>
-                    <button class="filter-btn" data-filter="soft">Soft Skills</button>
-                </div>
-                <div class="skills-container">
-                    <!-- Hard Skills -->
-                    <div class="skill-category" data-category="technical">
-                        <div class="skill-header">
-                            <div class="skill-icon">💻</div>
-                            <h3 class="skill-title">Technical Skills</h3>
-                        </div>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Python</span>
-                                    <span class="skill-percentage">90%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">SQL & Databases</span>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="85"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Data Warehousing</span>
-                                    <span class="skill-percentage">80%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="80"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Computer networks</span>
-                                    <span class="skill-percentage">75%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="75"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name">Data Visualization</span>
-                                    <span class="skill-percentage">70%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="70"></div>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Portfolio Personal - AHORA EN WEB DEVELOPMENT -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Personal Portfolio Website">
                     </div>
-
-                    <!-- Languages -->
-                    <div class="skill-category" data-category="languages">
-                        <div class="skill-header">
-                            <div class="skill-icon">🌐</div>
-                            <h3 class="skill-title">Languages</h3>
-                        </div>
-                        <div class="languages-grid">
-                            <div class="language-item">
-                                <div class="language-name">Catalan</div>
-                                <div class="language-level">Native</div>
-                            </div>
-                            <div class="language-item">
-                                <div class="language-name">Spanish</div>
-                                <div class="language-level">Native</div>
-                            </div>
-                            <div class="language-item">
-                                <div class="language-name">English</div>
-                                <div class="language-level">C1 Advanced</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Soft Skills -->
-                    <div class="skill-category" data-category="soft">
-                        <div class="skill-header">
-                            <div class="skill-icon">🤝</div>
-                            <h3 class="skill-title">Soft Skills</h3>
-                        </div>
-                        <div class="soft-skills-grid">
-                            <div class="soft-skill-item">
-                                <div class="soft-skill-name">Teamwork</div>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="soft-skill-name">Problem Solving</div>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="soft-skill-name">Critical Thinking</div>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="soft-skill-name">Adaptability</div>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="soft-skill-name">Communication</div>
-                            </div>
-                            <div class="soft-skill-item">
-                                <div class="soft-skill-name">Leadership</div>
-                            </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Personal Portfolio Website</h3>
+                        <p class="project-description">Created a comprehensive personal portfolio website to showcase skills, projects, and experience, featuring modern design, smooth animations, and responsive layout.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Responsive Design</span>
+                            <span class="tech-tag">Animations</span>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            <section id="projectes" class="section">
-                <h2 class="section-title">Technical Projects</h2>
-                <div class="project-filters">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="web">Web Development</button>
-                    <button class="filter-btn" data-filter="data">Data Projects</button>
-                </div>
-                <div class="projects-container">
-                    <!-- Web Development - Empresa de Mármoles -->
-                    <div class="project-card" data-category="web">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Marbres Genevat Website">
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Marbres Genevat Website</h3>
-                            <p class="project-description">Designed and developed a modern, user-friendly website for a marble company, resulting in significant business growth and increased visibility in the market.</p>
-                            <div class="project-technologies">
-                                <span class="tech-tag">HTML/CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">Responsive Design</span>
-                                <span class="tech-tag">UI/UX</span>
-                            </div>
-                            
-                            <!-- Bafarada para Business Testimonials -->
-                            <div class="tutor-bubble">
-                                <div class="tutor-bubble-trigger">
-                                    <i class="fas fa-comment-alt"></i> Business Testimonials
-                                </div>
-                                <div class="tutor-bubble-content">
-                                    <div class="bubble-text">"Gràcies a la pàgina web que ens va dissenyar la Mariona, la nostra empresa ha guanyat molta visibilitat. En pocs mesos, el nombre de persones que contacten amb nosaltres ha augmentat aproximadament un 80%."</div>
-                                    <div class="bubble-author">— Marbres Genevat</div>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Movie Recommendation Engine -->
+                <div class="project-card" data-category="data">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Movie Recommendation Engine">
                     </div>
-
-                    <!-- Portfolio Personal - AHORA EN WEB DEVELOPMENT -->
-                    <div class="project-card" data-category="web">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Personal Portfolio Website">
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Personal Portfolio Website</h3>
-                            <p class="project-description">Created a comprehensive personal portfolio website to showcase skills, projects, and experience, featuring modern design, smooth animations, and responsive layout.</p>
-                            <div class="project-technologies">
-                                <span class="tech-tag">HTML/CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">Responsive Design</span>
-                                <span class="tech-tag">Animations</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Movie Recommendation Engine -->
-                    <div class="project-card" data-category="data">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Movie Recommendation Engine">
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Movie Recommendation Engine</h3>
-                            <p class="project-description">Developed a sophisticated recommendation system using collaborative filtering and content-based approaches to suggest movies based on user preferences and viewing history.</p>
-                            <div class="project-technologies">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">pandas</span>
-                                <span class="tech-tag">scikit-learn</span>
-                                <span class="tech-tag">Machine Learning</span>
-                            </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Movie Recommendation Engine</h3>
+                        <p class="project-description">Developed a sophisticated recommendation system using collaborative filtering and content-based approaches to suggest movies based on user preferences and viewing history.</p>
+                        <div class="project-technologies">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">pandas</span>
+                            <span class="tech-tag">scikit-learn</span>
+                            <span class="tech-tag">Machine Learning</span>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="actividades" class="section">
-                <h2 class="section-title">Extracurriculars and Volunteering</h2>
-                <div class="activities-container">
-                    <!-- J.P. Morgan Event -->
-                    <div class="activity-card">
-                        <div class="activity-icon">🏦</div>
-                        <h3 class="activity-title">"Insight into Markets" Event</h3>
-                        <div class="activity-company">J.P. Morgan</div>
-                        <p class="activity-description">Participated in an exclusive financial markets event, gaining insights into investment banking, market analysis, and trading strategies from industry professionals.</p>
-                    </div>
+        <section id="actividades" class="section">
+            <h2 class="section-title">Extracurriculars and Volunteering</h2>
+            <div class="activities-container">
+                <!-- J.P. Morgan Event -->
+                <div class="activity-card">
+                    <div class="activity-icon">🏦</div>
+                    <h3 class="activity-title">"Insight into Markets" Event</h3>
+                    <div class="activity-company">J.P. Morgan</div>
+                    <p class="activity-description">Participated in an exclusive financial markets event, gaining insights into investment banking, market analysis, and trading strategies from industry professionals.</p>
+                </div>
 
-                    <!-- UBS Zurich Event -->
-                    <div class="activity-card">
-                        <div class="activity-icon">📈</div>
-                        <h3 class="activity-title">Trading Event</h3>
-                        <div class="activity-company">UBS Zurich</div>
-                        <p class="activity-description">Engaged in hands-on trading simulations and learned about global market dynamics, risk management, and investment strategies at one of the world's leading financial institutions.</p>
-                    </div>
+                <!-- UBS Zurich Event -->
+                <div class="activity-card">
+                    <div class="activity-icon">📈</div>
+                    <h3 class="activity-title">Trading Event</h3>
+                    <div class="activity-company">UBS Zurich</div>
+                    <p class="activity-description">Engaged in hands-on trading simulations and learned about global market dynamics, risk management, and investment strategies at one of the world's leading financial institutions.</p>
+                </div>
 
-                    <!-- VOLUNTARIADOS JUNTOS EN UNA SOLA TARJETA -->
-                    <div class="activity-card">
-                        <div class="activity-icon">🤝</div>
-                        <h3 class="activity-title">Volunteering Activities</h3>
-                        <div class="activity-company">Community Support</div>
-                        <p class="activity-description">Participated in volunteering activities at El Xiprer, contributing to community support initiatives and assisting with various social programs for those in need. Also engaged in volunteering work at elderly care residences, providing companionship, support, and assistance to senior citizens, and organizing recreational activities.</p>
+                <!-- VOLUNTARIADOS JUNTOS EN UNA SOLA TARJETA -->
+                <div class="activity-card">
+                    <div class="activity-icon">🤝</div>
+                    <h3 class="activity-title">Volunteering Activities</h3>
+                    <div class="activity-company">Community Support</div>
+                    <p class="activity-description">Participated in volunteering activities at El Xiprer, contributing to community support initiatives and assisting with various social programs for those in need. Also engaged in volunteering work at elderly care residences, providing companionship, support, and assistance to senior citizens, and organizing recreational activities.</p>
+                </div>
+                
+                <!-- NUEVA ACTIVIDAD: Competiciones deportivas -->
+                <div class="activity-card">
+                    <div class="activity-icon">🏆</div>
+                    <h3 class="activity-title">Sports Competitions</h3>
+                    <div class="activity-company">Athletic Achievements</div>
+                    <p class="activity-description">1st place in the 2022 Catalan Championship. Also ranked in the top 20 among 300 participants in the 2017 Artistic Gymnastics Competition, demonstrating dedication, discipline, and competitive spirit.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacte" class="section">
+            <h2 class="section-title">Contact</h2>
+            <div class="contacte-container">
+                <div class="contact-info">
+                    <h2 class="contact-title">Get In Touch</h2>
+                    <p class="contact-subtitle">I'm always open to discussing new opportunities, projects, or just having a chat about technology and data engineering.</p>
+                </div>
+                
+                <form class="contacte-form" id="contactForm">
+                    <h3 style="color: var(--primary-color); margin-bottom: 15px; font-weight: 500;">Send me a message</h3>
+                    <div class="form-group">
+                        <label for="contact-name">Name</label>
+                        <input type="text" id="contact-name" class="form-control" required>
                     </div>
                     
-                    <!-- NUEVA ACTIVIDAD: Competiciones deportivas -->
-                    <div class="activity-card">
-                        <div class="activity-icon">🏆</div>
-                        <h3 class="activity-title">Sports Competitions</h3>
-                        <div class="activity-company">Athletic Achievements</div>
-                        <p class="activity-description">1st place in the 2022 Catalan Championship. Also ranked in the top 20 among 300 participants in the 2017 Artistic Gymnastics Competition, demonstrating dedication, discipline, and competitive spirit.</p>
+                    <div class="form-group">
+                        <label for="contact-email">Email</label>
+                        <input type="email" id="contact-email" class="form-control" required>
                     </div>
-                </div>
-            </section>
+                    
+                    <div class="form-group">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
 
-            <section id="contacte" class="section">
-                <h2 class="section-title">Contact</h2>
-                <div class="contacte-container">
-                    <div class="contact-info">
-                        <h2 class="contact-title">Get In Touch</h2>
-                        <p class="contact-subtitle">I'm always open to discussing new opportunities, projects, or just having a chat about technology and data engineering.</p>
-                    </div>
-                    
-                    <form class="contacte-form" id="contactForm">
-                        <h3 style="color: var(--primary-color); margin-bottom: 15px; font-weight: 500;">Send me a message</h3>
-                        <div class="form-group">
-                            <label for="contact-name">Name</label>
-                            <input type="text" id="contact-name" class="form-control" required>
+        <!-- NUEVA SECCIÓN DE REDES SOCIALES - ESTÉTICA SOLICITADA -->
+        <section id="social-media" class="section">
+            <div class="social-media-container">
+                <h2 class="social-media-title">Mariona Guisado</h2>
+                <p class="social-media-subtitle">Data Engineering Student | Problem Solver | Future Innovator</p>
+                
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/mariona-guisado-parras-30a984294/" class="social-icon" target="_blank">
+                        <div class="social-icon-circle">
+                            <i class="fab fa-linkedin-in"></i>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="contact-email">Email</label>
-                            <input type="email" id="contact-email" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contact-message">Message</label>
-                            <textarea id="contact-message" class="form-control" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
-            </section>
-
-            <!-- NUEVA SECCIÓN DE REDES SOCIALES - ESTÉTICA SOLICITADA -->
-            <section id="social-media" class="section">
-                <div class="social-media-container">
-                    <h2 class="social-media-title">Mariona Guisado</h2>
-                    <p class="social-media-subtitle">Data Engineering Student | Problem Solver | Future Innovator</p>
-                    
-                    <div class="social-icons">
-                        <a href="https://www.linkedin.com/in/mariona-guisado-parras-30a984294/" class="social-icon" target="_blank">
-                            <div class="social-icon-circle">
-                                <i class="fab fa-linkedin-in"></i>
-                            </div>
-                            <span class="social-name">LinkedIn</span>
-                        </a>
-                        
-                        <a href="https://www.instagram.com/mariona_gsdo/" class="social-icon" target="_blank">
-                            <div class="social-icon-circle">
-                                <i class="fab fa-instagram"></i>
-                            </div>
-                            <span class="social-name">Instagram</span>
-                        </a>
-                        
-                        <a href="https://github.com/marionaguisado" class="social-icon" target="_blank">
-                            <div class="social-icon-circle">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <span class="social-name">GitHub</span>
-                        </a>
-                        
-                        <a href="https://twitter.com/marionaguisado" class="social-icon" target="_blank">
-                            <div class="social-icon-circle">
-                                <i class="fab fa-twitter"></i>
-                            </div>
-                            <span class="social-name">Twitter</span>
-                        </a>
-                    </div>
-                    
-                    <a href="CV_Mariona_Guisado_Parras.pdf" class="download-cv-btn" download>
-                        <i class="fas fa-download"></i> Download CV
+                        <span class="social-name">LinkedIn</span>
                     </a>
+                    
+                    <a href="https://www.instagram.com/mariona_gsdo/" class="social-icon" target="_blank">
+                        <div class="social-icon-circle">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <span class="social-name">Instagram</span>
+                    </a>
+                    
+                    <a href="https://github.com/marionaguisado" class="social-icon" target="_blank">
+                        <div class="social-icon-circle">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <span class="social-name">GitHub</span>
+                    </a>
+                    
+                    <a href="https://twitter.com/marionaguisado" class="social-icon" target="_blank">
+                        <div class="social-icon-circle">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <span class="social-name">Twitter</span>
+                    </a>
+                </div>
+                
+                <a href="CV_Mariona_Guisado_Parras.pdf" class="download-cv-btn" download>
+                    <i class="fas fa-download"></i> Download CV
+                </a>
 
-                    <div class="footer-bottom" style="margin-top: 40px;">
-                        <p>&copy; 2023 Mariona Guisado. All rights reserved.</p>
-                    </div>
-            </section>
-        </div>
+                <div class="footer-bottom" style="margin-top: 40px;">
+                    <p>&copy; 2023 Mariona Guisado. All rights reserved.</p>
+                </div>
+        </section>
     </div>
 
     <!-- BOTÓN VOLVER ARRIBA -->
