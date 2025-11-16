@@ -26,6 +26,7 @@
             --sutil: #fafafa;
             --subtitulo: #555;
             --hover-color: #e9ecef;
+            --section-bg: #2A2F31; /* Nuevo color para fondo de secciones */
         }
 
         .dark-mode {
@@ -43,6 +44,7 @@
             --sutil: #202020;
             --subtitulo: #bbb;
             --hover-color: #474747;
+            --section-bg: #1a1a1a; /* Fondo más oscuro en modo oscuro */
         }
 
         body {
@@ -363,7 +365,7 @@
 
         /* SECCIÓN PROFESSIONAL PROFILE */
         #sobre-mi {
-            background: transparent;
+            background: var(--section-bg);
             position: relative;
             display: flex;
             align-items: center;
@@ -397,7 +399,7 @@
         .typed-text, .personal-text {
             font-size: 1.2rem;
             line-height: 1.8;
-            color: var(--titulos);
+            color: white; /* Texto blanco para contraste con fondo oscuro */
             min-height: 50px;
             white-space: pre-wrap;
             overflow: hidden;
@@ -412,7 +414,7 @@
         #experiencia {
             position: relative;
             width: 100%;
-            background: transparent;
+            background: var(--section-bg);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -585,14 +587,14 @@
             align-items: center;
             justify-content: flex-start;
             padding: 5px 0;
-            background: transparent;
+            background: var(--section-bg);
             overflow: hidden;
         }
 
         .education-title {
             position: relative;
             z-index: 3;
-            color: var(--titulos);
+            color: white; /* Título blanco para contraste */
             text-align: center;
             font-size: 3.5rem;
             margin-top: 15px;
@@ -791,7 +793,7 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            background: transparent;
+            background: var(--section-bg);
             padding: 5px 0;
             overflow: hidden;
         }
@@ -807,8 +809,8 @@
 
         .filter-btn {
             background: transparent;
-            color: var(--flotante);
-            border: 2px solid var(--flotante);
+            color: white; /* Texto blanco para contraste */
+            border: 2px solid white; /* Borde blanco para contraste */
             padding: 12px 24px;
             font-size: 1rem;
             font-weight: 500;
@@ -824,8 +826,8 @@
         }
 
         .filter-btn.active {
-            background: var(--flotante);
-            color: var(--light-color);
+            background: white; /* Fondo blanco para botón activo */
+            color: var(--section-bg); /* Texto oscuro para contraste */
         }
 
         .skills-container {
@@ -999,7 +1001,7 @@
         #projectes {
             position: relative;
             width: 100%;
-            background: transparent;
+            background: var(--section-bg);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1099,7 +1101,7 @@
         #actividades {
             position: relative;
             width: 100%;
-            background: transparent;
+            background: var(--section-bg);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1179,7 +1181,7 @@
 
         /* SECCIÓN DE CONTACTO - SIN FONDO DE IMAGEN */
         #contacte {
-            background: transparent;
+            background: var(--section-bg);
             position: relative;
             display: flex;
             align-items: center;
@@ -1638,7 +1640,7 @@
         #actividades .section-title,
         #contacte .section-title,
         #formacio .section-title {
-            color: var(--titulos);
+            color: white; /* Títulos en blanco para contraste con fondo oscuro */
         }
 
         @media (max-width: 768px) {
