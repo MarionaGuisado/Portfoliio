@@ -11,6 +11,7 @@
     <style>
         :root {
             --primary-color: #6a11cb;
+            --titulos: #000;
             --secondary-color: #ff6b6b;
             --accent-color: #ffd93d;
             --dark-color: #2d3436;
@@ -22,6 +23,9 @@
             --transition: all 0.4s ease;
             --border-radius: 8px;
             --flotante: #121212;
+            --sutil: #fafafa;
+            --subtitulo: #555;
+            --hover-color: #e9ecef;
         }
 
         .dark-mode {
@@ -33,8 +37,12 @@
             --text-color: #f8f9fa;
             --bg-color: #121212;
             --flotante: #ffffff;
+            --titulos: #ffffff;
             --card-bg: rgba(42, 42, 42, 0.95);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --sutil: #202020;
+            --subtitulo: #bbb;
+            --hover-color: #474747;
         }
 
         body {
@@ -332,9 +340,10 @@
         /* Dark mode toggle */
         .dark-mode-toggle {
             position: fixed;
+            opacity: 0;
             top: 10px;
             right: 10px;
-            z-index: 100;
+            z-index: 9999;
             background: var(--flotante);
             border: none;
             width: 45px;
@@ -354,7 +363,7 @@
 
         /* SECCIÓN PROFESSIONAL PROFILE */
         #sobre-mi {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            background: transparent;
             position: relative;
             display: flex;
             align-items: center;
@@ -378,7 +387,6 @@
         /* Contenedor de texto en el centro — ocupa más espacio */
         .about-text-container {
           flex: 1;
-          color: white;
           background-color: transparent;
           box-shadow: none;
           padding: 0 40px;
@@ -389,7 +397,7 @@
         .typed-text, .personal-text {
             font-size: 1.2rem;
             line-height: 1.8;
-            color: white;
+            color: var(--titulos);
             min-height: 50px;
             white-space: pre-wrap;
             overflow: hidden;
@@ -404,7 +412,7 @@
         #experiencia {
             position: relative;
             width: 100%;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            background: transparent;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -455,7 +463,6 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 5px;
-            color: white;
             font-size: 1.5rem;
             box-shadow: 0 5px 15px rgba(255, 217, 61, 0.3);
             border-radius: 50%;
@@ -463,7 +470,7 @@
 
         .experience-role {
             font-size: 1.4rem;
-            color: var(--dark-color);
+            color: var(--titulos);
             font-weight: 600;
             margin-bottom: 8px;
             font-family: 'Playfair Display', serif;
@@ -483,10 +490,10 @@
         }
 
         .experience-detail {
-            background: var(--light-color);
+            background: var(--sutil);
             padding: 10px;
             font-size: 0.95rem;
-            color: #555;
+            color:var(--text-color);
             line-height: 1.4;
             transition: var(--transition);
             border-radius: 4px;
@@ -527,13 +534,13 @@
             bottom: 100%;
             left: 50%;
             transform: translateX(-50%);
-            background: white;
-            color: #333;
+            background: var(--light-color);
+            color: var(--text-color);
             padding: 15px;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             width: 320px;
-            z-index: 10;
+            z-index: 100;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
@@ -578,14 +585,14 @@
             align-items: center;
             justify-content: flex-start;
             padding: 5px 0;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            background: transparent;
             overflow: hidden;
         }
 
         .education-title {
             position: relative;
             z-index: 3;
-            color: white;
+            color: var(--titulos);
             text-align: center;
             font-size: 3.5rem;
             margin-top: 15px;
@@ -690,10 +697,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--flotante);
             font-size: 1.5rem;
             box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
             margin: 0 auto 12px;
+            opacity: 0;
         }
 
         .education-header-horizontal {
@@ -717,7 +725,7 @@
 
         .education-location-horizontal {
             font-size: 0.9rem;
-            color: #666;
+            color: var(--text-color);
             font-weight: 400;
             margin-bottom: 6px;
         }
@@ -771,7 +779,7 @@
 
         .detail-text-horizontal {
             font-size: 0.85rem;
-            color: #666;
+            color: var(--subtitulo);
             line-height: 1.4;
         }
 
@@ -783,7 +791,7 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            background: transparent;
             padding: 5px 0;
             overflow: hidden;
         }
@@ -799,8 +807,8 @@
 
         .filter-btn {
             background: transparent;
-            color: white;
-            border: 2px solid white;
+            color: var(--flotante);
+            border: 2px solid var(--flotante);
             padding: 12px 24px;
             font-size: 1rem;
             font-weight: 500;
@@ -816,8 +824,8 @@
         }
 
         .filter-btn.active {
-            background: white;
-            color: #1a1a1a;
+            background: var(--flotante);
+            color: var(--light-color);
         }
 
         .skills-container {
@@ -939,13 +947,13 @@
         .language-item {
             text-align: center;
             padding: 15px;
-            background: var(--light-color);
+            background: var(--sutil);
             transition: var(--transition);
             border-radius: var(--border-radius);
         }
 
         .language-item:hover {
-            background: #e9ecef;
+            background: var(--hover-color);
             transform: scale(1.05);
         }
 
@@ -968,7 +976,7 @@
         }
 
         .soft-skill-item {
-            background: var(--light-color);
+            background: var(--sutil);
             padding: 15px;
             text-align: center;
             transition: var(--transition);
@@ -977,7 +985,7 @@
         }
 
         .soft-skill-item:hover {
-            background: #e9ecef;
+            background: var(--hover-color);
             transform: translateY(-5px);
         }
 
@@ -991,7 +999,7 @@
         #projectes {
             position: relative;
             width: 100%;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            background: transparent;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1051,7 +1059,7 @@
 
         .project-title {
             font-size: 1.6rem;
-            color: var(--dark-color);
+            color: var(--titulos);
             font-weight: 600;
             margin-bottom: 12px;
             font-family: 'Playfair Display', serif;
@@ -1059,7 +1067,7 @@
 
         .project-description {
             font-size: 0.95rem;
-            color: #555;
+            color: var(--subtitulo);
             line-height: 1.5;
             margin-bottom: 15px;
             flex-grow: 1;
@@ -1091,7 +1099,7 @@
         #actividades {
             position: relative;
             width: 100%;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            background: transparent;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1150,7 +1158,7 @@
 
         .activity-title {
             font-size: 1.4rem;
-            color: var(--dark-color);
+            color: var(--titulos);
             font-weight: 600;
             margin-bottom: 8px;
             font-family: 'Playfair Display', serif;
@@ -1165,13 +1173,13 @@
 
         .activity-description {
             font-size: 0.95rem;
-            color: #555;
+            color: var(--subtitulo);
             line-height: 1.5;
         }
 
         /* SECCIÓN DE CONTACTO - SIN FONDO DE IMAGEN */
         #contacte {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            background: transparent;
             position: relative;
             display: flex;
             align-items: center;
@@ -1212,7 +1220,7 @@
 
         .contact-subtitle {
             font-size: 1.1rem;
-            color: #666;
+            color: var(--subtitulo);
             margin-bottom: 25px;
             line-height: 1.6;
         }
@@ -1630,7 +1638,7 @@
         #actividades .section-title,
         #contacte .section-title,
         #formacio .section-title {
-            color: white;
+            color: var(--titulos);
         }
 
         @media (max-width: 768px) {
@@ -1892,7 +1900,7 @@
             </section>
 
             <section id="experiencia" class="section">
-                <h2 class="section-title">Experience & Leadership</h2>
+                <h2 class="section-title" style="padding: 25px;">Experience & Leadership</h2>
                 <div class="experience-container">
                     <!-- Representante de Clase -->
                     <div class="experience-card">
@@ -2474,6 +2482,7 @@
                 name.style.textShadow = 'none';
                 name.style.top = '10%';
                 name.style.fontSize = '3rem';
+                name.style.opacity = '0.5';
             }, 500);
             
             // 4. Show main content when transition ends
@@ -2497,6 +2506,7 @@
                 
                 // Hide initial background
                 background.style.opacity = '0';
+                darkModeToggle.style.opacity = '1';
 
             }, 1000);
         });
@@ -2584,6 +2594,7 @@
         // Dark mode toggle functionality
         const darkModeToggle = document.getElementById('darkModeToggle');
         darkModeToggle.addEventListener('click', function() {
+            document.getElementById('name').style.color = 'var(--flotante)'; // Ensure name text remains visible in dark mode
             document.body.classList.toggle('dark-mode');
             darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
         });
