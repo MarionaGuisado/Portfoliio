@@ -26,7 +26,7 @@
             --sutil: #fafafa;
             --subtitulo: #555;
             --hover-color: #e9ecef;
-            --section-bg: #2A2F31; /* Nuevo color para fondo de secciones */
+            --dark-section-bg: #2d3436; /* Color gris oscuro para las secciones */
         }
 
         .dark-mode {
@@ -44,7 +44,7 @@
             --sutil: #202020;
             --subtitulo: #bbb;
             --hover-color: #474747;
-            --section-bg: #1a1a1a; /* Fondo más oscuro en modo oscuro */
+            --dark-section-bg: #1a1a1a; /* Color más oscuro para modo oscuro */
         }
 
         body {
@@ -317,6 +317,12 @@
             margin-bottom: 10px; 
         }
 
+        /* NUEVA CLASE PARA SECCIONES CON FONDO GRIS OSCURO */
+        .dark-section {
+            background-color: var(--dark-section-bg);
+            color: white;
+        }
+
         .section-title {
             font-size: 3.5rem;
             margin: 1rem 0 0.5rem;
@@ -363,9 +369,9 @@
             transform: scale(1.1);
         }
 
-        /* SECCIÓN PROFESSIONAL PROFILE */
+        /* SECCIÓN PROFESSIONAL PROFILE - CON FONDO GRIS OSCURO */
         #sobre-mi {
-            background: var(--section-bg);
+            background: var(--dark-section-bg);
             position: relative;
             display: flex;
             align-items: center;
@@ -399,7 +405,7 @@
         .typed-text, .personal-text {
             font-size: 1.2rem;
             line-height: 1.8;
-            color: white; /* Texto blanco para contraste con fondo oscuro */
+            color: white; /* Texto blanco para contraste con fondo gris oscuro */
             min-height: 50px;
             white-space: pre-wrap;
             overflow: hidden;
@@ -410,11 +416,11 @@
             width: 100%;
         }
 
-        /* SECCIÓN EXPERIENCIA Y LIDERAZGO */
+        /* SECCIÓN EXPERIENCIA Y LIDERAZGO - CON FONDO GRIS OSCURO */
         #experiencia {
             position: relative;
             width: 100%;
-            background: var(--section-bg);
+            background: var(--dark-section-bg);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -587,7 +593,7 @@
             align-items: center;
             justify-content: flex-start;
             padding: 5px 0;
-            background: var(--section-bg);
+            background: var(--dark-section-bg);
             overflow: hidden;
         }
 
@@ -785,7 +791,7 @@
             line-height: 1.4;
         }
 
-        /* SECCIÓN SKILLS - COLOR CAMBIADO */
+        /* SECCIÓN SKILLS - CON FONDO GRIS OSCURO */
         #habilitats {
             position: relative;
             display: flex;
@@ -793,7 +799,7 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            background: var(--section-bg);
+            background: var(--dark-section-bg);
             padding: 5px 0;
             overflow: hidden;
         }
@@ -809,8 +815,8 @@
 
         .filter-btn {
             background: transparent;
-            color: white; /* Texto blanco para contraste */
-            border: 2px solid white; /* Borde blanco para contraste */
+            color: white; /* Texto blanco para contraste con fondo gris oscuro */
+            border: 2px solid white;
             padding: 12px 24px;
             font-size: 1rem;
             font-weight: 500;
@@ -826,8 +832,8 @@
         }
 
         .filter-btn.active {
-            background: white; /* Fondo blanco para botón activo */
-            color: var(--section-bg); /* Texto oscuro para contraste */
+            background: white;
+            color: var(--dark-section-bg); /* Texto oscuro para contraste con fondo blanco */
         }
 
         .skills-container {
@@ -997,11 +1003,11 @@
             font-weight: 500;
         }
 
-        /* SECCIÓN PROYECTOS MEJORADA - COLOR CAMBIADO */
+        /* SECCIÓN PROYECTOS MEJORADA - CON FONDO GRIS OSCURO */
         #projectes {
             position: relative;
             width: 100%;
-            background: var(--section-bg);
+            background: var(--dark-section-bg);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1097,11 +1103,11 @@
             color: white;
         }
 
-        /* SECCIÓN ACTIVIDADES EXTRACURRICULARES - COLOR CAMBIADO */
+        /* SECCIÓN ACTIVIDADES EXTRACURRICULARES - CON FONDO GRIS OSCURO */
         #actividades {
             position: relative;
             width: 100%;
-            background: var(--section-bg);
+            background: var(--dark-section-bg);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1179,9 +1185,9 @@
             line-height: 1.5;
         }
 
-        /* SECCIÓN DE CONTACTO - SIN FONDO DE IMAGEN */
+        /* SECCIÓN DE CONTACTO - CON FONDO GRIS OSCURO */
         #contacte {
-            background: var(--section-bg);
+            background: var(--dark-section-bg);
             position: relative;
             display: flex;
             align-items: center;
@@ -1640,7 +1646,7 @@
         #actividades .section-title,
         #contacte .section-title,
         #formacio .section-title {
-            color: white; /* Títulos en blanco para contraste con fondo oscuro */
+            color: white; /* Títulos en blanco para contraste con fondo gris oscuro */
         }
 
         @media (max-width: 768px) {
@@ -1890,7 +1896,7 @@
                 <a href="#contacte" class="nav-item">Contact</a>
             </div>
 
-            <section id="sobre-mi" class="section">
+            <section id="sobre-mi" class="section dark-section">
               <h2 class="section-title">Professional Profile</h2>
 
               <div class="about-container">
@@ -1901,7 +1907,7 @@
               </div>
             </section>
 
-            <section id="experiencia" class="section">
+            <section id="experiencia" class="section dark-section">
                 <h2 class="section-title" style="padding: 25px;">Experience & Leadership</h2>
                 <div class="experience-container">
                     <!-- Representante de Clase -->
@@ -1981,7 +1987,7 @@
             </section>
 
             <!-- SECCIÓN EDUCATION - NUEVO DISEÑO CON FONDO OSCURO -->
-            <section id="formacio" class="section">
+            <section id="formacio" class="section dark-section">
                 <h2 class="education-title">Education</h2>
                 <div class="education-content">
                     <div class="education-timeline-horizontal">
@@ -2097,7 +2103,7 @@
                 </div>
             </section>
 
-            <section id="habilitats" class="section">
+            <section id="habilitats" class="section dark-section">
                 <h2 class="section-title">Skills</h2>
                 <div class="project-filters">
                     <button class="filter-btn active" data-filter="all">All</button>
@@ -2213,7 +2219,7 @@
                 </div>
             </section>
 
-            <section id="projectes" class="section">
+            <section id="projectes" class="section dark-section">
                 <h2 class="section-title">Technical Projects</h2>
                 <div class="project-filters">
                     <button class="filter-btn active" data-filter="all">All</button>
@@ -2285,7 +2291,7 @@
                 </div>
             </section>
 
-            <section id="actividades" class="section">
+            <section id="actividades" class="section dark-section">
                 <h2 class="section-title">Extracurriculars and Volunteering</h2>
                 <div class="activities-container">
                     <!-- J.P. Morgan Event -->
@@ -2328,7 +2334,7 @@
                 </div>
             </section>
 
-            <section id="contacte" class="section">
+            <section id="contacte" class="section dark-section">
                 <h2 class="section-title">Contact</h2>
                 <div class="contacte-container">
                     <div class="contact-info">
