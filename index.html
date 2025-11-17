@@ -36,7 +36,7 @@
             --subtitulo: #555;
             --hover-color: #e9ecef;
             --dark-section-bg: #2d3436; /* Color gris oscuro para las secciones */
-            --fondo-principio: rgba(255, 255, 255, 0)
+            --dark-section-transparent-bg:  rgba(5, 13, 16, 0.84); /* Fondo gris oscuro translúcido */
         }
 
         .dark-mode {
@@ -55,6 +55,9 @@
             --subtitulo: #bbb;
             --hover-color: #474747;
             --dark-section-bg: #1a1a1a; /* Color más oscuro para modo oscuro */
+            --dark-section-transparent-bg: rgba(26, 26, 26, 0.5)
+;
+
         }
 
         body {
@@ -317,7 +320,14 @@
         .header-nav a:hover::after {
             width: 100%;
         }
-
+        .page-title {
+            color: var(--flotante);
+            text-shadow: none;
+            top: 1000px;                    /* baja desde el centro */
+            transform: translateX(-50%) translateY(-40%); /* menos -50%, baja un poco */
+            font-size: 2.3rem;
+            opacity: 1;
+        }
         .section {
             padding: 0;
             position: relative;
@@ -380,17 +390,19 @@
         }
 
         /* SECCIÓN PROFESSIONAL PROFILE - CON FONDO GRIS OSCURO */
-        #sobre-mi {
-            background: var(--fondo-principio);
+        #header-section {
             position: relative;
+            width: 100%;
+            min-height: 100vh; /* cubre toda la pantalla arriba */
             display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
-          padding-top: 210vh; /* O prova amb 120vh si cal més espai */
-          margin-top: -110vh;
+        }
+
+        #sobre-mi {
+            position: relative;
+            background: var(--dark-section-bg);
         }
 
         .about-container {
@@ -1889,32 +1901,37 @@
             
             
             <!-- CAMBIO: Reemplazar imagen por video -->
-            <div class="new-background" id="newBackground">
-                <video class="background-video" autoplay muted loop>
-                    <source src="por.MOV" type="video/mp4">
-                    Tu navegador no soporta el elemento de video.
-                </video>
-            </div>
+            <section id="header-section" class="header-section">
+                <h1 id="pageTitle" class="page-title">Mariona Guisado</h1>
+                <div class="new-background" id="newBackground">
+                    <video class="background-video" autoplay muted loop>
+                        <source src="por.MOV" type="video/mp4">
+                    </video>
+                </div>
             
-            <div class="nav-menu" id="navMenu">
-                <a href="#sobre-mi" class="nav-item">Professional Profile</a>
-                <a href="#experiencia" class="nav-item">Experience</a>
-                <a href="#formacio" class="nav-item">Education</a>
-                <a href="#habilitats" class="nav-item">Skills</a>
-                <a href="#projectes" class="nav-item">Projects</a>
-                <a href="#actividades" class="nav-item">Extracurriculars and Volunteering</a>
-                <a href="#contacte" class="nav-item">Contact</a>
-            </div>
+                <h1 class="name">Mariona Guisado</h1>
+            
+                <div class="nav-menu" id="navMenu">
+                    <a href="#sobre-mi" class="nav-item">Professional Profile</a>
+                    <a href="#experiencia" class="nav-item">Experience</a>
+                    <a href="#formacio" class="nav-item">Education</a>
+                    <a href="#habilitats" class="nav-item">Skills</a>
+                    <a href="#projectes" class="nav-item">Projects</a>
+                    <a href="#actividades" class="nav-item">Extracurriculars and Volunteering</a>
+                    <a href="#contacte" class="nav-item">Contact</a>
+                </div>
+            </section>
 
             <section id="sobre-mi" class="section dark-section">
-              <h2 class="section-title">Professional Profile</h2>
+                <h2 class="section-title">Professional Profile</h2>
 
-              <div class="about-container">
-                <!-- TEXTO CENTRO -->
-                <div class="about-text-container">
-                  <p id="typed-text" class="typed-text">Aquí va tu texto profesional — reemplázalo por tu contenido real.</p>
+                <div class="about-container">
+                    <div class="about-text-container">
+                        <p id="typed-text" class="typed-text">
+                            Aquí va tu texto profesional.
+                        </p>
+                    </div>
                 </div>
-              </div>
             </section>
 
             <section id="experiencia" class="section dark-section">
@@ -2049,7 +2066,11 @@
                                             <div class="detail-content-horizontal">
                                                 <div class="detail-title-horizontal">Achievements</div>
                                                 <div class="detail-text-horizontal">Selected to participate in the "TXT Debate" league</div>
+                                            </div>
+                                        </div>
+                                        <div class="education-detail-item-horizontal">
                                             <div class="detail-icon-horizontal">🏆</div>
+                                            <div class="detail-content-horizontal">
                                                 <div class="detail-title-horizontal">TR Grade</div>
                                                 <div class="detail-text-horizontal">10/10" league</div>
                                             
@@ -2500,6 +2521,7 @@
                 name.style.textShadow = 'none';
                 name.style.top = '10%';
                 name.style.fontSize = '3rem';
+                name.style.opacity = '1';
             }, 500);
             
             // 4. Show main content when transition ends
@@ -2522,9 +2544,12 @@
                 }, 100);
                 
                 // Hide initial background
+                name.style.opacity = '0';
                 background.style.opacity = '0';
                 darkModeToggle.style.opacity = '1';
-
+                document.querySelectorAll(".name").forEach(el => {
+                    el.style.display = "none";
+                });
             }, 1000);
         });
 
@@ -2611,7 +2636,6 @@
         // Dark mode toggle functionality
         const darkModeToggle = document.getElementById('darkModeToggle');
         darkModeToggle.addEventListener('click', function() {
-            document.getElementById('name').style.color = 'var(--flotante)'; // Ensure name text remains visible in dark mode
             document.body.classList.toggle('dark-mode');
             darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
         });
