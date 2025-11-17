@@ -322,9 +322,8 @@
         }
         .page-title {
             color: var(--flotante);
-            text-shadow: none;
-            top: 1000px;                    /* baja desde el centro */
-            transform: translateX(-50%) translateY(-40%); /* menos -50%, baja un poco */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transform: translateY(50%);
             font-size: 2.3rem;
             opacity: 1;
         }
@@ -1139,7 +1138,7 @@
 
         .activities-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             gap: 25px;
             width: 90%;
             max-width: 1200px;
