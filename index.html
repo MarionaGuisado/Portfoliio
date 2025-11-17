@@ -27,6 +27,7 @@
             --subtitulo: #555;
             --hover-color: #e9ecef;
             --dark-section-bg: #2d3436; /* Color gris oscuro para las secciones */
+            --fondo-principio: rgba(255, 255, 255, 0)
         }
 
         .dark-mode {
@@ -371,7 +372,7 @@
 
         /* SECCIÓN PROFESSIONAL PROFILE - CON FONDO GRIS OSCURO */
         #sobre-mi {
-            background: var(--dark-section-bg);
+            background: var(--fondo-principio);
             position: relative;
             display: flex;
             align-items: center;
@@ -2490,7 +2491,6 @@
                 name.style.textShadow = 'none';
                 name.style.top = '10%';
                 name.style.fontSize = '3rem';
-                name.style.opacity = '0.5';
             }, 500);
             
             // 4. Show main content when transition ends
