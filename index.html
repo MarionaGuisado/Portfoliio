@@ -56,7 +56,6 @@
             --hover-color: #474747;
             --dark-section-bg: #1a1a1a; /* Color más oscuro para modo oscuro */
             --dark-section-transparent-bg: rgba(26, 26, 26, 0.5)
-;
 
         }
 
@@ -1216,7 +1215,7 @@
             backface-visibility: hidden;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
-            padding: 5px 0;
+            padding: 40px 0; /* Aumentado de 5px a 40px para más margen gris */
             margin-bottom: 0;
         }
 
@@ -1230,6 +1229,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             border-radius: var(--border-radius);
+            margin: 20px 0; /* Añadido margen superior e inferior */
         }
 
         .contact-info {
@@ -1402,8 +1402,6 @@
             font-family: 'Playfair Display', serif;
             font-weight: 600;
             line-height: 1.2;
-            text-shadow: none; /* Eliminada la sombra */
-            margin-top: 20px; /* Añadido para mejor posicionamiento */
         }
 
         .social-media-subtitle {
@@ -1821,6 +1819,7 @@
                 grid-template-columns: 1fr;
                 gap: 25px;
                 padding: 25px;
+                margin: 15px 0; /* Ajuste para móvil */
             }
 
             .contact-info {
