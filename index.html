@@ -575,7 +575,7 @@
             transition: all 0.3s ease;
             margin-bottom: 12px;
         }
-
+        
         .tutor-bubble-content::after {
             content: '';
             position: absolute;
@@ -585,13 +585,13 @@
             border: 10px solid transparent;
             border-top-color: white;
         }
-
+/*
         .tutor-bubble:hover .tutor-bubble-content {
             opacity: 1;
             visibility: visible;
             bottom: calc(100% + 8px);
         }
-
+*/
         .bubble-text {
             font-size: 0.9rem;
             line-height: 1.5;
@@ -2679,6 +2679,51 @@
             section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(section);
         });
+
+        // Toggle functionality for testimonials bubbles
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.tutor-bubble').forEach(bubble => {
+                const trigger = bubble.querySelector('.tutor-bubble-trigger');
+                const content = bubble.querySelector('.tutor-bubble-content');
+                
+                // Inicialment amagat
+                content.style.opacity = '0';
+                content.style.visibility = 'hidden';
+                content.style.bottom = '100%';
+                
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Toggle visibility
+                    const isVisible = content.style.opacity === '1';
+                    
+                    if (isVisible) {
+                        // Amagar
+                        content.style.opacity = '0';
+                        content.style.visibility = 'hidden';
+                        content.style.bottom = '100%';
+                    } else {
+                        // Mostrar
+                        content.style.opacity = '1';
+                        content.style.visibility = 'visible';
+                        content.style.bottom = 'calc(100% + 8px)';
+                    }
+                });
+            });
+            
+            // Tancar quan es fa clic fora
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.tutor-bubble')) {
+                    document.querySelectorAll('.tutor-bubble-content').forEach(content => {
+                        content.style.opacity = '0';
+                        content.style.visibility = 'hidden';
+                        content.style.bottom = '100%';
+                    });
+                }
+            });
+        });
+        
     </script>
 </body>
 </html>
