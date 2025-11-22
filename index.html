@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXEQ8BRWKN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-PXEQ8BRWKN');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mariona Guisado | Portfolio</title>
+    <title>Mariona Guisado</title>
+    <link rel="preload" href="sobre-mi-bg.jpg" as="image">
+    <link rel="preload" href="contacte-bg.jpg" as="image">
+    <!-- Preload de imágenes críticas -->
+    <link rel="preload" href="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" as="image">
+    <link rel="preload" href="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" as="image">
+    <link rel="preload" href="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" as="image">
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Estilos CSS actualizados */
         :root {
             --primary-color: #6a11cb;
             --titulos: #000;
@@ -26,9 +43,8 @@
             --hover-color: #e9ecef;
             --dark-section-bg: #2d3436;
             --dark-section-transparent-bg:  rgba(5, 13, 16, 0.84);
-            --glow-primary: 0 0 15px rgba(106, 17, 203, 0.5);
-            --glow-secondary: 0 0 15px rgba(255, 107, 107, 0.5);
-            --glow-accent: 0 0 15px rgba(255, 217, 61, 0.5);
+            --success-color: #28a745;
+            --error-color: #dc3545;
         }
 
         .dark-mode {
@@ -48,22 +64,15 @@
             --hover-color: #474747;
             --dark-section-bg: #1a1a1a;
             --dark-section-transparent-bg: rgba(26, 26, 26, 0.5);
-            --glow-primary: 0 0 20px rgba(138, 43, 226, 0.6);
-            --glow-secondary: 0 0 20px rgba(255, 135, 135, 0.6);
-            --glow-accent: 0 0 20px rgba(255, 224, 102, 0.6);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+            --success-color: #20c997;
+            --error-color: #ff6b6b;
         }
 
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
-            overflow-x: hidden;
+            overflow: hidden;
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -88,7 +97,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            background-image: url('foto.jpg');
             background-size: cover;
             z-index: 1;
         }
@@ -109,7 +118,6 @@
             background-color: transparent !important;
             padding: 0;
             font-family: 'Playfair Display', serif;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
         .name.hidden {
@@ -120,6 +128,10 @@
 
         .name.visible {
             opacity: 1;
+        }
+
+        .name.completely-hidden {
+            display: none !important;
         }
 
         .enter-button {
@@ -140,13 +152,11 @@
             font-family: 'Playfair Display', serif;
             font-weight: 500;
             letter-spacing: 0.5px;
-            backdrop-filter: blur(5px);
         }
 
         .enter-button:hover {
             background-color: rgba(255, 255, 255, 0.2);
             transform: translateX(-50%) scale(1.05);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         }
 
         .enter-button.hidden {
@@ -234,24 +244,6 @@
             font-weight: 500;
             font-family: 'Playfair Display', serif;
             letter-spacing: 0.5px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-item::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: var(--primary-color);
-            transition: left 0.3s ease;
-        }
-
-        .nav-item:hover::after,
-        .nav-item.active::after {
-            left: 0;
         }
 
         .nav-item:hover {
@@ -259,11 +251,7 @@
             transform: scale(1.05);
         }
 
-        .nav-item.active {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
+        /* HEADER FIJO CON MENÚ HAMBURGUESA */
         .header {
             position: fixed;
             top: 0;
@@ -337,29 +325,47 @@
             transition: var(--transition);
         }
 
-        .header-nav a:hover::after,
-        .header-nav a.active::after {
+        .header-nav a:hover::after {
             width: 100%;
         }
 
-        .header-nav a.active {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        /* Menú hamburguesa para móviles */
+        /* MENÚ HAMBURGUESA PARA MÓVIL */
         .mobile-menu-toggle {
             display: none;
-            background: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
             border: none;
-            font-size: 1.5rem;
-            color: var(--dark-color);
             cursor: pointer;
+            padding: 0;
             z-index: 1001;
         }
 
-        .dark-mode .mobile-menu-toggle {
-            color: var(--text-color);
+        .mobile-menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--dark-color);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .dark-mode .mobile-menu-toggle span {
+            background-color: var(--text-color);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
         }
 
         .mobile-menu {
@@ -367,12 +373,13 @@
             top: 0;
             right: -100%;
             width: 80%;
-            height: 100%;
+            max-width: 300px;
+            height: 100vh;
             background-color: var(--card-bg);
-            z-index: 1000;
-            transition: right 0.4s ease;
-            padding: 80px 20px 20px;
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            padding: 80px 20px 20px;
             overflow-y: auto;
         }
 
@@ -388,22 +395,34 @@
 
         .mobile-nav a {
             text-decoration: none;
-            color: var(--dark-color);
+            color: var(--text-color);
             font-size: 1.2rem;
+            font-weight: 500;
             padding: 10px 0;
             border-bottom: 1px solid var(--light-color);
             transition: var(--transition);
         }
 
-        .dark-mode .mobile-nav a {
-            color: var(--text-color);
-            border-bottom: 1px solid var(--light-color);
+        .mobile-nav a:hover {
+            color: var(--primary-color);
         }
 
-        .mobile-nav a:hover,
-        .mobile-nav a.active {
-            color: var(--primary-color);
-            padding-left: 10px;
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         .page-title {
@@ -422,14 +441,6 @@
             flex-direction: column;
             justify-content: flex-start;
             margin-bottom: 10px; 
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .dark-section {
@@ -481,7 +492,6 @@
 
         .dark-mode-toggle:hover {
             transform: scale(1.1);
-            box-shadow: var(--glow-primary);
         }
 
         /* SECCIÓN PROFESSIONAL PROFILE */
@@ -501,21 +511,21 @@
         }
 
         .about-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 5px;
-            width: 100%;
-            box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 5px;
+          width: 100%;
+          box-sizing: border-box;
         }
 
         .about-text-container {
-            flex: 1;
-            background-color: transparent;
-            box-shadow: none;
-            padding: 0 40px;
-            text-align: justify;
-            max-width: 100%;
+          flex: 1;
+          background-color: transparent;
+          box-shadow: none;
+          padding: 0 40px;
+          text-align: justify;
+          max-width: 100%;
         }
 
         .typed-text, .personal-text {
@@ -562,13 +572,6 @@
             position: relative;
             overflow: visible;
             border-radius: var(--border-radius);
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .experience-card.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .experience-card::before {
@@ -583,7 +586,7 @@
 
         .experience-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), var(--glow-primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .experience-icon {
@@ -597,12 +600,6 @@
             font-size: 1.5rem;
             box-shadow: 0 5px 15px rgba(255, 217, 61, 0.3);
             border-radius: 50%;
-            transition: var(--transition);
-        }
-
-        .experience-card:hover .experience-icon {
-            transform: scale(1.1);
-            box-shadow: var(--glow-accent);
         }
 
         .experience-role {
@@ -638,7 +635,6 @@
 
         .experience-detail:hover {
             transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* BAFARADA */
@@ -665,7 +661,6 @@
         .tutor-bubble-trigger:hover {
             background: #5a0db0;
             transform: scale(1.05);
-            box-shadow: var(--glow-primary);
         }
 
         .tutor-bubble-content {
@@ -685,7 +680,7 @@
             transition: all 0.3s ease;
             margin-bottom: 12px;
         }
-        
+
         .tutor-bubble-content::after {
             content: '';
             position: absolute;
@@ -695,7 +690,7 @@
             border: 10px solid transparent;
             border-top-color: white;
         }
-        
+
         .bubble-text {
             font-size: 0.9rem;
             line-height: 1.5;
@@ -779,14 +774,6 @@
             position: relative;
             width: 30%;
             min-height: 380px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .education-item-horizontal.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .timeline-point-horizontal {
@@ -799,12 +786,6 @@
             box-shadow: 0 0 0 4px var(--primary-color);
             z-index: 3;
             position: relative;
-            transition: var(--transition);
-        }
-
-        .education-item-horizontal:hover .timeline-point-horizontal {
-            transform: scale(1.2);
-            box-shadow: var(--glow-primary);
         }
 
         .education-card-horizontal {
@@ -833,7 +814,7 @@
 
         .education-card-horizontal:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), var(--glow-primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .education-icon-horizontal {
@@ -849,12 +830,6 @@
             box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
             margin: 0 auto 12px;
             opacity: 0;
-            transition: var(--transition);
-        }
-
-        .education-card-horizontal:hover .education-icon-horizontal {
-            transform: scale(1.1);
-            box-shadow: var(--glow-primary);
         }
 
         .education-header-horizontal {
@@ -892,12 +867,6 @@
             font-size: 0.85rem;
             font-weight: 500;
             margin-bottom: 10px;
-            transition: var(--transition);
-        }
-
-        .education-card-horizontal:hover .education-date-horizontal {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .education-details-horizontal {
@@ -909,11 +878,6 @@
             align-items: flex-start;
             margin-bottom: 10px;
             text-align: left;
-            transition: var(--transition);
-        }
-
-        .education-detail-item-horizontal:hover {
-            transform: translateX(5px);
         }
 
         .detail-icon-horizontal {
@@ -928,12 +892,6 @@
             flex-shrink: 0;
             color: var(--primary-color);
             font-size: 0.75rem;
-            transition: var(--transition);
-        }
-
-        .education-detail-item-horizontal:hover .detail-icon-horizontal {
-            transform: scale(1.2);
-            box-shadow: 0 0 10px rgba(106, 17, 203, 0.3);
         }
 
         .detail-content-horizontal {
@@ -985,31 +943,11 @@
             transition: var(--transition);
             border-radius: 25px;
             font-family: 'Inter', sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .filter-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: white;
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
-
-        .filter-btn:hover::before,
-        .filter-btn.active::before {
-            left: 0;
         }
 
         .filter-btn:hover {
             background: rgba(255, 255, 255, 0.1);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
 
         .filter-btn.active {
@@ -1035,13 +973,6 @@
             position: relative;
             overflow: hidden;
             border-radius: var(--border-radius);
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .skill-category.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .skill-category::before {
@@ -1056,7 +987,7 @@
 
         .skill-category:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), var(--glow-primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .skill-header {
@@ -1077,12 +1008,6 @@
             font-size: 1.5rem;
             box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
             border-radius: 50%;
-            transition: var(--transition);
-        }
-
-        .skill-category:hover .skill-icon {
-            transform: scale(1.1);
-            box-shadow: var(--glow-primary);
         }
 
         .skill-title {
@@ -1137,24 +1062,6 @@
             transition: width 1.5s ease-in-out;
             width: 0;
             border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-progress::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            animation: shine 2s infinite;
-        }
-
-        @keyframes shine {
-            0% { left: -100%; }
-            100% { left: 100%; }
         }
 
         .languages-grid {
@@ -1175,7 +1082,6 @@
         .language-item:hover {
             background: var(--hover-color);
             transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .language-name {
@@ -1208,7 +1114,6 @@
         .soft-skill-item:hover {
             background: var(--hover-color);
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .soft-skill-name {
@@ -1248,18 +1153,11 @@
             border-radius: var(--border-radius);
             display: flex;
             flex-direction: column;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .project-card.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1), var(--glow-primary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
         .project-image {
@@ -1322,8 +1220,6 @@
         .tech-tag:hover {
             background: var(--primary-color);
             color: white;
-            transform: scale(1.05);
-            box-shadow: 0 0 10px rgba(106, 17, 203, 0.3);
         }
 
         /* SECCIÓN ACTIVIDADES EXTRACURRICULARES */
@@ -1356,13 +1252,6 @@
             position: relative;
             overflow: hidden;
             border-radius: var(--border-radius);
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .activity-card.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .activity-card::before {
@@ -1377,7 +1266,7 @@
 
         .activity-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), var(--glow-primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .activity-icon {
@@ -1392,12 +1281,6 @@
             font-size: 1.5rem;
             box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
             border-radius: 50%;
-            transition: var(--transition);
-        }
-
-        .activity-card:hover .activity-icon {
-            transform: scale(1.1);
-            box-shadow: var(--glow-primary);
         }
 
         .activity-title {
@@ -1421,7 +1304,7 @@
             line-height: 1.5;
         }
 
-        /* SECCIÓN DE CONTACTO */
+        /* SECCIÓN DE CONTACTO MEJORADA */
         #contacte {
             background: var(--dark-section-bg);
             position: relative;
@@ -1489,7 +1372,6 @@
         .contact-item:hover {
             background: #e9ecef;
             transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .contact-icon {
@@ -1502,12 +1384,6 @@
             color: white;
             font-size: 1.2rem;
             border-radius: 50%;
-            transition: var(--transition);
-        }
-
-        .contact-item:hover .contact-icon {
-            transform: scale(1.1);
-            box-shadow: var(--glow-primary);
         }
 
         .contact-text {
@@ -1557,7 +1433,6 @@
             color: var(--primary-color);
             font-size: 1rem;
             font-weight: 500;
-            transition: var(--transition);
         }
 
         .form-control {
@@ -1576,6 +1451,31 @@
             outline: none;
             border-color: var(--secondary-color);
             box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+        }
+
+        .form-control.success {
+            border-color: var(--success-color);
+        }
+
+        .form-control.error {
+            border-color: var(--error-color);
+        }
+
+        .form-feedback {
+            font-size: 0.85rem;
+            margin-top: 5px;
+            padding-left: 5px;
+            display: none;
+        }
+
+        .form-feedback.success {
+            color: var(--success-color);
+            display: block;
+        }
+
+        .form-feedback.error {
+            color: var(--error-color);
+            display: block;
         }
 
         textarea.form-control {
@@ -1599,54 +1499,58 @@
             overflow: hidden;
         }
 
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .submit-btn:hover::before {
-            left: 100%;
-        }
-
         .submit-btn:hover {
             background-color: #5a0db0;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), var(--glow-primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .submit-btn:disabled {
-            background-color: #cccccc;
+            background-color: #ccc;
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
 
-        .form-feedback {
-            padding: 10px;
+        .submit-btn.loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid transparent;
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .form-message {
+            padding: 12px;
             border-radius: var(--border-radius);
-            margin-top: 10px;
+            margin-top: 15px;
             text-align: center;
             font-weight: 500;
             display: none;
         }
 
-        .form-feedback.success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+        .form-message.success {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: var(--success-color);
+            border: 1px solid var(--success-color);
             display: block;
         }
 
-        .form-feedback.error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+        .form-message.error {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: var(--error-color);
+            border: 1px solid var(--error-color);
             display: block;
         }
 
@@ -1722,7 +1626,6 @@
         .social-icon:hover .social-icon-circle {
             background-color: #7C3AED;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4);
         }
 
         .social-name {
@@ -1754,7 +1657,6 @@
         .download-cv-btn:hover {
             background-color: #8B5CF6;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
         }
 
         /* FOOTER */
@@ -1835,7 +1737,6 @@
         .social-link:hover {
             background-color: #7C3AED;
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4);
         }
 
         .footer-links {
@@ -1893,7 +1794,6 @@
         .download-btn:hover {
             background-color: #8B5CF6;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
         }
 
         .footer-bottom {
@@ -1932,7 +1832,6 @@
         .back-to-top:hover {
             background-color: #5a0db0;
             transform: translateY(-5px);
-            box-shadow: var(--glow-primary);
         }
 
         /* TÍTULOS EN BLANCO PARA SECCIONES OSCURAS */
@@ -1946,50 +1845,7 @@
             color: white;
         }
 
-        /* Preloader para imágenes */
-        .image-preloader {
-            position: absolute;
-            width: 0;
-            height: 0;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        /* Animaciones de entrada */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Media queries para responsividad */
+        /* MEDIA QUERIES */
         @media (max-width: 768px) {
             .name {
                 font-size: 3rem;
@@ -2022,7 +1878,7 @@
             }
 
             .mobile-menu-toggle {
-                display: block;
+                display: flex;
             }
 
             .section-title {
@@ -2192,27 +2048,60 @@
                 height: 45px;
             }
         }
+
+        @media (max-width: 480px) {
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .enter-button {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .nav-menu {
+                left: 5%;
+                padding: 10px 15px;
+            }
+            
+            .nav-item {
+                font-size: 0.9rem;
+                width: 140px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .education-title {
+                font-size: 2rem;
+            }
+            
+            .contacte-container {
+                padding: 20px;
+            }
+            
+            .contact-title {
+                font-size: 1.8rem;
+            }
+            
+            .social-media-title {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Preloader para imágenes críticas -->
-    <div class="image-preloader">
-        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Preload">
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Preload">
-        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Preload">
-    </div>
-
     <div class="container">
         <div class="background" id="background"></div>
         <div class="name visible" id="name">Mariona Guisado</div>
         <a href="#" class="enter-button" id="enterButton">Enter</a>
         <div class="transition" id="transition"></div>
         
-        <!-- HEADER FIJO -->
+        <!-- HEADER FIJO CON MENÚ HAMBURGUESA -->
         <header class="header" id="header">
             <div class="header-content">
-                <a href="#" class="logo">
-                </a>
+                <a href="#" class="logo"></a>
                 <nav class="header-nav">
                     <a href="#sobre-mi">Profile</a>
                     <a href="#experiencia">Experience</a>
@@ -2222,13 +2111,17 @@
                     <a href="#actividades">Activities</a>
                     <a href="#contacte">Contact</a>
                 </nav>
+                <!-- Botón menú hamburguesa -->
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <i class="fas fa-bars"></i>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
             </div>
         </header>
-
+        
         <!-- Menú móvil -->
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
         <div class="mobile-menu" id="mobileMenu">
             <nav class="mobile-nav">
                 <a href="#sobre-mi">Profile</a>
@@ -2240,17 +2133,17 @@
                 <a href="#contacte">Contact</a>
             </nav>
         </div>
-
+        
         <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
         <div class="main-content" id="mainContent">
             
-            <!-- SECCIÓN HEADER -->
+            <!-- CAMBIO: Reemplazar imagen por video -->
             <section id="header-section" class="header-section">
                 <h1 id="pageTitle" class="page-title">Mariona Guisado</h1>
                 <div class="new-background" id="newBackground">
-                    <div class="background-video" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
-                        Video Background Placeholder
-                    </div>
+                    <video class="background-video" autoplay muted loop>
+                        <source src="por.MOV" type="video/mp4">
+                    </video>
                 </div>
             
                 <h1 class="name">Mariona Guisado</h1>
@@ -2266,7 +2159,6 @@
                 </div>
             </section>
 
-            <!-- SECCIÓN SOBRE MÍ -->
             <section id="sobre-mi" class="section dark-section">
                 <h2 class="section-title">Professional Profile</h2>
 
@@ -2278,7 +2170,6 @@
                 </div>
             </section>
 
-            <!-- SECCIÓN EXPERIENCIA -->
             <section id="experiencia" class="section dark-section">
                 <h2 class="section-title" style="padding: 25px;">Experience & Leadership</h2>
                 <div class="experience-container">
@@ -2305,7 +2196,7 @@
                             <div class="experience-detail">Personalized teaching methodologies</div>
                         </div>
                         
-                        <!-- Burbuja para testimonios -->
+                        <!-- Bafarada para Student Testimonials -->
                         <div class="tutor-bubble">
                             <div class="tutor-bubble-trigger">
                                 <i class="fas fa-comment-alt"></i> Student Testimonials
@@ -2319,7 +2210,7 @@
                         </div>
                     </div>
 
-                    <!-- Miembro del equipo de eventos sociales -->
+                    <!-- Member of the Social Events Team -->
                     <div class="experience-card">
                         <div class="experience-icon">🤝</div>
                         <h3 class="experience-role">Member of the Social Events Team</h3>
@@ -2330,7 +2221,7 @@
                         </div>
                     </div>
 
-                    <!-- Organizadora de eventos -->
+                    <!-- Event Organizer | "THE DRIVE TO DEVELOP" Conference -->
                     <div class="experience-card">
                         <div class="experience-icon">🎤</div>
                         <h3 class="experience-role">Event Organizer | "THE DRIVE TO DEVELOP" Conference with JetBrains</h3>
@@ -2356,7 +2247,7 @@
                 </div>
             </section>
 
-            <!-- SECCIÓN EDUCACIÓN -->
+            <!-- SECCIÓN EDUCATION - NUEVO DISEÑO CON FONDO OSCURO -->
             <section id="formacio" class="section dark-section">
                 <h2 class="education-title">Education</h2>
                 <div class="education-content">
@@ -2416,6 +2307,7 @@
                                             <div class="detail-content-horizontal">
                                                 <div class="detail-title-horizontal">TR Grade</div>
                                                 <div class="detail-text-horizontal">10/10</div>
+                                            
                                             </div>
                                         </div>
                                         <div class="education-detail-item-horizontal">
@@ -2429,7 +2321,7 @@
                                 </div>
                             </div>
 
-                            <!-- CERTIFICACIONES -->
+                            <!-- CERTIFICACIONES - Ahora incluye Taekwondo, Advanced English, Gallop 3 y Blue Belt -->
                             <div class="education-item-horizontal">
                                 <div class="timeline-point-horizontal"></div>
                                 <div class="education-card-horizontal">
@@ -2466,6 +2358,7 @@
                                                 <div class="detail-text-horizontal">Equestrian certification (2019)</div>
                                             </div>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -2474,7 +2367,6 @@
                 </div>
             </section>
 
-            <!-- SECCIÓN HABILIDADES -->
             <section id="habilitats" class="section dark-section">
                 <h2 class="section-title">Skills</h2>
                 <div class="project-filters">
@@ -2484,7 +2376,7 @@
                     <button class="filter-btn" data-filter="soft">Soft Skills</button>
                 </div>
                 <div class="skills-container">
-                    <!-- Habilidades técnicas -->
+                    <!-- Hard Skills -->
                     <div class="skill-category" data-category="technical">
                         <div class="skill-header">
                             <div class="skill-icon">💻</div>
@@ -2539,7 +2431,7 @@
                         </div>
                     </div>
 
-                    <!-- Idiomas -->
+                    <!-- Languages -->
                     <div class="skill-category" data-category="languages">
                         <div class="skill-header">
                             <div class="skill-icon">🌐</div>
@@ -2561,7 +2453,7 @@
                         </div>
                     </div>
 
-                    <!-- Habilidades blandas -->
+                    <!-- Soft Skills -->
                     <div class="skill-category" data-category="soft">
                         <div class="skill-header">
                             <div class="skill-icon">🤝</div>
@@ -2591,7 +2483,6 @@
                 </div>
             </section>
 
-            <!-- SECCIÓN PROYECTOS -->
             <section id="projectes" class="section dark-section">
                 <h2 class="section-title">Technical Projects</h2>
                 <div class="project-filters">
@@ -2600,7 +2491,7 @@
                     <button class="filter-btn" data-filter="data">Data Projects</button>
                 </div>
                 <div class="projects-container">
-                    <!-- Desarrollo web - Empresa de Mármoles -->
+                    <!-- Web Development - Empresa de Mármoles -->
                     <div class="project-card" data-category="web">
                         <div class="project-image">
                             <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Marbres Genevat Website">
@@ -2615,7 +2506,7 @@
                                 <span class="tech-tag">UI/UX</span>
                             </div>
                             
-                            <!-- Burbuja para testimonios de negocios -->
+                            <!-- Bafarada para Business Testimonials -->
                             <div class="tutor-bubble">
                                 <div class="tutor-bubble-trigger">
                                     <i class="fas fa-comment-alt"></i> Business Testimonials
@@ -2628,7 +2519,7 @@
                         </div>
                     </div>
 
-                    <!-- Portfolio Personal -->
+                    <!-- Portfolio Personal - AHORA EN WEB DEVELOPMENT -->
                     <div class="project-card" data-category="web">
                         <div class="project-image">
                             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Personal Portfolio Website">
@@ -2645,7 +2536,7 @@
                         </div>
                     </div>
 
-                    <!-- Motor de recomendación de películas -->
+                    <!-- Movie Recommendation Engine -->
                     <div class="project-card" data-category="data">
                         <div class="project-image">
                             <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Movie Recommendation Engine">
@@ -2664,11 +2555,10 @@
                 </div>
             </section>
 
-            <!-- SECCIÓN ACTIVIDADES -->
             <section id="actividades" class="section dark-section">
                 <h2 class="section-title">Extracurriculars and Volunteering</h2>
                 <div class="activities-container">
-                    <!-- Evento J.P. Morgan -->
+                    <!-- J.P. Morgan Event -->
                     <div class="activity-card">
                         <div class="activity-icon">🏦</div>
                         <h3 class="activity-title">"Insight into Markets" Event</h3>
@@ -2676,7 +2566,7 @@
                         <p class="activity-description">Participated in an exclusive financial markets event, gaining insights into investment banking, market analysis, and trading strategies from industry professionals.</p>
                     </div>
 
-                    <!-- Evento UBS Zurich -->
+                    <!-- UBS Zurich Event -->
                     <div class="activity-card">
                         <div class="activity-icon">📈</div>
                         <h3 class="activity-title">Trading Event</h3>
@@ -2704,82 +2594,46 @@
                             <li>3rd place in the Sant Antoni de Calonge Running Race</li>
                         </ul>
                     </div>
+
                 </div>
             </section>
 
-            <!-- SECCIÓN CONTACTO -->
             <section id="contacte" class="section dark-section">
                 <h2 class="section-title">Contact</h2>
                 <div class="contacte-container">
                     <div class="contact-info">
                         <h2 class="contact-title">Get In Touch</h2>
                         <p class="contact-subtitle">I'm always open to discussing new opportunities, projects, or just having a chat about technology and data engineering.</p>
-                        <div class="contact-details">
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <div class="contact-label">Email</div>
-                                    <div class="contact-value">mariona.guisado@example.com</div>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-phone"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <div class="contact-label">Phone</div>
-                                    <div class="contact-value">+34 123 456 789</div>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <div class="contact-label">Location</div>
-                                    <div class="contact-value">Barcelona, Spain</div>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fab fa-linkedin"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <div class="contact-label">LinkedIn</div>
-                                    <div class="contact-value">
-                                        <a href="https://www.linkedin.com/in/mariona-guisado-parras-30a984294/" class="linkedin-link" target="_blank">mariona-guisado</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     
                     <form class="contacte-form" id="contactForm">
                         <h3 style="color: var(--primary-color); margin-bottom: 15px; font-weight: 500;">Send me a message</h3>
+                        
                         <div class="form-group">
                             <label for="contact-name">Name</label>
                             <input type="text" id="contact-name" class="form-control" required>
+                            <div class="form-feedback" id="name-feedback"></div>
                         </div>
                         
                         <div class="form-group">
                             <label for="contact-email">Email</label>
                             <input type="email" id="contact-email" class="form-control" required>
+                            <div class="form-feedback" id="email-feedback"></div>
                         </div>
                         
                         <div class="form-group">
                             <label for="contact-message">Message</label>
                             <textarea id="contact-message" class="form-control" required></textarea>
+                            <div class="form-feedback" id="message-feedback"></div>
                         </div>
                         
-                        <button type="submit" class="submit-btn">Send Message</button>
-                        <div class="form-feedback" id="formFeedback"></div>
+                        <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
+                        <div class="form-message" id="formMessage"></div>
                     </form>
                 </div>
             </section>
 
-            <!-- SECCIÓN REDES SOCIALES -->
+            <!-- NUEVA SECCIÓN DE REDES SOCIALES -->
             <section id="social-media" class="section">
                 <div class="social-media-container">
                     <h2 class="social-media-title">Mariona Guisado</h2>
@@ -2799,142 +2653,85 @@
                             </div>
                             <span class="social-name">Instagram</span>
                         </a>
-                        <a href="mailto:mariona.guisado@example.com" class="social-icon" target="_blank">
+                        <a href="https://mail.google.com/mail/u/0/#inbox?compose=DXDwSWwznjHbSSkqBbhPJwMgLDRmJsnhXLHKwjNwknvdfpwkGzSLNjXzVKXfTvcqTQNdnZBMlGSdKfPGrdNhvJgGDBSDHwNskwQWXzGpQJklNhBFnWvvfknV" class="social-icon" target="_blank">
                             <div class="social-icon-circle">
-                                <i class="fas fa-envelope"></i>
+                                <i class="fas fa-mail-bulk"></i>
                             </div>
-                            <span class="social-name">Email</span>
+                            <span class="social-name">Gmail</span>
                         </a>
                     </div>
                     
-                    <a href="#" class="download-cv-btn" download>
+                    <a href="CV_Mariona_Guisado_Parras.pdf" class="download-cv-btn" download>
                         <i class="fas fa-download"></i> Download CV
                     </a>
 
                     <div class="footer-bottom" style="margin-top: 40px;">
-                        <p>&copy; <span id="currentYear">2023</span> Mariona Guisado. All rights reserved.</p>
+                        <p>&copy; 2023 Mariona Guisado. All rights reserved.</p>
                     </div>
-                </div>
             </section>
         </div>
     </div>
 
-    <!-- BOTÓN VOLVER ARRIBA -->
+   <!-- BOTÓN VOLVER ARRIBA -->
     <div class="back-to-top" id="backToTop">
         <i class="fas fa-chevron-up"></i>
     </div>
 
     <script>
-        // Variables globales
-        let lastScrollPosition = 0;
-        let ticking = false;
+        // Global variables
+        let lastScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        let scrollTimeout;
         const nameElement = document.getElementById('name');
         const enterButton = document.getElementById('enterButton');
         const backToTopButton = document.getElementById('backToTop');
         const header = document.getElementById('header');
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
-        const currentYearElement = document.getElementById('currentYear');
-        
-        // Inicialización cuando el DOM está listo
-        document.addEventListener('DOMContentLoaded', function() {
-            // Establecer año actual en el footer
-            if (currentYearElement) {
-                currentYearElement.textContent = new Date().getFullYear();
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+
+        // Scroll handler function
+        function handleScroll() {
+            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+            const sobreMiSection = document.getElementById('sobre-mi');
+            const sobreMiOffset = sobreMiSection.offsetTop;
+
+            if (currentScrollPosition > sobreMiOffset - 200) {
+            nameElement.style.display = 'none';
+            } else {
+            nameElement.style.display = 'block';
             }
+                     
             
-            // Inicializar observadores de intersección
-            initIntersectionObservers();
+            lastScrollPosition = currentScrollPosition;
             
-            // Inicializar eventos
-            initEventListeners();
-            
-            // Precargar imágenes críticas
-            preloadCriticalImages();
+            // Show/hide back to top button
+            if (currentScrollPosition > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+
+            // Header scroll effect
+            if (currentScrollPosition > 400) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+
+        // Initialize scroll event listener
+        window.addEventListener('scroll', handleScroll);
+
+        // Back to top functionality
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
 
-        // Función para inicializar observadores de intersección
-        function initIntersectionObservers() {
-            const sectionObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        
-                        // Observar elementos dentro de la sección
-                        observeSectionElements(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            // Observar todas las secciones
-            document.querySelectorAll('.section').forEach(section => {
-                sectionObserver.observe(section);
-            });
-
-            // Observador para elementos con animación individual
-            const elementObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.2 });
-
-            // Observar elementos individuales
-            document.querySelectorAll('.experience-card, .education-item-horizontal, .skill-category, .project-card, .activity-card').forEach(element => {
-                elementObserver.observe(element);
-            });
-        }
-
-        // Función para observar elementos dentro de una sección
-        function observeSectionElements(section) {
-            const elements = section.querySelectorAll('.experience-card, .education-item-horizontal, .skill-category, .project-card, .activity-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.2 });
-            
-            elements.forEach(element => {
-                observer.observe(element);
-            });
-        }
-
-        // Función para inicializar event listeners
-        function initEventListeners() {
-            // Botón Enter
-            enterButton.addEventListener('click', handleEnterClick);
-            
-            // Navegación suave
-            initSmoothNavigation();
-            
-            // Manejo del formulario de contacto
-            initContactForm();
-            
-            // Filtros de proyectos y habilidades
-            initFilters();
-            
-            // Botón de modo oscuro
-            initDarkModeToggle();
-            
-            // Menú móvil
-            initMobileMenu();
-            
-            // Botón volver arriba
-            initBackToTop();
-            
-            // Burbujas de testimonios
-            initTestimonialBubbles();
-            
-            // Scroll optimizado
-            window.addEventListener('scroll', handleScroll, { passive: true });
-        }
-
-        // Función para manejar el clic en el botón Enter
-        function handleEnterClick(e) {
+        document.getElementById('enterButton').addEventListener('click', function(e) {
             e.preventDefault();
             
             const transition = document.getElementById('transition');
@@ -2943,15 +2740,14 @@
             const mainContent = document.getElementById('mainContent');
             const newBackground = document.getElementById('newBackground');
             const navMenu = document.getElementById('navMenu');
-            const darkModeToggle = document.getElementById('darkModeToggle');
             
-            // 1. Pantalla blanca sube
+            // 1. White screen rises
             transition.style.bottom = '100%';
             
-            // 2. Ocultar botón Enter
+            // 2. Hide enter button
             enterButton.classList.add('hidden');
             
-            // 3. Cambiar color del nombre a negro, moverlo arriba y reducir tamaño
+            // 3. Change name color to black, move it up and reduce size
             setTimeout(() => {
                 name.style.color = 'black';
                 name.style.textShadow = 'none';
@@ -2960,26 +2756,26 @@
                 name.style.opacity = '1';
             }, 500);
             
-            // 4. Mostrar contenido principal cuando termina la transición
+            // 4. Show main content when transition ends
             setTimeout(() => {
                 mainContent.style.display = 'block';
                 header.style.display = 'block';
                 
-                // 5. Mostrar nuevo fondo y menú
+                // 5. Show new video (now larger) and menu
                 setTimeout(() => {
                     newBackground.style.opacity = '1';
                     navMenu.style.opacity = '1';
                     
-                    // Efecto de escritura para el texto de About Me
+                    // Typing effect for the new About Me text
                     const aboutText = "Demonstrated ability to lead and collaborate effectively through roles as Class Representative and organizer of technology events, fostering communication between diverse groups and driving community engagement. Combines technical knowledge in data analysis, a strong academic foundation and a passion for transforming data into actionable insights, with exceptional interpersonal skills, adaptability, and a solutions-oriented mindset. Eager to contribute by leveraging a unique blend of analytical thinking, leadership experience, and a commitment to delivering value in dynamic, team-based environments.";
                     
                     const typedElement = document.getElementById('typed-text');
                     
-                    // Escribir el nuevo texto
+                    // Type the new text
                     typeWriter(aboutText, typedElement, 10);
                 }, 100);
                 
-                // Ocultar fondo inicial
+                // Hide initial background
                 name.style.opacity = '0';
                 background.style.opacity = '0';
                 darkModeToggle.style.opacity = '1';
@@ -2987,215 +2783,265 @@
                     el.style.display = "none";
                 });
             }, 1000);
-        }
+        });
 
-        // Función para inicializar navegación suave
-        function initSmoothNavigation() {
-            // Navegación por teclado - mejorar accesibilidad
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Tab') {
-                    // Manejar navegación por teclado
-                    const focusableElements = document.querySelectorAll('a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])');
-                    const firstElement = focusableElements[0];
-                    const lastElement = focusableElements[focusableElements.length - 1];
-                    
-                    if (e.shiftKey && document.activeElement === firstElement) {
-                        e.preventDefault();
-                        lastElement.focus();
-                    } else if (!e.shiftKey && document.activeElement === lastElement) {
-                        e.preventDefault();
-                        firstElement.focus();
-                    }
-                }
-            });
-            
-            // Navegación suave a secciones
-            document.querySelectorAll('.nav-item, .footer-link, .header-nav a, .mobile-nav a').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        // Cerrar menú móvil si está abierto
-                        if (mobileMenu.classList.contains('active')) {
-                            mobileMenu.classList.remove('active');
-                        }
-                        
-                        // Desplazamiento suave
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        }
-
-        // Función para inicializar el formulario de contacto
-        function initContactForm() {
-            const contactForm = document.getElementById('contactForm');
-            const formFeedback = document.getElementById('formFeedback');
-            const submitBtn = contactForm.querySelector('.submit-btn');
-            
-            contactForm.addEventListener('submit', function(e) {
+        // Smooth navigation to sections
+        document.querySelectorAll('.nav-item, .footer-link, .header-nav a, .mobile-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
-                
-                const name = document.getElementById('contact-name').value;
-                const email = document.getElementById('contact-email').value;
-                const message = document.getElementById('contact-message').value;
-                
-                // Validación básica
-                if (!name || !email || !message) {
-                    showFormFeedback('Please fill in all fields', 'error');
-                    return;
-                }
-                
-                // Validación de email
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    showFormFeedback('Please enter a valid email address', 'error');
-                    return;
-                }
-                
-                // Simular envío del formulario
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
-                
-                setTimeout(() => {
-                    // Simular éxito
-                    showFormFeedback('Message sent successfully! Thank you for contacting me.', 'success');
-                    contactForm.reset();
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Message';
-                    
-                    // Ocultar feedback después de 5 segundos
-                    setTimeout(() => {
-                        formFeedback.style.display = 'none';
-                    }, 5000);
-                }, 1500);
-            });
-            
-            function showFormFeedback(message, type) {
-                formFeedback.textContent = message;
-                formFeedback.className = 'form-feedback ' + type;
-            }
-        }
-
-        // Función para inicializar filtros
-        function initFilters() {
-            document.querySelectorAll('.filter-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const filter = this.getAttribute('data-filter');
-                    const container = this.closest('.section').querySelector('.projects-container, .skills-container');
-                    
-                    // Actualizar botón activo con animación
-                    document.querySelectorAll('.filter-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                    
-                    // Filtrar elementos con transición suave
-                    if (container) {
-                        const items = container.querySelectorAll('.project-card, .skill-category');
-                        items.forEach(item => {
-                            if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                                item.style.display = 'block';
-                                setTimeout(() => {
-                                    item.style.opacity = '1';
-                                    item.style.transform = 'translateY(0)';
-                                }, 50);
-                            } else {
-                                item.style.opacity = '0';
-                                item.style.transform = 'translateY(20px)';
-                                setTimeout(() => {
-                                    item.style.display = 'none';
-                                }, 300);
-                            }
-                        });
-                    }
-                });
-            });
-        }
-
-        // Función para inicializar el toggle de modo oscuro
-        function initDarkModeToggle() {
-            const darkModeToggle = document.getElementById('darkModeToggle');
-            
-            // Comprobar preferencia del usuario
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.body.classList.add('dark-mode');
-                darkModeToggle.textContent = '☀️';
-            }
-            
-            darkModeToggle.addEventListener('click', function() {
-                document.body.classList.toggle('dark-mode');
-                darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-                
-                // Guardar preferencia en localStorage
-                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-            });
-            
-            // Cargar preferencia guardada
-            const savedDarkMode = localStorage.getItem('darkMode');
-            if (savedDarkMode === 'true') {
-                document.body.classList.add('dark-mode');
-                darkModeToggle.textContent = '☀️';
-            }
-        }
-
-        // Función para inicializar el menú móvil
-        function initMobileMenu() {
-            mobileMenuToggle.addEventListener('click', function() {
-                mobileMenu.classList.toggle('active');
-                
-                // Cambiar icono
-                const icon = this.querySelector('i');
-                if (mobileMenu.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-            
-            // Cerrar menú al hacer clic en un enlace
-            document.querySelectorAll('.mobile-nav a').forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.remove('active');
-                    mobileMenuToggle.querySelector('i').classList.remove('fa-times');
-                    mobileMenuToggle.querySelector('i').classList.add('fa-bars');
-                });
-            });
-            
-            // Cerrar menú al hacer clic fuera
-            document.addEventListener('click', function(e) {
-                if (!mobileMenu.contains(e.target) && !mobileMenuToggle.contains(e.target) && mobileMenu.classList.contains('active')) {
-                    mobileMenu.classList.remove('active');
-                    mobileMenuToggle.querySelector('i').classList.remove('fa-times');
-                    mobileMenuToggle.querySelector('i').classList.add('fa-bars');
-                }
-            });
-        }
-
-        // Función para inicializar el botón volver arriba
-        function initBackToTop() {
-            backToTopButton.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
                     behavior: 'smooth'
                 });
+                
+                // Close mobile menu if open
+                closeMobileMenu();
+            });
+        });
+
+        // Typing effect for About section (with callback)
+        function typeWriter(text, element, speed, callback) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            const interval = setInterval(() => {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    setTimeout(() => {
+
+                        if (callback) callback();
+                    }, 500);
+                }
+            }, speed);
+        }
+
+        // Animate skill bars when section is visible
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width + '%';
             });
         }
 
-        // Función para inicializar las burbujas de testimonios
-        function initTestimonialBubbles() {
+        // Observe when skills section is visible
+        const skillsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(animateSkillBars, 300);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        // Start observing when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillsSection = document.getElementById('habilitats');
+            if (skillsSection) {
+                skillsObserver.observe(skillsSection);
+            }
+            
+            // Actualizar año de copyright automáticamente
+            const yearElement = document.querySelector('.footer-bottom p');
+            if (yearElement) {
+                const currentYear = new Date().getFullYear();
+                yearElement.innerHTML = `&copy; ${currentYear} Mariona Guisado. All rights reserved.`;
+            }
+        });
+
+        // Function to handle contact form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const message = document.getElementById('contact-message').value;
+            const submitBtn = document.getElementById('submitBtn');
+            const formMessage = document.getElementById('formMessage');
+            
+            // Reset previous states
+            resetFormValidation();
+            
+            // Validate form
+            let isValid = true;
+            
+            if (!name.trim()) {
+                showFieldError('contact-name', 'Name is required');
+                isValid = false;
+            }
+            
+            if (!email.trim()) {
+                showFieldError('contact-email', 'Email is required');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showFieldError('contact-email', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            if (!message.trim()) {
+                showFieldError('contact-message', 'Message is required');
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                return;
+            }
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.classList.add('loading');
+            formMessage.style.display = 'none';
+            
+            // Simulate form submission (replace with actual form submission)
+            setTimeout(() => {
+                console.log('Form submitted:', { name, email, message });
+                
+                // Show success message
+                formMessage.textContent = 'Message sent successfully! Thank you for contacting me.';
+                formMessage.className = 'form-message success';
+                formMessage.style.display = 'block';
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button state
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }, 1500);
+        });
+
+        // Form validation helpers
+        function resetFormValidation() {
+            document.querySelectorAll('.form-control').forEach(field => {
+                field.classList.remove('error', 'success');
+            });
+            document.querySelectorAll('.form-feedback').forEach(feedback => {
+                feedback.textContent = '';
+                feedback.className = 'form-feedback';
+            });
+        }
+
+        function showFieldError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const feedback = document.getElementById(fieldId + '-feedback');
+            
+            field.classList.add('error');
+            feedback.textContent = message;
+            feedback.className = 'form-feedback error';
+        }
+
+        function showFieldSuccess(fieldId) {
+            const field = document.getElementById(fieldId);
+            const feedback = document.getElementById(fieldId + '-feedback');
+            
+            field.classList.remove('error');
+            field.classList.add('success');
+            feedback.textContent = 'Looks good!';
+            feedback.className = 'form-feedback success';
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Real-time form validation
+        document.getElementById('contact-name').addEventListener('input', function() {
+            if (this.value.trim()) {
+                showFieldSuccess('contact-name');
+            } else {
+                showFieldError('contact-name', 'Name is required');
+            }
+        });
+
+        document.getElementById('contact-email').addEventListener('input', function() {
+            if (!this.value.trim()) {
+                showFieldError('contact-email', 'Email is required');
+            } else if (!isValidEmail(this.value)) {
+                showFieldError('contact-email', 'Please enter a valid email address');
+            } else {
+                showFieldSuccess('contact-email');
+            }
+        });
+
+        document.getElementById('contact-message').addEventListener('input', function() {
+            if (this.value.trim()) {
+                showFieldSuccess('contact-message');
+            } else {
+                showFieldError('contact-message', 'Message is required');
+            }
+        });
+
+        // Dark mode toggle functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+
+        // Filter functionality for projects and skills
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                const container = this.closest('.section').querySelector('.projects-container, .skills-container');
+                
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Filter items
+                if (container) {
+                    const items = container.querySelectorAll('.project-card, .skill-category');
+                    items.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        });
+
+        // Smooth transitions for section changes
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for smooth appearance
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Toggle functionality for testimonials bubbles
+        document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.tutor-bubble').forEach(bubble => {
                 const trigger = bubble.querySelector('.tutor-bubble-trigger');
                 const content = bubble.querySelector('.tutor-bubble-content');
                 
-                // Inicialmente oculto
+                // Inicialment amagat
                 content.style.opacity = '0';
                 content.style.visibility = 'hidden';
                 content.style.bottom = '100%';
@@ -3204,11 +3050,11 @@
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    // Alternar visibilidad
+                    // Toggle visibility
                     const isVisible = content.style.opacity === '1';
                     
                     if (isVisible) {
-                        // Ocultar
+                        // Amagar
                         content.style.opacity = '0';
                         content.style.visibility = 'hidden';
                         content.style.bottom = '100%';
@@ -3221,7 +3067,7 @@
                 });
             });
             
-            // Cerrar cuando se hace clic fuera
+            // Tancar quan es fa clic fora
             document.addEventListener('click', function(e) {
                 if (!e.target.closest('.tutor-bubble')) {
                     document.querySelectorAll('.tutor-bubble-content').forEach(content => {
@@ -3231,117 +3077,30 @@
                     });
                 }
             });
+        });
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            mobileMenuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         }
 
-        // Función para manejar el scroll optimizado
-        function handleScroll() {
-            if (!ticking) {
-                requestAnimationFrame(function() {
-                    const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-                    
-                    // Actualizar navegación activa
-                    updateActiveNavigation(currentScrollPosition);
-                    
-                    // Mostrar/ocultar botón volver arriba
-                    if (currentScrollPosition > 300) {
-                        backToTopButton.classList.add('visible');
-                    } else {
-                        backToTopButton.classList.remove('visible');
-                    }
-                    
-                    // Efecto de scroll del header
-                    if (currentScrollPosition > 400) {
-                        header.classList.add('scrolled');
-                    } else {
-                        header.classList.remove('scrolled');
-                    }
-                    
-                    lastScrollPosition = currentScrollPosition;
-                    ticking = false;
-                });
-                
-                ticking = true;
-            }
+        function closeMobileMenu() {
+            mobileMenuToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
         }
 
-        // Función para actualizar la navegación activa
-        function updateActiveNavigation(scrollPosition) {
-            const sections = document.querySelectorAll('.section');
-            let currentSection = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.offsetHeight;
-                
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-            
-            // Actualizar enlaces activos
-            document.querySelectorAll('.nav-item, .header-nav a, .mobile-nav a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + currentSection) {
-                    link.classList.add('active');
-                }
-            });
-        }
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
 
-        // Efecto de escritura para la sección About
-        function typeWriter(text, element, speed, callback) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            const interval = setInterval(() => {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                } else {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        if (callback) callback();
-                    }, 500);
-                }
-            }, speed);
-        }
-
-        // Animar barras de habilidades cuando la sección es visible
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            skillBars.forEach(bar => {
-                const width = bar.getAttribute('data-width');
-                bar.style.width = width + '%';
-            });
-        }
-
-        // Precargar imágenes críticas
-        function preloadCriticalImages() {
-            const images = [
-                'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
-            ];
-            
-            images.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
-        }
-
-        // Observar cuando la sección de habilidades es visible
-        const skillsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(animateSkillBars, 300);
-                }
-            });
-        }, { threshold: 0.3 });
-
-        // Comenzar a observar cuando el DOM está cargado
-        document.addEventListener('DOMContentLoaded', function() {
-            const skillsSection = document.getElementById('habilitats');
-            if (skillsSection) {
-                skillsObserver.observe(skillsSection);
+        // Close mobile menu when window is resized to desktop size
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
             }
         });
     </script>
