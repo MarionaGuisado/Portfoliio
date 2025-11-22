@@ -1622,7 +1622,7 @@
         }
 
         /* BOTÓN VOLVER ARRIBA */
-        .back-to-top {
+      /*  .back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
@@ -1651,7 +1651,7 @@
             background-color: #5a0db0;
             transform: translateY(-5px);
         }
-
+*/
         /* TÍTULOS EN BLANCO PARA SECCIONES OSCURAS */
         #sobre-mi .section-title,
         #experiencia .section-title,
@@ -1660,7 +1660,7 @@
         #actividades .section-title,
         #contacte .section-title,
         #formacio .section-title {
-            color: white; /* Títulos en blanco para contraste con fondo gris oscuro */
+            color: white;
         }
 
         @media (max-width: 768px) {
@@ -1700,7 +1700,6 @@
                 margin: 0.5rem 0;
             }
 
-            /* CANVI: Filtres responsius */
             .project-filters {
                 gap: 10px;
             }
@@ -1710,7 +1709,6 @@
                 font-size: 0.9rem;
             }
 
-            /* NUEVO DISEÑO RESPONSIVE PARA PROFESSIONAL PROFILE */
             .about-container {
                 grid-template-columns: 1fr;
                 gap: 25px;
@@ -1729,7 +1727,6 @@
                 font-size: 1rem;
             }
 
-            /* NUEVO DISEÑO RESPONSIVE PARA EDUCACIÓN HORIZONTAL */
             .education-timeline-horizontal::before {
                 top: 0;
                 left: 50%;
@@ -1813,7 +1810,7 @@
                 grid-template-columns: 1fr;
                 gap: 25px;
                 padding: 25px;
-                margin: 15px 0; /* Ajuste para móvil */
+                margin: 15px 0;
             }
 
             .contact-info {
@@ -1822,7 +1819,7 @@
 
             .contacte-form {
                 order: 1;
-                margin-left: 0; /* Reset en móvil */
+                margin-left: 0; 
             }
 
             .social-media-title {
@@ -2330,7 +2327,7 @@
                         <p class="activity-description">Engaged in hands-on trading simulations and learned about global market dynamics, risk management, and investment strategies at one of the world's leading financial institutions.</p>
                     </div>
 
-                    <!-- VOLUNTARIADOS JUNTOS EN UNA SOLA TARJETA -->
+                    <!-- VOLUNTARIADOS -->
                     <div class="activity-card">
                         <div class="activity-icon">🤝</div>
                         <h3 class="activity-title">Volunteering Activities</h3>
@@ -2338,7 +2335,7 @@
                         <p class="activity-description">Participated in volunteering activities at El Xiprer, contributing to community support initiatives and assisting with various social programs for those in need. Also engaged in volunteering work at elderly care residences, providing companionship, support, and assistance to senior citizens, and organizing recreational activities.</p>
                     </div>
                     
-                    <!-- NUEVA ACTIVIDAD: Competiciones deportivas -->
+                    <!-- Competiciones deportivas -->
                     <div class="activity-card">
                         <div class="activity-icon">🏆</div>
                         <h3 class="activity-title">Sports Competitions</h3>
@@ -2384,7 +2381,7 @@
                 </div>
             </section>
 
-            <!-- NUEVA SECCIÓN DE REDES SOCIALES - ESTÉTICA SOLICITADA -->
+            <!-- NUEVA SECCIÓN DE REDES SOCIALES -->
             <section id="social-media" class="section">
                 <div class="social-media-container">
                     <h2 class="social-media-title">Mariona Guisado</h2>
@@ -2425,7 +2422,7 @@
         </div>
     </div>
 
-    <!-- BOTÓN VOLVER ARRIBA -->
+   <!-- BOTÓN VOLVER ARRIBA -->
     <div class="back-to-top" id="backToTop">
         <i class="fas fa-chevron-up"></i>
     </div>
@@ -2439,11 +2436,10 @@
         const backToTopButton = document.getElementById('backToTop');
         const header = document.getElementById('header');
         
-        // Improved scroll handler function - AHORA OCULTA EL NOMBRE COMPLETAMENTE
+        // Scroll handler function
         function handleScroll() {
             const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
 
-            // Ocultar el nom quan arribem a la primera secció (sobre-mi)
             const sobreMiSection = document.getElementById('sobre-mi');
             const sobreMiOffset = sobreMiSection.offsetTop;
     
@@ -2463,7 +2459,7 @@
                 backToTopButton.classList.remove('visible');
             }
 
-            // Header scroll effect - aparece cuando ya no se ve el índice inicial
+            // Header scroll effect
             if (currentScrollPosition > 400) {
                 header.classList.add('scrolled');
             } else {
