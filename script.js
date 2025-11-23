@@ -6,6 +6,32 @@ const enterButton = document.getElementById('enterButton');
 const backToTopButton = document.getElementById('backToTop');
 const header = document.getElementById('header');
 
+// Millores específiques per a mòbils
+function improveMobileExperience() {
+    // Detectar si és un dispositiu mòbil
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        // Afegir classe mobile al body per estils específics
+        document.body.classList.add('mobile-device');
+        
+        // Millorar el comportament del scroll
+        document.addEventListener('touchmove', function(e) {
+            // Prevenir scroll horitzontal accidental
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        // Optimitzar el rendiment en mòbils
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            video.setAttribute('playsinline', '');
+            video.setAttribute('webkit-playsinline', '');
+        });
+    }
+}
+
 // Scroll handler function
 function handleScroll() {
     const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
@@ -14,9 +40,9 @@ function handleScroll() {
     const sobreMiOffset = sobreMiSection.offsetTop;
 
     if (currentScrollPosition > sobreMiOffset - 200) {
-    nameElement.style.display = 'none';
+        nameElement.style.display = 'none';
     } else {
-    nameElement.style.display = 'block';
+        nameElement.style.display = 'block';
     }
              
     
@@ -125,7 +151,6 @@ function typeWriter(text, element, speed, callback) {
         } else {
             clearInterval(interval);
             setTimeout(() => {
-
                 if (callback) callback();
             }, 500);
         }
@@ -149,21 +174,6 @@ const skillsObserver = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.3 });
-
-// Start observing when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    const skillsSection = document.getElementById('habilitats');
-    if (skillsSection) {
-        skillsObserver.observe(skillsSection);
-    }
-    
-    // Actualizar año de copyright automáticamente
-    const yearElement = document.querySelector('.footer-bottom p');
-    if (yearElement) {
-        const currentYear = new Date().getFullYear();
-        yearElement.innerHTML = `&copy; ${currentYear} Mariona Guisado. All rights reserved.`;
-    }
-});
 
 // Function to handle contact form
 document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -280,4 +290,29 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+});
+
+// Assegurar que la sección sobre-mi tenga altura suficiente al cargar
+document.addEventListener('DOMContentLoaded', function() {
+    const sobreMiSection = document.getElementById('sobre-mi');
+    if (sobreMiSection) {
+        // Forzar una altura mínima desde el principio
+        sobreMiSection.style.minHeight = '40vh';
+    }
+    
+    // También observar la sección skills cuando esté lista
+    const skillsSection = document.getElementById('habilitats');
+    if (skillsSection) {
+        skillsObserver.observe(skillsSection);
+    }
+    
+    // Actualizar año de copyright automáticamente
+    const yearElement = document.querySelector('.footer-bottom p');
+    if (yearElement) {
+        const currentYear = new Date().getFullYear();
+        yearElement.innerHTML = `&copy; ${currentYear} Mariona Guisado. All rights reserved.`;
+    }
+    
+    // Millores per a mòbils
+    improveMobileExperience();
 });
