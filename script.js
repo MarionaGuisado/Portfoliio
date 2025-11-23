@@ -32,6 +32,85 @@ function improveMobileExperience() {
     }
 }
 
+// Funció millorada per als testimonis en mòbil
+function initializeTestimonials() {
+    document.querySelectorAll('.tutor-bubble').forEach(bubble => {
+        const trigger = bubble.querySelector('.tutor-bubble-trigger');
+        const content = bubble.querySelector('.tutor-bubble-content');
+        
+        // Crear overlay si no existeix
+        let overlay = document.querySelector('.bubble-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'bubble-overlay';
+            document.body.appendChild(overlay);
+        }
+
+        // Inicialment amagat
+        content.style.opacity = '0';
+        content.style.visibility = 'hidden';
+        
+        trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const isMobile = window.innerWidth <= 768;
+            const isVisible = content.style.opacity === '1';
+            
+            if (isVisible) {
+                // Amagar
+                content.style.opacity = '0';
+                content.style.visibility = 'hidden';
+                overlay.classList.remove('active');
+                
+                if (isMobile) {
+                    content.style.position = 'absolute';
+                }
+            } else {
+                // Mostrar
+                if (isMobile) {
+                    content.style.position = 'fixed';
+                    content.style.top = '50%';
+                    content.style.left = '50%';
+                    content.style.transform = 'translate(-50%, -50%)';
+                    content.style.zIndex = '10000';
+                    overlay.classList.add('active');
+                } else {
+                    content.style.position = 'absolute';
+                    content.style.bottom = 'calc(100% + 8px)';
+                    content.style.left = '50%';
+                    content.style.transform = 'translateX(-50%)';
+                }
+                
+                content.style.opacity = '1';
+                content.style.visibility = 'visible';
+            }
+        });
+    });
+    
+    // Tancar quan es fa clic a l'overlay o fora
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.tutor-bubble') && !e.target.closest('.tutor-bubble-content')) {
+            document.querySelectorAll('.tutor-bubble-content').forEach(content => {
+                content.style.opacity = '0';
+                content.style.visibility = 'hidden';
+            });
+            document.querySelector('.bubble-overlay')?.classList.remove('active');
+        }
+    });
+}
+
+// Funció per ajustar el menú de navegació sobre el video
+function adjustNavigationMenu() {
+    const navMenu = document.getElementById('navMenu');
+    const newBackground = document.querySelector('.new-background');
+    
+    if (window.innerWidth <= 768 && navMenu && newBackground) {
+        const videoRect = newBackground.getBoundingClientRect();
+        navMenu.style.top = `${videoRect.top + (videoRect.height / 2)}px`;
+    }
+}
+
 // Scroll handler function
 function handleScroll() {
     const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
@@ -74,6 +153,12 @@ backToTopButton.addEventListener('click', function() {
     });
 });
 
+// Reinicialitzar quan canvia la mida de la pantalla
+window.addEventListener('resize', function() {
+    adjustNavigationMenu();
+    initializeTestimonials();
+});
+
 document.getElementById('enterButton').addEventListener('click', function(e) {
     e.preventDefault();
     
@@ -108,6 +193,9 @@ document.getElementById('enterButton').addEventListener('click', function(e) {
         setTimeout(() => {
             newBackground.style.opacity = '1';
             navMenu.style.opacity = '1';
+            
+            // Ajustar posició del menú
+            adjustNavigationMenu();
             
             // Typing effect for the new About Me text
             const aboutText = "Demonstrated ability to lead and collaborate effectively through roles as Class Representative and organizer of technology events, fostering communication between diverse groups and driving community engagement. Combines technical knowledge in data analysis, a strong academic foundation and a passion for transforming data into actionable insights, with exceptional interpersonal skills, adaptability, and a solutions-oriented mindset. Eager to contribute by leveraging a unique blend of analytical thinking, leadership experience, and a commitment to delivering value in dynamic, team-based environments.";
@@ -248,55 +336,11 @@ document.querySelectorAll('.section').forEach(section => {
     observer.observe(section);
 });
 
-// Toggle functionality for testimonials bubbles
+// Inicialitzar quan el document està carregat
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.tutor-bubble').forEach(bubble => {
-        const trigger = bubble.querySelector('.tutor-bubble-trigger');
-        const content = bubble.querySelector('.tutor-bubble-content');
-        
-        // Inicialment amagat
-        content.style.opacity = '0';
-        content.style.visibility = 'hidden';
-        content.style.bottom = '100%';
-        
-        trigger.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Toggle visibility
-            const isVisible = content.style.opacity === '1';
-            
-            if (isVisible) {
-                // Amagar
-                content.style.opacity = '0';
-                content.style.visibility = 'hidden';
-                content.style.bottom = '100%';
-            } else {
-                // Mostrar
-                content.style.opacity = '1';
-                content.style.visibility = 'visible';
-                content.style.bottom = 'calc(100% + 8px)';
-            }
-        });
-    });
-    
-    // Tancar quan es fa clic fora
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.tutor-bubble')) {
-            document.querySelectorAll('.tutor-bubble-content').forEach(content => {
-                content.style.opacity = '0';
-                content.style.visibility = 'hidden';
-                content.style.bottom = '100%';
-            });
-        }
-    });
-});
-
-// Assegurar que la sección sobre-mi tenga altura suficiente al cargar
-document.addEventListener('DOMContentLoaded', function() {
+    // Assegurar que la sección sobre-mi tenga altura suficiente al cargar
     const sobreMiSection = document.getElementById('sobre-mi');
     if (sobreMiSection) {
-        // Forzar una altura mínima desde el principio
         sobreMiSection.style.minHeight = '40vh';
     }
     
@@ -315,4 +359,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Millores per a mòbils
     improveMobileExperience();
+    
+    // Inicialitzar testimonis
+    initializeTestimonials();
+    
+    // Ajustar menú de navegació
+    setTimeout(adjustNavigationMenu, 1000);
 });
