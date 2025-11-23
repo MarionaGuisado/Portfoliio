@@ -15,8 +15,8 @@
     --sutil: #fafafa;
     --subtitulo: #555;
     --hover-color: #e9ecef;
-    --dark-section-bg: #2d3436; /* Color gris oscuro para las secciones */
-    --dark-section-transparent-bg:  rgba(5, 13, 16, 0.84); /* Fondo gris oscuro translúcido */
+    --dark-section-bg: #2d3436;
+    --dark-section-transparent-bg:  rgba(5, 13, 16, 0.84);
 }
 
 .dark-mode {
@@ -34,21 +34,21 @@
     --sutil: #202020;
     --subtitulo: #bbb;
     --hover-color: #474747;
-    --dark-section-bg: #1a1a1a; /* Color más oscuro para modo oscuro */
+    --dark-section-bg: #1a1a1a;
     --dark-section-transparent-bg: rgba(26, 26, 26, 0.5)
-
 }
 
 body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.5s ease, color 0.5s ease;
     line-height: 1.6;
+    width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -62,6 +62,7 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     width: 100%;
     height: 100%;
+    overflow-x: hidden;
 }
 
 .background {
@@ -156,6 +157,7 @@ h1, h2, h3, h4, h5, h6 {
     overflow-y: auto;
     color: #ff6b6b;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 .new-background {
@@ -182,7 +184,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ÍNDICE */
- .nav-menu {
+.nav-menu {
     position: absolute;
     top: 55%;
     left: 15%;
@@ -202,7 +204,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 14px 24px;
     border-radius: 0;
     box-shadow: 0 4px 14px rgba(0,0,0,0.15);
- }
+}
 
 .nav-item {
     padding: 5px 0;
@@ -261,7 +263,6 @@ h1, h2, h3, h4, h5, h6 {
     margin-right: 20px;
 }
 
-
 .header-nav {
     display: flex;
     gap: 25px;
@@ -299,14 +300,16 @@ h1, h2, h3, h4, h5, h6 {
 .header-nav a:hover::after {
     width: 100%;
 }
+
 .page-title {
     color: var(--flotante);
     text-shadow:none;
     transform: translateY(50%);
     font-size: 2.3rem;
     opacity: 1;
-    margin-top: 40px; /* Ajusta este valor según necesites */
+    margin-top: 40px;
 }
+
 .section {
     padding: 0;
     position: relative;
@@ -314,6 +317,7 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     justify-content: flex-start;
     margin-bottom: 10px; 
+    width: 100%;
 }
 
 .dark-section {
@@ -367,7 +371,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: scale(1.1);
 }
 
-/* SECCIÓN PROFESSIONAL PROFILE - CON FONDO GRIS OSCURO */
+/* SECCIÓN PROFESSIONAL PROFILE - CON FONDO GRIS OSCURO Y ALTURA ESTÁTICA */
 #header-section {
     position: relative;
     width: 100%;
@@ -381,30 +385,26 @@ h1, h2, h3, h4, h5, h6 {
 #sobre-mi {
     position: relative;
     background: var(--dark-section-bg);
-    min-height: 40vh; /* Añadir esta línea para que ocupe toda la pantalla */
-    /*display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
+    min-height: 40vh;
+    padding: 20px 0;
 }
 
 .about-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
-  width: 100%;
-  box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Contenedor de texto en el centro — ocupa más espacio */
 .about-text-container {
-  flex: 1;
-  background-color: transparent;
-  box-shadow: none;
-  padding: 0 40px;
-  text-align: justify;
-  max-width: 100%;
+    flex: 1;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0 40px;
+    text-align: justify;
+    max-width: 100%;
 }
 
 .typed-text, .personal-text {
@@ -1607,7 +1607,7 @@ textarea.form-control {
 }
 
 /* BOTÓN VOLVER ARRIBA */
-/*  .back-to-top {
+.back-to-top {
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -1636,7 +1636,6 @@ textarea.form-control {
     background-color: #5a0db0;
     transform: translateY(-5px);
 }
-*/
 
 /* TÍTULOS EN BLANCO PARA SECCIONES OSCURAS */
 #sobre-mi .section-title,
@@ -1649,201 +1648,285 @@ textarea.form-control {
     color: white;
 }
 
+/* CORRECCIONS RESPONSIVE PER MÒBIL */
 @media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
+    .container {
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .main-content {
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
     .name {
-        font-size: 3rem;
+        font-size: 2.5rem;
+        padding: 0 20px;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .enter-button {
+        width: 80%;
+        max-width: 200px;
+        text-align: center;
     }
     
     .new-background {
         width: 95%;
-        height: 65%;
-        top: 50%;
+        height: 50%;
+        top: 45%;
+    }
+    
+    .background-video {
+        object-fit: cover;
+    }
+    
+    .nav-menu {
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 300px;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .nav-item {
+        width: 100%;
+        text-align: center;
+        padding: 12px 0;
+        font-size: 1.2rem;
+    }
+    
+    .section {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        padding: 20px 15px 10px;
+        text-align: center;
+    }
+    
+    .section-content {
+        width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+    
+    #sobre-mi {
+        min-height: 50vh;
+        padding: 20px 0;
+    }
+    
+    .about-container {
+        padding: 0 15px;
+    }
+    
+    .about-text-container {
+        padding: 0;
+    }
+    
+    .typed-text, .personal-text {
+        font-size: 1rem;
+        line-height: 1.6;
+        min-height: auto;
+        text-align: left;
+        padding: 0 10px;
+    }
+    
+    .experience-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+        width: 100%;
+    }
+    
+    .experience-card {
+        padding: 20px;
+        margin: 0;
+    }
+    
+    .education-title {
+        font-size: 2rem;
+        padding: 0 15px;
+    }
+    
+    .education-content {
+        padding: 0 15px;
+    }
+    
+    .education-timeline-horizontal::before {
+        display: none;
+    }
+    
+    .education-items-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .education-item-horizontal {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .education-card-horizontal {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .project-filters {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 0 15px;
+    }
+    
+    .filter-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .skills-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+        width: 100%;
+    }
+    
+    .skill-category {
+        padding: 20px;
+    }
+    
+    .projects-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+        width: 100%;
+    }
+    
+    .project-card {
+        margin: 0;
+    }
+    
+    .activities-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+        width: 100%;
+    }
+    
+    .activity-card {
+        padding: 20px;
+    }
+    
+    .contacte-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 30px 20px;
+        width: 90%;
+        margin: 20px auto;
+    }
+    
+    .contacte-form {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .form-control {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .social-media-container {
+        padding: 0 15px;
+    }
+    
+    .social-icons {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .social-icon {
+        width: 80px;
+    }
+    
+    .header-content {
+        padding: 0 15px;
+        flex-wrap: wrap;
+    }
+    
+    .header-nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .header-nav a {
+        font-size: 0.8rem;
+        padding: 5px 0;
+    }
+    
+    .page-title {
+        display: none;
+    }
+    
+    p, h1, h2, h3, h4, h5, h6, span, div {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    .tutor-bubble-content {
+        width: 280px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Correccions addicionals per a pantalles molt petites */
+@media (max-width: 480px) {
+    .name {
+        font-size: 2rem;
     }
     
     .nav-menu {
         top: 60%;
-        left: 10%;
-        gap: 3px;
     }
     
     .nav-item {
-        width: 160px;
-        padding: 4px 0;
         font-size: 1rem;
+        padding: 10px 0;
     }
-
-    .header {
-        padding: 6px 0;
-    }
-
-    .header-nav {
-        display: none;
-    }
-
+    
     .section-title {
-        font-size: 2.5rem;
-        padding-top: 15px;
-        margin: 0.5rem 0;
+        font-size: 1.8rem;
     }
-
-    .project-filters {
+    
+    .education-title {
+        font-size: 1.8rem;
+    }
+    
+    .social-icons {
         gap: 10px;
     }
-
-    .filter-btn {
-        padding: 10px 18px;
-        font-size: 0.9rem;
+    
+    .social-icon {
+        width: 70px;
     }
-
-    .about-container {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .about-text-container {
-        padding: 0 20px;
-    }
-
-    .education-title {
-        font-size: 2.5rem;
-        margin-top: 30px;
-    }
-
-    .typed-text, .personal-text {
-        font-size: 1rem;
-    }
-
-    .education-timeline-horizontal::before {
-        top: 0;
-        left: 50%;
-        width: 4px;
-        height: 100%;
-        transform: translateX(-50%);
-        background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
-    }
-
-    .education-items-container {
-        flex-direction: column;
-        gap: 35px;
-    }
-
-    .education-item-horizontal {
-        width: 100%;
-        min-height: auto;
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 25px;
-    }
-
-    .timeline-point-horizontal {
-        margin-bottom: 0;
-        margin-top: 35px;
-    }
-
-    .education-card-horizontal {
-        text-align: left;
-        flex: 1;
-        margin-top: 0;
-    }
-
-    .education-icon-horizontal {
-        margin: 0 0 15px 0;
-    }
-
-    .skills-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 15px 15px;
-    }
-
-    .skill-category {
-        padding: 15px;
-    }
-
-    .languages-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .soft-skills-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .projects-container,
-    .experience-container,
-    .activities-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 15px 15px;
-    }
-
-    .project-card,
-    .experience-card,
-    .activity-card {
-        padding: 15px;
-    }
-
-    .tutor-bubble-content {
-        width: 280px;
-        left: 0;
-        transform: none;
-    }
-
-    .tutor-bubble-content::after {
-        left: 30px;
-    }
-
-    .contacte-container {
-        grid-template-columns: 1fr;
-        gap: 25px;
-        padding: 25px;
-        margin: 15px 0;
-    }
-
-    .contact-info {
-        order: 2;
-    }
-
-    .contacte-form {
-        order: 1;
-        margin-left: 0; 
-    }
-
-    .social-media-title {
-        font-size: 2.25rem;
-    }
-
-    .social-media-subtitle {
-        font-size: 1rem;
-        margin-bottom: 35px;
-    }
-
-    .social-icons {
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    .social-icon-circle {
-        width: 44px;
-        height: 44px;
-    }
-
-    .social-icon i {
-        font-size: 1.2rem;
-    }
-
-    .footer-links {
-        flex-direction: column;
-        gap: 25px;
-    }
-
-    .social-links {
-        gap: 15px;
-    }
-
-    .back-to-top {
-        bottom: 20px;
-        right: 20px;
-        width: 45px;
-        height: 45px;
+    
+    .download-cv-btn {
+        width: 90%;
+        max-width: 250px;
     }
 }
