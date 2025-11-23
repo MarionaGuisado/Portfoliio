@@ -1648,7 +1648,7 @@ textarea.form-control {
     color: white;
 }
 
-/* CORRECCIONS ESPECÍFIQUES PER A MÒBIL */
+/* CORRECCIONS RESPONSIVE PER MÒBIL */
 @media (max-width: 768px) {
     body {
         overflow-x: hidden;
@@ -1689,27 +1689,22 @@ textarea.form-control {
         object-fit: cover;
     }
     
-    /* CORRECCIÓ PER L'INDEX SOBRE EL VIDEO */
     .nav-menu {
         position: absolute;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
+        top: 65%;
+        left: 50%;
+        transform: translateX(-50%);
         width: 90%;
         max-width: 300px;
         text-align: center;
-        padding: 25px 20px;
-        background-color: rgba(255,255,255,0.9) !important;
-        backdrop-filter: blur(15px);
+        padding: 20px;
     }
-
+    
     .nav-item {
         width: 100%;
         text-align: center;
-        padding: 15px 0 !important;
-        font-size: 1.3rem !important;
-        color: #000 !important;
-        font-weight: 600;
+        padding: 12px 0;
+        font-size: 1.2rem;
     }
     
     .section {
@@ -1751,22 +1746,16 @@ textarea.form-control {
         padding: 0 10px;
     }
     
-    /* CORRECCIÓ PER ELS RECUADRES BLANCS */
     .experience-container {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 25px !important;
-        padding: 20px 10px !important;
-        width: 100% !important;
-        max-width: 100% !important;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+        width: 100%;
     }
-
+    
     .experience-card {
-        margin: 0 auto 25px auto !important;
-        width: 95% !important;
-        padding: 25px 20px !important;
-        min-height: auto !important;
-        box-sizing: border-box;
+        padding: 20px;
+        margin: 0;
     }
     
     .education-title {
@@ -1795,7 +1784,6 @@ textarea.form-control {
     .education-card-horizontal {
         width: 100%;
         margin-top: 10px;
-        padding: 25px 20px !important;
     }
     
     .project-filters {
@@ -1809,58 +1797,37 @@ textarea.form-control {
         font-size: 0.9rem;
     }
     
-    /* CORRECCIÓ PER ELS RECUADRES DE SKILLS */
     .skills-container {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 25px !important;
-        padding: 20px 10px !important;
-        width: 100% !important;
-        max-width: 100% !important;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+        width: 100%;
     }
-
+    
     .skill-category {
-        margin: 0 auto 25px auto !important;
-        width: 95% !important;
-        padding: 25px 20px !important;
-        min-height: auto !important;
-        box-sizing: border-box;
+        padding: 20px;
     }
     
-    /* CORRECCIÓ PER ELS RECUADRES DE PROJECTES */
     .projects-container {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 25px !important;
-        padding: 20px 10px !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    .project-card {
-        margin: 0 auto 25px auto !important;
-        width: 95% !important;
-        padding: 25px 20px !important;
-        min-height: auto !important;
-        box-sizing: border-box;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+        width: 100%;
     }
     
-    /* CORRECCIÓ PER ELS RECUADRES D'ACTIVITATS */
-    .activities-container {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 25px !important;
-        padding: 20px 10px !important;
-        width: 100% !important;
-        max-width: 100% !important;
+    .project-card {
+        margin: 0;
     }
-
+    
+    .activities-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+        width: 100%;
+    }
+    
     .activity-card {
-        margin: 0 auto 25px auto !important;
-        width: 95% !important;
-        padding: 25px 20px !important;
-        min-height: auto !important;
-        box-sizing: border-box;
+        padding: 20px;
     }
     
     .contacte-container {
@@ -1920,52 +1887,10 @@ textarea.form-control {
         overflow-wrap: break-word;
     }
     
-    /* CORRECCIÓ PER AL TESTIMONI */
-    .tutor-bubble {
-        position: relative;
-        width: 100%;
-        margin-top: 20px;
-    }
-
     .tutor-bubble-content {
-        position: fixed !important;
-        bottom: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, 50%) !important;
-        width: 90vw !important;
-        max-width: 350px !important;
-        z-index: 10000;
-        background: white !important;
-        color: #000 !important;
-        padding: 20px !important;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-
-    .tutor-bubble-content::after {
-        display: none;
-    }
-
-    /* Assegurar que el text es llegeixi bé */
-    .experience-detail,
-    .project-description,
-    .activity-description,
-    .skill-name {
-        font-size: 1rem !important;
-        line-height: 1.6 !important;
-        word-wrap: break-word;
-    }
-
-    /* Millores per als títols */
-    .section-title {
-        font-size: 2.2rem !important;
-        padding: 30px 20px 20px 20px !important;
-        margin: 0 !important;
-    }
-
-    /* Assegurar que no hi hagi overflow */
-    .section {
-        overflow: visible !important;
+        width: 280px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
@@ -1976,26 +1901,20 @@ textarea.form-control {
     }
     
     .nav-menu {
-        top: 45% !important;
-        padding: 20px 15px;
-    }
-
-    .nav-item {
-        font-size: 1.1rem !important;
-        padding: 12px 0 !important;
+        top: 60%;
     }
     
-    .experience-card,
-    .skill-category,
-    .project-card,
-    .activity-card {
-        padding: 20px 15px !important;
-        margin: 0 auto 20px auto !important;
+    .nav-item {
+        font-size: 1rem;
+        padding: 10px 0;
     }
     
     .section-title {
-        font-size: 1.8rem !important;
-        padding: 25px 15px 15px 15px !important;
+        font-size: 1.8rem;
+    }
+    
+    .education-title {
+        font-size: 1.8rem;
     }
     
     .social-icons {
@@ -2010,25 +1929,4 @@ textarea.form-control {
         width: 90%;
         max-width: 250px;
     }
-
-    .tutor-bubble-content {
-        width: 95vw !important;
-        padding: 15px !important;
-    }
-}
-
-/* Estils per al overlay del testimoni */
-.bubble-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 9999;
-}
-
-.bubble-overlay.active {
-    display: block;
 }
