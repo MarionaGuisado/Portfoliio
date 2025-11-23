@@ -381,6 +381,11 @@ h1, h2, h3, h4, h5, h6 {
 #sobre-mi {
     position: relative;
     background: var(--dark-section-bg);
+    min-height: 100vh; /* Añadir esta línea para que ocupe toda la pantalla */
+    /*display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
 }
 
 .about-container {
