@@ -11,12 +11,152 @@
       gtag('config', 'G-PXEQ8BRWKN');
     </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Viewport mejorado para mejor responsividad -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Mariona Guisado</title>
     <link rel="preload" href="sobre-mi-bg.jpg" as="image">
     <link rel="preload" href="contacte-bg.jpg" as="image">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ESTILOS RESPONSIVOS ADICIONALES */
+        
+        /* Asegurar que todos los elementos usen box-sizing border-box */
+        * {
+            box-sizing: border-box;
+        }
+        
+        /* Mejoras para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .header-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+            }
+            
+            .header-nav a {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+                padding: 15px !important;
+            }
+            
+            .nav-item {
+                font-size: 14px;
+                padding: 10px 15px;
+            }
+            
+            .experience-card, .activity-card, .project-card {
+                padding: 15px;
+            }
+            
+            .education-card-horizontal {
+                padding: 15px;
+            }
+            
+            .contacte-container {
+                padding: 15px;
+            }
+            
+            .social-icons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-icon {
+                margin-bottom: 15px;
+            }
+        }
+        
+        /* Mejoras para tablets pequeñas */
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .experience-container, .activities-container, .projects-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .education-items-container {
+                flex-direction: column;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contacte-container {
+                flex-direction: column;
+            }
+            
+            .contact-info, .contacte-form {
+                width: 100%;
+            }
+        }
+        
+        /* Asegurar que las imágenes y videos sean responsivos */
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .background-video {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        
+        /* Mejorar la legibilidad del texto en móviles */
+        body {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        /* Asegurar que los botones sean táctiles en móviles */
+        button, .filter-btn, .submit-btn, .enter-button, .nav-item, .header-nav a {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        /* Prevenir desbordamiento horizontal */
+        .container {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        /* Ajustar el header para móviles */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 15px;
+            }
+            
+            .header-nav {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 5px;
+            }
+        }
+        
+        /* Mejorar la experiencia táctil */
+        @media (hover: none) and (pointer: coarse) {
+            .tutor-bubble-trigger:active {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+            
+            .filter-btn.active {
+                transform: scale(0.98);
+            }
+        }
+    </style>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -50,8 +190,10 @@
             <section id="header-section" class="header-section">
                 <h1 id="pageTitle" class="page-title">Mariona Guisado</h1>
                 <div class="new-background" id="newBackground">
-                    <video class="background-video" autoplay muted loop>
+                    <video class="background-video" autoplay muted loop playsinline>
                         <source src="por.MOV" type="video/mp4">
+                        <!-- Mensaje de respaldo para navegadores que no soportan video -->
+                        Tu navegador no soporta el elemento video.
                     </video>
                 </div>
             
