@@ -177,7 +177,7 @@ const skillsObserver = new IntersectionObserver((entries) => {
 
 // Function to handle contact form
 document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    // No fem e.preventDefault() - deixem que el formulari s'enviï normalment
     
     const name = document.getElementById('contact-name').value;
     const email = document.getElementById('contact-email').value;
@@ -185,11 +185,18 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     
     console.log('Form submitted:', { name, email, message });
     
-    // Show success message
-    alert('Message sent successfully! Thank you for contacting me.');
+    // Opcional: Mostrar missatge de "enviant..." 
+    const submitBtn = this.querySelector('.submit-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
     
-    // Clear form
-    this.reset();
+    // El formulari s'enviarà automàticament a Formspree
+    // Torna a habilitar el botó després de 3 segons per si hi ha error
+    setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }, 3000);
 });
 
 // Dark mode toggle functionality
