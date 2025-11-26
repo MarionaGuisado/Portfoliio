@@ -177,7 +177,7 @@ const skillsObserver = new IntersectionObserver((entries) => {
 
 // Function to handle contact form
 document.getElementById('contactForm').addEventListener('submit', function(e) {
-    // ELIMINA AQUESTA LÍNIA: e.preventDefault();
+    e.preventDefault();
     
     const name = document.getElementById('contact-name').value;
     const email = document.getElementById('contact-email').value;
@@ -185,8 +185,10 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     
     console.log('Form submitted:', { name, email, message });
     
-    // La resta del codi igual...
+    // Show success message
     alert('Message sent successfully! Thank you for contacting me.');
+    
+    // Clear form
     this.reset();
 });
 
