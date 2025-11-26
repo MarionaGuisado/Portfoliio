@@ -11,7 +11,7 @@
       gtag('config', 'G-PXEQ8BRWKN');
     </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mariona Guisado</title>
     <link rel="preload" href="sobre-mi-bg.jpg" as="image">
     <link rel="preload" href="contacte-bg.jpg" as="image">
@@ -50,8 +50,10 @@
             <section id="header-section" class="header-section">
                 <h1 id="pageTitle" class="page-title">Mariona Guisado</h1>
                 <div class="new-background" id="newBackground">
-                    <video class="background-video" autoplay muted loop>
+                    <video class="background-video" autoplay muted loop playsinline webkit-playsinline>
                         <source src="por.MOV" type="video/mp4">
+                        <!-- Fallback para navegadores que no soportan video -->
+                        <img src="foto.jpg" alt="Mariona Guisado" style="width:100%;height:100%;object-fit:cover;">
                     </video>
                 </div>
             
