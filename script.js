@@ -15,21 +15,79 @@ function improveMobileExperience() {
         // Afegir classe mobile al body per estils específics
         document.body.classList.add('mobile-device');
         
-        // Millorar el comportament del scroll
-        document.addEventListener('touchmove', function(e) {
-            // Prevenir scroll horitzontal accidental
-            if (e.touches.length > 1) {
-                e.preventDefault();
-            }
-        }, { passive: false });
+        // Ajustar altura de secciones para móviles
+        adjustMobileLayout();
         
         // Optimitzar el rendiment en mòbils
         const videos = document.querySelectorAll('video');
         videos.forEach(video => {
             video.setAttribute('playsinline', '');
             video.setAttribute('webkit-playsinline', '');
+            video.setAttribute('muted', '');
+            // Pausar video si no está en vista para ahorrar batería
+            pauseVideoWhenNotVisible(video);
         });
+        
+        // Prevenir comportamientos no deseados
+        preventMobileIssues();
     }
+}
+
+// Función para ajustar el layout en móviles
+function adjustMobileLayout() {
+    // Ajustar altura mínima de secciones
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+        if (section.id !== 'header-section') {
+            section.style.minHeight = 'auto';
+        }
+    });
+    
+    // Asegurar que el header-section ocupe toda la pantalla
+    const headerSection = document.getElementById('header-section');
+    if (headerSection) {
+        headerSection.style.minHeight = '100vh';
+    }
+}
+
+// Función para pausar video cuando no es visible
+function pauseVideoWhenNotVisible(video) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    observer.observe(video);
+}
+
+// Prevenir problemas comunes en móviles
+function preventMobileIssues() {
+    // Prevenir zoom en inputs
+    document.addEventListener('touchstart', function(e) {
+        if (e.touches.length > 1) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+    
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function(e) {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+            e.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
+    
+    // Mejorar scroll en iOS
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    window.addEventListener('resize', () => {
+        document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    });
 }
 
 // Scroll handler function
