@@ -1931,6 +1931,15 @@ textarea.form-control {
     }
 }
 
+
+
+
+
+
+
+
+
+// AAAAAAAAAAAAAAAAAAAAAAAAAAA
 /* CORRECCIONES ESPECÍFICAS PARA MÓVILES */
 @media (max-width: 768px) {
     /* Correcciones generales */
@@ -1991,27 +2000,17 @@ textarea.form-control {
         height: 100%;
     }
     
-    /* CORRECCIÓN ESPECÍFICA PARA EL NAV-MENU EN MÓVILES */
     .nav-menu {
         position: absolute;
-        top: 75% !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        width: 90% !important;
-        max-width: 320px !important;
+        top: 70%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 300px;
         text-align: center;
         padding: 20px;
-        background-color: rgba(255, 255, 255, 0.95) !important;
-        backdrop-filter: blur(10px) !important;
-        border-radius: 12px !important;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
-        z-index: 10 !important;
-    }
-    
-    /* Ajuste del video para móviles */
-    .new-background {
-        height: 65% !important;
-        top: 40% !important;
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
     }
     
     .nav-item {
@@ -2316,21 +2315,14 @@ textarea.form-control {
 }
 
 /* Correcciones para pantallas muy pequeñas (iPhone SE, etc) */
-@media (max-width: 480px) {
+@media (max-width: 375px) {
     .name {
         font-size: 2.2rem;
     }
     
-    /* Ajuste adicional para nav-menu en pantallas muy pequeñas */
     .nav-menu {
-        top: 70% !important;
-        width: 85% !important;
-        padding: 15px !important;
-    }
-    
-    .new-background {
-        height: 60% !important;
-        top: 35% !important;
+        top: 65%;
+        padding: 15px;
     }
     
     .nav-item {
@@ -2377,52 +2369,4 @@ textarea.form-control {
 
 .mobile-device {
     -webkit-overflow-scrolling: touch;
-}
-
-/* CORRECCIÓN ESPECÍFICA PARA EL ÍNDICE EN MÓVILES - POSICIÓN AJUSTADA */
-@media (max-width: 768px) {
-    /* Corrección específica para el nav-menu en móviles - POSICIÓN MEJORADA */
-    .nav-menu {
-        position: absolute;
-        top: 90% !important; /* Ajustado para mejor posicionamiento */
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        width: 92% !important;
-        max-width: 340px !important;
-        text-align: center;
-        padding: 18px !important;
-        background-color: rgba(255, 255, 255, 0.97) !important;
-        backdrop-filter: blur(12px) !important;
-        border-radius: 15px !important;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25) !important;
-        z-index: 10 !important;
-        opacity: 1 !important;
-    }
-    
-    /* Ajuste del video para que no se superponga */
-    .new-background {
-        height: 62% !important;
-        top: 38% !important;
-        z-index: 5 !important;
-    }
-    
-    .nav-item {
-        color: #000 !important;
-        font-weight: 500;
-        text-shadow: none !important;
-    }
-    
-    /* Asegurar que los elementos estén en el orden correcto */
-    #header-section {
-        position: relative;
-        z-index: 1;
-    }
-    
-    .background-video {
-        z-index: 1;
-    }
-    
-    .nav-menu {
-        z-index: 10;
-    }
 }
