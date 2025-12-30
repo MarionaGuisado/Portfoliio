@@ -1676,6 +1676,22 @@ textarea.form-control {
         box-sizing: border-box;
     }
     
+    /* CORRECCIÓN ESPECÍFICA: TEXTO JUSTIFICADO EN PROFESSIONAL PROFILE PARA MÓVIL */
+    .about-text-container {
+        text-align: justify !important;
+        padding: 0 15px !important;
+    }
+    
+    .typed-text, .personal-text {
+        text-align: justify !important;
+        text-align-last: left !important;
+        -webkit-hyphens: auto !important;
+        -ms-hyphens: auto !important;
+        hyphens: auto !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
     /* Corrección específica para la sección de educación */
     .education-content {
         padding: 0 15px;
@@ -1823,7 +1839,7 @@ textarea.form-control {
         padding: 10px 0;
     }
     
-    /* Sobre mí */
+    /* Sobre mí - ESPECIALMENTE IMPORTANTE PARA TEXTO JUSTIFICADO */
     #sobre-mi {
         min-height: auto;
         padding: 30px 0;
@@ -1836,16 +1852,23 @@ textarea.form-control {
     }
     
     .about-text-container {
-        padding: 0;
-        width: 100%;
+        padding: 0 !important;
+        width: 100% !important;
+        text-align: justify !important;
     }
     
     .typed-text {
         font-size: 1rem;
         line-height: 1.6;
-        text-align: left;
-        padding: 0 5px;
-        width: 100%;
+        text-align: justify !important;
+        text-align-last: left !important;
+        padding: 0 !important;
+        width: 100% !important;
+        -webkit-hyphens: auto !important;
+        -ms-hyphens: auto !important;
+        hyphens: auto !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
     }
     
     /* Experiencia */
@@ -2073,6 +2096,24 @@ textarea.form-control {
 
 /* Correcciones adicionales para pantallas muy pequeñas */
 @media (max-width: 480px) {
+    /* CORRECCIÓN ESPECIAL PARA TEXTO JUSTIFICADO EN PANTALLAS PEQUEÑAS */
+    .about-text-container {
+        text-align: justify !important;
+        padding: 0 10px !important;
+    }
+    
+    .typed-text, .personal-text {
+        text-align: justify !important;
+        text-align-last: left !important;
+        -webkit-hyphens: auto !important;
+        -ms-hyphens: auto !important;
+        hyphens: auto !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+    }
+    
     /* Ajustes adicionales para pantallas más pequeñas */
     .experience-container,
     .skills-container,
