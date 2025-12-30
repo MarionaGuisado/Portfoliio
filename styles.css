@@ -2384,7 +2384,7 @@ textarea.form-control {
     /* Corrección específica para el nav-menu en móviles - POSICIÓN MEJORADA */
     .nav-menu {
         position: absolute;
-        top: 72% !important; /* Ajustado para mejor posicionamiento */
+        top: 90% !important; /* Ajustado para mejor posicionamiento */
         left: 50% !important;
         transform: translateX(-50%) !important;
         width: 92% !important;
